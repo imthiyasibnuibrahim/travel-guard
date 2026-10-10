@@ -22,7 +22,7 @@ def get_gemini_api_key() -> str:
 
 def get_model(vision: bool = False) -> genai.GenerativeModel:
     """Get the Gemini model instance."""
-    model_name = "gemini-2.0-flash"
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
     return genai.GenerativeModel(
         model_name,
         generation_config=genai.GenerationConfig(

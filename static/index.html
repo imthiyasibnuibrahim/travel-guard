@@ -2,1055 +2,1263 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>TravelGuard - Safe Journeys Begin Here</title>
-    <meta name="description" content="AI-powered travel safety assistant for first-time travelers">
-    <meta name="theme-color" content="#18A689">
+    <meta name="description" content="AI-powered travel safety assistant for first-time travelers to the Gulf">
+    <meta name="theme-color" content="#DAEBE3">
     <link rel="icon" type="image/png" href="/static/logo.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ===== CSS RESET & VARIABLES ===== */
+        /* ===== DESIGN TOKENS & USER PALETTE ===== */
+        :root {
+            /* User Uploaded Swatch Palette */
+            --c-sky: #99CDD8;
+            --c-mint: #DAEBE3;
+            --c-cream: #FDE8D3;
+            --c-coral: #F3C3B2;
+            --c-sage: #CFD6C4;
+            --c-slate: #657166;
+            --c-slate-dark: #4F5A50;
+            --c-slate-light: #7E8D7F;
+
+            /* Glassmorphism Variables */
+            --glass-bg: rgba(255, 255, 255, 0.58);
+            --glass-bg-subtle: rgba(255, 255, 255, 0.42);
+            --glass-bg-card: rgba(255, 255, 255, 0.68);
+            --glass-border: rgba(255, 255, 255, 0.75);
+            --glass-border-subtle: rgba(255, 255, 255, 0.45);
+            --glass-blur: blur(28px) saturate(180%);
+            --glass-card-blur: blur(22px) saturate(160%);
+            --glass-shadow: 0 16px 36px -8px rgba(101, 113, 102, 0.14), 0 4px 16px -2px rgba(101, 113, 102, 0.06);
+            --glass-shadow-sm: 0 8px 24px -4px rgba(101, 113, 102, 0.08);
+            --inner-glow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+
+            /* Text & Accents */
+            --text-main: #344035;
+            --text-muted: #6B7B6C;
+            --text-light: #8E9E8F;
+            --danger: #D9654C;
+            --danger-bg: rgba(243, 195, 178, 0.45);
+            --warning: #C97D3E;
+            --warning-bg: rgba(253, 232, 211, 0.55);
+            --safe: #4C7D5E;
+            --safe-bg: rgba(218, 235, 227, 0.65);
+            
+            --radius-lg: 26px;
+            --radius-md: 20px;
+            --radius-sm: 14px;
+            --radius-pill: 9999px;
+
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-ml: 'Noto Sans Malayalam', var(--font-main);
+        }
+
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --navy: #1B3A5C;
-            --teal: #18A689;
-            --teal-light: #E8F5F0;
-            --teal-dark: #128068;
-            --orange: #F7941D;
-            --orange-light: #FFF3E0;
-            --bg: #F0F4F8;
-            --white: #FFFFFF;
-            --gray-50: #F8FAFC;
-            --gray-100: #F1F5F9;
-            --gray-200: #E2E8F0;
-            --gray-300: #CBD5E1;
-            --gray-400: #94A3B8;
-            --gray-500: #64748B;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1E293B;
-            --red: #EF4444;
-            --red-light: #FEF2F2;
-            --yellow: #F59E0B;
-            --yellow-light: #FFFBEB;
-            --green: #10B981;
-            --green-light: #ECFDF5;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
-            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
-            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            --radius: 16px;
-            --radius-sm: 12px;
-            --radius-xs: 8px;
-            --font-main: 'Inter', sans-serif;
-            --font-ml: 'Noto Sans Malayalam', sans-serif;
-            --bottom-nav-height: 70px;
-        }
-
-        html {
-            font-size: 16px;
-            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: var(--font-main);
-            background: var(--bg);
-            color: var(--gray-800);
+            color: var(--text-main);
             min-height: 100vh;
             min-height: 100dvh;
-            padding-bottom: calc(var(--bottom-nav-height) + 20px);
+            background-color: #EBF2EC;
             overflow-x: hidden;
+            position: relative;
+            padding-bottom: 110px;
         }
 
         body.lang-ml {
-            font-family: var(--font-ml), var(--font-main);
+            font-family: var(--font-ml);
         }
 
-        /* ===== APP CONTAINER ===== */
-        .app-container {
-            max-width: 480px;
+        /* ===== ETHEREAL AMBIENT BACKGROUND GLOW ===== */
+        .ambient-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            background: linear-gradient(145deg, #DEE9E0 0%, #E7EFE6 50%, #E3EDE9 100%);
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.65;
+            animation: orbFloat 22s ease-in-out infinite alternate;
+        }
+
+        .ambient-orb-1 {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, var(--c-mint) 0%, rgba(218, 235, 227, 0.1) 70%);
+            top: -100px;
+            left: -80px;
+        }
+
+        .ambient-orb-2 {
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, var(--c-cream) 0%, rgba(253, 232, 211, 0.2) 70%);
+            top: 35%;
+            right: -100px;
+            animation-duration: 26s;
+            animation-delay: -5s;
+        }
+
+        .ambient-orb-3 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, var(--c-sky) 0%, rgba(153, 205, 216, 0.15) 70%);
+            bottom: -80px;
+            left: -100px;
+            animation-duration: 28s;
+            animation-delay: -10s;
+        }
+
+        .ambient-orb-4 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, var(--c-coral) 0%, rgba(243, 195, 178, 0.2) 70%);
+            top: 60%;
+            left: 20%;
+            opacity: 0.45;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(35px) scale(1.08); }
+            100% { transform: translateY(-20px) scale(0.96); }
+        }
+
+        /* ===== SMARTPHONE CONTAINER ===== */
+        .app-shell {
+            max-width: 440px;
             margin: 0 auto;
             padding: 0 16px;
+            position: relative;
         }
 
-        /* ===== TOP BAR ===== */
-        .top-bar {
+        /* ===== THE WATER NOTCH / DYNAMIC ISLAND ===== */
+        .water-notch-container {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-200);
-            padding: 12px 16px;
+            z-index: 1000;
+            padding: 12px 0 10px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .water-notch {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-pill);
+            box-shadow: var(--glass-shadow-sm), var(--inner-glow);
+            padding: 7px 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            max-width: 480px;
-            margin: 0 auto;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
-        .top-bar-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .water-notch:hover {
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: var(--glass-shadow);
         }
 
-        .top-bar-logo img {
-            height: 36px;
-            width: auto;
-        }
-
-        .top-bar-logo h1 {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: -0.5px;
-        }
-
-        .top-bar-logo h1 span {
-            color: var(--teal);
-        }
-
-        .top-bar-actions {
+        .notch-left {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .lang-toggle {
-            display: flex;
-            background: var(--gray-100);
-            border-radius: 20px;
+        .notch-logo-wrap {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
             padding: 3px;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(101, 113, 102, 0.15);
         }
 
-        .lang-btn {
-            padding: 5px 12px;
-            border-radius: 18px;
-            border: none;
-            font-size: 0.8rem;
+        .notch-logo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .notch-brand {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .notch-brand span {
+            color: var(--c-slate);
+        }
+
+        /* Dynamic Island Status Pill */
+        .notch-pill {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(207, 214, 196, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-pill);
+            padding: 3px 9px;
+            font-size: 0.7rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
+            color: var(--c-slate);
+        }
+
+        .notch-pulse {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--c-slate);
+            box-shadow: 0 0 0 rgba(101, 113, 102, 0.4);
+            animation: notchPulse 2s infinite;
+        }
+
+        @keyframes notchPulse {
+            0% { box-shadow: 0 0 0 0 rgba(101, 113, 102, 0.6); }
+            70% { box-shadow: 0 0 0 6px rgba(101, 113, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(101, 113, 102, 0); }
+        }
+
+        /* Language Toggle in Notch */
+        .lang-switch {
+            display: flex;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-pill);
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .lang-pill-btn {
+            border: none;
             background: transparent;
-            color: var(--gray-500);
+            font-family: inherit;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            padding: 4px 9px;
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
-        .lang-btn.active {
-            background: var(--teal);
-            color: white;
+        .lang-pill-btn.active {
+            background: var(--c-slate);
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(101, 113, 102, 0.3);
         }
 
-        /* ===== TAB CONTENT ===== */
-        .tab-content {
+        /* ===== TAB CONTENT SYSTEM ===== */
+        .tab-panel {
             display: none;
-            animation: fadeIn 0.3s ease;
+            animation: smoothFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .tab-content.active {
+        .tab-panel.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes smoothFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(0.99);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
-        /* ===== HOME TAB ===== */
-        .home-hero {
-            text-align: center;
-            padding: 40px 20px 30px;
+        /* ===== FROSTED GLASS CARDS ===== */
+        .glass-card {
+            background: var(--glass-bg-card);
+            backdrop-filter: var(--glass-card-blur);
+            -webkit-backdrop-filter: var(--glass-card-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            box-shadow: var(--glass-shadow), var(--inner-glow);
+            margin-bottom: 18px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .home-hero img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 16px;
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
 
-        .home-hero h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--navy);
+        /* ===== HOME HERO SECTION ===== */
+        .home-greeting {
+            padding: 16px 6px 18px;
+        }
+
+        .home-greeting .subtitle {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 4px;
+        }
+
+        .home-greeting h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--text-main);
             letter-spacing: -0.5px;
+            line-height: 1.25;
         }
 
-        .home-hero h2 span {
-            color: var(--teal);
+        .home-greeting h1 span {
+            color: var(--c-slate);
+            position: relative;
+            display: inline-block;
         }
 
-        .home-hero .tagline {
-            color: var(--gray-500);
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-        }
-
-        .feature-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-bottom: 24px;
-        }
-
-        .feature-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 20px;
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(218,235,227,0.7) 100%);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--gray-100);
         }
 
-        .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-card:active {
-            transform: scale(0.98);
-        }
-
-        .feature-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius-sm);
+        .hero-logo-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(101, 113, 102, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             flex-shrink: 0;
+            padding: 6px;
         }
 
-        .feature-icon.offer { background: var(--red-light); }
-        .feature-icon.pack { background: var(--orange-light); }
-        .feature-icon.checklist { background: var(--teal-light); }
-
-        .feature-info h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin-bottom: 2px;
+        .hero-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
-        .feature-info p {
+        .hero-banner-content h2 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .hero-banner-content p {
             font-size: 0.82rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
             line-height: 1.4;
         }
 
-        .demo-btn {
+        /* ===== ACTION GLASS TILES ===== */
+        .glass-tiles-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .glass-tile {
+            background: var(--glass-bg-card);
+            backdrop-filter: var(--glass-card-blur);
+            -webkit-backdrop-filter: var(--glass-card-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--navy), #2d5a8e);
-            color: white;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            font-weight: 600;
+            justify-content: space-between;
+            box-shadow: var(--glass-shadow-sm), var(--inner-glow);
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: var(--shadow);
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .demo-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
+        .glass-tile:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: var(--glass-shadow);
         }
 
-        .demo-btn:active {
+        .glass-tile:active {
             transform: scale(0.98);
         }
 
-        /* ===== FORM ELEMENTS ===== */
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--navy);
-            padding: 24px 0 16px;
+        .tile-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(101, 113, 102, 0.08);
+        }
+
+        .tile-icon-box.offer {
+            background: linear-gradient(135deg, rgba(243, 195, 178, 0.7), rgba(253, 232, 211, 0.8));
+        }
+
+        .tile-icon-box.pack {
+            background: linear-gradient(135deg, rgba(153, 205, 216, 0.6), rgba(218, 235, 227, 0.8));
+        }
+
+        .tile-icon-box.checklist {
+            background: linear-gradient(135deg, rgba(207, 214, 196, 0.7), rgba(218, 235, 227, 0.9));
+        }
+
+        .tile-content {
+            flex: 1;
+            margin: 0 14px;
+        }
+
+        .tile-content h3 {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .tile-content p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .tile-arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--c-slate);
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(101, 113, 102, 0.08);
+        }
+
+        /* ===== SMOOTH PILL BUTTONS ===== */
+        .glass-pill-btn {
+            width: 100%;
+            border: none;
+            background: linear-gradient(135deg, var(--c-slate) 0%, var(--c-slate-dark) 100%);
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 16px 22px;
+            border-radius: var(--radius-pill);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 10px 24px -4px rgba(101, 113, 102, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-pill-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px -4px rgba(101, 113, 102, 0.45);
+        }
+
+        .glass-pill-btn:active {
+            transform: scale(0.98);
+        }
+
+        .demo-pill-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(218, 235, 227, 0.8));
+            border: 1px solid var(--glass-border);
+            color: var(--c-slate);
+            box-shadow: var(--glass-shadow-sm);
+        }
+
+        .demo-pill-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-main);
+        }
+
+        /* ===== FORM ELEMENTS & SEGMENTS ===== */
+        .section-header {
+            margin: 12px 6px 16px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .section-title .icon {
-            font-size: 1.4rem;
+        .section-header h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.3px;
         }
 
-        .input-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            margin-bottom: 16px;
-            border: 1px solid var(--gray-100);
-        }
-
-        .input-label {
+        .field-label {
             display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--gray-700);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-main);
             margin-bottom: 8px;
         }
 
-        .input-sublabel {
-            font-size: 0.78rem;
-            color: var(--gray-400);
-            font-weight: 400;
+        .field-sublabel {
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.76rem;
         }
 
         textarea, input[type="text"], input[type="date"], input[type="number"], select {
             width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-xs);
-            font-size: 0.95rem;
-            font-family: var(--font-main);
-            color: var(--gray-800);
-            background: var(--gray-50);
-            transition: border-color 0.2s;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1.5px solid rgba(207, 214, 196, 0.8);
+            border-radius: var(--radius-sm);
+            padding: 13px 15px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            transition: all 0.25s ease;
+            box-shadow: inset 0 2px 4px rgba(101, 113, 102, 0.04);
             -webkit-appearance: none;
         }
 
         textarea:focus, input:focus, select:focus {
             outline: none;
-            border-color: var(--teal);
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--c-slate);
+            box-shadow: 0 0 0 4px rgba(218, 235, 227, 0.7);
         }
 
         textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 110px;
+            line-height: 1.5;
         }
 
-        .or-divider {
+        .divider-pill {
             display: flex;
             align-items: center;
             gap: 12px;
             margin: 16px 0;
-            color: var(--gray-400);
-            font-size: 0.85rem;
-            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .or-divider::before, .or-divider::after {
+        .divider-pill::before, .divider-pill::after {
             content: '';
             flex: 1;
             height: 1px;
-            background: var(--gray-200);
+            background: rgba(207, 214, 196, 0.8);
         }
 
-        .file-upload-area {
-            border: 2px dashed var(--gray-300);
-            border-radius: var(--radius-xs);
-            padding: 24px;
+        /* Frosted Camera Upload Box */
+        .glass-upload-zone {
+            border: 2px dashed rgba(126, 141, 127, 0.45);
+            background: rgba(255, 255, 255, 0.45);
+            border-radius: var(--radius-md);
+            padding: 22px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s;
-            background: var(--gray-50);
+            transition: all 0.25s ease;
+            position: relative;
         }
 
-        .file-upload-area:hover {
-            border-color: var(--teal);
-            background: var(--teal-light);
+        .glass-upload-zone:hover {
+            border-color: var(--c-slate);
+            background: rgba(218, 235, 227, 0.45);
         }
 
-        .file-upload-area.has-file {
-            border-color: var(--green);
-            background: var(--green-light);
+        .glass-upload-zone.has-file {
+            border-color: var(--safe);
+            background: var(--safe-bg);
         }
 
-        .file-upload-area .upload-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .file-upload-area p {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-        }
-
-        .file-upload-area input[type="file"] {
-            display: none;
-        }
-
-        .file-name {
-            font-size: 0.82rem;
-            color: var(--teal);
-            font-weight: 600;
-            margin-top: 6px;
-        }
-
-        .submit-btn {
+        .upload-icon-circle {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            margin: 0 auto 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-            color: white;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(24, 166, 137, 0.35);
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(101, 113, 102, 0.1);
+        }
+
+        .glass-upload-zone p {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .glass-upload-zone .subtext {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        .glass-upload-zone input[type="file"] {
+            display: none;
+        }
+
+        .uploaded-tag {
             margin-top: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--c-slate-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(24, 166, 137, 0.4);
+        .image-preview-thumb {
+            max-width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+            margin-top: 12px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow-sm);
         }
 
-        .submit-btn:active {
-            transform: scale(0.98);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .select-row {
-            display: flex;
-            gap: 10px;
+        /* 2-column input row */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-bottom: 12px;
         }
 
-        .select-row > div {
-            flex: 1;
-        }
-
-        /* ===== RESULTS ===== */
-        .result-container {
+        /* ===== RESULTS & STATUS PILLS ===== */
+        .result-wrapper {
             margin-top: 20px;
-            animation: slideUp 0.4s ease;
+            animation: smoothFadeIn 0.35s ease;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .result-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 14px;
-            border: 1px solid var(--gray-100);
-        }
-
-        .result-header {
+        .glass-result-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 16px;
         }
 
-        .result-header h3 {
+        .glass-result-header h3 {
             font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--gray-800);
+            font-weight: 800;
+            color: var(--text-main);
         }
 
-        .read-aloud-btn {
+        .audio-pill-btn {
+            border: none;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-pill);
+            padding: 5px 12px;
+            font-family: inherit;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--c-slate);
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 4px;
-            padding: 6px 12px;
-            background: var(--gray-100);
-            border: none;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--gray-600);
-            cursor: pointer;
+            gap: 5px;
             transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(101, 113, 102, 0.08);
         }
 
-        .read-aloud-btn:hover {
-            background: var(--teal-light);
-            color: var(--teal);
+        .audio-pill-btn:hover {
+            background: #FFFFFF;
+            transform: scale(1.02);
         }
 
-        .read-aloud-btn.playing {
-            background: var(--teal);
-            color: white;
+        .audio-pill-btn.playing {
+            background: var(--c-slate);
+            color: #FFFFFF;
         }
 
-        /* Risk Score */
-        .risk-meter {
+        /* Risk Gauge Card */
+        .gauge-center {
             text-align: center;
-            margin-bottom: 20px;
+            padding: 10px 0 16px;
         }
 
-        .risk-score-circle {
-            width: 100px;
-            height: 100px;
+        .risk-orb {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
+            margin: 0 auto 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 10px;
-            font-size: 2rem;
+            border: 3px solid;
+            box-shadow: 0 10px 24px -6px rgba(101, 113, 102, 0.15);
             font-weight: 800;
-            border: 4px solid;
+            font-size: 1.8rem;
         }
 
-        .risk-score-circle.high {
-            background: var(--red-light);
-            border-color: var(--red);
-            color: var(--red);
+        .risk-orb.high {
+            background: var(--danger-bg);
+            border-color: var(--danger);
+            color: var(--danger);
         }
 
-        .risk-score-circle.medium {
-            background: var(--yellow-light);
-            border-color: var(--yellow);
-            color: var(--yellow);
+        .risk-orb.medium {
+            background: var(--warning-bg);
+            border-color: var(--warning);
+            color: var(--warning);
         }
 
-        .risk-score-circle.low {
-            background: var(--green-light);
-            border-color: var(--green);
-            color: var(--green);
+        .risk-orb.low {
+            background: var(--safe-bg);
+            border-color: var(--safe);
+            color: var(--safe);
         }
 
-        .risk-score-circle small {
+        .risk-orb small {
             font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 700;
+            opacity: 0.85;
         }
 
-        .risk-label {
-            font-size: 1rem;
-            font-weight: 700;
+        .risk-status-pill {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: var(--radius-pill);
         }
 
-        .risk-label.high { color: var(--red); }
-        .risk-label.medium { color: var(--yellow); }
-        .risk-label.low { color: var(--green); }
-
-        /* Lists */
-        .result-list {
-            list-style: none;
-            margin-bottom: 16px;
+        .risk-status-pill.high {
+            background: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid var(--danger);
         }
 
-        .result-list-title {
+        .risk-status-pill.medium {
+            background: var(--warning-bg);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .risk-status-pill.low {
+            background: var(--safe-bg);
+            color: var(--safe);
+            border: 1px solid var(--safe);
+        }
+
+        .summary-box {
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: var(--radius-sm);
+            padding: 13px;
             font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--gray-700);
-            margin-bottom: 8px;
+            color: var(--text-main);
+            line-height: 1.55;
+            margin-top: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        /* Result Item Lists */
+        .result-group-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            color: var(--text-main);
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .result-list li {
-            padding: 8px 12px;
-            margin-bottom: 6px;
-            border-radius: var(--radius-xs);
-            font-size: 0.88rem;
-            line-height: 1.5;
+        .glass-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .glass-list li {
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.84rem;
+            line-height: 1.45;
             display: flex;
             align-items: flex-start;
             gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
-        .result-list li .li-icon {
-            flex-shrink: 0;
-            margin-top: 2px;
+        .glass-list.red-flags li {
+            background: var(--danger-bg);
+            color: #8C2E19;
+            border-color: rgba(243, 195, 178, 0.9);
         }
 
-        .result-list.red-flags li {
-            background: var(--red-light);
-            color: #991B1B;
+        .glass-list.verify li {
+            background: var(--warning-bg);
+            color: #7E4316;
+            border-color: rgba(253, 232, 211, 0.9);
         }
 
-        .result-list.verify li {
-            background: var(--yellow-light);
-            color: #92400E;
+        .glass-list.safe li {
+            background: var(--safe-bg);
+            color: #215433;
+            border-color: rgba(218, 235, 227, 0.9);
         }
 
-        .result-list.safe li {
-            background: var(--green-light);
-            color: #065F46;
-        }
-
-        /* Pack Check Items */
-        .pack-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* Pack Check Item Cards */
+        .pack-item-card {
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: var(--radius-md);
             padding: 14px;
-            background: var(--gray-50);
-            border-radius: var(--radius-xs);
             margin-bottom: 10px;
             border-left: 4px solid;
+            border-top: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 12px rgba(101, 113, 102, 0.05);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
         }
 
-        .pack-item.likely_ok { border-color: var(--green); }
-        .pack-item.restricted { border-color: var(--yellow); }
-        .pack-item.prohibited { border-color: var(--red); }
-        .pack-item.unsure { border-color: var(--gray-400); }
+        .pack-item-card.likely_ok { border-left-color: var(--safe); }
+        .pack-item-card.restricted { border-left-color: var(--warning); }
+        .pack-item-card.prohibited { border-left-color: var(--danger); }
+        .pack-item-card.unsure { border-left-color: var(--c-slate); }
 
-        .pack-item-status {
-            font-size: 1.3rem;
-        }
-
-        .pack-item-info h4 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .pack-item-info .pack-status {
-            font-size: 0.75rem;
-            font-weight: 700;
+        .pack-status-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
             margin-bottom: 4px;
         }
 
-        .pack-status.likely_ok { color: var(--green); }
-        .pack-status.restricted { color: var(--yellow); }
-        .pack-status.prohibited { color: var(--red); }
-        .pack-status.unsure { color: var(--gray-500); }
+        .pack-status-badge.likely_ok { background: var(--safe-bg); color: var(--safe); }
+        .pack-status-badge.restricted { background: var(--warning-bg); color: var(--warning); }
+        .pack-status-badge.prohibited { background: var(--danger-bg); color: var(--danger); }
+        .pack-status-badge.unsure { background: rgba(207, 214, 196, 0.6); color: var(--c-slate); }
 
-        .pack-item-info p {
-            font-size: 0.82rem;
-            color: var(--gray-600);
-            line-height: 1.4;
-        }
-
-        .pack-item-info .paperwork {
-            font-size: 0.78rem;
-            color: var(--teal);
-            font-weight: 500;
-            margin-top: 4px;
-        }
-
-        /* Checklist */
-        .checklist-category {
-            margin-bottom: 20px;
-        }
-
-        .checklist-category h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 10px;
+        /* Checklist Cards */
+        .checklist-cat-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 14px 0 8px;
             padding-bottom: 6px;
-            border-bottom: 2px solid var(--teal-light);
+            border-bottom: 1.5px solid rgba(207, 214, 196, 0.5);
         }
 
-        .checklist-item {
+        .cl-item-row {
             display: flex;
             gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--gray-100);
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(207, 214, 196, 0.35);
         }
 
-        .checklist-item:last-child {
-            border-bottom: none;
-        }
-
-        .checklist-priority {
+        .cl-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            margin-top: 6px;
+            margin-top: 5px;
             flex-shrink: 0;
         }
 
-        .checklist-priority.high { background: var(--red); }
-        .checklist-priority.medium { background: var(--yellow); }
-        .checklist-priority.low { background: var(--teal); }
+        .cl-dot.high { background: var(--danger); }
+        .cl-dot.medium { background: var(--warning); }
+        .cl-dot.low { background: var(--c-slate); }
 
-        .checklist-item-info .task {
-            font-size: 0.88rem;
+        .cl-task {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .cl-deadline {
+            font-size: 0.74rem;
+            color: var(--warning);
             font-weight: 600;
-            color: var(--gray-800);
-        }
-
-        .checklist-item-info .deadline {
-            font-size: 0.78rem;
-            color: var(--orange);
-            font-weight: 500;
             margin-top: 2px;
         }
 
-        .checklist-item-info .details {
-            font-size: 0.78rem;
-            color: var(--gray-500);
+        .cl-details {
+            font-size: 0.75rem;
+            color: var(--text-muted);
             margin-top: 2px;
+            line-height: 1.4;
         }
 
-        /* Layover Info */
-        .layover-card {
-            background: linear-gradient(135deg, var(--teal-light), #D1FAE5);
-            border-radius: var(--radius);
-            padding: 18px;
+        /* Layover Glass Banner */
+        .layover-glass-banner {
+            background: linear-gradient(135deg, rgba(153, 205, 216, 0.4), rgba(218, 235, 227, 0.7));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
             margin-bottom: 14px;
         }
 
-        .layover-card h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--teal-dark);
-            margin-bottom: 10px;
-        }
-
-        .layover-card p {
-            font-size: 0.85rem;
-            color: var(--gray-700);
-            margin-bottom: 4px;
-        }
-
-        /* Emergency Contacts */
-        .emergency-contact {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: var(--gray-50);
-            border-radius: var(--radius-xs);
+        .layover-glass-banner h4 {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--text-main);
             margin-bottom: 8px;
         }
 
-        .emergency-contact .contact-icon {
-            font-size: 1.3rem;
-        }
-
-        .emergency-contact .contact-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .emergency-contact .contact-number {
-            font-size: 0.82rem;
-            color: var(--teal);
-            font-weight: 500;
-        }
-
-        .emergency-contact .contact-desc {
-            font-size: 0.75rem;
-            color: var(--gray-500);
-        }
-
-        /* Disclaimer */
-        .disclaimer {
-            background: var(--yellow-light);
-            border: 1px solid #FDE68A;
-            border-radius: var(--radius-xs);
-            padding: 12px 14px;
-            margin-top: 16px;
-            font-size: 0.78rem;
-            color: #92400E;
+        /* Official Disclaimer */
+        .official-disclaimer {
+            background: rgba(253, 232, 211, 0.4);
+            border: 1px solid rgba(253, 232, 211, 0.9);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            font-size: 0.74rem;
+            color: #7A4217;
             line-height: 1.5;
+            margin-top: 14px;
         }
 
-        .disclaimer strong {
-            display: block;
-            margin-bottom: 4px;
+        .official-disclaimer a {
+            color: var(--c-slate-dark);
+            font-weight: 700;
+            text-decoration: underline;
         }
 
-        .disclaimer a {
-            color: var(--teal-dark);
-            font-weight: 600;
-        }
-
-        /* Loading */
-        .loading-overlay {
+        /* Loading Animation */
+        .loading-pane {
             display: none;
             text-align: center;
-            padding: 40px 20px;
+            padding: 35px 20px;
         }
 
-        .loading-overlay.active {
+        .loading-pane.active {
             display: block;
         }
 
-        .loading-spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid var(--gray-200);
-            border-top-color: var(--teal);
+        .frosted-spinner {
+            width: 44px;
+            height: 44px;
+            border: 3.5px solid rgba(207, 214, 196, 0.6);
+            border-top-color: var(--c-slate);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin: 0 auto 16px;
+            margin: 0 auto 14px;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        .loading-text {
-            font-size: 0.9rem;
-            color: var(--gray-500);
-            font-weight: 500;
+        .loading-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-main);
         }
 
-        .loading-subtext {
-            font-size: 0.8rem;
-            color: var(--gray-400);
+        .loading-desc {
+            font-size: 0.76rem;
+            color: var(--text-muted);
             margin-top: 4px;
         }
 
-        /* Error */
-        .error-msg {
-            background: var(--red-light);
-            border: 1px solid #FECACA;
-            border-radius: var(--radius-xs);
-            padding: 14px;
-            text-align: center;
-            margin-top: 16px;
-        }
-
-        .error-msg p {
-            font-size: 0.88rem;
-            color: #991B1B;
-        }
-
-        .error-msg .retry-btn {
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: var(--red);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        /* ===== BOTTOM NAV ===== */
-        .bottom-nav {
+        /* ===== FLOATING FROSTED GLASS DOCK / BOTTOM NAV ===== */
+        .bottom-dock-wrapper {
             position: fixed;
-            bottom: 0;
+            bottom: 18px;
             left: 0;
             right: 0;
-            z-index: 100;
-            background: var(--white);
-            border-top: 1px solid var(--gray-200);
+            z-index: 1000;
             display: flex;
             justify-content: center;
-            padding: 8px 0;
-            padding-bottom: max(8px, env(safe-area-inset-bottom));
+            padding: 0 16px;
+            pointer-events: none;
         }
 
-        .bottom-nav-inner {
-            display: flex;
+        .bottom-dock {
+            pointer-events: auto;
             width: 100%;
-            max-width: 480px;
+            max-width: 410px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-pill);
+            box-shadow: 0 20px 40px -10px rgba(101, 113, 102, 0.22), var(--inner-glow);
+            display: flex;
+            align-items: center;
             justify-content: space-around;
+            padding: 6px;
         }
 
-        .nav-item {
+        .dock-item {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-family: inherit;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 3px;
-            padding: 6px 12px;
-            border: none;
-            background: none;
+            padding: 8px 6px;
+            border-radius: var(--radius-pill);
+            color: var(--text-muted);
             cursor: pointer;
-            color: var(--gray-400);
-            transition: all 0.2s;
-            border-radius: var(--radius-xs);
-            min-width: 64px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .nav-item:hover {
-            color: var(--teal);
+        .dock-item .dock-icon {
+            font-size: 1.25rem;
+            transition: transform 0.2s ease;
         }
 
-        .nav-item.active {
-            color: var(--teal);
-        }
-
-        .nav-item .nav-icon {
-            font-size: 1.4rem;
-            line-height: 1;
-        }
-
-        .nav-item .nav-label {
+        .dock-item .dock-label {
             font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .dock-item.active {
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--c-slate-dark);
+            box-shadow: 0 4px 14px rgba(101, 113, 102, 0.15);
+        }
+
+        .dock-item.active .dock-icon {
+            transform: scale(1.15);
+        }
+
+        .dock-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Error Banner */
+        .glass-error {
+            background: var(--danger-bg);
+            border: 1px solid var(--danger);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            text-align: center;
+            margin-top: 14px;
+        }
+
+        .glass-error p {
+            font-size: 0.84rem;
             font-weight: 600;
-            letter-spacing: 0.3px;
+            color: #8C2E19;
         }
 
-        .nav-item.active .nav-icon {
-            transform: scale(1.1);
+        .glass-error .dismiss-btn {
+            margin-top: 8px;
+            padding: 5px 16px;
+            border-radius: var(--radius-pill);
+            border: none;
+            background: var(--danger);
+            color: #FFF;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
         }
 
-        /* ===== IMAGE PREVIEW ===== */
-        .image-preview {
-            max-width: 100%;
-            max-height: 200px;
-            object-fit: contain;
-            border-radius: var(--radius-xs);
-            margin-top: 10px;
-        }
-
-        /* ===== SUMMARY TEXT ===== */
-        .summary-text {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            line-height: 1.6;
-            padding: 12px;
-            background: var(--gray-50);
-            border-radius: var(--radius-xs);
-            margin-bottom: 16px;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (min-width: 481px) {
-            .top-bar {
-                border-radius: 0 0 var(--radius) var(--radius);
-            }
-        }
-
-        /* ===== UTILITY ===== */
         .hidden { display: none !important; }
-        .mt-12 { margin-top: 12px; }
-        .mb-12 { margin-bottom: 12px; }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <header class="top-bar">
-        <div class="top-bar-logo">
-            <img src="/static/logo.png" alt="TravelGuard Logo">
-            <h1>Travel<span>Guard</span></h1>
-        </div>
-        <div class="top-bar-actions">
-            <div class="lang-toggle">
-                <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-                <button class="lang-btn" data-lang="ml" onclick="setLanguage('ml')">മല</button>
-            </div>
-        </div>
-    </header>
+    <!-- Ethereal Frosted Mesh Background -->
+    <div class="ambient-mesh">
+        <div class="ambient-orb ambient-orb-1"></div>
+        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-3"></div>
+        <div class="ambient-orb ambient-orb-4"></div>
+    </div>
 
-    <main class="app-container">
-        <!-- ===== HOME TAB ===== -->
-        <section id="tab-home" class="tab-content active">
-            <div class="home-hero">
-                <img src="/static/logo.png" alt="TravelGuard">
-                <h2>Travel<span>Guard</span></h2>
-                <p class="tagline" data-en="Safe Journeys Begin Here" data-ml="സുരക്ഷിതമായ യാത്രകൾ ഇവിടെ തുടങ്ങുന്നു">Safe Journeys Begin Here</p>
+    <div class="app-shell">
+        <!-- ===== THE WATER NOTCH / DYNAMIC ISLAND ===== -->
+        <header class="water-notch-container">
+            <div class="water-notch">
+                <div class="notch-left">
+                    <div class="notch-logo-wrap">
+                        <img src="/static/logo.png" alt="TravelGuard">
+                    </div>
+                    <div class="notch-brand">
+                        Travel<span>Guard</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Island Status Indicator -->
+                <div class="notch-pill">
+                    <div class="notch-pulse"></div>
+                    <span id="notch-status-text" data-en="UAE Safety" data-ml="സുരക്ഷാ കവചം">UAE Safety</span>
+                </div>
+
+                <!-- Language Pill Toggle -->
+                <div class="lang-switch">
+                    <button class="lang-pill-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-pill-btn" data-lang="ml" onclick="setLanguage('ml')">മല</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== TAB 1: HOME PANEL ===== -->
+        <section id="tab-home" class="tab-panel active">
+            <div class="home-greeting">
+                <div class="subtitle" data-en="Kerala → Gulf Traveler" data-ml="കേരളം → ഗൾഫ് യാത്രികർ">Kerala → Gulf Traveler</div>
+                <h1><span data-en="Safe Journeys" data-ml="സുരക്ഷിത യാത്രകൾ">Safe Journeys</span><br><span data-en="Begin Here." data-ml="ഇവിടെ തുടങ്ങുന്നു.">Begin Here.</span></h1>
             </div>
 
-            <div class="feature-cards">
-                <div class="feature-card" onclick="switchTab('offer')">
-                    <div class="feature-icon offer">🛡️</div>
-                    <div class="feature-info">
+            <!-- Frosted Brand Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-logo-box">
+                    <img src="/static/logo.png" alt="Shield Logo">
+                </div>
+                <div class="hero-banner-content">
+                    <h2 data-en="TravelGuard AI" data-ml="ട്രാവൽഗാർഡ് AI">TravelGuard AI</h2>
+                    <p data-en="Verify Gulf job offers, check restricted luggage items, and plan emigrations securely." data-ml="ഗൾഫ് ജോലി ഓഫറുകൾ പരിശോധിക്കുക, നിരോധിത ലഗേജ് സാധനങ്ങൾ പരിശോധിക്കുക.">Verify Gulf job offers, check restricted luggage items, and plan emigrations securely.</p>
+                </div>
+            </div>
+
+            <!-- Glass Action Tiles -->
+            <div class="glass-tiles-grid">
+                <div class="glass-tile" onclick="switchTab('offer')">
+                    <div class="tile-icon-box offer">🛡️</div>
+                    <div class="tile-content">
                         <h3 data-en="Offer Check" data-ml="ഓഫർ പരിശോധന">Offer Check</h3>
-                        <p data-en="Verify job offers & detect scam messages" data-ml="ജോലി ഓഫറുകൾ പരിശോധിക്കുക, തട്ടിപ്പ് സന്ദേശങ്ങൾ കണ്ടെത്തുക">Verify job offers & detect scam messages</p>
+                        <p data-en="Verify job offers & detect fraudulent agents" data-ml="ജോലി ഓഫറുകളും തട്ടിപ്പ് സന്ദേശങ്ങളും കണ്ടെത്തുക">Verify job offers & detect fraudulent agents</p>
                     </div>
+                    <div class="tile-arrow">→</div>
                 </div>
 
-                <div class="feature-card" onclick="switchTab('pack')">
-                    <div class="feature-icon pack">🧳</div>
-                    <div class="feature-info">
+                <div class="glass-tile" onclick="switchTab('pack')">
+                    <div class="tile-icon-box pack">🧳</div>
+                    <div class="tile-content">
                         <h3 data-en="Pack Check" data-ml="പാക്ക് പരിശോധന">Pack Check</h3>
-                        <p data-en="Check if your items are allowed at destination" data-ml="നിങ്ങളുടെ സാധനങ്ങൾ ലക്ഷ്യസ്ഥാനത്ത് അനുവദനീയമാണോ എന്ന് പരിശോധിക്കുക">Check if your items are allowed at destination</p>
+                        <p data-en="Check medicines & foods with UAE Customs" data-ml="മരുന്നുകളും സാധനങ്ങളും കസ്റ്റംസ് അനുമതി പരിശോധിക്കുക">Check medicines & foods with UAE Customs</p>
                     </div>
+                    <div class="tile-arrow">→</div>
                 </div>
 
-                <div class="feature-card" onclick="switchTab('checklist')">
-                    <div class="feature-icon checklist">📋</div>
-                    <div class="feature-info">
+                <div class="glass-tile" onclick="switchTab('checklist')">
+                    <div class="tile-icon-box checklist">📋</div>
+                    <div class="tile-content">
                         <h3 data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്">Journey Checklist</h3>
-                        <p data-en="Personalised document & step checklist" data-ml="വ്യക്തിഗത രേഖകളും ഘട്ട ചെക്ക്‌ലിസ്റ്റും">Personalised document & step checklist</p>
+                        <p data-en="PoE emigration clearance & layover hours" data-ml="എമിഗ്രേഷൻ ക്ലിയറൻസും ലേഓവർ സമയം">PoE emigration clearance & layover hours</p>
                     </div>
+                    <div class="tile-arrow">→</div>
                 </div>
             </div>
 
-            <button class="demo-btn" onclick="loadDemoMode()">
-                🎯 <span data-en="Demo Mode – Try with sample data" data-ml="ഡെമോ മോഡ് – സാമ്പിൾ ഡാറ്റ ഉപയോഗിച്ച് ശ്രമിക്കുക">Demo Mode – Try with sample data</span>
+            <!-- Demo Mode Pill Button -->
+            <button class="glass-pill-btn demo-pill-btn" onclick="loadDemoMode()">
+                🎯 <span data-en="Stage Demo Mode (Sample Data)" data-ml="ഡെമോ മോഡ് (സാമ്പിൾ വിവരങ്ങൾ)">Stage Demo Mode (Sample Data)</span>
             </button>
         </section>
 
-        <!-- ===== OFFER CHECK TAB ===== -->
-        <section id="tab-offer" class="tab-content">
-            <h2 class="section-title">
-                <span class="icon">🛡️</span>
-                <span data-en="Offer Check" data-ml="ഓഫർ പരിശോധന">Offer Check</span>
-            </h2>
+        <!-- ===== TAB 2: OFFER CHECK PANEL ===== -->
+        <section id="tab-offer" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">🛡️</span>
+                <h2 data-en="Offer Check" data-ml="ഓഫർ പരിശോധന">Offer Check</h2>
+            </div>
 
-            <div class="input-card">
-                <label class="input-label">
-                    <span data-en="Paste the offer text or message" data-ml="ഓഫർ ടെക്‌സ്‌റ്റ് അല്ലെങ്കിൽ സന്ദേശം ഒട്ടിക്കുക">Paste the offer text or message</span>
-                    <span class="input-sublabel" data-en=" – WhatsApp message, email, or agent's promise" data-ml=" – WhatsApp സന്ദേശം, ഇമെയിൽ, അല്ലെങ്കിൽ ഏജന്റിന്റെ വാഗ്ദാനം"> – WhatsApp message, email, or agent's promise</span>
+            <div class="glass-card">
+                <label class="field-label">
+                    <span data-en="Job Offer / Message Text" data-ml="ഓഫർ അല്ലെങ്കിൽ സന്ദേശം">Job Offer / Message Text</span>
+                    <span class="field-sublabel" data-en=" – WhatsApp, email, or agent promises" data-ml=" – വാട്ട്‌സ്ആപ്പ്, ഇമെയിൽ അല്ലെങ്കിൽ ഏജന്റ് വാഗ്ദാനം"> – WhatsApp, email, or agent promises</span>
                 </label>
-                <textarea id="offer-text" placeholder="Paste the job offer or agent message here..."></textarea>
+                <textarea id="offer-text" placeholder="Paste the recruiter message or salary promise here..."></textarea>
 
-                <div class="or-divider" data-en="OR" data-ml="അല്ലെങ്കിൽ">OR</div>
+                <div class="divider-pill" data-en="OR UPLOAD PHOTO" data-ml="അല്ലെങ്കിൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക">OR UPLOAD PHOTO</div>
 
-                <label class="input-label" data-en="Upload a screenshot" data-ml="സ്‌ക്രീൻഷോട്ട് അപ്‌ലോഡ് ചെയ്യുക">Upload a screenshot</label>
-                <div class="file-upload-area" id="offer-upload-area" onclick="document.getElementById('offer-image').click()">
-                    <div class="upload-icon">📷</div>
-                    <p data-en="Tap to take a photo or upload" data-ml="ഫോട്ടോ എടുക്കാൻ അല്ലെങ്കിൽ അപ്‌ലോഡ് ചെയ്യാൻ ടാപ്പ് ചെയ്യുക">Tap to take a photo or upload</p>
-                    <input type="file" id="offer-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'offer-upload-area')">
-                    <div class="file-name" id="offer-file-name"></div>
+                <div class="glass-upload-zone" id="offer-upload-zone" onclick="document.getElementById('offer-image').click()">
+                    <div class="upload-icon-circle">📷</div>
+                    <p data-en="Take Photo or Screenshot" data-ml="ഫോട്ടോ അല്ലെങ്കിൽ സ്‌ക്രീൻഷോട്ട് എടുക്കുക">Take Photo or Screenshot</p>
+                    <div class="subtext" data-en="Tap to capture offer letter or chat" data-ml="ഓഫർ ലെറ്റർ അല്ലെങ്കിൽ ചാറ്റ് ഫോട്ടോ എടുക്കാൻ ടാപ്പ് ചെയ്യുക">Tap to capture offer letter or chat</div>
+                    <input type="file" id="offer-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'offer-upload-zone')">
+                    <div class="uploaded-tag" id="offer-file-tag"></div>
                 </div>
             </div>
 
-            <button class="submit-btn" onclick="submitOfferCheck()">
-                <span data-en="🔍 Analyze Offer" data-ml="🔍 ഓഫർ വിശകലനം ചെയ്യുക">🔍 Analyze Offer</span>
+            <button class="glass-pill-btn" onclick="submitOfferCheck()">
+                🔍 <span data-en="Analyze Offer Safety" data-ml="ഓഫർ പരിശോധിക്കുക">Analyze Offer Safety</span>
             </button>
 
-            <div class="loading-overlay" id="offer-loading">
-                <div class="loading-spinner"></div>
-                <div class="loading-text" data-en="Analyzing the offer..." data-ml="ഓഫർ വിശകലനം ചെയ്യുന്നു...">Analyzing the offer...</div>
-                <div class="loading-subtext" data-en="Checking against official emigration rules" data-ml="ഔദ്യോഗിക കുടിയേറ്റ നിയമങ്ങളുമായി പരിശോധിക്കുന്നു">Checking against official emigration rules</div>
+            <!-- Loading State -->
+            <div class="loading-pane" id="offer-loading">
+                <div class="frosted-spinner"></div>
+                <div class="loading-title" data-en="Gemini AI is analyzing the offer..." data-ml="ഓഫർ പരിശോധിച്ച് വിലയിരുത്തുന്നു...">Gemini AI is analyzing the offer...</div>
+                <div class="loading-desc" data-en="Checking against MEA & eMigrate fraud indicators" data-ml="ഔദ്യോഗിക കുടിയേറ്റ നിയമങ്ങളുമായി പരിശോധിക്കുന്നു">Checking against MEA & eMigrate fraud indicators</div>
             </div>
 
             <div id="offer-result"></div>
-            <div id="offer-error" class="error-msg hidden"></div>
+            <div id="offer-error" class="glass-error hidden"></div>
         </section>
 
-        <!-- ===== PACK CHECK TAB ===== -->
-        <section id="tab-pack" class="tab-content">
-            <h2 class="section-title">
-                <span class="icon">🧳</span>
-                <span data-en="Pack Check" data-ml="പാക്ക് പരിശോധന">Pack Check</span>
-            </h2>
+        <!-- ===== TAB 3: PACK CHECK PANEL ===== -->
+        <section id="tab-pack" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">🧳</span>
+                <h2 data-en="Pack Check" data-ml="പാക്ക് പരിശോധന">Pack Check</h2>
+            </div>
 
-            <div class="input-card">
-                <div class="select-row">
+            <div class="glass-card">
+                <div class="grid-2-col">
                     <div>
-                        <label class="input-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
+                        <label class="field-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
                         <select id="pack-destination">
                             <option value="UAE" selected>🇦🇪 UAE</option>
                             <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
@@ -1060,50 +1268,55 @@
                             <option value="Kuwait">🇰🇼 Kuwait</option>
                         </select>
                     </div>
+                    <div>
+                        <label class="field-label" data-en="Rules Database" data-ml="ഡാറ്റാബേസ്">Rules Database</label>
+                        <input type="text" value="UAE Customs + MOH" disabled style="background:rgba(255,255,255,0.4);color:var(--text-muted);font-weight:600;">
+                    </div>
                 </div>
 
-                <label class="input-label">
-                    <span data-en="List your items" data-ml="നിങ്ങളുടെ സാധനങ്ങൾ ലിസ്റ്റ് ചെയ്യുക">List your items</span>
-                    <span class="input-sublabel" data-en=" – one per line or comma separated" data-ml=" – ഒരു വരിയിൽ ഒന്ന് അല്ലെങ്കിൽ കോമ ഉപയോഗിച്ച് വേർതിരിക്കുക"> – one per line or comma separated</span>
+                <label class="field-label">
+                    <span data-en="Luggage Items or Medicines" data-ml="സാധനങ്ങൾ അല്ലെങ്കിൽ മരുന്നുകൾ">Luggage Items or Medicines</span>
+                    <span class="field-sublabel" data-en=" – one item per line" data-ml=" – ഒരു വരിയിൽ ഒരെണ്ണം"> – one item per line</span>
                 </label>
-                <textarea id="pack-items" placeholder="e.g.&#10;Paracetamol&#10;Cough syrup&#10;Pickles&#10;Gold chain&#10;Laptop"></textarea>
+                <textarea id="pack-items" placeholder="e.g.&#10;Paracetamol (Dolo 650)&#10;Cough syrup (Codeine)&#10;Homemade mango pickle&#10;Gold chain&#10;Laptop"></textarea>
 
-                <div class="or-divider" data-en="OR" data-ml="അല്ലെങ്കിൽ">OR</div>
+                <div class="divider-pill" data-en="OR PHOTO OF MEDICINES / ITEMS" data-ml="അല്ലെങ്കിൽ മരുന്നുകളുടെ ഫോട്ടോ">OR PHOTO OF MEDICINES / ITEMS</div>
 
-                <label class="input-label" data-en="Upload a photo of items" data-ml="സാധനങ്ങളുടെ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക">Upload a photo of items</label>
-                <div class="file-upload-area" id="pack-upload-area" onclick="document.getElementById('pack-image').click()">
-                    <div class="upload-icon">📷</div>
-                    <p data-en="Tap to take a photo or upload" data-ml="ഫോട്ടോ എടുക്കാൻ അല്ലെങ്കിൽ അപ്‌ലോഡ് ചെയ്യാൻ ടാപ്പ് ചെയ്യുക">Tap to take a photo or upload</p>
-                    <input type="file" id="pack-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'pack-upload-area')">
-                    <div class="file-name" id="pack-file-name"></div>
+                <div class="glass-upload-zone" id="pack-upload-zone" onclick="document.getElementById('pack-image').click()">
+                    <div class="upload-icon-circle">📦</div>
+                    <p data-en="Take Photo of Medicine Box or Items" data-ml="മരുന്ന് പാക്കറ്റുകളുടെ ഫോട്ടോ എടുക്കുക">Take Photo of Medicine Box or Items</p>
+                    <div class="subtext" data-en="Gemini Vision reads active ingredients" data-ml="മരുന്നിലെ ഘടകങ്ങൾ AI വായിക്കുന്നു">Gemini Vision reads active ingredients</div>
+                    <input type="file" id="pack-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'pack-upload-zone')">
+                    <div class="uploaded-tag" id="pack-file-tag"></div>
                 </div>
             </div>
 
-            <button class="submit-btn" onclick="submitPackCheck()">
-                <span data-en="📦 Check Items" data-ml="📦 സാധനങ്ങൾ പരിശോധിക്കുക">📦 Check Items</span>
+            <button class="glass-pill-btn" onclick="submitPackCheck()">
+                📦 <span data-en="Verify Packing Items" data-ml="സാധനങ്ങൾ പരിശോധിക്കുക">Verify Packing Items</span>
             </button>
 
-            <div class="loading-overlay" id="pack-loading">
-                <div class="loading-spinner"></div>
-                <div class="loading-text" data-en="Checking your items..." data-ml="നിങ്ങളുടെ സാധനങ്ങൾ പരിശോധിക്കുന്നു...">Checking your items...</div>
-                <div class="loading-subtext" data-en="Verifying against customs regulations" data-ml="കസ്റ്റംസ് നിയന്ത്രണങ്ങളുമായി പരിശോധിക്കുന്നു">Verifying against customs regulations</div>
+            <!-- Loading State -->
+            <div class="loading-pane" id="pack-loading">
+                <div class="frosted-spinner"></div>
+                <div class="loading-title" data-en="Checking customs regulations..." data-ml="കസ്റ്റംസ് നിയമങ്ങൾ പരിശോധിക്കുന്നു...">Checking customs regulations...</div>
+                <div class="loading-desc" data-en="Cross-referencing UAE MOHAP controlled substances" data-ml="യുഎഇ ആരോഗ്യമന്ത്രാലയ ലിസ്റ്റുമായി പരിശോധിക്കുന്നു">Cross-referencing UAE MOHAP controlled substances</div>
             </div>
 
             <div id="pack-result"></div>
-            <div id="pack-error" class="error-msg hidden"></div>
+            <div id="pack-error" class="glass-error hidden"></div>
         </section>
 
-        <!-- ===== CHECKLIST TAB ===== -->
-        <section id="tab-checklist" class="tab-content">
-            <h2 class="section-title">
-                <span class="icon">📋</span>
-                <span data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്">Journey Checklist</span>
-            </h2>
+        <!-- ===== TAB 4: JOURNEY CHECKLIST PANEL ===== -->
+        <section id="tab-checklist" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">📋</span>
+                <h2 data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്">Journey Checklist</h2>
+            </div>
 
-            <div class="input-card">
-                <div class="select-row">
+            <div class="glass-card">
+                <div class="grid-2-col">
                     <div>
-                        <label class="input-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
+                        <label class="field-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
                         <select id="cl-destination">
                             <option value="UAE" selected>🇦🇪 UAE</option>
                             <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
@@ -1114,142 +1327,150 @@
                         </select>
                     </div>
                     <div>
-                        <label class="input-label" data-en="Purpose" data-ml="ഉദ്ദേശ്യം">Purpose</label>
+                        <label class="field-label" data-en="Travel Purpose" data-ml="യാത്രാ ഉദ്ദേശ്യം">Travel Purpose</label>
                         <select id="cl-purpose">
-                            <option value="work">💼 Work</option>
-                            <option value="visit">✈️ Visit</option>
-                            <option value="layover">🔄 Layover</option>
+                            <option value="work">💼 Employment / Work</option>
+                            <option value="visit">✈️ Tourist / Visit</option>
+                            <option value="layover">🔄 Flight Layover</option>
                         </select>
                     </div>
                 </div>
 
-                <label class="input-label" data-en="Travel Date" data-ml="യാത്ര തീയതി">Travel Date</label>
-                <input type="date" id="cl-date" class="mb-12">
+                <label class="field-label" data-en="Travel Date" data-ml="യാത്രാ തീയതി">Travel Date</label>
+                <input type="date" id="cl-date" style="margin-bottom: 12px;">
 
-                <div id="layover-section" class="hidden">
-                    <label class="input-label" data-en="Layover Hours" data-ml="ലേഓവർ മണിക്കൂറുകൾ">Layover Hours</label>
+                <div id="layover-box" class="hidden">
+                    <label class="field-label" data-en="Layover Duration (Hours)" data-ml="ലേഓവർ സമയം (മണിക്കൂറുകൾ)">Layover Duration (Hours)</label>
                     <input type="number" id="cl-layover" placeholder="e.g. 8" min="1" max="48">
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;" data-en="Calculates whether it is safe to exit the airport." data-ml="എയർപോർട്ട് വിടാൻ സാധിക്കുമോ എന്ന് കണക്കാക്കുന്നു.">Calculates whether it is safe to exit the airport.</p>
                 </div>
             </div>
 
-            <button class="submit-btn" onclick="submitChecklist()">
-                <span data-en="📋 Generate Checklist" data-ml="📋 ചെക്ക്‌ലിസ്റ്റ് ജനറേറ്റ് ചെയ്യുക">📋 Generate Checklist</span>
+            <button class="glass-pill-btn" onclick="submitChecklist()">
+                📋 <span data-en="Generate Dated Checklist" data-ml="ചെക്ക്‌ലിസ്റ്റ് തയ്യാറാക്കുക">Generate Dated Checklist</span>
             </button>
 
-            <div class="loading-overlay" id="cl-loading">
-                <div class="loading-spinner"></div>
-                <div class="loading-text" data-en="Creating your checklist..." data-ml="നിങ്ങളുടെ ചെക്ക്‌ലിസ്റ്റ് ഉണ്ടാക്കുന്നു...">Creating your checklist...</div>
-                <div class="loading-subtext" data-en="Personalising based on your trip details" data-ml="നിങ്ങളുടെ യാത്ര വിവരങ്ങൾ അടിസ്ഥാനമാക്കി വ്യക്തിഗതമാക്കുന്നു">Personalising based on your trip details</div>
+            <!-- Loading State -->
+            <div class="loading-pane" id="cl-loading">
+                <div class="frosted-spinner"></div>
+                <div class="loading-title" data-en="Personalizing travel requirements..." data-ml="നിങ്ങളുടെ വിവരങ്ങൾ തയ്യാറാക്കുന്നു...">Personalizing travel requirements...</div>
+                <div class="loading-desc" data-en="Calculating PoE steps, visa rules, and return time" data-ml="ഇമിഗ്രേഷൻ ഘട്ടങ്ങളും മടങ്ങേണ്ട സമയവും കണക്കാക്കുന്നു">Calculating PoE steps, visa rules, and return time</div>
             </div>
 
             <div id="cl-result"></div>
-            <div id="cl-error" class="error-msg hidden"></div>
+            <div id="cl-error" class="glass-error hidden"></div>
         </section>
-    </main>
+    </div>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <div class="bottom-nav-inner">
-            <button class="nav-item active" data-tab="home" onclick="switchTab('home')">
-                <span class="nav-icon">🏠</span>
-                <span class="nav-label" data-en="Home" data-ml="ഹോം">Home</span>
+    <!-- ===== FLOATING FROSTED GLASS DOCK (BOTTOM NAV) ===== -->
+    <div class="bottom-dock-wrapper">
+        <nav class="bottom-dock">
+            <button class="dock-item active" data-tab="home" onclick="switchTab('home')">
+                <span class="dock-icon">🏠</span>
+                <span class="dock-label" data-en="Home" data-ml="ഹോം">Home</span>
             </button>
-            <button class="nav-item" data-tab="offer" onclick="switchTab('offer')">
-                <span class="nav-icon">🛡️</span>
-                <span class="nav-label" data-en="Offer" data-ml="ഓഫർ">Offer</span>
+            <button class="dock-item" data-tab="offer" onclick="switchTab('offer')">
+                <span class="dock-icon">🛡️</span>
+                <span class="dock-label" data-en="Offer" data-ml="ഓഫർ">Offer</span>
             </button>
-            <button class="nav-item" data-tab="pack" onclick="switchTab('pack')">
-                <span class="nav-icon">🧳</span>
-                <span class="nav-label" data-en="Pack" data-ml="പാക്ക്">Pack</span>
+            <button class="dock-item" data-tab="pack" onclick="switchTab('pack')">
+                <span class="dock-icon">🧳</span>
+                <span class="dock-label" data-en="Pack" data-ml="പാക്ക്">Pack</span>
             </button>
-            <button class="nav-item" data-tab="checklist" onclick="switchTab('checklist')">
-                <span class="nav-icon">📋</span>
-                <span class="nav-label" data-en="Checklist" data-ml="ലിസ്റ്റ്">Checklist</span>
+            <button class="dock-item" data-tab="checklist" onclick="switchTab('checklist')">
+                <span class="dock-icon">📋</span>
+                <span class="dock-label" data-en="Checklist" data-ml="ലിസ്റ്റ്">Checklist</span>
             </button>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // ===== STATE =====
+        // State
         let currentLang = 'en';
         let currentTab = 'home';
-        let isSpeaking = false;
+        let speechSynth = window.speechSynthesis;
+        let speechActive = false;
 
-        // ===== LANGUAGE =====
+        // Language Handling
         function setLanguage(lang) {
             currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => {
+            document.querySelectorAll('.lang-pill-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
             document.body.classList.toggle('lang-ml', lang === 'ml');
 
-            // Update all translatable elements
             document.querySelectorAll('[data-' + lang + ']').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
         }
 
-        // ===== TABS =====
+        // Tab Switching
         function switchTab(tab) {
             currentTab = tab;
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.dock-item').forEach(d => d.classList.remove('active'));
+
             document.getElementById('tab-' + tab).classList.add('active');
-            document.querySelector('.nav-item[data-tab="' + tab + '"]').classList.add('active');
-            window.scrollTo(0, 0);
+            const dockBtn = document.querySelector(`.dock-item[data-tab="${tab}"]`);
+            if (dockBtn) dockBtn.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ===== FILE UPLOAD =====
-        function handleFileSelect(input, areaId) {
-            const area = document.getElementById(areaId);
-            const fileNameEl = area.querySelector('.file-name');
+        // Image Selection & Preview
+        function handleFileSelect(input, zoneId) {
+            const zone = document.getElementById(zoneId);
+            const tag = zone.querySelector('.uploaded-tag');
             if (input.files && input.files[0]) {
-                area.classList.add('has-file');
-                fileNameEl.textContent = '✅ ' + input.files[0].name;
+                zone.classList.add('has-file');
+                tag.innerHTML = '✅ ' + input.files[0].name;
 
-                // Show preview
-                const existingPreview = area.querySelector('.image-preview');
-                if (existingPreview) existingPreview.remove();
+                const existingThumb = zone.querySelector('.image-preview-thumb');
+                if (existingThumb) existingThumb.remove();
 
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const img = document.createElement('img');
                     img.src = e.target.result;
-                    img.className = 'image-preview';
-                    area.appendChild(img);
+                    img.className = 'image-preview-thumb';
+                    zone.appendChild(img);
                 };
                 reader.readAsDataURL(input.files[0]);
             } else {
-                area.classList.remove('has-file');
-                fileNameEl.textContent = '';
+                zone.classList.remove('has-file');
+                tag.innerHTML = '';
             }
         }
 
-        // ===== READ ALOUD =====
+        // Read Aloud Speech Synthesis
         function toggleReadAloud(text, btn) {
-            if (isSpeaking) {
-                speechSynthesis.cancel();
-                isSpeaking = false;
+            if (speechActive) {
+                speechSynth.cancel();
+                speechActive = false;
                 btn.classList.remove('playing');
                 btn.innerHTML = '🔊 ' + (currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud');
                 return;
             }
 
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = currentLang === 'ml' ? 'ml-IN' : 'en-IN';
-            utterance.rate = 0.9;
-            utterance.onend = () => {
-                isSpeaking = false;
+            const cleanText = text.replace(/[#*`_]/g, '');
+            const utter = new SpeechSynthesisUtterance(cleanText);
+            utter.lang = currentLang === 'ml' ? 'ml-IN' : 'en-IN';
+            utter.rate = 0.95;
+
+            utter.onend = () => {
+                speechActive = false;
                 btn.classList.remove('playing');
                 btn.innerHTML = '🔊 ' + (currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud');
             };
-            speechSynthesis.speak(utterance);
-            isSpeaking = true;
+
+            speechSynth.speak(utter);
+            speechActive = true;
             btn.classList.add('playing');
             btn.innerHTML = '⏹️ ' + (currentLang === 'ml' ? 'നിർത്തുക' : 'Stop');
         }
 
-        // ===== HELPERS =====
+        // UI Helpers
         function showLoading(id) {
             document.getElementById(id + '-loading').classList.add('active');
             document.getElementById(id + '-result').innerHTML = '';
@@ -1262,116 +1483,138 @@
 
         function showError(id, message) {
             hideLoading(id);
-            const errorEl = document.getElementById(id + '-error');
-            errorEl.classList.remove('hidden');
-            errorEl.innerHTML = `
-                <p>😟 ${message}</p>
-                <button class="retry-btn" onclick="document.getElementById('${id}-error').classList.add('hidden')">
-                    ${currentLang === 'ml' ? 'ശരി' : 'OK'}
+            const err = document.getElementById(id + '-error');
+            err.classList.remove('hidden');
+            err.innerHTML = `
+                <p>⚠️ ${message}</p>
+                <button class="dismiss-btn" onclick="document.getElementById('${id}-error').classList.add('hidden')">
+                    ${currentLang === 'ml' ? 'ശരി' : 'Dismiss'}
                 </button>
             `;
         }
 
         function getDisclaimerHTML() {
             if (currentLang === 'ml') {
-                return `<div class="disclaimer">
-                    <strong>⚠️ നിരാകരണം:</strong>
-                    ഇത് മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്. ഔദ്യോഗിക ഉറവിടങ്ങൾ ഉപയോഗിച്ച് പരിശോധിക്കുക.
-                    <br><a href="https://emigrate.gov.in" target="_blank">eMigrate</a> |
-                    <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> |
-                    <a href="https://mohap.gov.ae" target="_blank">UAE MOH</a>
-                </div>`;
+                return `
+                    <div class="official-disclaimer">
+                        <strong>⚠️ ഔദ്യോഗിക മുന്നറിയിപ്പ്:</strong> ഇത് പ്രാഥമിക മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്. ഔദ്യോഗിക സർക്കാർ പോർട്ടലുകൾ വഴി സ്ഥിരീകരിക്കുക.
+                        <br>
+                        <a href="https://emigrate.gov.in" target="_blank">eMigrate</a> | 
+                        <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> | 
+                        <a href="https://mohap.gov.ae" target="_blank">UAE MOHAP</a>
+                    </div>
+                `;
             }
-            return `<div class="disclaimer">
-                <strong>⚠️ Disclaimer:</strong>
-                Guidance only. Verify with official sources before making decisions.
-                <br><a href="https://emigrate.gov.in" target="_blank">eMigrate Portal</a> |
-                <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> |
-                <a href="https://mohap.gov.ae" target="_blank">UAE MOH</a>
-            </div>`;
+            return `
+                <div class="official-disclaimer">
+                    <strong>⚠️ Disclaimer:</strong> Guidance only. Verify all travel rules with official government authorities.
+                    <br>
+                    <a href="https://emigrate.gov.in" target="_blank">eMigrate Portal</a> | 
+                    <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> | 
+                    <a href="https://mohap.gov.ae" target="_blank">UAE MOHAP</a>
+                </div>
+            `;
         }
 
-        // ===== OFFER CHECK =====
+        // ===== FEATURE 1: OFFER CHECK =====
         async function submitOfferCheck() {
             const text = document.getElementById('offer-text').value.trim();
             const imageInput = document.getElementById('offer-image');
             const image = imageInput.files[0];
 
             if (!text && !image) {
-                showError('offer', currentLang === 'ml' ? 'ദയവായി ഓഫർ ടെക്‌സ്‌റ്റ് ഒട്ടിക്കുക അല്ലെങ്കിൽ ഒരു ചിത്രം അപ്‌ലോഡ് ചെയ്യുക.' : 'Please paste the offer text or upload an image.');
+                showError('offer', currentLang === 'ml' ? 'ഓഫർ സന്ദേശം നൽകുക അല്ലെങ്കിൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക.' : 'Please paste the offer message or upload a photo.');
                 return;
             }
 
             showLoading('offer');
 
-            const formData = new FormData();
-            if (text) formData.append('text', text);
-            if (image) formData.append('image', image);
-            formData.append('language', currentLang);
+            const fd = new FormData();
+            if (text) fd.append('text', text);
+            if (image) fd.append('image', image);
+            fd.append('language', currentLang);
 
             try {
-                const response = await fetch('/api/offer-check', { method: 'POST', body: formData });
-                const data = await response.json();
+                const res = await fetch('/api/offer-check', { method: 'POST', body: fd });
+                const data = await res.json();
                 hideLoading('offer');
 
-                if (data.error) {
-                    showError('offer', data.message || 'Something went wrong.');
+                if (data.error && !data.risk_score) {
+                    showError('offer', data.message || 'Analysis failed. Please retry.');
                     return;
                 }
-
                 renderOfferResult(data);
             } catch (err) {
-                showError('offer', currentLang === 'ml' ? 'സേവനം ലഭ്യമല്ല. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please try again.');
+                showError('offer', currentLang === 'ml' ? 'കണക്ഷൻ തകരാർ. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please retry.');
             }
         }
 
         function renderOfferResult(data) {
-            const riskClass = data.risk_level || 'medium';
-            const riskEmoji = riskClass === 'high' ? '🚨' : riskClass === 'medium' ? '⚠️' : '✅';
+            const lvl = data.risk_level || 'medium';
+            let spoken = (data.summary || '') + '. ';
+            if (data.red_flags) spoken += 'Red flags: ' + data.red_flags.join(', ') + '. ';
+            if (data.safe_next_steps) spoken += 'Next steps: ' + data.safe_next_steps.join(', ');
 
-            let readAloudText = '';
-            if (data.summary) readAloudText += data.summary + '. ';
-            if (data.red_flags) readAloudText += 'Red flags: ' + data.red_flags.join(', ') + '. ';
-            if (data.safe_next_steps) readAloudText += 'Safe next steps: ' + data.safe_next_steps.join(', ');
+            let html = `<div class="result-wrapper">`;
 
-            let html = `<div class="result-container">`;
-
-            // Risk Score
-            html += `<div class="result-card">
-                <div class="result-header">
-                    <h3>${currentLang === 'ml' ? 'അപകട വിലയിരുത്തൽ' : 'Risk Assessment'}</h3>
-                    <button class="read-aloud-btn" onclick="toggleReadAloud('${readAloudText.replace(/'/g, "\\'")}', this)">
-                        🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
-                    </button>
-                </div>
-                <div class="risk-meter">
-                    <div class="risk-score-circle ${riskClass}">
-                        ${riskClass === 'high' ? '90' : riskClass === 'medium' ? '50' : '10'}
-                        <small>Score</small>
+            // Risk Gauge Card
+            html += `
+                <div class="glass-card">
+                    <div class="glass-result-header">
+                        <h3>${currentLang === 'ml' ? 'അപകട സാധ്യത' : 'Fraud Risk Assessment'}</h3>
+                        <button class="audio-pill-btn" onclick="toggleReadAloud(\`${spoken.replace(/`/g, "'")}\`, this)">
+                            🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
+                        </button>
                     </div>
-                    <div class="risk-label ${riskClass}">${riskClass} RISK</div>
+
+                    <div class="gauge-center">
+                        <div class="risk-orb ${lvl}">
+                            ${data.risk_score}
+                            <small>/100</small>
+                        </div>
+                        <div class="risk-status-pill ${lvl}">
+                            ${lvl.toUpperCase()} ${currentLang === 'ml' ? 'അപകടം' : 'RISK'}
+                        </div>
+                    </div>
+
+                    ${data.summary ? `<div class="summary-box">${data.summary}</div>` : ''}
                 </div>
-                <div class="summary-text">${data.summary}</div>
-            </div>`;
+            `;
 
             // Red Flags
             if (data.red_flags && data.red_flags.length > 0) {
-                html += `<div class="result-card">
-                    <div class="result-list-title">🚨 ${currentLang === 'ml' ? 'അപകട സൂചനകൾ' : 'Red Flags'}</div>
-                    <ul class="result-list red-flags">
-                        ${data.red_flags.map(flag => `<li><span class="li-icon">⚠️</span><span>${flag}</span></li>`).join('')}
-                    </ul>
-                </div>`;
+                html += `
+                    <div class="glass-card">
+                        <div class="result-group-title">🚩 ${currentLang === 'ml' ? 'അപകട സൂചനകൾ' : 'Red Flags Detected'}</div>
+                        <ul class="glass-list red-flags">
+                            ${data.red_flags.map(f => `<li><span>❌</span> ${f}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
             }
 
-            // Safe Next Steps
+            // What to verify
+            if (data.what_to_verify && data.what_to_verify.length > 0) {
+                html += `
+                    <div class="glass-card">
+                        <div class="result-group-title">🔍 ${currentLang === 'ml' ? 'പരിശോധിക്കേണ്ട കാര്യങ്ങൾ' : 'What to Verify First'}</div>
+                        <ul class="glass-list verify">
+                            ${data.what_to_verify.map(v => `<li><span>🔎</span> ${v}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            // Safe next steps
             if (data.safe_next_steps && data.safe_next_steps.length > 0) {
-                html += `<div class="result-card">
-                    <div class="result-list-title">✅ ${currentLang === 'ml' ? 'സുരക്ഷിതമായ അടുത്ത ഘട്ടങ്ങൾ' : 'Safe Next Steps'}</div>
-                    <ul class="result-list safe">
-                        ${data.safe_next_steps.map(step => `<li><span class="li-icon">👉</span><span>${step}</span></li>`).join('')}
-                    </ul>
-                </div>`;
+                html += `
+                    <div class="glass-card">
+                        <div class="result-group-title">✅ ${currentLang === 'ml' ? 'സുരക്ഷിത അടുത്ത ഘട്ടങ്ങൾ' : 'Safe Next Steps'}</div>
+                        <ul class="glass-list safe">
+                            ${data.safe_next_steps.map(s => `<li><span>👉</span> ${s}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
             }
 
             html += getDisclaimerHTML();
@@ -1379,208 +1622,265 @@
             document.getElementById('offer-result').innerHTML = html;
         }
 
-        // ===== PACK CHECK =====
+        // ===== FEATURE 2: PACK CHECK =====
         async function submitPackCheck() {
             const items = document.getElementById('pack-items').value.trim();
-            const destination = document.getElementById('pack-destination').value;
             const imageInput = document.getElementById('pack-image');
             const image = imageInput.files[0];
+            const destination = document.getElementById('pack-destination').value;
 
             if (!items && !image) {
-                showError('pack', currentLang === 'ml' ? 'ദയവായി സാധനങ്ങൾ നൽകുക അല്ലെങ്കിൽ ഒരു ചിത്രം അപ്‌ലോഡ് ചെയ്യുക.' : 'Please enter items or upload an image.');
+                showError('pack', currentLang === 'ml' ? 'സാധനങ്ങളുടെ പേര് ടൈപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ഫോട്ടോ നൽകുക.' : 'Please list items or upload a photo.');
                 return;
             }
 
             showLoading('pack');
 
-            const formData = new FormData();
-            formData.append('destination', destination);
-            if (items) formData.append('items', items);
-            if (image) formData.append('image', image);
-            formData.append('language', currentLang);
+            const fd = new FormData();
+            if (items) fd.append('items', items);
+            if (image) fd.append('image', image);
+            fd.append('destination', destination);
+            fd.append('language', currentLang);
 
             try {
-                const response = await fetch('/api/pack-check', { method: 'POST', body: formData });
-                const data = await response.json();
+                const res = await fetch('/api/pack-check', { method: 'POST', body: fd });
+                const data = await res.json();
                 hideLoading('pack');
 
-                if (data.error) {
-                    showError('pack', data.message || 'Something went wrong.');
+                if (data.error && (!data.items || data.items.length === 0)) {
+                    showError('pack', data.message || 'Check failed. Please retry.');
                     return;
                 }
-
-                renderPackResult(data, destination);
+                renderPackResult(data);
             } catch (err) {
-                showError('pack', currentLang === 'ml' ? 'സേവനം ലഭ്യമല്ല. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please try again.');
+                showError('pack', currentLang === 'ml' ? 'കണക്ഷൻ തകരാർ. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please retry.');
             }
         }
 
-        function renderPackResult(data, destination) {
-            let html = `<div class="result-container">`;
-            
-            html += `<div class="result-card">
-                <div class="result-header">
-                    <h3>${currentLang === 'ml' ? 'പരിശോധനാ ഫലം - ' : 'Check Results - '}${destination}</h3>
-                </div>`;
+        function renderPackResult(data) {
+            const statusIcons = { likely_ok: '✅', restricted: '⚠️', prohibited: '🚫', unsure: '❓' };
+            let spoken = (data.items || []).map(i => `${i.name}: ${i.status}. ${i.reason}`).join('. ');
+
+            let html = `<div class="result-wrapper">`;
+
+            html += `
+                <div class="glass-card">
+                    <div class="glass-result-header">
+                        <h3>${currentLang === 'ml' ? 'പരിശോധനാ ഫലം' : 'Customs Verification'} – ${data.destination || 'UAE'}</h3>
+                        <button class="audio-pill-btn" onclick="toggleReadAloud(\`${spoken.replace(/`/g, "'")}\`, this)">
+                            🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
+                        </button>
+                    </div>
+            `;
 
             if (data.items && data.items.length > 0) {
                 data.items.forEach(item => {
-                    const statusClass = item.status === 'prohibited' ? 'prohibited' : 
-                                      item.status === 'restricted' ? 'restricted' : 
-                                      item.status === 'likely_ok' ? 'likely_ok' : 'unsure';
-                    
-                    const icon = item.status === 'prohibited' ? '❌' : 
-                               item.status === 'restricted' ? '⚠️' : 
-                               item.status === 'likely_ok' ? '✅' : '❓';
-
                     html += `
-                        <div class="pack-item ${statusClass}">
-                            <div class="pack-item-status">${icon}</div>
-                            <div class="pack-item-info">
-                                <h4>${item.item}</h4>
-                                <div class="pack-status ${statusClass}">${item.status.replace('_', ' ')}</div>
-                                <p>${item.reason}</p>
-                                ${item.paperwork_needed ? `<div class="paperwork">📄 Needs: ${item.paperwork_needed}</div>` : ''}
+                        <div class="pack-item-card ${item.status}">
+                            <div style="font-size:1.3rem;">${statusIcons[item.status] || '❓'}</div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                    <h4 style="font-size:0.92rem;font-weight:700;">${item.name}</h4>
+                                    <span class="pack-status-badge ${item.status}">${item.status.replace('_', ' ')}</span>
+                                </div>
+                                <p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">${item.reason}</p>
+                                ${item.paperwork_needed && item.paperwork_needed !== 'None' ? `
+                                    <div style="font-size:0.75rem;color:var(--c-slate);font-weight:700;margin-top:4px;">
+                                        📄 ${item.paperwork_needed}
+                                    </div>
+                                ` : ''}
                             </div>
                         </div>
                     `;
                 });
-            } else {
-                html += `<p>${currentLang === 'ml' ? 'സാധനങ്ങളൊന്നും കണ്ടെത്തിയില്ല.' : 'No items detected.'}</p>`;
             }
 
             html += `</div>`;
+
+            // General Tips
+            if (data.general_tips && data.general_tips.length > 0) {
+                html += `
+                    <div class="glass-card">
+                        <div class="result-group-title">💡 ${currentLang === 'ml' ? 'നിർദ്ദേശങ്ങൾ' : 'Customs Packing Tips'}</div>
+                        <ul class="glass-list safe">
+                            ${data.general_tips.map(t => `<li><span>💡</span> ${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
             html += getDisclaimerHTML();
             html += `</div>`;
-            
             document.getElementById('pack-result').innerHTML = html;
         }
 
-        // ===== CHECKLIST =====
+        // ===== FEATURE 3: JOURNEY CHECKLIST =====
         document.getElementById('cl-purpose').addEventListener('change', function() {
-            document.getElementById('layover-section').classList.toggle('hidden', this.value !== 'layover');
+            document.getElementById('layover-box').classList.toggle('hidden', this.value !== 'layover');
         });
+
+        // Set default travel date (+30 days)
+        const defDate = new Date();
+        defDate.setDate(defDate.getDate() + 30);
+        document.getElementById('cl-date').value = defDate.toISOString().split('T')[0];
 
         async function submitChecklist() {
             const destination = document.getElementById('cl-destination').value;
             const purpose = document.getElementById('cl-purpose').value;
-            const date = document.getElementById('cl-date').value;
-            const layover = document.getElementById('cl-layover').value;
+            const travelDate = document.getElementById('cl-date').value;
+            const layoverHours = document.getElementById('cl-layover').value;
+
+            if (!travelDate) {
+                showError('cl', currentLang === 'ml' ? 'യാത്രാ തീയതി തിരഞ്ഞെടുക്കുക.' : 'Please select a travel date.');
+                return;
+            }
 
             showLoading('cl');
 
-            const payload = {
-                destination,
-                purpose,
-                date,
-                language: currentLang
-            };
-            if (purpose === 'layover') payload.layover_hours = layover;
+            const fd = new FormData();
+            fd.append('destination', destination);
+            fd.append('purpose', purpose);
+            fd.append('travel_date', travelDate);
+            if (purpose === 'layover' && layoverHours) {
+                fd.append('layover_hours', layoverHours);
+            }
+            fd.append('language', currentLang);
 
             try {
-                const response = await fetch('/api/checklist', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const data = await response.json();
+                const res = await fetch('/api/checklist', { method: 'POST', body: fd });
+                const data = await res.json();
                 hideLoading('cl');
 
-                if (data.error) {
-                    showError('cl', data.message || 'Something went wrong.');
+                if (data.error && (!data.checklist || data.checklist.length === 0)) {
+                    showError('cl', data.message || 'Checklist creation failed. Please retry.');
                     return;
                 }
-
                 renderChecklistResult(data);
             } catch (err) {
-                showError('cl', currentLang === 'ml' ? 'സേവനം ലഭ്യമല്ല. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please try again.');
+                showError('cl', currentLang === 'ml' ? 'കണക്ഷൻ തകരാർ. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please retry.');
             }
         }
 
         function renderChecklistResult(data) {
-            let html = `<div class="result-container">`;
+            let spoken = `Trip to ${data.destination} for ${data.purpose}. `;
+            let html = `<div class="result-wrapper">`;
 
-            // Destination Guide Summary
-            if (data.destination_guide) {
-                html += `<div class="result-card">
-                    <div class="result-header">
-                        <h3>${currentLang === 'ml' ? 'യാത്രാ അവലോകനം' : 'Journey Overview'}</h3>
+            html += `
+                <div class="glass-card">
+                    <div class="glass-result-header">
+                        <h3>📋 ${data.destination || 'UAE'} – ${data.purpose ? data.purpose.toUpperCase() : ''}</h3>
+                        <button class="audio-pill-btn" id="cl-speak-btn">
+                            🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
+                        </button>
                     </div>
-                    <div class="summary-text">${data.destination_guide.summary}</div>
-                </div>`;
-            }
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:12px;">📅 ${data.travel_date || ''}</div>
+            `;
 
-            // Checklist Items
-            if (data.checklist && data.checklist.length > 0) {
-                html += `<div class="result-card">
-                    <div class="result-header">
-                        <h3>${currentLang === 'ml' ? 'നിങ്ങളുടെ ചെക്ക്‌ലിസ്റ്റ്' : 'Your Checklist'}</h3>
-                    </div>`;
-
-                // Group by category
-                const categories = [...new Set(data.checklist.map(i => i.category))];
-                
-                categories.forEach(cat => {
-                    html += `<div class="checklist-category">
-                        <h4>${cat}</h4>`;
-                    
-                    data.checklist.filter(i => i.category === cat).forEach(item => {
-                        html += `
-                        <div class="checklist-item">
-                            <div class="checklist-priority ${item.priority}"></div>
-                            <div class="checklist-item-info">
-                                <div class="task">${item.task}</div>
-                                <div class="deadline">⏳ ${item.deadline}</div>
-                                ${item.details ? `<div class="details">${item.details}</div>` : ''}
+            // Layover Calculation Banner
+            if (data.layover_info) {
+                const lo = data.layover_info;
+                html += `
+                    <div class="layover-glass-banner">
+                        <h4>🔄 ${currentLang === 'ml' ? 'ലേഓവർ സുരക്ഷാ വിശകലനം' : 'Layover Airport Exit Analysis'}</h4>
+                        <div style="font-size:0.84rem;margin-bottom:4px;">
+                            ${lo.safe_to_leave ? '✅' : '❌'} 
+                            <strong>${lo.safe_to_leave ? (currentLang === 'ml' ? 'എയർപോർട്ട് വിടാൻ സുരക്ഷിതമാണ്' : 'Safe to exit the airport') : (currentLang === 'ml' ? 'എയർപോർട്ട് വിടരുത്' : 'Not safe to leave airport')}</strong>
+                        </div>
+                        ${lo.return_by_time ? `
+                            <div style="font-size:0.8rem;color:var(--text-main);margin-bottom:3px;">
+                                ⏰ <strong>${currentLang === 'ml' ? 'മടങ്ങേണ്ട സമയം' : 'Must return by'}:</strong> ${lo.return_by_time}
                             </div>
-                        </div>`;
-                    });
-                    
-                    html += `</div>`;
-                });
-                
-                html += `</div>`;
+                        ` : ''}
+                        ${lo.things_to_do && lo.things_to_do.length > 0 ? `
+                            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:6px;">
+                                🎯 ${lo.things_to_do.join(' • ')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
             }
+
+            // Checklist Categories
+            if (data.checklist && data.checklist.length > 0) {
+                data.checklist.forEach(cat => {
+                    html += `
+                        <div class="checklist-cat-title">${cat.category}</div>
+                    `;
+                    if (cat.items) {
+                        cat.items.forEach(item => {
+                            spoken += item.task + '. ';
+                            html += `
+                                <div class="cl-item-row">
+                                    <div class="cl-dot ${item.priority || 'medium'}"></div>
+                                    <div style="flex:1;">
+                                        <div class="cl-task">${item.task}</div>
+                                        ${item.deadline ? `<div class="cl-deadline">⏰ ${item.deadline}</div>` : ''}
+                                        ${item.details ? `<div class="cl-details">${item.details}</div>` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                });
+            }
+
+            html += `</div>`;
 
             // Emergency Contacts
-            if (data.destination_guide && data.destination_guide.emergency_contacts) {
-                html += `<div class="result-card">
-                    <div class="result-header">
-                        <h3>☎️ ${currentLang === 'ml' ? 'അടിയന്തര കോൺടാക്റ്റുകൾ' : 'Emergency Contacts'}</h3>
-                    </div>`;
-                
-                for (const [key, value] of Object.entries(data.destination_guide.emergency_contacts)) {
-                    html += `
-                        <div class="emergency-contact">
-                            <div class="contact-icon">📞</div>
-                            <div>
-                                <div class="contact-name">${key.replace(/_/g, ' ').toUpperCase()}</div>
-                                <div class="contact-number">${value}</div>
-                            </div>
-                        </div>`;
-                }
-                html += `</div>`;
+            if (data.emergency_contacts && data.emergency_contacts.length > 0) {
+                html += `
+                    <div class="glass-card">
+                        <div class="result-group-title">📞 ${currentLang === 'ml' ? 'അടിയന്തര ഹെൽപ്പ്‌ലൈനുകൾ' : 'Emergency & Emigration Helplines'}</div>
+                        <div style="display:flex;flex-direction:column;gap:8px;">
+                            ${data.emergency_contacts.map(c => `
+                                <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,0.55);border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.7);">
+                                    <div>
+                                        <div style="font-size:0.84rem;font-weight:700;">${c.name}</div>
+                                        <div style="font-size:0.74rem;color:var(--text-muted);">${c.description || ''}</div>
+                                    </div>
+                                    <a href="tel:${c.number.split('/')[0].trim()}" style="font-size:0.8rem;font-weight:700;color:var(--c-slate);text-decoration:none;padding:4px 10px;background:rgba(218,235,227,0.7);border-radius:var(--radius-pill);">
+                                        ${c.number}
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
             }
 
             html += getDisclaimerHTML();
             html += `</div>`;
             document.getElementById('cl-result').innerHTML = html;
+
+            const speakBtn = document.getElementById('cl-speak-btn');
+            if (speakBtn) {
+                speakBtn.onclick = function() { toggleReadAloud(spoken, this); };
+            }
         }
 
         // ===== DEMO MODE =====
         function loadDemoMode() {
-            // Load demo offer text
-            document.getElementById('offer-text').value = "Urgent! Dubai hotel job. Visa free, ticket free. Pay Rs. 50,000 for processing to this GPay number. Fly next week. Salary 5000 AED.";
-            switchTab('offer');
-            
-            // Show toast/alert
-            alert(currentLang === 'ml' ? 'ഡെമോ ഡാറ്റ ലോഡ് ചെയ്തു! വിശകലനം ചെയ്യാൻ ക്ലിക്ക് ചെയ്യുക.' : 'Demo data loaded! Click Analyze Offer to see how it works.');
-        }
+            // Fill Offer Check with scam
+            document.getElementById('offer-text').value = `Dear brother, I have a great opportunity for you in Dubai! \n\nCompany: Big Business LLC\nSalary: AED 15,000/month (guaranteed)\nPosition: General Helper\nVisa: Tourist visa (we will convert to work visa after you arrive)\n\nYou just need to pay ₹2,50,000 processing fee upfront to my personal account.\n\nContact me on WhatsApp only: +971 50 XXX XXXX\nDecide today, this exclusive offer expires tonight!`;
 
-        // Initialize date picker with tomorrow
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        document.getElementById('cl-date').value = tomorrow.toISOString().split('T')[0];
+            // Fill Pack Check
+            document.getElementById('pack-items').value = `Paracetamol (Dolo 650)\nCough syrup (Codeine)\nAlprazolam sleeping pills\nHomemade mango pickle\nGold chain\nLaptop`;
+
+            // Fill Journey Checklist
+            document.getElementById('cl-destination').value = 'UAE';
+            document.getElementById('cl-purpose').value = 'work';
+
+            switchTab('offer');
+
+            const btn = document.querySelector('.demo-pill-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✨ Demo Data Loaded!';
+            btn.style.background = 'var(--c-mint)';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }
     </script>
 </body>
 </html>

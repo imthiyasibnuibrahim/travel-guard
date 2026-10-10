@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TravelGuard - Safe Journeys Begin Here</title>
+    <meta name="description" content="AI-powered travel safety assistant for first-time travelers">
+    <meta name="theme-color" content="#18A689">
+    <link rel="icon" type="image/png" href="/static/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS RESET & VARIABLES ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1B3A5C;
+            --teal: #18A689;
+            --teal-light: #E8F5F0;
+            --teal-dark: #128068;
+            --orange: #F7941D;
+            --orange-light: #FFF3E0;
+            --bg: #F0F4F8;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --red: #EF4444;
+            --red-light: #FEF2F2;
+            --yellow: #F59E0B;
+            --yellow-light: #FFFBEB;
+            --green: #10B981;
+            --green-light: #ECFDF5;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --radius-xs: 8px;
+            --font-main: 'Inter', sans-serif;
+            --font-ml: 'Noto Sans Malayalam', sans-serif;
+            --bottom-nav-height: 70px;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg);
+            color: var(--gray-800);
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding-bottom: calc(var(--bottom-nav-height) + 20px);
+            overflow-x: hidden;
+        }
+
+        body.lang-ml {
+            font-family: var(--font-ml), var(--font-main);
+        }
+
+        /* ===== APP CONTAINER ===== */
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .top-bar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top-bar-logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .top-bar-logo h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+        }
+
+        .top-bar-logo h1 span {
+            color: var(--teal);
+        }
+
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            background: var(--gray-100);
+            border-radius: 20px;
+            padding: 3px;
+            cursor: pointer;
+        }
+
+        .lang-btn {
+            padding: 5px 12px;
+            border-radius: 18px;
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+            color: var(--gray-500);
+        }
+
+        .lang-btn.active {
+            background: var(--teal);
+            color: white;
+        }
+
+        /* ===== TAB CONTENT ===== */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== HOME TAB ===== */
+        .home-hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+        }
+
+        .home-hero img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 16px;
+        }
+
+        .home-hero h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .home-hero h2 span {
+            color: var(--teal);
+        }
+
+        .home-hero .tagline {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .feature-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-100);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-card:active {
+            transform: scale(0.98);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-icon.offer { background: var(--red-light); }
+        .feature-icon.pack { background: var(--orange-light); }
+        .feature-icon.checklist { background: var(--teal-light); }
+
+        .feature-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 2px;
+        }
+
+        .feature-info p {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            line-height: 1.4;
+        }
+
+        .demo-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--navy), #2d5a8e);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .demo-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== FORM ELEMENTS ===== */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--navy);
+            padding: 24px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .icon {
+            font-size: 1.4rem;
+        }
+
+        .input-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 16px;
+            border: 1px solid var(--gray-100);
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+        }
+
+        .input-sublabel {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        textarea, input[type="text"], input[type="date"], input[type="number"], select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-xs);
+            font-size: 0.95rem;
+            font-family: var(--font-main);
+            color: var(--gray-800);
+            background: var(--gray-50);
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+
+        textarea:focus, input:focus, select:focus {
+            outline: none;
+            border-color: var(--teal);
+            background: var(--white);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 16px 0;
+            color: var(--gray-400);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+
+        .file-upload-area {
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-xs);
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--gray-50);
+        }
+
+        .file-upload-area:hover {
+            border-color: var(--teal);
+            background: var(--teal-light);
+        }
+
+        .file-upload-area.has-file {
+            border-color: var(--green);
+            background: var(--green-light);
+        }
+
+        .file-upload-area .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .file-upload-area p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .file-upload-area input[type="file"] {
+            display: none;
+        }
+
+        .file-name {
+            font-size: 0.82rem;
+            color: var(--teal);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .submit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(24, 166, 137, 0.35);
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(24, 166, 137, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .select-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .select-row > div {
+            flex: 1;
+        }
+
+        /* ===== RESULTS ===== */
+        .result-container {
+            margin-top: 20px;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 14px;
+            border: 1px solid var(--gray-100);
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .result-header h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        .read-aloud-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .read-aloud-btn:hover {
+            background: var(--teal-light);
+            color: var(--teal);
+        }
+
+        .read-aloud-btn.playing {
+            background: var(--teal);
+            color: white;
+        }
+
+        /* Risk Score */
+        .risk-meter {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .risk-score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 2rem;
+            font-weight: 800;
+            border: 4px solid;
+        }
+
+        .risk-score-circle.high {
+            background: var(--red-light);
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        .risk-score-circle.medium {
+            background: var(--yellow-light);
+            border-color: var(--yellow);
+            color: var(--yellow);
+        }
+
+        .risk-score-circle.low {
+            background: var(--green-light);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .risk-score-circle small {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .risk-label {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .risk-label.high { color: var(--red); }
+        .risk-label.medium { color: var(--yellow); }
+        .risk-label.low { color: var(--green); }
+
+        /* Lists */
+        .result-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        .result-list-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .result-list li {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: var(--radius-xs);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .result-list li .li-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .result-list.red-flags li {
+            background: var(--red-light);
+            color: #991B1B;
+        }
+
+        .result-list.verify li {
+            background: var(--yellow-light);
+            color: #92400E;
+        }
+
+        .result-list.safe li {
+            background: var(--green-light);
+            color: #065F46;
+        }
+
+        /* Pack Check Items */
+        .pack-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: var(--gray-50);
+            border-radius: var(--radius-xs);
+            margin-bottom: 10px;
+            border-left: 4px solid;
+        }
+
+        .pack-item.likely_ok { border-color: var(--green); }
+        .pack-item.restricted { border-color: var(--yellow); }
+        .pack-item.prohibited { border-color: var(--red); }
+        .pack-item.unsure { border-color: var(--gray-400); }
+
+        .pack-item-status {
+            font-size: 1.3rem;
+        }
+
+        .pack-item-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .pack-item-info .pack-status {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .pack-status.likely_ok { color: var(--green); }
+        .pack-status.restricted { color: var(--yellow); }
+        .pack-status.prohibited { color: var(--red); }
+        .pack-status.unsure { color: var(--gray-500); }
+
+        .pack-item-info p {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+
+        .pack-item-info .paperwork {
+            font-size: 0.78rem;
+            color: var(--teal);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* Checklist */
+        .checklist-category {
+            margin-bottom: 20px;
+        }
+
+        .checklist-category h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--teal-light);
+        }
+
+        .checklist-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-priority {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .checklist-priority.high { background: var(--red); }
+        .checklist-priority.medium { background: var(--yellow); }
+        .checklist-priority.low { background: var(--teal); }
+
+        .checklist-item-info .task {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .checklist-item-info .deadline {
+            font-size: 0.78rem;
+            color: var(--orange);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .checklist-item-info .details {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+
+        /* Layover Info */
+        .layover-card {
+            background: linear-gradient(135deg, var(--teal-light), #D1FAE5);
+            border-radius: var(--radius);
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+
+        .layover-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--teal-dark);
+            margin-bottom: 10px;
+        }
+
+        .layover-card p {
+            font-size: 0.85rem;
+            color: var(--gray-700);
+            margin-bottom: 4px;
+        }
+
+        /* Emergency Contacts */
+        .emergency-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--gray-50);
+            border-radius: var(--radius-xs);
+            margin-bottom: 8px;
+        }
+
+        .emergency-contact .contact-icon {
+            font-size: 1.3rem;
+        }
+
+        .emergency-contact .contact-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .emergency-contact .contact-number {
+            font-size: 0.82rem;
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        .emergency-contact .contact-desc {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: var(--yellow-light);
+            border: 1px solid #FDE68A;
+            border-radius: var(--radius-xs);
+            padding: 12px 14px;
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: #92400E;
+            line-height: 1.5;
+        }
+
+        .disclaimer strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .disclaimer a {
+            color: var(--teal-dark);
+            font-weight: 600;
+        }
+
+        /* Loading */
+        .loading-overlay {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .loading-overlay.active {
+            display: block;
+        }
+
+        .loading-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--gray-200);
+            border-top-color: var(--teal);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        .loading-subtext {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-top: 4px;
+        }
+
+        /* Error */
+        .error-msg {
+            background: var(--red-light);
+            border: 1px solid #FECACA;
+            border-radius: var(--radius-xs);
+            padding: 14px;
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .error-msg p {
+            font-size: 0.88rem;
+            color: #991B1B;
+        }
+
+        .error-msg .retry-btn {
+            margin-top: 10px;
+            padding: 8px 20px;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ===== BOTTOM NAV ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: center;
+            padding: 8px 0;
+            padding-bottom: max(8px, env(safe-area-inset-bottom));
+        }
+
+        .bottom-nav-inner {
+            display: flex;
+            width: 100%;
+            max-width: 480px;
+            justify-content: space-around;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            padding: 6px 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--gray-400);
+            transition: all 0.2s;
+            border-radius: var(--radius-xs);
+            min-width: 64px;
+        }
+
+        .nav-item:hover {
+            color: var(--teal);
+        }
+
+        .nav-item.active {
+            color: var(--teal);
+        }
+
+        .nav-item .nav-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .nav-item .nav-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-item.active .nav-icon {
+            transform: scale(1.1);
+        }
+
+        /* ===== IMAGE PREVIEW ===== */
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            border-radius: var(--radius-xs);
+            margin-top: 10px;
+        }
+
+        /* ===== SUMMARY TEXT ===== */
+        .summary-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            padding: 12px;
+            background: var(--gray-50);
+            border-radius: var(--radius-xs);
+            margin-bottom: 16px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 481px) {
+            .top-bar {
+                border-radius: 0 0 var(--radius) var(--radius);
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .hidden { display: none !important; }
+        .mt-12 { margin-top: 12px; }
+        .mb-12 { margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="top-bar-logo">
+            <img src="/static/logo.png" alt="TravelGuard Logo">
+            <h1>Travel<span>Guard</span></h1>
+        </div>
+        <div class="top-bar-actions">
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="ml" onclick="setLanguage('ml')">മല</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- ===== HOME TAB ===== -->
+        <section id="tab-home" class="tab-content active">
+            <div class="home-hero">
+                <img src="/static/logo.png" alt="TravelGuard">
+                <h2>Travel<span>Guard</span></h2>
+                <p class="tagline" data-en="Safe Journeys Begin Here" data-ml="സുരക്ഷിതമായ യാത്രകൾ ഇവിടെ തുടങ്ങുന്നു">Safe Journeys Begin Here</p>
+            </div>
+
+            <div class="feature-cards">
+                <div class="feature-card" onclick="switchTab('offer')">
+                    <div class="feature-icon offer">🛡️</div>
+                    <div class="feature-info">
+                        <h3 data-en="Offer Check" data-ml="ഓഫർ പരിശോധന">Offer Check</h3>
+                        <p data-en="Verify job offers & detect scam messages" data-ml="ജോലി ഓഫറുകൾ പരിശോധിക്കുക, തട്ടിപ്പ് സന്ദേശങ്ങൾ കണ്ടെത്തുക">Verify job offers & detect scam messages</p>
+                    </div>
+                </div>
+
+                <div class="feature-card" onclick="switchTab('pack')">
+                    <div class="feature-icon pack">🧳</div>
+                    <div class="feature-info">
+                        <h3 data-en="Pack Check" data-ml="പാക്ക് പരിശോധന">Pack Check</h3>
+                        <p data-en="Check if your items are allowed at destination" data-ml="നിങ്ങളുടെ സാധനങ്ങൾ ലക്ഷ്യസ്ഥാനത്ത് അനുവദനീയമാണോ എന്ന് പരിശോധിക്കുക">Check if your items are allowed at destination</p>
+                    </div>
+                </div>
+
+                <div class="feature-card" onclick="switchTab('checklist')">
+                    <div class="feature-icon checklist">📋</div>
+                    <div class="feature-info">
+                        <h3 data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്">Journey Checklist</h3>
+                        <p data-en="Personalised document & step checklist" data-ml="വ്യക്തിഗത രേഖകളും ഘട്ട ചെക്ക്‌ലിസ്റ്റും">Personalised document & step checklist</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="demo-btn" onclick="loadDemoMode()">
+                🎯 <span data-en="Demo Mode – Try with sample data" data-ml="ഡെമോ മോഡ് – സാമ്പിൾ ഡാറ്റ ഉപയോഗിച്ച് ശ്രമിക്കുക">Demo Mode – Try with sample data</span>
+            </button>
+        </section>
+
+        <!-- ===== OFFER CHECK TAB ===== -->
+        <section id="tab-offer" class="tab-content">
+            <h2 class="section-title">
+                <span class="icon">🛡️</span>
+                <span data-en="Offer Check" data-ml="ഓഫർ പരിശോധന">Offer Check</span>
+            </h2>
+
+            <div class="input-card">
+                <label class="input-label">
+                    <span data-en="Paste the offer text or message" data-ml="ഓഫർ ടെക്‌സ്‌റ്റ് അല്ലെങ്കിൽ സന്ദേശം ഒട്ടിക്കുക">Paste the offer text or message</span>
+                    <span class="input-sublabel" data-en=" – WhatsApp message, email, or agent's promise" data-ml=" – WhatsApp സന്ദേശം, ഇമെയിൽ, അല്ലെങ്കിൽ ഏജന്റിന്റെ വാഗ്ദാനം"> – WhatsApp message, email, or agent's promise</span>
+                </label>
+                <textarea id="offer-text" placeholder="Paste the job offer or agent message here..."></textarea>
+
+                <div class="or-divider" data-en="OR" data-ml="അല്ലെങ്കിൽ">OR</div>
+
+                <label class="input-label" data-en="Upload a screenshot" data-ml="സ്‌ക്രീൻഷോട്ട് അപ്‌ലോഡ് ചെയ്യുക">Upload a screenshot</label>
+                <div class="file-upload-area" id="offer-upload-area" onclick="document.getElementById('offer-image').click()">
+                    <div class="upload-icon">📷</div>
+                    <p data-en="Tap to take a photo or upload" data-ml="ഫോട്ടോ എടുക്കാൻ അല്ലെങ്കിൽ അപ്‌ലോഡ് ചെയ്യാൻ ടാപ്പ് ചെയ്യുക">Tap to take a photo or upload</p>
+                    <input type="file" id="offer-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'offer-upload-area')">
+                    <div class="file-name" id="offer-file-name"></div>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="submitOfferCheck()">
+                <span data-en="🔍 Analyze Offer" data-ml="🔍 ഓഫർ വിശകലനം ചെയ്യുക">🔍 Analyze Offer</span>
+            </button>
+
+            <div class="loading-overlay" id="offer-loading">
+                <div class="loading-spinner"></div>
+                <div class="loading-text" data-en="Analyzing the offer..." data-ml="ഓഫർ വിശകലനം ചെയ്യുന്നു...">Analyzing the offer...</div>
+                <div class="loading-subtext" data-en="Checking against official emigration rules" data-ml="ഔദ്യോഗിക കുടിയേറ്റ നിയമങ്ങളുമായി പരിശോധിക്കുന്നു">Checking against official emigration rules</div>
+            </div>
+
+            <div id="offer-result"></div>
+            <div id="offer-error" class="error-msg hidden"></div>
+        </section>
+
+        <!-- ===== PACK CHECK TAB ===== -->
+        <section id="tab-pack" class="tab-content">
+            <h2 class="section-title">
+                <span class="icon">🧳</span>
+                <span data-en="Pack Check" data-ml="പാക്ക് പരിശോധന">Pack Check</span>
+            </h2>
+
+            <div class="input-card">
+                <div class="select-row">
+                    <div>
+                        <label class="input-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
+                        <select id="pack-destination">
+                            <option value="UAE" selected>🇦🇪 UAE</option>
+                            <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                            <option value="Qatar">🇶🇦 Qatar</option>
+                            <option value="Oman">🇴🇲 Oman</option>
+                            <option value="Bahrain">🇧🇭 Bahrain</option>
+                            <option value="Kuwait">🇰🇼 Kuwait</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="input-label">
+                    <span data-en="List your items" data-ml="നിങ്ങളുടെ സാധനങ്ങൾ ലിസ്റ്റ് ചെയ്യുക">List your items</span>
+                    <span class="input-sublabel" data-en=" – one per line or comma separated" data-ml=" – ഒരു വരിയിൽ ഒന്ന് അല്ലെങ്കിൽ കോമ ഉപയോഗിച്ച് വേർതിരിക്കുക"> – one per line or comma separated</span>
+                </label>
+                <textarea id="pack-items" placeholder="e.g.&#10;Paracetamol&#10;Cough syrup&#10;Pickles&#10;Gold chain&#10;Laptop"></textarea>
+
+                <div class="or-divider" data-en="OR" data-ml="അല്ലെങ്കിൽ">OR</div>
+
+                <label class="input-label" data-en="Upload a photo of items" data-ml="സാധനങ്ങളുടെ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക">Upload a photo of items</label>
+                <div class="file-upload-area" id="pack-upload-area" onclick="document.getElementById('pack-image').click()">
+                    <div class="upload-icon">📷</div>
+                    <p data-en="Tap to take a photo or upload" data-ml="ഫോട്ടോ എടുക്കാൻ അല്ലെങ്കിൽ അപ്‌ലോഡ് ചെയ്യാൻ ടാപ്പ് ചെയ്യുക">Tap to take a photo or upload</p>
+                    <input type="file" id="pack-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'pack-upload-area')">
+                    <div class="file-name" id="pack-file-name"></div>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="submitPackCheck()">
+                <span data-en="📦 Check Items" data-ml="📦 സാധനങ്ങൾ പരിശോധിക്കുക">📦 Check Items</span>
+            </button>
+
+            <div class="loading-overlay" id="pack-loading">
+                <div class="loading-spinner"></div>
+                <div class="loading-text" data-en="Checking your items..." data-ml="നിങ്ങളുടെ സാധനങ്ങൾ പരിശോധിക്കുന്നു...">Checking your items...</div>
+                <div class="loading-subtext" data-en="Verifying against customs regulations" data-ml="കസ്റ്റംസ് നിയന്ത്രണങ്ങളുമായി പരിശോധിക്കുന്നു">Verifying against customs regulations</div>
+            </div>
+
+            <div id="pack-result"></div>
+            <div id="pack-error" class="error-msg hidden"></div>
+        </section>
+
+        <!-- ===== CHECKLIST TAB ===== -->
+        <section id="tab-checklist" class="tab-content">
+            <h2 class="section-title">
+                <span class="icon">📋</span>
+                <span data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്">Journey Checklist</span>
+            </h2>
+
+            <div class="input-card">
+                <div class="select-row">
+                    <div>
+                        <label class="input-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
+                        <select id="cl-destination">
+                            <option value="UAE" selected>🇦🇪 UAE</option>
+                            <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                            <option value="Qatar">🇶🇦 Qatar</option>
+                            <option value="Oman">🇴🇲 Oman</option>
+                            <option value="Bahrain">🇧🇭 Bahrain</option>
+                            <option value="Kuwait">🇰🇼 Kuwait</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="input-label" data-en="Purpose" data-ml="ഉദ്ദേശ്യം">Purpose</label>
+                        <select id="cl-purpose">
+                            <option value="work">💼 Work</option>
+                            <option value="visit">✈️ Visit</option>
+                            <option value="layover">🔄 Layover</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="input-label" data-en="Travel Date" data-ml="യാത്ര തീയതി">Travel Date</label>
+                <input type="date" id="cl-date" class="mb-12">
+
+                <div id="layover-section" class="hidden">
+                    <label class="input-label" data-en="Layover Hours" data-ml="ലേഓവർ മണിക്കൂറുകൾ">Layover Hours</label>
+                    <input type="number" id="cl-layover" placeholder="e.g. 8" min="1" max="48">
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="submitChecklist()">
+                <span data-en="📋 Generate Checklist" data-ml="📋 ചെക്ക്‌ലിസ്റ്റ് ജനറേറ്റ് ചെയ്യുക">📋 Generate Checklist</span>
+            </button>
+
+            <div class="loading-overlay" id="cl-loading">
+                <div class="loading-spinner"></div>
+                <div class="loading-text" data-en="Creating your checklist..." data-ml="നിങ്ങളുടെ ചെക്ക്‌ലിസ്റ്റ് ഉണ്ടാക്കുന്നു...">Creating your checklist...</div>
+                <div class="loading-subtext" data-en="Personalising based on your trip details" data-ml="നിങ്ങളുടെ യാത്ര വിവരങ്ങൾ അടിസ്ഥാനമാക്കി വ്യക്തിഗതമാക്കുന്നു">Personalising based on your trip details</div>
+            </div>
+
+            <div id="cl-result"></div>
+            <div id="cl-error" class="error-msg hidden"></div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-inner">
+            <button class="nav-item active" data-tab="home" onclick="switchTab('home')">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label" data-en="Home" data-ml="ഹോം">Home</span>
+            </button>
+            <button class="nav-item" data-tab="offer" onclick="switchTab('offer')">
+                <span class="nav-icon">🛡️</span>
+                <span class="nav-label" data-en="Offer" data-ml="ഓഫർ">Offer</span>
+            </button>
+            <button class="nav-item" data-tab="pack" onclick="switchTab('pack')">
+                <span class="nav-icon">🧳</span>
+                <span class="nav-label" data-en="Pack" data-ml="പാക്ക്">Pack</span>
+            </button>
+            <button class="nav-item" data-tab="checklist" onclick="switchTab('checklist')">
+                <span class="nav-icon">📋</span>
+                <span class="nav-label" data-en="Checklist" data-ml="ലിസ്റ്റ്">Checklist</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        // ===== STATE =====
+        let currentLang = 'en';
+        let currentTab = 'home';
+        let isSpeaking = false;
+
+        // ===== LANGUAGE =====
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.body.classList.toggle('lang-ml', lang === 'ml');
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+        }
+
+        // ===== TABS =====
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            document.querySelector('.nav-item[data-tab="' + tab + '"]').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // ===== FILE UPLOAD =====
+        function handleFileSelect(input, areaId) {
+            const area = document.getElementById(areaId);
+            const fileNameEl = area.querySelector('.file-name');
+            if (input.files && input.files[0]) {
+                area.classList.add('has-file');
+                fileNameEl.textContent = '✅ ' + input.files[0].name;
+
+                // Show preview
+                const existingPreview = area.querySelector('.image-preview');
+                if (existingPreview) existingPreview.remove();
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'image-preview';
+                    area.appendChild(img);
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                area.classList.remove('has-file');
+                fileNameEl.textContent = '';
+            }
+        }
+
+        // ===== READ ALOUD =====
+        function toggleReadAloud(text, btn) {
+            if (isSpeaking) {
+                speechSynthesis.cancel();
+                isSpeaking = false;
+                btn.classList.remove('playing');
+                btn.innerHTML = '🔊 ' + (currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud');
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = currentLang === 'ml' ? 'ml-IN' : 'en-IN';
+            utterance.rate = 0.9;
+            utterance.onend = () => {
+                isSpeaking = false;
+                btn.classList.remove('playing');
+                btn.innerHTML = '🔊 ' + (currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud');
+            };
+            speechSynthesis.speak(utterance);
+            isSpeaking = true;
+            btn.classList.add('playing');
+            btn.innerHTML = '⏹️ ' + (currentLang === 'ml' ? 'നിർത്തുക' : 'Stop');
+        }
+
+        // ===== HELPERS =====
+        function showLoading(id) {
+            document.getElementById(id + '-loading').classList.add('active');
+            document.getElementById(id + '-result').innerHTML = '';
+            document.getElementById(id + '-error').classList.add('hidden');
+        }
+
+        function hideLoading(id) {
+            document.getElementById(id + '-loading').classList.remove('active');
+        }
+
+        function showError(id, message) {
+            hideLoading(id);
+            const errorEl = document.getElementById(id + '-error');
+            errorEl.classList.remove('hidden');
+            errorEl.innerHTML = `
+                <p>😟 ${message}</p>
+                <button class="retry-btn" onclick="document.getElementById('${id}-error').classList.add('hidden')">
+                    ${currentLang === 'ml' ? 'ശരി' : 'OK'}
+                </button>
+            `;
+        }
+
+        function getDisclaimerHTML() {
+            if (currentLang === 'ml') {
+                return `<div class="disclaimer">
+                    <strong>⚠️ നിരാകരണം:</strong>
+                    ഇത് മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്. ഔദ്യോഗിക ഉറവിടങ്ങൾ ഉപയോഗിച്ച് പരിശോധിക്കുക.
+                    <br><a href="https://emigrate.gov.in" target="_blank">eMigrate</a> |
+                    <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> |
+                    <a href="https://mohap.gov.ae" target="_blank">UAE MOH</a>
+                </div>`;
+            }
+            return `<div class="disclaimer">
+                <strong>⚠️ Disclaimer:</strong>
+                Guidance only. Verify with official sources before making decisions.
+                <br><a href="https://emigrate.gov.in" target="_blank">eMigrate Portal</a> |
+                <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> |
+                <a href="https://mohap.gov.ae" target="_blank">UAE MOH</a>
+            </div>`;
+        }
+
+        // ===== OFFER CHECK =====
+        async function submitOfferCheck() {
+            const text = document.getElementById('offer-text').value.trim();
+            const imageInput = document.getElementById('offer-image');
+            const image = imageInput.files[0];
+
+            if (!text && !image) {
+                showError('offer', currentLang === 'ml' ? 'ദയവായി ഓഫർ ടെക്‌സ്‌റ്റ് ഒട്ടിക്കുക അല്ലെങ്കിൽ ഒരു ചിത്രം അപ്‌ലോഡ് ചെയ്യുക.' : 'Please paste the offer text or upload an image.');
+                return;
+            }
+
+            showLoading('offer');
+
+            const formData = new FormData();
+            if (text) formData.append('text', text);
+            if (image) formData.append('image', image);
+            formData.append('language', currentLang);
+
+            try {
+                const response = await fetch('/api/offer-check', { method: 'POST', body: formData });
+                const data = await response.json();
+                hideLoading('offer');
+
+                if (data.error) {
+                    showError('offer', data.message || 'Something went wrong.');
+                    return;
+                }
+
+                renderOfferResult(data);
+            } catch (err) {
+                showError('offer', currentLang === 'ml' ? 'സേവനം ലഭ്യമല്ല. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please try again.');
+            }
+        }
+
+        function renderOfferResult(data) {
+            const riskClass = data.risk_level || 'medium';
+            const riskEmoji = riskClass === 'high' ? '🚨' : riskClass === 'medium' ? '⚠️' : '✅';
+
+            let readAloudText = '';
+            if (data.summary) readAloudText += data.summary + '. ';
+            if (data.red_flags) readAloudText += 'Red flags: ' + data.red_flags.join(', ') + '. ';
+            if (data.safe_next_steps) readAloudText += 'Safe next steps: ' + data.safe_next_steps.join(', ');
+
+            let html = `<div class="result-container">`;
+
+            // Risk Score
+            html += `<div class="result-card">
+                <div class="result-header">
+                    <h3>${currentLang === 'ml' ? 'അപകട വിലയിരുത്തൽ' : 'Risk Assessment'}</h3>
+                    <button class="read-aloud-btn" onclick="toggleReadAloud('${readAloudText.replace(/'/g, "\\'")}', this)">
+                        🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
+                    </button>
+                </div>
+                <div class="risk-meter">
+                    <div class="risk-score-circle ${riskClass}">
+                        ${riskClass === 'high' ? '90' : riskClass === 'medium' ? '50' : '10'}
+                        <small>Score</small>
+                    </div>
+                    <div class="risk-label ${riskClass}">${riskClass} RISK</div>
+                </div>
+                <div class="summary-text">${data.summary}</div>
+            </div>`;
+
+            // Red Flags
+            if (data.red_flags && data.red_flags.length > 0) {
+                html += `<div class="result-card">
+                    <div class="result-list-title">🚨 ${currentLang === 'ml' ? 'അപകട സൂചനകൾ' : 'Red Flags'}</div>
+                    <ul class="result-list red-flags">
+                        ${data.red_flags.map(flag => `<li><span class="li-icon">⚠️</span><span>${flag}</span></li>`).join('')}
+                    </ul>
+                </div>`;
+            }
+
+            // Safe Next Steps
+            if (data.safe_next_steps && data.safe_next_steps.length > 0) {
+                html += `<div class="result-card">
+                    <div class="result-list-title">✅ ${currentLang === 'ml' ? 'സുരക്ഷിതമായ അടുത്ത ഘട്ടങ്ങൾ' : 'Safe Next Steps'}</div>
+                    <ul class="result-list safe">
+                        ${data.safe_next_steps.map(step => `<li><span class="li-icon">👉</span><span>${step}</span></li>`).join('')}
+                    </ul>
+                </div>`;
+            }
+
+            html += getDisclaimerHTML();
+            html += `</div>`;
+            document.getElementById('offer-result').innerHTML = html;
+        }
+
+        // ===== PACK CHECK =====
+        async function submitPackCheck() {
+            const items = document.getElementById('pack-items').value.trim();
+            const destination = document.getElementById('pack-destination').value;
+            const imageInput = document.getElementById('pack-image');
+            const image = imageInput.files[0];
+
+            if (!items && !image) {
+                showError('pack', currentLang === 'ml' ? 'ദയവായി സാധനങ്ങൾ നൽകുക അല്ലെങ്കിൽ ഒരു ചിത്രം അപ്‌ലോഡ് ചെയ്യുക.' : 'Please enter items or upload an image.');
+                return;
+            }
+
+            showLoading('pack');
+
+            const formData = new FormData();
+            formData.append('destination', destination);
+            if (items) formData.append('items', items);
+            if (image) formData.append('image', image);
+            formData.append('language', currentLang);
+
+            try {
+                const response = await fetch('/api/pack-check', { method: 'POST', body: formData });
+                const data = await response.json();
+                hideLoading('pack');
+
+                if (data.error) {
+                    showError('pack', data.message || 'Something went wrong.');
+                    return;
+                }
+
+                renderPackResult(data, destination);
+            } catch (err) {
+                showError('pack', currentLang === 'ml' ? 'സേവനം ലഭ്യമല്ല. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please try again.');
+            }
+        }
+
+        function renderPackResult(data, destination) {
+            let html = `<div class="result-container">`;
+            
+            html += `<div class="result-card">
+                <div class="result-header">
+                    <h3>${currentLang === 'ml' ? 'പരിശോധനാ ഫലം - ' : 'Check Results - '}${destination}</h3>
+                </div>`;
+
+            if (data.items && data.items.length > 0) {
+                data.items.forEach(item => {
+                    const statusClass = item.status === 'prohibited' ? 'prohibited' : 
+                                      item.status === 'restricted' ? 'restricted' : 
+                                      item.status === 'likely_ok' ? 'likely_ok' : 'unsure';
+                    
+                    const icon = item.status === 'prohibited' ? '❌' : 
+                               item.status === 'restricted' ? '⚠️' : 
+                               item.status === 'likely_ok' ? '✅' : '❓';
+
+                    html += `
+                        <div class="pack-item ${statusClass}">
+                            <div class="pack-item-status">${icon}</div>
+                            <div class="pack-item-info">
+                                <h4>${item.item}</h4>
+                                <div class="pack-status ${statusClass}">${item.status.replace('_', ' ')}</div>
+                                <p>${item.reason}</p>
+                                ${item.paperwork_needed ? `<div class="paperwork">📄 Needs: ${item.paperwork_needed}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                html += `<p>${currentLang === 'ml' ? 'സാധനങ്ങളൊന്നും കണ്ടെത്തിയില്ല.' : 'No items detected.'}</p>`;
+            }
+
+            html += `</div>`;
+            html += getDisclaimerHTML();
+            html += `</div>`;
+            
+            document.getElementById('pack-result').innerHTML = html;
+        }
+
+        // ===== CHECKLIST =====
+        document.getElementById('cl-purpose').addEventListener('change', function() {
+            document.getElementById('layover-section').classList.toggle('hidden', this.value !== 'layover');
+        });
+
+        async function submitChecklist() {
+            const destination = document.getElementById('cl-destination').value;
+            const purpose = document.getElementById('cl-purpose').value;
+            const date = document.getElementById('cl-date').value;
+            const layover = document.getElementById('cl-layover').value;
+
+            showLoading('cl');
+
+            const payload = {
+                destination,
+                purpose,
+                date,
+                language: currentLang
+            };
+            if (purpose === 'layover') payload.layover_hours = layover;
+
+            try {
+                const response = await fetch('/api/checklist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+                hideLoading('cl');
+
+                if (data.error) {
+                    showError('cl', data.message || 'Something went wrong.');
+                    return;
+                }
+
+                renderChecklistResult(data);
+            } catch (err) {
+                showError('cl', currentLang === 'ml' ? 'സേവനം ലഭ്യമല്ല. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please try again.');
+            }
+        }
+
+        function renderChecklistResult(data) {
+            let html = `<div class="result-container">`;
+
+            // Destination Guide Summary
+            if (data.destination_guide) {
+                html += `<div class="result-card">
+                    <div class="result-header">
+                        <h3>${currentLang === 'ml' ? 'യാത്രാ അവലോകനം' : 'Journey Overview'}</h3>
+                    </div>
+                    <div class="summary-text">${data.destination_guide.summary}</div>
+                </div>`;
+            }
+
+            // Checklist Items
+            if (data.checklist && data.checklist.length > 0) {
+                html += `<div class="result-card">
+                    <div class="result-header">
+                        <h3>${currentLang === 'ml' ? 'നിങ്ങളുടെ ചെക്ക്‌ലിസ്റ്റ്' : 'Your Checklist'}</h3>
+                    </div>`;
+
+                // Group by category
+                const categories = [...new Set(data.checklist.map(i => i.category))];
+                
+                categories.forEach(cat => {
+                    html += `<div class="checklist-category">
+                        <h4>${cat}</h4>`;
+                    
+                    data.checklist.filter(i => i.category === cat).forEach(item => {
+                        html += `
+                        <div class="checklist-item">
+                            <div class="checklist-priority ${item.priority}"></div>
+                            <div class="checklist-item-info">
+                                <div class="task">${item.task}</div>
+                                <div class="deadline">⏳ ${item.deadline}</div>
+                                ${item.details ? `<div class="details">${item.details}</div>` : ''}
+                            </div>
+                        </div>`;
+                    });
+                    
+                    html += `</div>`;
+                });
+                
+                html += `</div>`;
+            }
+
+            // Emergency Contacts
+            if (data.destination_guide && data.destination_guide.emergency_contacts) {
+                html += `<div class="result-card">
+                    <div class="result-header">
+                        <h3>☎️ ${currentLang === 'ml' ? 'അടിയന്തര കോൺടാക്റ്റുകൾ' : 'Emergency Contacts'}</h3>
+                    </div>`;
+                
+                for (const [key, value] of Object.entries(data.destination_guide.emergency_contacts)) {
+                    html += `
+                        <div class="emergency-contact">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <div class="contact-name">${key.replace(/_/g, ' ').toUpperCase()}</div>
+                                <div class="contact-number">${value}</div>
+                            </div>
+                        </div>`;
+                }
+                html += `</div>`;
+            }
+
+            html += getDisclaimerHTML();
+            html += `</div>`;
+            document.getElementById('cl-result').innerHTML = html;
+        }
+
+        // ===== DEMO MODE =====
+        function loadDemoMode() {
+            // Load demo offer text
+            document.getElementById('offer-text').value = "Urgent! Dubai hotel job. Visa free, ticket free. Pay Rs. 50,000 for processing to this GPay number. Fly next week. Salary 5000 AED.";
+            switchTab('offer');
+            
+            // Show toast/alert
+            alert(currentLang === 'ml' ? 'ഡെമോ ഡാറ്റ ലോഡ് ചെയ്തു! വിശകലനം ചെയ്യാൻ ക്ലിക്ക് ചെയ്യുക.' : 'Demo data loaded! Click Analyze Offer to see how it works.');
+        }
+
+        // Initialize date picker with tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('cl-date').value = tomorrow.toISOString().split('T')[0];
+    </script>
+</body>
+</html>

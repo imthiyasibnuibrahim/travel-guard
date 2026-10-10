@@ -1,0 +1,112 @@
+{
+  "last_updated": "2026-10-01",
+  "source": "Ministry of External Affairs (MEA), eMigrate Portal, NORKA-Roots",
+  "countries": {
+    "UAE": {
+      "name": "United Arab Emirates",
+      "emigration_clearance_required": true,
+      "key_rules": [
+        "All workers going on employment visa MUST obtain Emigration Clearance from the Protector of Emigrants (PoE)",
+        "Employer must be registered on the eMigrate system",
+        "Employment contract must be attested by the UAE Ministry of Human Resources (MOHRE)",
+        "Workers must NOT pay any recruitment fees – the employer bears all costs as per UAE law",
+        "Tourist visa CANNOT be used for employment – this is illegal",
+        "Only licensed Recruiting Agents (RAs) registered with MEA can process overseas employment",
+        "Demand letter from the foreign employer must be attested by the Indian Embassy in the UAE"
+      ],
+      "required_documents": [
+        "Valid passport (minimum 6 months validity)",
+        "Employment visa (NOT tourist visa for work)",
+        "Attested employment contract",
+        "Emigration clearance from PoE (for ECR passport holders)",
+        "Medical fitness certificate from approved center",
+        "Insurance policy (Pravasi Bharatiya Bima Yojana or equivalent)",
+        "PCC - Police Clearance Certificate (if required)",
+        "Educational certificates (attested if required)",
+        "COVID-19 vaccination certificate (if applicable)"
+      ],
+      "red_flags_for_fraud": [
+        "Agent asks for money upfront for visa processing",
+        "No official company name, address, or trade license number provided",
+        "Offering employment on a tourist/visit visa",
+        "Salary promises significantly above market rate (e.g., laborer offered AED 10,000+/month)",
+        "Only WhatsApp contact, no official email or office address",
+        "Agent is not registered with MEA / does not have an RA license number",
+        "Pressure to make a quick decision or send money immediately",
+        "No proper employment contract provided before travel",
+        "Agent says emigration clearance is 'not needed'",
+        "Offering 'free visa' or 'Azad visa' for independent work"
+      ],
+      "salary_ranges": {
+        "note": "Approximate monthly salaries in AED for common roles (2024-2025)",
+        "laborer": {"min": 1200, "max": 2500, "currency": "AED"},
+        "driver": {"min": 2500, "max": 4500, "currency": "AED"},
+        "security_guard": {"min": 2000, "max": 3500, "currency": "AED"},
+        "salesman": {"min": 2500, "max": 5000, "currency": "AED"},
+        "office_clerk": {"min": 3000, "max": 6000, "currency": "AED"},
+        "nurse": {"min": 5000, "max": 12000, "currency": "AED"},
+        "engineer": {"min": 6000, "max": 18000, "currency": "AED"},
+        "it_professional": {"min": 7000, "max": 25000, "currency": "AED"}
+      },
+      "helplines": [
+        {"name": "Indian Embassy in UAE (Abu Dhabi)", "phone": "+971-2-4492700", "url": "https://www.indembassyuae.gov.in"},
+        {"name": "CGI Dubai", "phone": "+971-4-3971222", "url": "https://cgidubai.gov.in"},
+        {"name": "NORKA-Roots Helpline", "phone": "1800-425-3939", "url": "https://www.norkaroots.org"},
+        {"name": "eMigrate Helpdesk", "phone": "1800-11-3090", "url": "https://emigrate.gov.in"},
+        {"name": "MEA Helpline for Overseas Workers", "phone": "1800-11-3090", "url": "https://www.mea.gov.in"}
+      ]
+    },
+    "Saudi Arabia": {
+      "name": "Kingdom of Saudi Arabia",
+      "emigration_clearance_required": true,
+      "key_rules": [
+        "Emigration clearance is mandatory for ECR passport holders",
+        "Employer must be verified through eMigrate",
+        "Employment contract must be in Arabic and English",
+        "Workers should NOT surrender their passport to employer",
+        "Iqama (residency permit) must be arranged by employer within 90 days"
+      ],
+      "required_documents": [
+        "Valid passport (minimum 6 months validity)",
+        "Employment visa",
+        "Attested employment contract",
+        "Medical certificate",
+        "Emigration clearance"
+      ],
+      "helplines": [
+        {"name": "Indian Embassy in Riyadh", "phone": "+966-11-4884144", "url": "https://www.indianembassy.org.sa"}
+      ]
+    },
+    "Qatar": {
+      "name": "State of Qatar",
+      "emigration_clearance_required": true,
+      "key_rules": [
+        "Emigration clearance mandatory for ECR passport holders",
+        "Qatar has abolished the kafala (sponsorship) system – workers can change jobs",
+        "Minimum wage of QAR 1,000/month plus food and accommodation"
+      ],
+      "required_documents": [
+        "Valid passport",
+        "Employment visa",
+        "Attested contract",
+        "Medical certificate"
+      ],
+      "helplines": [
+        {"name": "Indian Embassy in Doha", "phone": "+974-4425-5777", "url": "https://www.indianembassyqatar.gov.in"}
+      ]
+    }
+  },
+  "general_rules": {
+    "ecr_passports": "Holders of ECR (Emigration Check Required) passports MUST get emigration clearance from the Protector of Emigrants before traveling for employment.",
+    "recruitment_agents": "Only Recruiting Agents licensed by MEA can process overseas employment. Verify agent license at emigrate.gov.in.",
+    "no_fees": "As per Indian Emigration Act, workers should NOT be charged more than the prescribed maximum fee by recruiting agents.",
+    "contract_must": "Always get a written employment contract BEFORE traveling. Never travel on verbal promises.",
+    "insurance": "Pravasi Bharatiya Bima Yojana (PBBY) or equivalent insurance is mandatory for ECR workers."
+  },
+  "official_sources": [
+    {"name": "eMigrate Portal", "url": "https://emigrate.gov.in"},
+    {"name": "Ministry of External Affairs", "url": "https://www.mea.gov.in"},
+    {"name": "NORKA-Roots (Kerala)", "url": "https://www.norkaroots.org"},
+    {"name": "Protector of Emigrants", "url": "https://emigrate.gov.in/ext/poe.action"}
+  ]
+}

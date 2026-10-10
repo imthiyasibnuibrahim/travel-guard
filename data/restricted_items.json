@@ -1,0 +1,141 @@
+{
+  "last_updated": "2026-10-01",
+  "source": "UAE Federal Customs Authority, Dubai Customs, Abu Dhabi Customs",
+  "destinations": {
+    "UAE": {
+      "prohibited_items": [
+        {
+          "item": "Narcotic drugs and psychotropic substances",
+          "category": "drugs",
+          "keywords": ["marijuana", "cannabis", "weed", "cocaine", "heroin", "hashish", "ganja", "opium", "tramadol without prescription"],
+          "reason": "Strictly prohibited under UAE Federal Law. Zero tolerance policy. Severe penalties including imprisonment.",
+          "official_source": "UAE Federal Law No. 14 of 1995"
+        },
+        {
+          "item": "Pork products",
+          "category": "food",
+          "keywords": ["pork", "bacon", "ham", "salami", "pepperoni", "lard"],
+          "reason": "Prohibited for import into UAE. Not allowed through customs.",
+          "official_source": "UAE Customs regulations"
+        },
+        {
+          "item": "Pornographic material",
+          "category": "media",
+          "keywords": ["pornography", "adult content", "obscene material"],
+          "reason": "Illegal in the UAE. All electronic devices may be checked.",
+          "official_source": "UAE Penal Code"
+        },
+        {
+          "item": "E-cigarettes and vaping devices",
+          "category": "tobacco",
+          "keywords": ["vape", "e-cigarette", "vaping", "juul", "e-liquid", "vape juice", "electronic cigarette"],
+          "reason": "Regulated in UAE. Can be purchased locally but importing may require declaration.",
+          "official_source": "UAE Customs"
+        },
+        {
+          "item": "Codeine-containing medicines",
+          "category": "medicine",
+          "keywords": ["codeine", "cough syrup with codeine", "corex", "phensedyl"],
+          "reason": "BANNED in UAE. Codeine is classified as a controlled narcotic substance. Common Indian cough syrups like Corex and Phensedyl contain codeine.",
+          "official_source": "UAE Ministry of Health"
+        }
+      ],
+      "restricted_items": [
+        {
+          "item": "Prescription medicines",
+          "category": "medicine",
+          "keywords": ["prescription medicine", "antibiotics", "inhaler", "insulin"],
+          "status": "restricted",
+          "reason": "Allowed with valid prescription and doctor's letter. Some medicines legal in India are BANNED in UAE (e.g., codeine, some painkillers). Maximum 3-month supply.",
+          "paperwork_needed": "Doctor's prescription, medical certificate, medicine list attested by hospital. Check specific medicine on UAE MOH website.",
+          "official_source": "UAE Ministry of Health - https://mohap.gov.ae"
+        },
+        {
+          "item": "Sleeping pills / sedatives",
+          "category": "medicine",
+          "keywords": ["sleeping pills", "diazepam", "alprazolam", "clonazepam", "Valium", "benzodiazepine", "sedative"],
+          "status": "restricted",
+          "reason": "Controlled substances in UAE. Require special approval from UAE Ministry of Health BEFORE travel.",
+          "paperwork_needed": "Prior approval from UAE MOH, original prescription, doctor's letter stating condition and dosage.",
+          "official_source": "UAE MOH controlled medicines list"
+        },
+        {
+          "item": "Alcohol",
+          "category": "beverage",
+          "keywords": ["alcohol", "liquor", "wine", "beer", "whiskey", "rum", "vodka", "brandy"],
+          "status": "restricted",
+          "reason": "Non-Muslim travelers over 21 can bring limited alcohol through duty-free (varies by emirate). Dubai: 4 liters or equivalent. Abu Dhabi: 2 liters.",
+          "paperwork_needed": "Must be purchased from duty-free only. Must be 21+ years old.",
+          "official_source": "Dubai Duty Free / Abu Dhabi Customs"
+        },
+        {
+          "item": "Cigarettes / Tobacco",
+          "category": "tobacco",
+          "keywords": ["cigarettes", "tobacco", "beedi", "bidi", "gutka", "pan masala"],
+          "status": "restricted",
+          "reason": "Allowed up to 400 cigarettes or 500g tobacco per person. Gutka and pan masala with tobacco are BANNED.",
+          "paperwork_needed": "None for allowed quantities. Excess subject to duty.",
+          "official_source": "UAE Customs"
+        },
+        {
+          "item": "Food items (homemade)",
+          "category": "food",
+          "keywords": ["pickles", "achaar", "homemade food", "snacks", "spices", "curry powder", "dried fish", "dried meat"],
+          "status": "restricted",
+          "reason": "Personal food items generally allowed in reasonable quantities. Dried fish and meat products may be inspected. Must be properly packed and sealed.",
+          "paperwork_needed": "None for personal use quantities. Commercial quantities need import permit.",
+          "official_source": "UAE Customs"
+        },
+        {
+          "item": "Electronics (phones, laptops)",
+          "category": "electronics",
+          "keywords": ["phone", "laptop", "tablet", "camera", "drone", "electronics", "computer"],
+          "status": "likely_ok",
+          "reason": "Personal electronics are allowed. Drones require registration with UAE GCAA. Satellite phones are banned.",
+          "paperwork_needed": "Drones: GCAA registration. Satellite phones: Not allowed.",
+          "official_source": "UAE GCAA for drones"
+        },
+        {
+          "item": "Gold and jewelry",
+          "category": "valuables",
+          "keywords": ["gold", "jewelry", "jewellery", "ornaments", "necklace", "ring", "bracelet"],
+          "status": "restricted",
+          "reason": "Personal jewelry is allowed. Large quantities may need to be declared. Carrying gold bars/coins above the limit requires customs declaration.",
+          "paperwork_needed": "Declaration form if exceeding personal use quantity. Keep purchase receipts.",
+          "official_source": "UAE Customs"
+        },
+        {
+          "item": "Cash / Currency",
+          "category": "currency",
+          "keywords": ["cash", "money", "currency", "rupees", "dollars", "dirhams"],
+          "status": "restricted",
+          "reason": "Cash exceeding AED 100,000 (or equivalent ~₹22 lakhs) must be declared at customs.",
+          "paperwork_needed": "Customs declaration form for amounts over AED 100,000.",
+          "official_source": "UAE Central Bank / Customs"
+        },
+        {
+          "item": "Paracetamol / Dolo",
+          "category": "medicine",
+          "keywords": ["paracetamol", "Dolo", "Crocin", "Calpol", "acetaminophen"],
+          "status": "likely_ok",
+          "reason": "Over-the-counter pain reliever. Allowed for personal use in reasonable quantities.",
+          "paperwork_needed": "None for personal use. Carry in original packaging.",
+          "official_source": "UAE MOH"
+        }
+      ]
+    }
+  },
+  "general_advice": [
+    "Always carry medicines in original packaging with labels",
+    "Keep a doctor's prescription for all prescription medicines",
+    "Declare any items you're unsure about at customs – penalties for non-declaration are severe",
+    "Check the UAE MOH website for the latest list of controlled medicines before travel",
+    "When in doubt, contact the UAE Embassy or customs authority before packing the item"
+  ],
+  "official_sources": [
+    {"name": "UAE Federal Customs Authority", "url": "https://www.fca.gov.ae"},
+    {"name": "Dubai Customs", "url": "https://www.dubaicustoms.gov.ae"},
+    {"name": "UAE Ministry of Health", "url": "https://mohap.gov.ae"},
+    {"name": "Dubai Airports", "url": "https://www.dubaiairports.ae"}
+  ]
+}

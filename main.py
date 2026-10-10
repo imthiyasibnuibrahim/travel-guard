@@ -213,7 +213,7 @@ async def sim_guide(
     """Recommend verified UAE SIM plans (e&, du, Virgin) directly from curated data."""
     try:
         from services.sim_service import get_sim_recommendations
-        result = get_sim_recommendations(
+        result = await get_sim_recommendations(
             arrival_city=arrival_city,
             stay_days=stay_days,
             data_usage=data_usage,

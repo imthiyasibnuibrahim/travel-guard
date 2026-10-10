@@ -1793,6 +1793,7 @@
                         <label class="field-label" data-en="Visa Status" data-ml="വിസ തരം" data-hi="वीजा स्थिति">Visa Status</label>
                         <select id="sim-type">
                             <option value="visitor" selected>Tourist / Visitor</option>
+                            <option value="job_seeker">Job Seeker on Visit Visa</option>
                             <option value="resident">Employment / Resident</option>
                         </select>
                     </div>
@@ -2612,62 +2613,143 @@
         function renderSimPlans(data) {
             let html = `<div class="result-wrapper">`;
 
-            // Free Tourist SIM at Immigration Banner
-            if (data.airport_free_sim_info) {
-                const freeInfo = data.airport_free_sim_info;
+            // 1. AI Recommendation & "Why" Assessment Card
+            if (data.why || data.best_pick) {
                 html += `
-                    <div class="glass-card" style="background:linear-gradient(135deg, rgba(218,235,227,0.8), rgba(253,232,211,0.8));">
+                    <div class="glass-card" style="border-left: 4px solid var(--safe);">
+                        <div class="glass-result-header">
+                            <h3>💡 ${currentLang === 'ml' ? 'ശുപാർശ വിശകലനം' : (currentLang === 'hi' ? 'सलाह व विश्लेषण' : 'TravelGuard SIM Recommendation')}</h3>
+                            <button class="audio-pill-btn" onclick="toggleReadAloud(\`${(data.why || '').replace(/`/g, "'")}\`, this)">
+                                🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud')}
+                            </button>
+                        </div>
+                        <p style="font-size:0.86rem;color:var(--text-main);line-height:1.55;font-weight:600;">
+                            ${data.why || ''}
+                        </p>
+                        <div style="font-size:0.76rem;color:var(--text-muted);margin-top:6px;">
+                            ${currentLang === 'ml' ? 'കണക്കാക്കിയ ഡാറ്റ ആവശ്യം' : (currentLang === 'hi' ? 'अनुमानित डेटा आवश्यकता' : 'Estimated Data Needed')}: <strong>${data.estimated_gb_needed || 7} GB</strong> (${data.stay_days || 7} ${currentLang === 'ml' ? 'ദിവസം' : (currentLang === 'hi' ? 'दिन' : 'Days')})
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 2. Free Tourist SIM / Airport Note Card
+            if (data.free_sim_info && data.free_sim_info.details) {
+                html += `
+                    <div class="glass-card" style="background:linear-gradient(135deg, rgba(218,235,227,0.85), rgba(253,232,211,0.85));">
                         <div style="font-size:0.95rem;font-weight:800;color:var(--safe);margin-bottom:4px;">
-                            🎁 ${freeInfo.title}
+                            🎁 ${data.free_sim_info.title}
                         </div>
                         <p style="font-size:0.8rem;color:var(--text-main);line-height:1.45;">
-                            ${freeInfo.details}
+                            ${data.free_sim_info.details}
                         </p>
                     </div>
                 `;
             }
 
-            // Operator Recommended Cards
-            if (data.recommendations) {
-                data.recommendations.forEach(rec => {
-                    html += `
-                        <div class="glass-card">
-                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-                                <div>
-                                    <h3 style="font-size:1.05rem;font-weight:800;">${rec.operator}</h3>
-                                    <div style="font-size:0.75rem;color:var(--c-slate);font-weight:700;">${rec.badge}</div>
+            // Helper to render a plan card
+            function planCardHtml(p, isBest) {
+                const confClass = p.confidence || 'medium';
+                const confColor = confClass === 'high' ? 'var(--safe)' : (confClass === 'medium' ? 'var(--warning)' : 'var(--danger)');
+                const confBg = confClass === 'high' ? 'var(--safe-bg)' : (confClass === 'medium' ? 'var(--warning-bg)' : 'var(--danger-bg)');
+                
+                const priceAed = p.price_aed !== null && p.price_aed !== undefined ? `AED ${p.price_aed}` : 'Free / Promo';
+                const priceInr = p.price_inr_approx ? `(₹${p.price_inr_approx.toLocaleString()})` : '';
+
+                return `
+                    <div class="glass-card" style="${isBest ? 'border: 2px solid var(--safe); box-shadow: var(--glass-shadow);' : ''}">
+                        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">
+                            <div>
+                                ${isBest ? `<span style="display:inline-block;background:var(--safe);color:#fff;font-size:0.68rem;font-weight:800;padding:2px 8px;border-radius:var(--radius-pill);margin-bottom:4px;letter-spacing:0.5px;">★ BEST PICK</span>` : ''}
+                                <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-main);">${p.plan_name}</h3>
+                                <div style="font-size:0.75rem;color:var(--c-slate);font-weight:700;">${p.operator} • ${p.product_type ? p.product_type.replace(/_/g, ' ').toUpperCase() : 'SIM'}</div>
+                            </div>
+                            <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;padding:3px 9px;border-radius:var(--radius-pill);background:${confBg};color:${confColor};border:1px solid ${confColor};flex-shrink:0;">
+                                ${confClass} confidence
+                            </span>
+                        </div>
+
+                        <div style="background:rgba(255,255,255,0.65);border-radius:var(--radius-sm);padding:13px;border:1px solid var(--glass-border);margin-bottom:10px;">
+                            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                                <div style="font-size:1.2rem;font-weight:800;color:var(--safe);">
+                                    ${priceAed} <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600;">${priceInr}</span>
                                 </div>
-                                <a href="${rec.official_url}" target="_blank" style="font-size:0.75rem;font-weight:700;color:var(--safe);text-decoration:none;padding:4px 10px;background:rgba(255,255,255,0.7);border-radius:var(--radius-pill);border:1px solid var(--glass-border);">
-                                    Official Site ↗
+                                <div style="font-size:0.8rem;font-weight:700;color:var(--text-main);">
+                                    ⏳ ${p.validity}
+                                </div>
+                            </div>
+                            <div style="font-size:0.84rem;color:var(--text-main);font-weight:700;margin-top:6px;">
+                                📶 ${p.data} • 📞 ${p.minutes}
+                            </div>
+                            ${p.perks && p.perks.length > 0 ? `
+                                <div style="font-size:0.74rem;color:var(--text-muted);margin-top:4px;">
+                                    ✨ ${p.perks.join(' • ')}
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        ${p.verify_note ? `
+                            <div style="font-size:0.72rem;color:var(--warning);line-height:1.4;margin-bottom:8px;">
+                                ⚠️ ${p.verify_note}
+                            </div>
+                        ` : ''}
+
+                        ${p.source_url ? `
+                            <div style="text-align:right;">
+                                <a href="${p.source_url}" target="_blank" style="font-size:0.74rem;font-weight:700;color:var(--c-slate-dark);text-decoration:none;">
+                                    Verify on Official Portal ↗
                                 </a>
                             </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
 
-                            <div style="background:rgba(255,255,255,0.6);border-radius:var(--radius-sm);padding:12px;border:1px solid var(--glass-border);margin-bottom:10px;">
-                                <div style="display:flex;justify-content:space-between;align-items:baseline;">
-                                    <div style="font-size:0.92rem;font-weight:800;">${rec.recommended_plan.plan_name}</div>
-                                    <div style="font-size:1.15rem;font-weight:800;color:var(--safe);">AED ${rec.recommended_plan.price_aed}</div>
-                                </div>
-                                <div style="font-size:0.82rem;color:var(--text-main);font-weight:700;margin-top:4px;">
-                                    📶 ${rec.recommended_plan.data} • ⏳ ${rec.recommended_plan.validity}
-                                </div>
-                                <div style="font-size:0.76rem;color:var(--text-muted);margin-top:3px;">
-                                    🎯 ${rec.recommended_plan.recommended_for}
-                                </div>
-                            </div>
+            // 3. Render Best Pick
+            if (data.best_pick) {
+                html += planCardHtml(data.best_pick, true);
+            }
 
-                            <div style="font-size:0.74rem;color:var(--text-muted);">
-                                📍 <strong>Airport Kiosk:</strong> ${rec.counter_locations}
-                            </div>
-                        </div>
-                    `;
+            // 4. Render Alternatives
+            if (data.alternatives && data.alternatives.length > 0) {
+                html += `
+                    <div class="result-group-title" style="margin:16px 4px 10px;">
+                        🔄 ${currentLang === 'ml' ? 'മറ്റ് തിരഞ്ഞെടുപ്പുകൾ' : (currentLang === 'hi' ? 'वैकल्पिक प्लान' : 'Alternative Options')}
+                    </div>
+                `;
+                data.alternatives.forEach(alt => {
+                    html += planCardHtml(alt, false);
+                });
+            } else if (!data.best_pick && data.recommended_plans && data.recommended_plans.length > 0) {
+                // Backward compatibility if best_pick wasn't segregated
+                data.recommended_plans.forEach((p, idx) => {
+                    html += planCardHtml(p, idx === 0);
                 });
             }
 
-            // Disclaimer
+            // 5. Warnings / Advice
+            if (data.warnings && data.warnings.length > 0) {
+                html += `
+                    <div class="glass-card">
+                        <div class="result-group-title">⚠️ ${currentLang === 'ml' ? 'പ്രധാന കാര്യങ്ങൾ' : (currentLang === 'hi' ? 'जरूरी निर्देश' : 'Important Telecom Notes')}</div>
+                        <ul class="glass-list verify">
+                            ${data.warnings.map(w => `<li><span>📌</span> ${w}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            // 6. Confirmed Disclaimer & Notice (Fixing "Notice: undefined" bug)
+            const noticeText = data.notice || (data.meta && data.meta.notice) || (data.meta && data.meta.disclaimer) || 'Plan prices and data allowances change often. Confirm at the counter or in the operator app.';
+            const lastChecked = data.last_checked || (data.meta && data.meta.last_checked) || '2026-10-11';
+
             html += `
                 <div class="official-disclaimer">
-                    <strong>⚠️ ${currentLang === 'ml' ? 'നിരക്ക് മാറ്റങ്ങൾ:' : (currentLang === 'hi' ? 'कीमत सूचना:' : 'Notice:')}</strong>
-                    ${data.disclaimer} (${data.verified_date || 'Verified: 2026-10-10'})
+                    <strong>⚠️ ${currentLang === 'ml' ? 'അറിയിപ്പ്:' : (currentLang === 'hi' ? 'सूचना:' : 'Notice:')}</strong>
+                    ${noticeText}
+                    <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;">
+                        ${currentLang === 'ml' ? 'അവസാനം പരിശോധിച്ചത്' : (currentLang === 'hi' ? 'अंतिम सत्यापन' : 'Last Checked')}: ${lastChecked}
+                    </div>
                 </div>
             `;
 

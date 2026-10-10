@@ -759,6 +759,77 @@
 
         .hidden { display: none !important; }
 
+        /* Initial State Safety Insights (Eliminates blank space on mobile and web) */
+        .safety-insight-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-card);
+            padding: 14px 16px;
+            margin-top: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .insight-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .insight-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--c-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .insight-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--c-teal-dark);
+            background: var(--c-teal-light);
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+        }
+
+        .insight-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px solid #F8FAFC;
+        }
+
+        .insight-row:last-child {
+            border-bottom: none;
+            padding-bottom: 2px;
+        }
+
+        .insight-icon {
+            font-size: 1.15rem;
+            line-height: 1.2;
+            flex-shrink: 0;
+        }
+
+        .insight-heading {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .insight-text {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            line-height: 1.42;
+        }
+
         /* ===== DEDICATED HIGH-FINESSE MOBILE VIEW (< 640px) ===== */
         @media (max-width: 640px) {
             :root {
@@ -1093,6 +1164,40 @@
 
             <div class="skeleton-card" id="offer-skeleton"></div>
             <div id="offer-result" class="result-box"></div>
+
+            <!-- Initial State Authority Guide (Eliminates Blank Space) -->
+            <div id="offer-initial-guide" class="safety-insight-card">
+                <div class="insight-header">
+                    <span class="insight-title" data-en="Official UAE & Gulf Migration Rules" data-ml="ഔദ്യോഗിക കുടിയേറ്റ നിയമങ്ങൾ" data-hi="आधिकारिक खाड़ी प्रवासन नियम">Official UAE & Gulf Migration Rules</span>
+                    <span class="insight-badge" data-en="Official Law" data-ml="നിയമ സംരക്ഷണം" data-hi="आधिकारिक नियम">Official Law</span>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🛡️</span>
+                    <div>
+                        <div class="insight-heading" data-en="Zero Recruitment Fees" data-ml="റിക്രൂട്ട്മെന്റ് ഫീസ് നൽകരുത്" data-hi="शून्य भर्ती शुल्क">Zero Recruitment Fees</div>
+                        <div class="insight-text" data-en="Under UAE Federal Law & Indian Emigration Act, employers must bear all visa and recruitment costs. Demanding upfront money is a 100% fraud sign." data-ml="യുഎഇ നിയമപ്രകാരം വിസ ചെലവ് തൊഴിലുടമ വഹിക്കണം. പണം ആവശ്യപ്പെടുന്നത് തട്ടിപ്പാണ്." data-hi="यूएई कानून के अनुसार नियोक्ता को सारा खर्च उठाना होगा। अग्रिम शुल्क मांगना धोखाधड़ी है।">Under UAE Federal Law & Indian Emigration Act, employers must bear all visa and recruitment costs. Demanding upfront money is a 100% fraud sign.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🛂</span>
+                    <div>
+                        <div class="insight-heading" data-en="Tourist Visa Work Prohibited" data-ml="ടൂറിസ്റ്റ് വിസയിൽ ജോലി നിയമവിരുദ്ധം" data-hi="पर्यटक वीजा पर काम अवैध है">Tourist Visa Work Prohibited</div>
+                        <div class="insight-text" data-en="Working on a visit or tourist visa leads to immediate detention, deportation, fines, and lifetime GCC re-entry ban. Always require an official Employment Entry Permit." data-ml="സന്ദർശക വിസയിൽ ജോലി ചെയ്യുന്നത് നാടുകടത്തലിനും ആജീവനാന്ത വിലക്കിനും കാരണമാകും." data-hi="विजिट वीजा पर काम करने पर निर्वासन और आजीवन प्रतिबंध हो सकता है।">Working on a visit or tourist visa leads to immediate detention, deportation, fines, and lifetime GCC re-entry ban. Always require an official Employment Entry Permit.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🏛️</span>
+                    <div>
+                        <div class="insight-heading" data-en="Verify Agent on eMigrate" data-ml="eMigrate-ൽ ഏജൻസിയെ പരിശോധിക്കുക" data-hi="ई-माइग्रेट पर एजेंसी जांचें">Verify Agent on eMigrate</div>
+                        <div class="insight-text" data-en="Only Recruiting Agents licensed by the Ministry of External Affairs (MEA) can process overseas employment. Check agency license on emigrate.gov.in." data-ml="eMigrate പോർട്ടലിൽ ഏജൻസിയുടെ രജിസ്ട്രേഷൻ പരിശോധിച്ച് ഉറപ്പുവരുത്തുക." data-hi="पासपोर्ट देने से पहले ई-माइग्रेट पोर्टल पर एजेंसी की जांच करें।">Only Recruiting Agents licensed by the Ministry of External Affairs (MEA) can process overseas employment. Check agency license on emigrate.gov.in.</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid #F1F5F9;">
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-teal-dark);background:var(--c-teal-light);padding:2px 8px;border-radius:9999px;">✓ eMigrate Verified</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-navy);background:#E2E8F0;padding:2px 8px;border-radius:9999px;">✓ MOHRE UAE Protections</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:9999px;">✓ NORKA-Roots Helpline</span>
+                </div>
+            </div>
         </section>
 
         <!-- ========================================== -->
@@ -1128,6 +1233,40 @@
 
             <div class="skeleton-card" id="contract-skeleton"></div>
             <div id="contract-result" class="result-box"></div>
+
+            <!-- Initial State Labor Law Guide (Eliminates Blank Space) -->
+            <div id="contract-initial-guide" class="safety-insight-card">
+                <div class="insight-header">
+                    <span class="insight-title" data-en="UAE Federal Labor Safeguards (Law No. 33)" data-ml="യുഎഇ തൊഴിൽ നിയമ സുരക്ഷകൾ" data-hi="यूएई श्रम कानून सुरक्षाएं">UAE Federal Labor Safeguards (Law No. 33)</span>
+                    <span class="insight-badge" data-en="Decree 2021" data-ml="നിയമം 33" data-hi="डिक्री 2021">Decree 2021</span>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🚫</span>
+                    <div>
+                        <div class="insight-heading" data-en="Passport Retention is Illegal" data-ml="പാസ്‌പോർട്ട് പിടിച്ചുവെക്കുന്നത് നിയമവിരുദ്ധം" data-hi="पासपोर्ट जब्ती अवैध है">Passport Retention is Illegal</div>
+                        <div class="insight-text" data-en="Under UAE Ministerial Decree No. 267 of 2015, employers are strictly prohibited from retaining employee passports. Your passport remains your personal property." data-ml="തൊഴിലുടമകൾ തൊഴിലാളിയുടെ പാസ്‌പോർട്ട് സൂക്ഷിക്കുന്നത് നിയമവിരുദ്ധമാണ്." data-hi="नियोक्ता द्वारा पासपोर्ट रखना पूर्णतः गैरकानूनी है।">Under UAE Ministerial Decree No. 267 of 2015, employers are strictly prohibited from retaining employee passports. Your passport remains your personal property.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">⏱️</span>
+                    <div>
+                        <div class="insight-heading" data-en="Standard 8-Hour Workday" data-ml="പരമാവധി 8 മണിക്കൂർ ജോലി" data-hi="अधिकतम 8 घंटे कार्य">Standard 8-Hour Workday</div>
+                        <div class="insight-text" data-en="Maximum statutory working time is 8 hours/day or 48 hours/week. Any additional work requires overtime compensation as mandated by MOHRE." data-ml="ദിവസേന 8 മണിക്കൂറോ ആഴ്ചയിൽ 48 മണിക്കൂറോ ആണ് ജോലി സമയം. അധിക സമയത്തിന് ഓവർടൈം വേതനം ലഭിക്കണം." data-hi="अधिकतम कार्य समय 8 घंटे/दिन है। अतिरिक्त कार्य के लिए ओवरटाइम अनिवार्य है।">Maximum statutory working time is 8 hours/day or 48 hours/week. Any additional work requires overtime compensation as mandated by MOHRE.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">📄</span>
+                    <div>
+                        <div class="insight-heading" data-en="Only MOHRE Contracts are Binding" data-ml="MOHRE കരാർ മാത്രം സാധുതയുള്ളത്" data-hi="केवल MOHRE अनुबंध मान्य है">Only MOHRE Contracts are Binding</div>
+                        <div class="insight-text" data-en="Private agreements or internal offer letters cannot reduce statutory MOHRE contract benefits. Always verify your unified electronic contract on the MOHRE mobile app." data-ml="MOHRE പോർട്ടലിലെ ഔദ്യോഗിക കരാർ മാത്രമേ നിയമപരമായി നിലനിൽക്കൂ." data-hi="केवल MOHRE ऐप पर पंजीकृत इलेक्ट्रॉनिक अनुबंध ही कानूनन मान्य है।">Private agreements or internal offer letters cannot reduce statutory MOHRE contract benefits. Always verify your unified electronic contract on the MOHRE mobile app.</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid #F1F5F9;">
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-teal-dark);background:var(--c-teal-light);padding:2px 8px;border-radius:9999px;">✓ MOHRE UAE Portal</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-navy);background:#E2E8F0;padding:2px 8px;border-radius:9999px;">✓ Wage Protection System (WPS)</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:9999px;">✓ Indian Embassy Abu Dhabi</span>
+                </div>
+            </div>
         </section>
 
         <!-- ========================================== -->
@@ -1181,6 +1320,40 @@
 
             <div class="skeleton-card" id="pack-skeleton"></div>
             <div id="pack-result" class="result-box"></div>
+
+            <!-- Initial State Customs Guide (Eliminates Blank Space) -->
+            <div id="pack-initial-guide" class="safety-insight-card">
+                <div class="insight-header">
+                    <span class="insight-title" data-en="UAE Customs Border Regulations" data-ml="യുഎഇ കസ്റ്റംസ് അതിർത്തി നിയമങ്ങൾ" data-hi="यूएई कस्टम्स सीमा नियम">UAE Customs Border Regulations</span>
+                    <span class="insight-badge" data-en="Customs Desk" data-ml="കസ്റ്റംസ്" data-hi="कस्टम्स">Customs Desk</span>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🚨</span>
+                    <div>
+                        <div class="insight-heading" data-en="Strictly Banned Medications" data-ml="നിരോധിത മരുന്നുകൾ" data-hi="प्रतिबंधित दवाइयां">Strictly Banned Medications</div>
+                        <div class="insight-text" data-en="Cough syrups containing Codeine (Corex, Phensedyl) and sleeping sedatives (Alprazolam, Tramadol) are strictly controlled. Carrying without prior approval leads to arrest." data-ml="കൊഡൈൻ അടങ്ങിയ കഫ് സിറപ്പുകളും ചില വേദനസംഹാരികളും യുഎഇയിൽ പൂർണ്ണമായി നിരോധിച്ചിരിക്കുന്നു." data-hi="कोडीन युक्त कफ सिरप और ट्रामाडोल बिना अनुमति ले जाने पर कठोर सजा का प्रावधान है।">Cough syrups containing Codeine (Corex, Phensedyl) and sleeping sedatives (Alprazolam, Tramadol) are strictly controlled. Carrying without prior approval leads to arrest.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">💵</span>
+                    <div>
+                        <div class="insight-heading" data-en="Declared Cash Limit: AED 60,000" data-ml="പണ പരിധി: AED 60,000" data-hi="नकद सीमा: AED 60,000">Declared Cash Limit: AED 60,000</div>
+                        <div class="insight-text" data-en="Travelers carrying cash, gold, or traveler's cheques exceeding AED 60,000 (or equivalent foreign currency) must declare at the Customs Declaration counter." data-ml="AED 60,000-ൽ കൂടുതൽ തുകയോ സ്വർണ്ണമോ കൈവശമുണ്ടെങ്കിൽ കസ്റ്റംസിൽ നിർബന്ധമായും ഡിക്ലയർ ചെയ്യണം." data-hi="60,000 दिरहम से अधिक नकद या सोने का सामान होने पर कस्टम्स में घोषणा अनिवार्य है।">Travelers carrying cash, gold, or traveler's cheques exceeding AED 60,000 (or equivalent foreign currency) must declare at the Customs Declaration counter.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🥘</span>
+                    <div>
+                        <div class="insight-heading" data-en="Sealed Homemade Foods & Spices" data-ml="ഭക്ഷണ സാധനങ്ങൾ ഭദ്രമായി പായ്ക്ക് ചെയ്യുക" data-hi="खाद्य सामग्री की पैकिंग">Sealed Homemade Foods & Spices</div>
+                        <div class="insight-text" data-en="Pickles, spices, and homemade foods are permitted for personal consumption if properly airtight sealed. Commercial quantities or pork products are prohibited." data-ml="അച്ചാറുകളും സുഗന്ധവ്യഞ്ജനങ്ങളും എയർടൈറ്റ് പാക്കിംഗിൽ വ്യക്തിഗത ഉപയോഗത്തിന് അനുവദനീയമാണ്." data-hi="व्यक्तिगत उपयोग के लिए एयरटाइट पैकिंग में मसाले व अचार ले जाने की अनुमति है।">Pickles, spices, and homemade foods are permitted for personal consumption if properly airtight sealed. Commercial quantities or pork products are prohibited.</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid #F1F5F9;">
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-teal-dark);background:var(--c-teal-light);padding:2px 8px;border-radius:9999px;">✓ Federal Customs Authority</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-navy);background:#E2E8F0;padding:2px 8px;border-radius:9999px;">✓ MOHAP Controlled Drug List</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:9999px;">✓ Dubai Customs Smart App</span>
+                </div>
+            </div>
         </section>
 
         <!-- ========================================== -->
@@ -1227,6 +1400,40 @@
 
             <div class="skeleton-card" id="cl-skeleton"></div>
             <div id="cl-result" class="result-box"></div>
+
+            <!-- Initial State Emigration Milestone Guide (Eliminates Blank Space) -->
+            <div id="cl-initial-guide" class="safety-insight-card">
+                <div class="insight-header">
+                    <span class="insight-title" data-en="Gulf Travel Milestone Roadmap" data-ml="യാത്രാ ഘട്ടങ്ങളുടെ സമയക്രമം" data-hi="यात्रा के प्रमुख चरण">Gulf Travel Milestone Roadmap</span>
+                    <span class="insight-badge" data-en="Checklist" data-ml="ചെക്ക്‌ലിസ്റ്റ്" data-hi="चेकलिस्ट">Checklist</span>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">📅</span>
+                    <div>
+                        <div class="insight-heading" data-en="30 Days Out: Passport & PoE Check" data-ml="30 ദിവസം മുമ്പ്: പാസ്‌പോർട്ടും ഇമിഗ്രേഷനും" data-hi="30 दिन पूर्व: पासपोर्ट व इमिग्रेशन">30 Days Out: Passport & PoE Check</div>
+                        <div class="insight-text" data-en="Confirm minimum 6-month passport validity. Holders of ECR (Emigration Check Required) passports traveling for employment must receive PoE clearance." data-ml="പാസ്‌പോർട്ടിന് കുറഞ്ഞത് 6 മാസം കാലാവധി ഉണ്ടെന്ന് ഉറപ്പുവരുത്തുക. ECR പാസ്‌പോർട്ടുകൾക്ക് PoE ക്ലിയറൻസ് നേടുക." data-hi="पासपोर्ट की 6 महीने वैधता जांचें। ECR पासपोर्ट पर काम के लिए PoE क्लीयरेंस आवश्यक है।">Confirm minimum 6-month passport validity. Holders of ECR (Emigration Check Required) passports traveling for employment must receive PoE clearance.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🛡️</span>
+                    <div>
+                        <div class="insight-heading" data-en="7 Days Out: Visa Verification & Insurance" data-ml="7 ദിവസം മുമ്പ്: വിസയും ഇൻഷുറൻസും" data-hi="7 दिन पूर्व: वीजा व बीमा">7 Days Out: Visa Verification & Insurance</div>
+                        <div class="insight-text" data-en="Verify e-visa validity on official ICP (smartservices.icp.gov.ae) or GDRFA portal. Confirm mandatory Pravasi Bharatiya Bima Yojana (PBBY) policy." data-ml="ഔദ്യോഗിക ICP പോർട്ടലിൽ വിസ പരിശോധിക്കുക. പ്രവാസി ഭാരതീയ ബീമാ യോജന ഇൻഷുറൻസ് ഉറപ്പുവരുത്തുക." data-hi="ICP पोर्टल पर वीजा की वैधता जांचें और प्रवासी भारतीय बीमा योजना (PBBY) पॉलिसी लें।">Verify e-visa validity on official ICP (smartservices.icp.gov.ae) or GDRFA portal. Confirm mandatory Pravasi Bharatiya Bima Yojana (PBBY) policy.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">✈️</span>
+                    <div>
+                        <div class="insight-heading" data-en="Departure Day: 4-Hour Airport Window" data-ml="യാത്രാ ദിവസം: 4 മണിക്കൂർ മുമ്പ് എത്തുക" data-hi="उड़ान का दिन: 4 घंटे पहले पहुंचें">Departure Day: 4-Hour Airport Window</div>
+                        <div class="insight-text" data-en="Arrive at departure airport 4 hours prior to international scheduled takeoff. ECR employment travelers must visit the PoE inspection counter before security." data-ml="അന്താരാഷ്ട്ര വിമാനങ്ങൾക്ക് 4 മണിക്കൂർ മുമ്പ് എയർപോർട്ടിൽ എത്തുക. ECR യാത്രക്കാർ PoE കൗണ്ടർ സന്ദർശിക്കണം." data-hi="अंतरराष्ट्रीय उड़ानों के लिए 4 घंटे पूर्व पहुंचें। ECR यात्रियों को PoE काउंटर जाना होगा।">Arrive at departure airport 4 hours prior to international scheduled takeoff. ECR employment travelers must visit the PoE inspection counter before security.</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid #F1F5F9;">
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-teal-dark);background:var(--c-teal-light);padding:2px 8px;border-radius:9999px;">✓ Bureau of Immigration</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-navy);background:#E2E8F0;padding:2px 8px;border-radius:9999px;">✓ ICP Smart Services</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:9999px;">✓ Protector of Emigrants</span>
+                </div>
+            </div>
         </section>
 
         <!-- ========================================== -->
@@ -1347,6 +1554,40 @@
 
             <div class="skeleton-card" id="bg-skeleton"></div>
             <div id="bg-result" class="result-box"></div>
+
+            <!-- Initial State Airport Station Guide (Eliminates Blank Space) -->
+            <div id="bg-initial-guide" class="safety-insight-card">
+                <div class="insight-header">
+                    <span class="insight-title" data-en="Airport Station Sequence" data-ml="എയർപോർട്ട് ഘട്ടങ്ങൾ" data-hi="हवाई अड्डा चरण">Airport Station Sequence</span>
+                    <span class="insight-badge" data-en="Airport Flow" data-ml="നടപടിക്രമങ്ങൾ" data-hi="प्रक्रिया">Airport Flow</span>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🛄</span>
+                    <div>
+                        <div class="insight-heading" data-en="Check-in & Bag Drop Closes at T-60m" data-ml="ചെക്ക്-ഇൻ കൗണ്ടർ 60 മിനിറ്റ് മുമ്പ് അടയ്ക്കും" data-hi="चेक-इन 60 मिनट पहले बंद होता है">Check-in & Bag Drop Closes at T-60m</div>
+                        <div class="insight-text" data-en="Airlines strictly close baggage drop desks 60 minutes before scheduled departure. Power banks must remain in your handbag, never in checked luggage." data-ml="വിമാനം പുറപ്പെടുന്നതിന് 60 മിനിറ്റ് മുമ്പ് ചെക്ക്-ഇൻ കൗണ്ടറുകൾ അടയ്ക്കും. പവർ ബാങ്കുകൾ ഹാൻഡ്ബാഗിൽ മാത്രം സൂക്ഷിക്കുക." data-hi="उड़ान से 60 मिनट पहले चेक-इन बंद हो जाता है। पावर बैंक केवल हैंडबैग में रखें।">Airlines strictly close baggage drop desks 60 minutes before scheduled departure. Power banks must remain in your handbag, never in checked luggage.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🛡️</span>
+                    <div>
+                        <div class="insight-heading" data-en="PoE Emigration Desk (ECR Only)" data-ml="PoE ഇമിഗ്രേഷൻ കൗണ്ടർ (ECR മാത്രം)" data-hi="PoE इमिग्रेशन काउंटर (केवल ECR)">PoE Emigration Desk (ECR Only)</div>
+                        <div class="insight-text" data-en="ECR passport holders departing for work must get their physical stamp or digital eMigrate clearance verified before passing central immigration." data-ml="തൊഴിൽ വിസയിൽ പോകുന്ന ECR യാത്രക്കാർ സെൻട്രൽ ഇമിഗ്രേഷന് മുമ്പ് PoE പരിശോധന പൂർത്തിയാക്കണം." data-hi="काम के लिए जाने वाले ECR यात्रियों को केंद्रीय इमिग्रेशन से पहले PoE सत्यापन कराना होगा।">ECR passport holders departing for work must get their physical stamp or digital eMigrate clearance verified before passing central immigration.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🚪</span>
+                    <div>
+                        <div class="insight-heading" data-en="Boarding Gate Final Call at T-25m" data-ml="ബോർഡിംഗ് ഗേറ്റ് 25 മിനിറ്റ് മുമ്പ് അടയ്ക്കും" data-hi="बोर्डिंग गेट 25 मिनट पहले बंद">Boarding Gate Final Call at T-25m</div>
+                        <div class="insight-text" data-en="Boarding gates close promptly 20 to 25 minutes prior to departure. Allow 30 minutes for security scanning and duty-free terminal transit." data-ml="വിമാനം പുറപ്പെടുന്നതിന് 20-25 മിനിറ്റ് മുമ്പ് ബോർഡിംഗ് ഗേറ്റ് അടയ്ക്കും. സെക്യൂരിറ്റി പരിശോധനയ്ക്ക് മുൻകൂട്ടി സമയം കണ്ടെത്തുക." data-hi="उड़ान से 20-25 मिनट पहले गेट बंद हो जाता है। सुरक्षा जांच हेतु पर्याप्त समय रखें।">Boarding gates close promptly 20 to 25 minutes prior to departure. Allow 30 minutes for security scanning and duty-free terminal transit.</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid #F1F5F9;">
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-teal-dark);background:var(--c-teal-light);padding:2px 8px;border-radius:9999px;">✓ CISF Airport Security</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-navy);background:#E2E8F0;padding:2px 8px;border-radius:9999px;">✓ Bureau of Immigration</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:9999px;">✓ CIAL / Cochin Airport Standards</span>
+                </div>
+            </div>
         </section>
 
         <!-- ========================================== -->
@@ -1403,6 +1644,40 @@
 
             <div class="skeleton-card" id="sim-skeleton"></div>
             <div id="sim-result" class="result-box"></div>
+
+            <!-- Initial State UAE SIM Guide (Eliminates Blank Space) -->
+            <div id="sim-initial-guide" class="safety-insight-card">
+                <div class="insight-header">
+                    <span class="insight-title" data-en="UAE Telecom Airport Advisory" data-ml="യുഎഇ ടെലികോം വിവരങ്ങൾ" data-hi="यूएई टेलीकॉम जानकारी">UAE Telecom Airport Advisory</span>
+                    <span class="insight-badge" data-en="Arrival Tips" data-ml="ടിപ്പുകൾ" data-hi="टिप्स">Arrival Tips</span>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🎁</span>
+                    <div>
+                        <div class="insight-heading" data-en="Complimentary 1GB SIM at Passport Control" data-ml="ഇമിഗ്രേഷൻ കൗണ്ടറിലെ സൗജന്യ സിം" data-hi="पासपोर्ट कंट्रोल पर फ्री सिम">Complimentary 1GB SIM at Passport Control</div>
+                        <div class="insight-text" data-en="Every visitor over 18 traveling via Dubai (DXB) or Abu Dhabi (AUH) receives a complimentary tourist SIM with 1GB free data upon immigration stamp (valid 24h). Recharge via official du or e& apps." data-ml="ദുബായ്, അബുദാബി ഇമിഗ്രേഷൻ പാസ്പോർട്ട് കൺട്രോളിൽ 1GB സൗജന്യ ഡാറ്റയുള്ള സിം കാർഡ് ലഭിക്കും." data-hi="दुबई व अबू धाबी में पासपोर्ट जांच के समय 1GB फ्री डेटा वाला टूरिस्ट सिम मिलता है।">Every visitor over 18 traveling via Dubai (DXB) or Abu Dhabi (AUH) receives a complimentary tourist SIM with 1GB free data upon immigration stamp (valid 24h). Recharge via official du or e& apps.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">🏬</span>
+                    <div>
+                        <div class="insight-heading" data-en="Official Airport Telecom Desks" data-ml="ഔദ്യോഗിക എയർപോർട്ട് കൗണ്ടറുകൾ" data-hi="आधिकारिक हवाई अड्डा काउंटर">Official Airport Telecom Desks</div>
+                        <div class="insight-text" data-en="Official operator kiosks (e&, du, Virgin Mobile) are open 24/7 in the arrivals baggage collection hall. Always inspect the tariff sheet at the counter before paying." data-ml="അറൈവൽസ് ഹാളിൽ 24 മണിക്കൂറും പ്രവർത്തിക്കുന്ന ഔദ്യോഗിക കൗണ്ടറുകൾ ലഭ്യമാണ്." data-hi="आगमन हॉल में e&, du और Virgin के आधिकारिक काउंटर 24 घंटे खुले रहते हैं।">Official operator kiosks (e&, du, Virgin Mobile) are open 24/7 in the arrivals baggage collection hall. Always inspect the tariff sheet at the counter before paying.</div>
+                    </div>
+                </div>
+                <div class="insight-row">
+                    <span class="insight-icon">📶</span>
+                    <div>
+                        <div class="insight-heading" data-en="Free Airport High-Speed Wi-Fi" data-ml="സൗജന്യ എയർപോർട്ട് വൈഫൈ" data-hi="मुफ्त हवाई अड्डा वाई-फाई">Free Airport High-Speed Wi-Fi</div>
+                        <div class="insight-text" data-en="Connect to 'DXB Free WiFi' or 'AUH Free Airport WiFi' without requiring a local mobile number to book your airport Careem / Uber taxi or contact family." data-ml="ലോക്കൽ സിം ഇല്ലാതെ തന്നെ ബന്ധുക്കളെ വിളിക്കാൻ എയർപോർട്ട് വൈഫൈ ഉപയോഗിക്കാം." data-hi="स्थानीय सिम के बिना टैक्सी बुक करने व संपर्क करने के लिए हवाई अड्डा वाई-फाई का उपयोग करें।">Connect to 'DXB Free WiFi' or 'AUH Free Airport WiFi' without requiring a local mobile number to book your airport Careem / Uber taxi or contact family.</div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid #F1F5F9;">
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-teal-dark);background:var(--c-teal-light);padding:2px 8px;border-radius:9999px;">✓ e& (Etisalat) Verified</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:var(--c-navy);background:#E2E8F0;padding:2px 8px;border-radius:9999px;">✓ du Telecom Plans</span>
+                    <span style="font-size:0.68rem;font-weight:700;color:#B45309;background:#FEF3C7;padding:2px 8px;border-radius:9999px;">✓ Virgin Mobile UAE</span>
+                </div>
+            </div>
         </section>
 
         <!-- ========================================== -->

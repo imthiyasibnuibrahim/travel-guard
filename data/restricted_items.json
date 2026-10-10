@@ -109,10 +109,11 @@
           "category": "currency",
           "keywords": ["cash", "money", "currency", "rupees", "dollars", "dirhams"],
           "status": "restricted",
-          "reason": "Cash exceeding AED 100,000 (or equivalent ~₹22 lakhs) must be declared at customs.",
-          "paperwork_needed": "Customs declaration form for amounts over AED 100,000.",
-          "official_source": "UAE Central Bank / Customs"
+          "reason": "Official UAE Federal Customs Authority (FCA) limit: Any traveler (18+) carrying cash, currencies, bearer negotiable instruments, or precious metals/stones exceeding AED 60,000 (or equivalent in foreign currency, approx. ₹13.5 Lakhs) MUST declare it via the Afsah customs app or at airport declaration counters upon arrival. Failure to declare leads to confiscation and legal penalties.",
+          "paperwork_needed": "UAE Customs 'Afsah' declaration form or declaration counter at customs if exceeding AED 60,000.",
+          "official_source": "UAE Federal Authority for Identity, Citizenship, Customs & Port Security (FCA - fca.gov.ae)"
         },
+
         {
           "item": "Paracetamol / Dolo",
           "category": "medicine",

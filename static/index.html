@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>TravelGuard - Safe Journeys Begin Here</title>
-    <meta name="description" content="AI-powered travel safety assistant for first-time travelers to the Gulf">
+    <meta name="description" content="AI-powered travel safety assistant for first-time Gulf travelers">
     <meta name="theme-color" content="#DAEBE3">
     <link rel="icon" type="image/png" href="/static/logo.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* ===== DESIGN TOKENS & USER PALETTE ===== */
@@ -27,35 +27,37 @@
             --c-slate-light: #7E8D7F;
 
             /* Glassmorphism Variables */
-            --glass-bg: rgba(255, 255, 255, 0.58);
-            --glass-bg-subtle: rgba(255, 255, 255, 0.42);
-            --glass-bg-card: rgba(255, 255, 255, 0.68);
-            --glass-border: rgba(255, 255, 255, 0.75);
+            --glass-bg: rgba(255, 255, 255, 0.62);
+            --glass-bg-subtle: rgba(255, 255, 255, 0.44);
+            --glass-bg-card: rgba(255, 255, 255, 0.72);
+            --glass-border: rgba(255, 255, 255, 0.85);
             --glass-border-subtle: rgba(255, 255, 255, 0.45);
             --glass-blur: blur(28px) saturate(180%);
             --glass-card-blur: blur(22px) saturate(160%);
-            --glass-shadow: 0 16px 36px -8px rgba(101, 113, 102, 0.14), 0 4px 16px -2px rgba(101, 113, 102, 0.06);
+            --glass-shadow: 0 16px 36px -8px rgba(101, 113, 102, 0.12), 0 4px 16px -2px rgba(101, 113, 102, 0.05);
             --glass-shadow-sm: 0 8px 24px -4px rgba(101, 113, 102, 0.08);
-            --inner-glow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+            --inner-glow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
 
             /* Text & Accents */
-            --text-main: #344035;
-            --text-muted: #6B7B6C;
+            --text-main: #2E3830;
+            --text-muted: #5F6E61;
             --text-light: #8E9E8F;
             --danger: #D9654C;
             --danger-bg: rgba(243, 195, 178, 0.45);
             --warning: #C97D3E;
-            --warning-bg: rgba(253, 232, 211, 0.55);
-            --safe: #4C7D5E;
-            --safe-bg: rgba(218, 235, 227, 0.65);
+            --warning-bg: rgba(253, 232, 211, 0.6);
+            --safe: #3E7954;
+            --safe-bg: rgba(218, 235, 227, 0.7);
             
-            --radius-lg: 26px;
-            --radius-md: 20px;
-            --radius-sm: 14px;
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-sm: 13px;
             --radius-pill: 9999px;
 
             --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-ml: 'Noto Sans Malayalam', var(--font-main);
+            --font-hi: 'Noto Sans Devanagari', var(--font-main);
         }
 
         *, *::before, *::after {
@@ -73,12 +75,11 @@
             background-color: #EBF2EC;
             overflow-x: hidden;
             position: relative;
-            padding-bottom: 110px;
+            padding-bottom: 120px;
         }
 
-        body.lang-ml {
-            font-family: var(--font-ml);
-        }
+        body.lang-ml { font-family: var(--font-ml); }
+        body.lang-hi { font-family: var(--font-hi); }
 
         /* ===== ETHEREAL AMBIENT BACKGROUND GLOW ===== */
         .ambient-mesh {
@@ -102,39 +103,39 @@
         }
 
         .ambient-orb-1 {
-            width: 380px;
-            height: 380px;
+            width: 440px;
+            height: 440px;
             background: radial-gradient(circle, var(--c-mint) 0%, rgba(218, 235, 227, 0.1) 70%);
-            top: -100px;
-            left: -80px;
+            top: -120px;
+            left: -100px;
         }
 
         .ambient-orb-2 {
-            width: 340px;
-            height: 340px;
+            width: 420px;
+            height: 420px;
             background: radial-gradient(circle, var(--c-cream) 0%, rgba(253, 232, 211, 0.2) 70%);
-            top: 35%;
-            right: -100px;
+            top: 30%;
+            right: -120px;
             animation-duration: 26s;
             animation-delay: -5s;
         }
 
         .ambient-orb-3 {
-            width: 420px;
-            height: 420px;
+            width: 480px;
+            height: 480px;
             background: radial-gradient(circle, var(--c-sky) 0%, rgba(153, 205, 216, 0.15) 70%);
-            bottom: -80px;
+            bottom: -100px;
             left: -100px;
             animation-duration: 28s;
             animation-delay: -10s;
         }
 
         .ambient-orb-4 {
-            width: 260px;
-            height: 260px;
+            width: 320px;
+            height: 320px;
             background: radial-gradient(circle, var(--c-coral) 0%, rgba(243, 195, 178, 0.2) 70%);
             top: 60%;
-            left: 20%;
+            left: 25%;
             opacity: 0.45;
         }
 
@@ -144,12 +145,14 @@
             100% { transform: translateY(-20px) scale(0.96); }
         }
 
-        /* ===== SMARTPHONE CONTAINER ===== */
+        /* ===== RESPONSIVE SHELL ===== */
         .app-shell {
-            max-width: 440px;
+            width: 100%;
+            max-width: 460px;
             margin: 0 auto;
             padding: 0 16px;
             position: relative;
+            transition: max-width 0.3s ease;
         }
 
         /* ===== THE WATER NOTCH / DYNAMIC ISLAND ===== */
@@ -169,35 +172,38 @@
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-pill);
             box-shadow: var(--glass-shadow-sm), var(--inner-glow);
-            padding: 7px 14px;
+            padding: 7px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
 
         .water-notch:hover {
-            background: rgba(255, 255, 255, 0.72);
+            background: rgba(255, 255, 255, 0.76);
             box-shadow: var(--glass-shadow);
         }
 
         .notch-left {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            cursor: pointer;
         }
 
         .notch-logo-wrap {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             padding: 3px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 2px 8px rgba(101, 113, 102, 0.15);
+            flex-shrink: 0;
         }
 
         .notch-logo-wrap img {
@@ -207,7 +213,7 @@
         }
 
         .notch-brand {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 800;
             color: var(--text-main);
             letter-spacing: -0.3px;
@@ -220,17 +226,16 @@
             color: var(--c-slate);
         }
 
-        /* Dynamic Island Status Pill */
         .notch-pill {
             display: flex;
             align-items: center;
-            gap: 5px;
-            background: rgba(207, 214, 196, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            gap: 6px;
+            background: rgba(207, 214, 196, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.85);
             border-radius: var(--radius-pill);
-            padding: 3px 9px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            padding: 4px 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
             color: var(--c-slate);
         }
 
@@ -238,22 +243,22 @@
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: var(--c-slate);
-            box-shadow: 0 0 0 rgba(101, 113, 102, 0.4);
+            background: var(--safe);
+            box-shadow: 0 0 0 rgba(76, 125, 94, 0.4);
             animation: notchPulse 2s infinite;
         }
 
         @keyframes notchPulse {
-            0% { box-shadow: 0 0 0 0 rgba(101, 113, 102, 0.6); }
-            70% { box-shadow: 0 0 0 6px rgba(101, 113, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(101, 113, 102, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(76, 125, 94, 0.6); }
+            70% { box-shadow: 0 0 0 6px rgba(76, 125, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 125, 94, 0); }
         }
 
-        /* Language Toggle in Notch */
+        /* Language Toggle (EN, ML, HI) */
         .lang-switch {
             display: flex;
-            background: rgba(255, 255, 255, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: var(--radius-pill);
             padding: 2px;
             gap: 2px;
@@ -266,10 +271,10 @@
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--text-muted);
-            padding: 4px 9px;
+            padding: 4px 8px;
             border-radius: var(--radius-pill);
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.22s ease;
         }
 
         .lang-pill-btn.active {
@@ -278,10 +283,43 @@
             box-shadow: 0 2px 8px rgba(101, 113, 102, 0.3);
         }
 
+        /* Desktop Header Nav Links */
+        .desktop-nav-links {
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .desktop-nav-btn {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .desktop-nav-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .desktop-nav-btn.active {
+            background: var(--c-slate);
+            color: #FFFFFF;
+        }
+
         /* ===== TAB CONTENT SYSTEM ===== */
         .tab-panel {
             display: none;
-            animation: smoothFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: smoothFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tab-panel.active {
@@ -291,7 +329,7 @@
         @keyframes smoothFadeIn {
             from {
                 opacity: 0;
-                transform: translateY(12px) scale(0.99);
+                transform: translateY(10px) scale(0.99);
             }
             to {
                 opacity: 1;
@@ -309,9 +347,9 @@
             padding: 22px;
             box-shadow: var(--glass-shadow), var(--inner-glow);
             margin-bottom: 18px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
             position: relative;
             overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .glass-card::before {
@@ -320,7 +358,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 40%;
+            height: 35%;
             background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 100%);
             pointer-events: none;
             border-radius: var(--radius-lg) var(--radius-lg) 0 0;
@@ -328,12 +366,12 @@
 
         /* ===== HOME HERO SECTION ===== */
         .home-greeting {
-            padding: 16px 6px 18px;
+            padding: 18px 4px 16px;
         }
 
         .home-greeting .subtitle {
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -341,21 +379,19 @@
         }
 
         .home-greeting h1 {
-            font-size: 1.7rem;
+            font-size: 1.85rem;
             font-weight: 800;
             color: var(--text-main);
             letter-spacing: -0.5px;
-            line-height: 1.25;
+            line-height: 1.22;
         }
 
         .home-greeting h1 span {
             color: var(--c-slate);
-            position: relative;
-            display: inline-block;
         }
 
         .hero-banner {
-            background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(218,235,227,0.7) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(218,235,227,0.72) 100%);
             border-radius: var(--radius-lg);
             padding: 22px;
             border: 1px solid var(--glass-border);
@@ -367,11 +403,11 @@
         }
 
         .hero-logo-box {
-            width: 64px;
-            height: 64px;
+            width: 66px;
+            height: 66px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 20px rgba(101, 113, 102, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 20px rgba(101, 113, 102, 0.12);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -386,10 +422,10 @@
         }
 
         .hero-banner-content h2 {
-            font-size: 1.15rem;
+            font-size: 1.18rem;
             font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .hero-banner-content p {
@@ -398,11 +434,11 @@
             line-height: 1.4;
         }
 
-        /* ===== ACTION GLASS TILES ===== */
+        /* ===== ACTION GLASS TILES GRID ===== */
         .glass-tiles-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
@@ -412,18 +448,18 @@
             -webkit-backdrop-filter: var(--glass-card-blur);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-md);
-            padding: 16px 18px;
+            padding: 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: var(--glass-shadow-sm), var(--inner-glow);
             cursor: pointer;
-            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .glass-tile:hover {
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.82);
             box-shadow: var(--glass-shadow);
         }
 
@@ -443,17 +479,15 @@
             box-shadow: 0 4px 12px rgba(101, 113, 102, 0.08);
         }
 
-        .tile-icon-box.offer {
-            background: linear-gradient(135deg, rgba(243, 195, 178, 0.7), rgba(253, 232, 211, 0.8));
-        }
-
-        .tile-icon-box.pack {
-            background: linear-gradient(135deg, rgba(153, 205, 216, 0.6), rgba(218, 235, 227, 0.8));
-        }
-
-        .tile-icon-box.checklist {
-            background: linear-gradient(135deg, rgba(207, 214, 196, 0.7), rgba(218, 235, 227, 0.9));
-        }
+        .tile-icon-box.offer { background: linear-gradient(135deg, rgba(243, 195, 178, 0.7), rgba(253, 232, 211, 0.8)); }
+        .tile-icon-box.pack { background: linear-gradient(135deg, rgba(153, 205, 216, 0.6), rgba(218, 235, 227, 0.8)); }
+        .tile-icon-box.checklist { background: linear-gradient(135deg, rgba(207, 214, 196, 0.7), rgba(218, 235, 227, 0.9)); }
+        .tile-icon-box.handbag { background: linear-gradient(135deg, #DAEBE3, #99CDD8); }
+        .tile-icon-box.currency { background: linear-gradient(135deg, #FDE8D3, #DAEBE3); }
+        .tile-icon-box.boarding { background: linear-gradient(135deg, #99CDD8, #CFD6C4); }
+        .tile-icon-box.sim { background: linear-gradient(135deg, #F3C3B2, #DAEBE3); }
+        .tile-icon-box.contract { background: linear-gradient(135deg, #CFD6C4, #FDE8D3); }
+        .tile-icon-box.emergency { background: linear-gradient(135deg, #F3C3B2, #FDE8D3); }
 
         .tile-content {
             flex: 1;
@@ -474,8 +508,8 @@
         }
 
         .tile-arrow {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.8);
             display: flex;
@@ -484,9 +518,10 @@
             color: var(--c-slate);
             font-size: 0.85rem;
             box-shadow: 0 2px 6px rgba(101, 113, 102, 0.08);
+            flex-shrink: 0;
         }
 
-        /* ===== SMOOTH PILL BUTTONS ===== */
+        /* ===== SMOOTH BUTTONS ===== */
         .glass-pill-btn {
             width: 100%;
             border: none;
@@ -527,16 +562,16 @@
             color: var(--text-main);
         }
 
-        /* ===== FORM ELEMENTS & SEGMENTS ===== */
+        /* ===== FORM INPUTS ===== */
         .section-header {
-            margin: 12px 6px 16px;
+            margin: 14px 4px 16px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .section-header h2 {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--text-main);
             letter-spacing: -0.3px;
@@ -544,7 +579,7 @@
 
         .field-label {
             display: block;
-            font-size: 0.82rem;
+            font-size: 0.84rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 8px;
@@ -556,7 +591,7 @@
             font-size: 0.76rem;
         }
 
-        textarea, input[type="text"], input[type="date"], input[type="number"], select {
+        textarea, input[type="text"], input[type="date"], input[type="time"], input[type="number"], select {
             width: 100%;
             background: rgba(255, 255, 255, 0.7);
             border: 1.5px solid rgba(207, 214, 196, 0.8);
@@ -601,7 +636,6 @@
             background: rgba(207, 214, 196, 0.8);
         }
 
-        /* Frosted Camera Upload Box */
         .glass-upload-zone {
             border: 2px dashed rgba(126, 141, 127, 0.45);
             background: rgba(255, 255, 255, 0.45);
@@ -672,12 +706,213 @@
             box-shadow: var(--glass-shadow-sm);
         }
 
-        /* 2-column input row */
         .grid-2-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin-bottom: 12px;
+        }
+
+        /* ===== PROGRESS BARS & METERS ===== */
+        .progress-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .progress-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            border-radius: var(--radius-pill);
+            background: rgba(207, 214, 196, 0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: var(--radius-pill);
+            background: linear-gradient(90deg, var(--c-sky), var(--c-slate));
+            transition: width 0.4s ease;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-step {
+            display: flex;
+            gap: 14px;
+            position: relative;
+            padding-bottom: 18px;
+        }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 36px;
+            bottom: 0;
+            width: 2px;
+            background: rgba(207, 214, 196, 0.8);
+        }
+
+        .timeline-step:last-child::before {
+            display: none;
+        }
+
+        .step-icon-orb {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--c-slate);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(101, 113, 102, 0.15);
+            z-index: 1;
+        }
+
+        .timeline-step.urgent .step-icon-orb {
+            border-color: var(--danger);
+            background: var(--danger-bg);
+        }
+
+        .step-body {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.65);
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+        }
+
+        .step-time-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--c-slate-dark);
+            background: rgba(218, 235, 227, 0.75);
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 4px;
+        }
+
+        /* ===== CHECKLIST TICK ITEM ===== */
+        .tick-item-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tick-item-row:hover {
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .tick-checkbox {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid var(--c-slate);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: white;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            background: transparent;
+        }
+
+        .tick-item-row.checked .tick-checkbox {
+            background: var(--safe);
+            border-color: var(--safe);
+        }
+
+        .tick-item-row.checked .tick-title {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        /* ===== CURRENCY CALCULATOR ===== */
+        .calc-display {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(218,235,227,0.7));
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 16px;
+        }
+
+        .calc-rate {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -1px;
+        }
+
+        .calc-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ===== EMERGENCY TAP-TO-CALL CARDS ===== */
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .call-card {
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .call-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .call-btn {
+            background: var(--safe);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 4px 10px rgba(62, 121, 84, 0.3);
+            flex-shrink: 0;
         }
 
         /* ===== RESULTS & STATUS PILLS ===== */
@@ -727,7 +962,6 @@
             color: #FFFFFF;
         }
 
-        /* Risk Gauge Card */
         .gauge-center {
             text-align: center;
             padding: 10px 0 16px;
@@ -748,19 +982,19 @@
             font-size: 1.8rem;
         }
 
-        .risk-orb.high {
+        .risk-orb.high, .risk-orb.dangerous {
             background: var(--danger-bg);
             border-color: var(--danger);
             color: var(--danger);
         }
 
-        .risk-orb.medium {
+        .risk-orb.medium, .risk-orb.review_needed {
             background: var(--warning-bg);
             border-color: var(--warning);
             color: var(--warning);
         }
 
-        .risk-orb.low {
+        .risk-orb.low, .risk-orb.safe {
             background: var(--safe-bg);
             border-color: var(--safe);
             color: var(--safe);
@@ -783,19 +1017,19 @@
             border-radius: var(--radius-pill);
         }
 
-        .risk-status-pill.high {
+        .risk-status-pill.high, .risk-status-pill.dangerous {
             background: var(--danger-bg);
             color: var(--danger);
             border: 1px solid var(--danger);
         }
 
-        .risk-status-pill.medium {
+        .risk-status-pill.medium, .risk-status-pill.review_needed {
             background: var(--warning-bg);
             color: var(--warning);
             border: 1px solid var(--warning);
         }
 
-        .risk-status-pill.low {
+        .risk-status-pill.low, .risk-status-pill.safe {
             background: var(--safe-bg);
             color: var(--safe);
             border: 1px solid var(--safe);
@@ -812,7 +1046,6 @@
             border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
-        /* Result Item Lists */
         .result-group-title {
             font-size: 0.82rem;
             font-weight: 800;
@@ -860,7 +1093,6 @@
             border-color: rgba(218, 235, 227, 0.9);
         }
 
-        /* Pack Check Item Cards */
         .pack-item-card {
             background: rgba(255, 255, 255, 0.65);
             border-radius: var(--radius-md);
@@ -897,75 +1129,9 @@
         .pack-status-badge.prohibited { background: var(--danger-bg); color: var(--danger); }
         .pack-status-badge.unsure { background: rgba(207, 214, 196, 0.6); color: var(--c-slate); }
 
-        /* Checklist Cards */
-        .checklist-cat-title {
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin: 14px 0 8px;
-            padding-bottom: 6px;
-            border-bottom: 1.5px solid rgba(207, 214, 196, 0.5);
-        }
-
-        .cl-item-row {
-            display: flex;
-            gap: 10px;
-            padding: 9px 0;
-            border-bottom: 1px solid rgba(207, 214, 196, 0.35);
-        }
-
-        .cl-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-top: 5px;
-            flex-shrink: 0;
-        }
-
-        .cl-dot.high { background: var(--danger); }
-        .cl-dot.medium { background: var(--warning); }
-        .cl-dot.low { background: var(--c-slate); }
-
-        .cl-task {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .cl-deadline {
-            font-size: 0.74rem;
-            color: var(--warning);
-            font-weight: 600;
-            margin-top: 2px;
-        }
-
-        .cl-details {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-            line-height: 1.4;
-        }
-
-        /* Layover Glass Banner */
-        .layover-glass-banner {
-            background: linear-gradient(135deg, rgba(153, 205, 216, 0.4), rgba(218, 235, 227, 0.7));
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-bottom: 14px;
-        }
-
-        .layover-glass-banner h4 {
-            font-size: 0.92rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
-        }
-
-        /* Official Disclaimer */
         .official-disclaimer {
-            background: rgba(253, 232, 211, 0.4);
-            border: 1px solid rgba(253, 232, 211, 0.9);
+            background: rgba(253, 232, 211, 0.45);
+            border: 1px solid rgba(253, 232, 211, 0.95);
             border-radius: var(--radius-sm);
             padding: 12px;
             font-size: 0.74rem;
@@ -980,16 +1146,13 @@
             text-decoration: underline;
         }
 
-        /* Loading Animation */
         .loading-pane {
             display: none;
             text-align: center;
             padding: 35px 20px;
         }
 
-        .loading-pane.active {
-            display: block;
-        }
+        .loading-pane.active { display: block; }
 
         .frosted-spinner {
             width: 44px;
@@ -1001,9 +1164,7 @@
             margin: 0 auto 14px;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         .loading-title {
             font-size: 0.88rem;
@@ -1017,7 +1178,7 @@
             margin-top: 4px;
         }
 
-        /* ===== FLOATING FROSTED GLASS DOCK / BOTTOM NAV ===== */
+        /* ===== FLOATING DOCK (MOBILE NAV) ===== */
         .bottom-dock-wrapper {
             position: fixed;
             bottom: 18px;
@@ -1033,7 +1194,7 @@
         .bottom-dock {
             pointer-events: auto;
             width: 100%;
-            max-width: 410px;
+            max-width: 440px;
             background: var(--glass-bg);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
@@ -1055,7 +1216,7 @@
             flex-direction: column;
             align-items: center;
             gap: 3px;
-            padding: 8px 6px;
+            padding: 8px 4px;
             border-radius: var(--radius-pill);
             color: var(--text-muted);
             cursor: pointer;
@@ -1074,7 +1235,7 @@
         }
 
         .dock-item.active {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             color: var(--c-slate-dark);
             box-shadow: 0 4px 14px rgba(101, 113, 102, 0.15);
         }
@@ -1083,11 +1244,6 @@
             transform: scale(1.15);
         }
 
-        .dock-item:active {
-            transform: scale(0.95);
-        }
-
-        /* Error Banner */
         .glass-error {
             background: var(--danger-bg);
             border: 1px solid var(--danger);
@@ -1116,6 +1272,53 @@
         }
 
         .hidden { display: none !important; }
+
+        /* ===== DESKTOP MEDIA QUERIES ===== */
+        @media (min-width: 768px) {
+            .app-shell {
+                max-width: 860px;
+                padding: 0 24px;
+            }
+
+            .water-notch {
+                padding: 10px 22px;
+            }
+
+            .desktop-nav-links {
+                display: flex;
+            }
+
+            .bottom-dock-wrapper {
+                display: none;
+            }
+
+            body {
+                padding-bottom: 50px;
+            }
+
+            .glass-tiles-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .emergency-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1080px) {
+            .app-shell {
+                max-width: 1080px;
+            }
+
+            .glass-tiles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .emergency-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1131,7 +1334,7 @@
         <!-- ===== THE WATER NOTCH / DYNAMIC ISLAND ===== -->
         <header class="water-notch-container">
             <div class="water-notch">
-                <div class="notch-left">
+                <div class="notch-left" onclick="switchTab('home')">
                     <div class="notch-logo-wrap">
                         <img src="/static/logo.png" alt="TravelGuard">
                     </div>
@@ -1140,16 +1343,30 @@
                     </div>
                 </div>
 
+                <!-- Desktop Navigation Links -->
+                <div class="desktop-nav-links">
+                    <button class="desktop-nav-btn active" data-tab="home" onclick="switchTab('home')">🏠 Home</button>
+                    <button class="desktop-nav-btn" data-tab="offer" onclick="switchTab('offer')">🛡️ Offer</button>
+                    <button class="desktop-nav-btn" data-tab="contract" onclick="switchTab('contract')">📜 Contract</button>
+                    <button class="desktop-nav-btn" data-tab="pack" onclick="switchTab('pack')">🧳 Pack</button>
+                    <button class="desktop-nav-btn" data-tab="handbag" onclick="switchTab('handbag')">🎒 Handbag</button>
+                    <button class="desktop-nav-btn" data-tab="currency" onclick="switchTab('currency')">💱 Currency</button>
+                    <button class="desktop-nav-btn" data-tab="boarding" onclick="switchTab('boarding')">✈️ Boarding</button>
+                    <button class="desktop-nav-btn" data-tab="sim" onclick="switchTab('sim')">📱 SIM</button>
+                    <button class="desktop-nav-btn" data-tab="emergency" onclick="switchTab('emergency')">🚨 Help</button>
+                </div>
+
                 <!-- Dynamic Island Status Indicator -->
                 <div class="notch-pill">
                     <div class="notch-pulse"></div>
-                    <span id="notch-status-text" data-en="UAE Safety" data-ml="സുരക്ഷാ കവചം">UAE Safety</span>
+                    <span id="notch-status-text" data-en="UAE Safety" data-ml="സുരക്ഷാ കവചം" data-hi="यूएई सुरक्षा">UAE Safety</span>
                 </div>
 
-                <!-- Language Pill Toggle -->
+                <!-- Trilingual Switch (EN / ML / HI) -->
                 <div class="lang-switch">
                     <button class="lang-pill-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
                     <button class="lang-pill-btn" data-lang="ml" onclick="setLanguage('ml')">മല</button>
+                    <button class="lang-pill-btn" data-lang="hi" onclick="setLanguage('hi')">हिं</button>
                 </div>
             </div>
         </header>
@@ -1157,8 +1374,8 @@
         <!-- ===== TAB 1: HOME PANEL ===== -->
         <section id="tab-home" class="tab-panel active">
             <div class="home-greeting">
-                <div class="subtitle" data-en="Kerala → Gulf Traveler" data-ml="കേരളം → ഗൾഫ് യാത്രികർ">Kerala → Gulf Traveler</div>
-                <h1><span data-en="Safe Journeys" data-ml="സുരക്ഷിത യാത്രകൾ">Safe Journeys</span><br><span data-en="Begin Here." data-ml="ഇവിടെ തുടങ്ങുന്നു.">Begin Here.</span></h1>
+                <div class="subtitle" data-en="India → Gulf Travel Safety" data-ml="ഇന്ത്യ → ഗൾഫ് യാത്രാ സുരക്ഷ" data-hi="भारत → खाड़ी यात्रा सुरक्षा">India → Gulf Travel Safety</div>
+                <h1><span data-en="Safe Journeys" data-ml="സുരക്ഷിത യാത്രകൾ" data-hi="सुरक्षित यात्रा">Safe Journeys</span><br><span data-en="Begin Here." data-ml="ഇവിടെ തുടങ്ങുന്നു." data-hi="यहाँ शुरू होती है।">Begin Here.</span></h1>
             </div>
 
             <!-- Frosted Brand Hero Banner -->
@@ -1167,18 +1384,27 @@
                     <img src="/static/logo.png" alt="Shield Logo">
                 </div>
                 <div class="hero-banner-content">
-                    <h2 data-en="TravelGuard AI" data-ml="ട്രാവൽഗാർഡ് AI">TravelGuard AI</h2>
-                    <p data-en="Verify Gulf job offers, check restricted luggage items, and plan emigrations securely." data-ml="ഗൾഫ് ജോലി ഓഫറുകൾ പരിശോധിക്കുക, നിരോധിത ലഗേജ് സാധനങ്ങൾ പരിശോധിക്കുക.">Verify Gulf job offers, check restricted luggage items, and plan emigrations securely.</p>
+                    <h2 data-en="TravelGuard AI" data-ml="ട്രാവൽഗാർഡ് AI" data-hi="ट्रैवलगार्ड AI">TravelGuard AI</h2>
+                    <p data-en="Travel safety assistant for first-time emigrants and Gulf travelers. Verify job offers, contracts, luggage rules, live boarding timelines, and SIM plans." data-ml="ഗൾഫിലേക്ക് പോകുന്നവർക്കുള്ള സുരക്ഷാ സഹായി. വ്യാജ ഓഫറുകൾ, കരാറുകൾ, ലഗേജ് സാധനങ്ങൾ, എയർപോർട്ട് വിവരങ്ങൾ പരിശോധിക്കുക." data-hi="खाड़ी देशों की यात्रा करने वालों के लिए स्मार्ट सुरक्षा सहायक। नौकरी के ऑफर, अनुबंध, बैग के नियम और बोर्डिंग गाइड जांचें।">Travel safety assistant for first-time emigrants and Gulf travelers. Verify job offers, contracts, luggage rules, live boarding timelines, and SIM plans.</p>
                 </div>
             </div>
 
-            <!-- Glass Action Tiles -->
+            <!-- Glass Action Tiles (All 8 Features) -->
             <div class="glass-tiles-grid">
                 <div class="glass-tile" onclick="switchTab('offer')">
                     <div class="tile-icon-box offer">🛡️</div>
                     <div class="tile-content">
-                        <h3 data-en="Offer Check" data-ml="ഓഫർ പരിശോധന">Offer Check</h3>
-                        <p data-en="Verify job offers & detect fraudulent agents" data-ml="ജോലി ഓഫറുകളും തട്ടിപ്പ് സന്ദേശങ്ങളും കണ്ടെത്തുക">Verify job offers & detect fraudulent agents</p>
+                        <h3 data-en="Offer Check" data-ml="ഓഫർ പരിശോധന" data-hi="ऑफर जांच">Offer Check</h3>
+                        <p data-en="Verify recruitment letters & detect visa scams" data-ml="ജോലി ഓഫറുകളും വിസ തട്ടിപ്പുകളും കണ്ടെത്തുക" data-hi="भर्ती पत्र और वीजा धोखाधड़ी की जांच करें">Verify recruitment letters & detect visa scams</p>
+                    </div>
+                    <div class="tile-arrow">→</div>
+                </div>
+
+                <div class="glass-tile" onclick="switchTab('contract')">
+                    <div class="tile-icon-box contract">📜</div>
+                    <div class="tile-content">
+                        <h3 data-en="Contract Reader" data-ml="കരാർ പരിശോധന" data-hi="अनुबंध पाठक">Contract Reader</h3>
+                        <p data-en="Check passport-holding clauses & UAE labor law" data-ml="പാസ്‌പോർട്ട് പിടിച്ചുവെക്കലും ശമ്പള വ്യവസ്ഥകളും" data-hi="पासपोर्ट जब्ती व यूएई श्रम कानून की जांच">Check passport-holding clauses & UAE labor law</p>
                     </div>
                     <div class="tile-arrow">→</div>
                 </div>
@@ -1186,8 +1412,53 @@
                 <div class="glass-tile" onclick="switchTab('pack')">
                     <div class="tile-icon-box pack">🧳</div>
                     <div class="tile-content">
-                        <h3 data-en="Pack Check" data-ml="പാക്ക് പരിശോധന">Pack Check</h3>
-                        <p data-en="Check medicines & foods with UAE Customs" data-ml="മരുന്നുകളും സാധനങ്ങളും കസ്റ്റംസ് അനുമതി പരിശോധിക്കുക">Check medicines & foods with UAE Customs</p>
+                        <h3 data-en="Pack Check" data-ml="പാക്ക് പരിശോധന" data-hi="सामान जांच">Pack Check</h3>
+                        <p data-en="Check medicines with UAE Customs (AED 60k limit)" data-ml="മരുന്നുകളും കസ്റ്റംസ് അനുമതിയും (AED 60,000 പരിധി)" data-hi="दवाइयां और कस्टम नियम जांचें">Check medicines with UAE Customs (AED 60k limit)</p>
+                    </div>
+                    <div class="tile-arrow">→</div>
+                </div>
+
+                <div class="glass-tile" onclick="switchTab('handbag')">
+                    <div class="tile-icon-box handbag">🎒</div>
+                    <div class="tile-content">
+                        <h3 data-en="Handbag Checklist" data-ml="ഹാൻഡ്ബാഗ് ലിസ്റ്റ്" data-hi="हैंडबैग सूची">Handbag Checklist</h3>
+                        <p data-en="Cabin power bank rules, passports & packed %" data-ml="പവർ ബാങ്ക് നിയമങ്ങൾ, രേഖകൾ & പാക്ക് %" data-hi="पावर बैंक नियम, दस्तावेज और पैक्ड %">Cabin power bank rules, passports & packed %</p>
+                    </div>
+                    <div class="tile-arrow">→</div>
+                </div>
+
+                <div class="glass-tile" onclick="switchTab('currency')">
+                    <div class="tile-icon-box currency">💱</div>
+                    <div class="tile-content">
+                        <h3 data-en="Currency Converter" data-ml="കറൻസി കൺവെർട്ടർ" data-hi="मुद्रा परिवर्तक">Currency Converter</h3>
+                        <p data-en="Live AED to INR rates + airport exchange tip" data-ml="ദിർഹം - രൂപ നിരക്കും എയർപോർട്ട് ടിപ്പും" data-hi="दिरहम-रुपया दर और एयरपोर्ट सुझाव">Live AED to INR rates + airport exchange tip</p>
+                    </div>
+                    <div class="tile-arrow">→</div>
+                </div>
+
+                <div class="glass-tile" onclick="switchTab('boarding')">
+                    <div class="tile-icon-box boarding">✈️</div>
+                    <div class="tile-content">
+                        <h3 data-en="Boarding Guide" data-ml="ബോർഡിംഗ് ഗൈഡ്" data-hi="बोर्डिंग गाइड">Boarding Guide</h3>
+                        <p data-en="Countdown milestones, PoE counter & 'do now'" data-ml="എയർപോർട്ട് സമയക്രമവും ചെയ്യേണ്ട കാര്യങ്ങളും" data-hi="एयरपोर्ट टाइमलाइन व अभी क्या करें">Countdown milestones, PoE counter & 'do now'</p>
+                    </div>
+                    <div class="tile-arrow">→</div>
+                </div>
+
+                <div class="glass-tile" onclick="switchTab('sim')">
+                    <div class="tile-icon-box sim">📱</div>
+                    <div class="tile-content">
+                        <h3 data-en="UAE SIM Guide" data-ml="യുഎഇ സിം ഗൈഡ്" data-hi="यूएई सिम गाइड">UAE SIM Guide</h3>
+                        <p data-en="Verified e&, du & Virgin airport tourist packs" data-ml="എയർപോർട്ടിലെ e&, du പ്ലാനുകളും സൗജന്യ സിമ്മും" data-hi="सत्यापित e&, du प्लान और फ्री सिम">Verified e&, du & Virgin airport tourist packs</p>
+                    </div>
+                    <div class="tile-arrow">→</div>
+                </div>
+
+                <div class="glass-tile" onclick="switchTab('emergency')">
+                    <div class="tile-icon-box emergency">🚨</div>
+                    <div class="tile-content">
+                        <h3 data-en="Emergency Card" data-ml="അടിയന്തര സഹായം" data-hi="आपातकालीन कार्ड">Emergency Card</h3>
+                        <p data-en="NORKA, Indian Embassy & UAE 999 tap-to-call" data-ml="നോർക്ക, എംബസി, പോലീസ് നമ്പറുകൾ" data-hi="नोर्का, दूतावास और 999 तुरंत कॉल">NORKA, Indian Embassy & UAE 999 tap-to-call</p>
                     </div>
                     <div class="tile-arrow">→</div>
                 </div>
@@ -1195,8 +1466,8 @@
                 <div class="glass-tile" onclick="switchTab('checklist')">
                     <div class="tile-icon-box checklist">📋</div>
                     <div class="tile-content">
-                        <h3 data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്">Journey Checklist</h3>
-                        <p data-en="PoE emigration clearance & layover hours" data-ml="എമിഗ്രേഷൻ ക്ലിയറൻസും ലേഓവർ സമയം">PoE emigration clearance & layover hours</p>
+                        <h3 data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്" data-hi="यात्रा सूची">Journey Checklist</h3>
+                        <p data-en="PoE emigration clearance & layover hours" data-ml="എമിഗ്രേഷൻ ക്ലിയറൻസും ലേഓവർ കണക്കുകൂട്ടലും" data-hi="इमिग्रेशन क्लीयरेंस और लेओवर समय">PoE emigration clearance & layover hours</p>
                     </div>
                     <div class="tile-arrow">→</div>
                 </div>
@@ -1204,63 +1475,101 @@
 
             <!-- Demo Mode Pill Button -->
             <button class="glass-pill-btn demo-pill-btn" onclick="loadDemoMode()">
-                🎯 <span data-en="Stage Demo Mode (Sample Data)" data-ml="ഡെമോ മോഡ് (സാമ്പിൾ വിവരങ്ങൾ)">Stage Demo Mode (Sample Data)</span>
+                🎯 <span data-en="Stage Demo Mode (Sample Data)" data-ml="ഡെമോ മോഡ് (സാമ്പിൾ വിവരങ്ങൾ)" data-hi="डेमो मोड (नमूना डेटा)">Stage Demo Mode (Sample Data)</span>
             </button>
         </section>
 
-        <!-- ===== TAB 2: OFFER CHECK PANEL ===== -->
+        <!-- ===== TAB 2: OFFER CHECK ===== -->
         <section id="tab-offer" class="tab-panel">
             <div class="section-header">
                 <span style="font-size:1.5rem;">🛡️</span>
-                <h2 data-en="Offer Check" data-ml="ഓഫർ പരിശോധന">Offer Check</h2>
+                <h2 data-en="Offer Check" data-ml="ഓഫർ പരിശോധന" data-hi="ऑफर जांच">Offer Check</h2>
             </div>
 
             <div class="glass-card">
                 <label class="field-label">
-                    <span data-en="Job Offer / Message Text" data-ml="ഓഫർ അല്ലെങ്കിൽ സന്ദേശം">Job Offer / Message Text</span>
-                    <span class="field-sublabel" data-en=" – WhatsApp, email, or agent promises" data-ml=" – വാട്ട്‌സ്ആപ്പ്, ഇമെയിൽ അല്ലെങ്കിൽ ഏജന്റ് വാഗ്ദാനം"> – WhatsApp, email, or agent promises</span>
+                    <span data-en="Job Offer / Message Text" data-ml="ഓഫർ അല്ലെങ്കിൽ സന്ദേശം" data-hi="नौकरी का ऑफर या संदेश">Job Offer / Message Text</span>
+                    <span class="field-sublabel" data-en=" – WhatsApp, email, or agent promises" data-ml=" – വാട്ട്‌സ്ആപ്പ്, ഇമെയിൽ അല്ലെങ്കിൽ ഏജന്റ് വാഗ്ദാനം" data-hi=" – व्हाट्सएप, ईमेल या एजेंट का वादा"> – WhatsApp, email, or agent promises</span>
                 </label>
-                <textarea id="offer-text" placeholder="Paste the recruiter message or salary promise here..."></textarea>
+                <textarea id="offer-text" placeholder="Paste recruiter message, promised salary, or visa details here..."></textarea>
 
-                <div class="divider-pill" data-en="OR UPLOAD PHOTO" data-ml="അല്ലെങ്കിൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക">OR UPLOAD PHOTO</div>
+                <div class="divider-pill" data-en="OR UPLOAD PHOTO" data-ml="അല്ലെങ്കിൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക" data-hi="या फोटो अपलोड करें">OR UPLOAD PHOTO</div>
 
                 <div class="glass-upload-zone" id="offer-upload-zone" onclick="document.getElementById('offer-image').click()">
                     <div class="upload-icon-circle">📷</div>
-                    <p data-en="Take Photo or Screenshot" data-ml="ഫോട്ടോ അല്ലെങ്കിൽ സ്‌ക്രീൻഷോട്ട് എടുക്കുക">Take Photo or Screenshot</p>
-                    <div class="subtext" data-en="Tap to capture offer letter or chat" data-ml="ഓഫർ ലെറ്റർ അല്ലെങ്കിൽ ചാറ്റ് ഫോട്ടോ എടുക്കാൻ ടാപ്പ് ചെയ്യുക">Tap to capture offer letter or chat</div>
+                    <p data-en="Take Photo or Upload Screenshot" data-ml="ഫോട്ടോ അല്ലെങ്കിൽ സ്‌ക്രീൻഷോട്ട് എടുക്കുക" data-hi="फोटो लें या स्क्रीनशॉट अपलोड करें">Take Photo or Upload Screenshot</p>
+                    <div class="subtext" data-en="Gemini Vision reads offer text directly" data-ml="ഓഫർ ലെറ്റർ ഫോട്ടോ എടുക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="एआई सीधे फोटो से पढ़ लेगा">Gemini Vision reads offer text directly</div>
                     <input type="file" id="offer-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'offer-upload-zone')">
                     <div class="uploaded-tag" id="offer-file-tag"></div>
                 </div>
             </div>
 
             <button class="glass-pill-btn" onclick="submitOfferCheck()">
-                🔍 <span data-en="Analyze Offer Safety" data-ml="ഓഫർ പരിശോധിക്കുക">Analyze Offer Safety</span>
+                🔍 <span data-en="Analyze Offer Safety" data-ml="ഓഫർ പരിശോധിക്കുക" data-hi="ऑफर की सुरक्षा जांचें">Analyze Offer Safety</span>
             </button>
 
-            <!-- Loading State -->
             <div class="loading-pane" id="offer-loading">
                 <div class="frosted-spinner"></div>
-                <div class="loading-title" data-en="Gemini AI is analyzing the offer..." data-ml="ഓഫർ പരിശോധിച്ച് വിലയിരുത്തുന്നു...">Gemini AI is analyzing the offer...</div>
-                <div class="loading-desc" data-en="Checking against MEA & eMigrate fraud indicators" data-ml="ഔദ്യോഗിക കുടിയേറ്റ നിയമങ്ങളുമായി പരിശോധിക്കുന്നു">Checking against MEA & eMigrate fraud indicators</div>
+                <div class="loading-title" data-en="Analyzing offer with Gemini AI..." data-ml="ഓഫർ പരിശോധിച്ച് വിലയിരുത്തുന്നു..." data-hi="एआई ऑफर का विश्लेषण कर रहा है...">Analyzing offer with Gemini AI...</div>
+                <div class="loading-desc" data-en="Checking against MEA & eMigrate fraud indicators" data-ml="ഔദ്യോഗിക കുടിയേറ്റ നിയമങ്ങളുമായി പരിശോധിക്കുന്നു" data-hi="सरकारी नियमों से मिलान हो रहा है">Checking against MEA & eMigrate fraud indicators</div>
             </div>
 
             <div id="offer-result"></div>
             <div id="offer-error" class="glass-error hidden"></div>
         </section>
 
-        <!-- ===== TAB 3: PACK CHECK PANEL ===== -->
+        <!-- ===== TAB 3: CONTRACT READER ===== -->
+        <section id="tab-contract" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">📜</span>
+                <h2 data-en="Work Contract Reader" data-ml="തൊഴിൽ കരാർ പരിശോധന" data-hi="श्रम अनुबंध पाठक">Work Contract Reader</h2>
+            </div>
+
+            <div class="glass-card">
+                <label class="field-label">
+                    <span data-en="Contract Text or Clauses" data-ml="കരാറിലെ വ്യവസ്ഥകൾ" data-hi="अनुबंध की शर्तें">Contract Text or Clauses</span>
+                    <span class="field-sublabel" data-en=" – paste salary, passport custody or hours clause" data-ml=" – ശമ്പളം, പാസ്‌പോർട്ട്, ജോലി സമയം തുടങ്ങിയവ" data-hi=" – वेतन, पासपोर्ट जब्ती या काम के घंटे"> – paste salary, passport custody or hours clause</span>
+                </label>
+                <textarea id="contract-text" placeholder="Paste the clauses of your employment agreement here..."></textarea>
+
+                <div class="divider-pill" data-en="OR PHOTO OF CONTRACT" data-ml="അല്ലെങ്കിൽ കരാറിന്റെ ഫോട്ടോ" data-hi="या अनुबंध की फोटो">OR PHOTO OF CONTRACT</div>
+
+                <div class="glass-upload-zone" id="contract-upload-zone" onclick="document.getElementById('contract-image').click()">
+                    <div class="upload-icon-circle">📑</div>
+                    <p data-en="Upload Photo of Employment Contract" data-ml="തൊഴിൽ കരാറിന്റെ ഫോട്ടോ എടുക്കുക" data-hi="अनुबंध की फोटो अपलोड करें">Upload Photo of Employment Contract</p>
+                    <div class="subtext" data-en="Audits UAE Federal Decree Law No. 33/2021 compliance" data-ml="യുഎഇ തൊഴിൽ നിയമപ്രകാരം പരിശോധിക്കുന്നു" data-hi="यूएई श्रम कानून के अनुसार जांच">Audits UAE Federal Decree Law No. 33/2021 compliance</div>
+                    <input type="file" id="contract-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'contract-upload-zone')">
+                    <div class="uploaded-tag" id="contract-file-tag"></div>
+                </div>
+            </div>
+
+            <button class="glass-pill-btn" onclick="submitContractCheck()">
+                📜 <span data-en="Audit Contract Clauses" data-ml="കരാർ നിയമങ്ങൾ പരിശോധിക്കുക" data-hi="अनुबंध की शर्तें जांचें">Audit Contract Clauses</span>
+            </button>
+
+            <div class="loading-pane" id="contract-loading">
+                <div class="frosted-spinner"></div>
+                <div class="loading-title" data-en="Auditing contract against UAE Labor Law..." data-ml="യുഎഇ തൊഴിൽ നിയമപ്രകാരം പരിശോധിക്കുന്നു..." data-hi="श्रम कानून के आधार पर जांच जारी है...">Auditing contract against UAE Labor Law...</div>
+                <div class="loading-desc" data-en="Checking passport custody, overtime, and visa fees" data-ml="പാസ്‌പോർട്ട്, ശമ്പളം, ജോലി സമയം എന്നിവ പരിശോധിക്കുന്നു" data-hi="पासपोर्ट जब्ती और वीजा शुल्क की जांच">Checking passport custody, overtime, and visa fees</div>
+            </div>
+
+            <div id="contract-result"></div>
+            <div id="contract-error" class="glass-error hidden"></div>
+        </section>
+
+        <!-- ===== TAB 4: PACK CHECK ===== -->
         <section id="tab-pack" class="tab-panel">
             <div class="section-header">
                 <span style="font-size:1.5rem;">🧳</span>
-                <h2 data-en="Pack Check" data-ml="പാക്ക് പരിശോധന">Pack Check</h2>
+                <h2 data-en="Pack Check (Luggage & Customs)" data-ml="പാക്ക് പരിശോധന" data-hi="सामान व कस्टम जांच">Pack Check (Luggage & Customs)</h2>
             </div>
 
             <div class="glass-card">
                 <div class="grid-2-col">
                     <div>
-                        <label class="field-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
+                        <label class="field-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം" data-hi="गंतव्य">Destination</label>
                         <select id="pack-destination">
-                            <option value="UAE" selected>🇦🇪 UAE</option>
+                            <option value="UAE" selected>🇦🇪 UAE (Dubai / Abu Dhabi)</option>
                             <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
                             <option value="Qatar">🇶🇦 Qatar</option>
                             <option value="Oman">🇴🇲 Oman</option>
@@ -1269,54 +1578,270 @@
                         </select>
                     </div>
                     <div>
-                        <label class="field-label" data-en="Rules Database" data-ml="ഡാറ്റാബേസ്">Rules Database</label>
-                        <input type="text" value="UAE Customs + MOH" disabled style="background:rgba(255,255,255,0.4);color:var(--text-muted);font-weight:600;">
+                        <label class="field-label" data-en="Cash Limit" data-ml="പണ പരിധി" data-hi="नकद सीमा">Cash Limit</label>
+                        <input type="text" value="AED 60,000 (Declared via Afsah)" disabled style="background:rgba(255,255,255,0.4);color:var(--text-muted);font-weight:700;">
                     </div>
                 </div>
 
                 <label class="field-label">
-                    <span data-en="Luggage Items or Medicines" data-ml="സാധനങ്ങൾ അല്ലെങ്കിൽ മരുന്നുകൾ">Luggage Items or Medicines</span>
-                    <span class="field-sublabel" data-en=" – one item per line" data-ml=" – ഒരു വരിയിൽ ഒരെണ്ണം"> – one item per line</span>
+                    <span data-en="Medicines, Food & Electronics" data-ml="സാധനങ്ങൾ അല്ലെങ്കിൽ മരുന്നുകൾ" data-hi="दवाइयां और सामान सूची">Medicines, Food & Electronics</span>
+                    <span class="field-sublabel" data-en=" – one item per line" data-ml=" – ഒരു വരിയിൽ ഒരെണ്ണം" data-hi=" – प्रति पंक्ति एक वस्तु"> – one item per line</span>
                 </label>
-                <textarea id="pack-items" placeholder="e.g.&#10;Paracetamol (Dolo 650)&#10;Cough syrup (Codeine)&#10;Homemade mango pickle&#10;Gold chain&#10;Laptop"></textarea>
+                <textarea id="pack-items" placeholder="e.g.&#10;Paracetamol (Dolo 650)&#10;Cough syrup (Codeine)&#10;Sleeping pills (Alprazolam)&#10;Homemade mango pickle&#10;Gold jewellery&#10;Laptop"></textarea>
 
-                <div class="divider-pill" data-en="OR PHOTO OF MEDICINES / ITEMS" data-ml="അല്ലെങ്കിൽ മരുന്നുകളുടെ ഫോട്ടോ">OR PHOTO OF MEDICINES / ITEMS</div>
+                <div class="divider-pill" data-en="OR PHOTO OF MEDICINE BOX" data-ml="അല്ലെങ്കിൽ മരുന്നിന്റെ ഫോട്ടോ" data-hi="या दवा के डिब्बे की फोटो">OR PHOTO OF MEDICINE BOX</div>
 
                 <div class="glass-upload-zone" id="pack-upload-zone" onclick="document.getElementById('pack-image').click()">
                     <div class="upload-icon-circle">📦</div>
-                    <p data-en="Take Photo of Medicine Box or Items" data-ml="മരുന്ന് പാക്കറ്റുകളുടെ ഫോട്ടോ എടുക്കുക">Take Photo of Medicine Box or Items</p>
-                    <div class="subtext" data-en="Gemini Vision reads active ingredients" data-ml="മരുന്നിലെ ഘടകങ്ങൾ AI വായിക്കുന്നു">Gemini Vision reads active ingredients</div>
+                    <p data-en="Photograph Medicine Box or Package" data-ml="മരുന്ന് പാക്കറ്റുകളുടെ ഫോട്ടോ എടുക്കുക" data-hi="दवा के पैकेट की फोटो खींचें">Photograph Medicine Box or Package</p>
+                    <div class="subtext" data-en="Reads active composition for UAE MOHAP banned drugs" data-ml="മരുന്നിലെ ഘടകങ്ങൾ AI വായിക്കുന്നു" data-hi="प्रतिबंधित तत्वों की तुरंत पहचान">Reads active composition for UAE MOHAP banned drugs</div>
                     <input type="file" id="pack-image" accept="image/*" capture="environment" onchange="handleFileSelect(this, 'pack-upload-zone')">
                     <div class="uploaded-tag" id="pack-file-tag"></div>
                 </div>
             </div>
 
             <button class="glass-pill-btn" onclick="submitPackCheck()">
-                📦 <span data-en="Verify Packing Items" data-ml="സാധനങ്ങൾ പരിശോധിക്കുക">Verify Packing Items</span>
+                📦 <span data-en="Verify Customs Status" data-ml="കസ്റ്റംസ് അനുമതി പരിശോധിക്കുക" data-hi="कस्टम्स नियम जांचें">Verify Customs Status</span>
             </button>
 
-            <!-- Loading State -->
             <div class="loading-pane" id="pack-loading">
                 <div class="frosted-spinner"></div>
-                <div class="loading-title" data-en="Checking customs regulations..." data-ml="കസ്റ്റംസ് നിയമങ്ങൾ പരിശോധിക്കുന്നു...">Checking customs regulations...</div>
-                <div class="loading-desc" data-en="Cross-referencing UAE MOHAP controlled substances" data-ml="യുഎഇ ആരോഗ്യമന്ത്രാലയ ലിസ്റ്റുമായി പരിശോധിക്കുന്നു">Cross-referencing UAE MOHAP controlled substances</div>
+                <div class="loading-title" data-en="Checking customs regulations..." data-ml="കസ്റ്റംസ് നിയമങ്ങൾ പരിശോധിക്കുന്നു..." data-hi="कस्टम नियमों की जांच हो रही है...">Checking customs regulations...</div>
+                <div class="loading-desc" data-en="Cross-referencing UAE MOHAP controlled substances" data-ml="യുഎഇ ആരോഗ്യമന്ത്രാലയ ലിസ്റ്റുമായി പരിശോധിക്കുന്നു" data-hi="यूएई स्वास्थ्य मंत्रालय की सूची से मिलान">Cross-referencing UAE MOHAP controlled substances</div>
             </div>
 
             <div id="pack-result"></div>
             <div id="pack-error" class="glass-error hidden"></div>
         </section>
 
-        <!-- ===== TAB 4: JOURNEY CHECKLIST PANEL ===== -->
-        <section id="tab-checklist" class="tab-panel">
+        <!-- ===== TAB 5: HANDBAG CHECKLIST ===== -->
+        <section id="tab-handbag" class="tab-panel">
             <div class="section-header">
-                <span style="font-size:1.5rem;">📋</span>
-                <h2 data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്">Journey Checklist</h2>
+                <span style="font-size:1.5rem;">🎒</span>
+                <h2 data-en="Handbag Cabin Checklist" data-ml="ഹാൻഡ്ബാഗ് ചെക്ക്‌ലിസ്റ്റ്" data-hi="हैंडबैग केबिन चेकलिस्ट">Handbag Cabin Checklist</h2>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-card">
+                <div class="progress-header">
+                    <span data-en="Cabin Packing Progress" data-ml="പാക്കിംഗ് പുരോഗതി" data-hi="पैकिंग प्रगति">Cabin Packing Progress</span>
+                    <span id="handbag-progress-text" style="color:var(--safe);font-weight:800;">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="handbag-progress-bar" style="width: 0%;"></div>
+                </div>
+                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:6px;" data-en="Saved automatically in your browser." data-ml="നിങ്ങളുടെ ഫോണിൽ തനിയെ സേവ് ചെയ്യപ്പെടുന്നു." data-hi="आपके फोन में अपने आप सेव होता है।">Saved automatically in your browser.</div>
+            </div>
+
+            <div id="handbag-list-container">
+                <div class="loading-pane active" style="padding:20px;">
+                    <div class="frosted-spinner"></div>
+                    <div class="loading-title">Loading handbag safety rules...</div>
+                </div>
+            </div>
+
+            <div class="official-disclaimer" style="margin-top:16px;">
+                <strong>⚡ <span data-en="CRITICAL CABIN RULE:" data-ml="പ്രധാന നിയമം:" data-hi="जरूरी नियम:">CRITICAL CABIN RULE:</span></strong>
+                <span data-en="Power banks and loose lithium batteries MUST be kept in your handbag only. Never place them in check-in luggage." data-ml="പവർ ബാങ്കുകൾ ഹാൻഡ്ബാഗിൽ മാത്രമേ വയ്ക്കാവൂ. ചെക്ക്-ഇൻ ലഗേജിൽ കർശനമായി നിരോധിച്ചിരിക്കുന്നു." data-hi="पावर बैंक हमेशा केवल हैंडबैग में रखें, चेक-इन बैग में सख्त मना है।">Power banks and loose lithium batteries MUST be kept in your handbag only. Never place them in check-in luggage.</span>
+            </div>
+        </section>
+
+        <!-- ===== TAB 6: CURRENCY CONVERTER ===== -->
+        <section id="tab-currency" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">💱</span>
+                <h2 data-en="Currency Converter & Calculator" data-ml="കറൻസി കൺവെർട്ടർ" data-hi="मुद्रा परिवर्तक व कैलकुलेटर">Currency Converter & Calculator</h2>
+            </div>
+
+            <div class="glass-card">
+                <div class="calc-display">
+                    <div class="calc-rate" id="curr-result-rate">₹ 26.38</div>
+                    <div class="calc-sub" id="curr-result-sub">1 AED = ₹26.38 INR</div>
+                    <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px;" id="curr-last-updated">Updated: Today</div>
+                </div>
+
+                <div class="grid-2-col">
+                    <div>
+                        <label class="field-label" data-en="From" data-ml="ഏതിൽ നിന്ന്" data-hi="से">From</label>
+                        <select id="curr-from" onchange="convertCurrency()">
+                            <option value="AED" selected>🇦🇪 AED (UAE Dirham)</option>
+                            <option value="INR">🇮🇳 INR (Indian Rupee)</option>
+                            <option value="SAR">🇸🇦 SAR (Saudi Riyal)</option>
+                            <option value="QAR">🇶🇦 QAR (Qatari Riyal)</option>
+                            <option value="OMR">🇴🇲 OMR (Omani Rial)</option>
+                            <option value="KWD">🇰🇼 KWD (Kuwaiti Dinar)</option>
+                            <option value="USD">🇺🇸 USD (US Dollar)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="field-label" data-en="To" data-ml="ഏതിലേക്ക്" data-hi="तक">To</label>
+                        <select id="curr-to" onchange="convertCurrency()">
+                            <option value="INR" selected>🇮🇳 INR (Indian Rupee)</option>
+                            <option value="AED">🇦🇪 AED (UAE Dirham)</option>
+                            <option value="SAR">🇸🇦 SAR (Saudi Riyal)</option>
+                            <option value="USD">🇺🇸 USD (US Dollar)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="field-label" data-en="Amount to Convert" data-ml="തുക" data-hi="राशि">Amount to Convert</label>
+                <input type="number" id="curr-amount" value="100" min="1" step="any" oninput="convertCurrency()" style="font-size:1.1rem;font-weight:700;">
+
+                <div class="summary-box" id="curr-tip-box" style="margin-top:16px;">
+                    💡 <strong><span data-en="Pro Tip:" data-ml="പ്രധാന ടിപ്പ്:" data-hi="खास सुझाव:">Pro Tip:</span></strong>
+                    <span id="curr-tip-text">Exchange only a minimum amount (for taxi/transit) at airport counters. City exchanges usually offer 2-4% better rates.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TAB 7: BOARDING-TIME GUIDE ===== -->
+        <section id="tab-boarding" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">✈️</span>
+                <h2 data-en="Airport Boarding Guide" data-ml="ബോർഡിംഗ് സമയക്രമം" data-hi="एयरपोर्ट बोर्डिंग गाइड">Airport Boarding Guide</h2>
             </div>
 
             <div class="glass-card">
                 <div class="grid-2-col">
                     <div>
-                        <label class="field-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം">Destination</label>
+                        <label class="field-label" data-en="Departure Airport" data-ml="പുറപ്പെടുന്ന എയർപോർട്ട്" data-hi="प्रस्थान हवाई अड्डा">Departure Airport</label>
+                        <select id="bg-airport">
+                            <option value="COK" selected>Kochi (COK)</option>
+                            <option value="CCJ">Kozhikode (CCJ)</option>
+                            <option value="TRV">Thiruvananthapuram (TRV)</option>
+                            <option value="CNN">Kannur (CNN)</option>
+                            <option value="BOM">Mumbai (BOM)</option>
+                            <option value="DEL">Delhi (DEL)</option>
+                            <option value="MAA">Chennai (MAA)</option>
+                            <option value="BLR">Bengaluru (BLR)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="field-label" data-en="Scheduled Flight Time" data-ml="വിമാന സമയം" data-hi="उड़ान का समय">Scheduled Flight Time</label>
+                        <input type="time" id="bg-time" value="14:30">
+                    </div>
+                </div>
+
+                <div class="grid-2-col">
+                    <div>
+                        <label class="field-label" data-en="Checked Baggage?" data-ml="ലഗേജ് ഉണ്ടോ?" data-hi="चेक-इन बैग है?">Checked Baggage?</label>
+                        <select id="bg-bag">
+                            <option value="true" selected>Yes, dropping luggage</option>
+                            <option value="false">Cabin hand baggage only</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="field-label" data-en="ECR Passport?" data-ml="ECR പാസ്‌പോർട്ട് ഉണ്ടോ?" data-hi="ECR पासपोर्ट है?">ECR Passport?</label>
+                        <select id="bg-ecr">
+                            <option value="false" selected>No (Non-ECR / Degree)</option>
+                            <option value="true">Yes (ECR - Needs PoE)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="glass-pill-btn" onclick="submitBoardingGuide()" style="margin-top:8px;">
+                    ⏱️ <span data-en="Calculate Airport Timeline" data-ml="സമയക്രമം കണക്കാക്കുക" data-hi="टाइमलाइन तैयार करें">Calculate Airport Timeline</span>
+                </button>
+            </div>
+
+            <div class="loading-pane" id="bg-loading">
+                <div class="frosted-spinner"></div>
+                <div class="loading-title">Calculating arrival time and milestones...</div>
+            </div>
+
+            <div id="bg-result"></div>
+        </section>
+
+        <!-- ===== TAB 8: SIM GUIDE ===== -->
+        <section id="tab-sim" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">📱</span>
+                <h2 data-en="UAE Airport SIM Guide" data-ml="യുഎഇ സിം കാർഡ് ഗൈഡ്" data-hi="यूएई एयरपोर्ट सिम गाइड">UAE Airport SIM Guide</h2>
+            </div>
+
+            <div class="glass-card">
+                <div class="grid-2-col">
+                    <div>
+                        <label class="field-label" data-en="Arrival City / Airport" data-ml="എത്തുന്ന നഗരം" data-hi="आगमन शहर">Arrival City / Airport</label>
+                        <select id="sim-city">
+                            <option value="Dubai" selected>Dubai (DXB)</option>
+                            <option value="Abu Dhabi">Abu Dhabi (AUH)</option>
+                            <option value="Sharjah">Sharjah (SHJ)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="field-label" data-en="Trip Duration" data-ml="താമസ സമയം" data-hi="अवधि">Trip Duration</label>
+                        <select id="sim-days">
+                            <option value="7" selected>7 Days (1 Week)</option>
+                            <option value="14">14 Days (2 Weeks)</option>
+                            <option value="30">30 Days (1 Month)</option>
+                            <option value="90">90 Days / Long-term</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-2-col">
+                    <div>
+                        <label class="field-label" data-en="Internet Need" data-ml="ഡാറ്റ ആവശ്യം" data-hi="इंटरनेट जरूरत">Internet Need</label>
+                        <select id="sim-data">
+                            <option value="light">Light (WhatsApp/Maps)</option>
+                            <option value="medium" selected>Medium (Social/Video)</option>
+                            <option value="heavy">Heavy (Hotspot/Work)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="field-label" data-en="Visa Status" data-ml="വിസ തരം" data-hi="वीजा स्थिति">Visa Status</label>
+                        <select id="sim-type">
+                            <option value="visitor" selected>Tourist / Visitor</option>
+                            <option value="resident">Employment / Resident</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="glass-pill-btn" onclick="submitSimGuide()" style="margin-top:8px;">
+                    📶 <span data-en="View Verified Operator Plans" data-ml="സിം പ്ലാനുകൾ കാണുക" data-hi="सत्यापित प्लान देखें">View Verified Operator Plans</span>
+                </button>
+            </div>
+
+            <div class="loading-pane" id="sim-loading">
+                <div class="frosted-spinner"></div>
+                <div class="loading-title">Matching verified UAE telecom plans...</div>
+            </div>
+
+            <div id="sim-result"></div>
+        </section>
+
+        <!-- ===== TAB 9: EMERGENCY CARD ===== -->
+        <section id="tab-emergency" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">🚨</span>
+                <h2 data-en="Expatriate Emergency Card" data-ml="അടിയന്തര സഹായ നമ്പറുകൾ" data-hi="आपातकालीन सहायता कार्ड">Expatriate Emergency Card</h2>
+            </div>
+
+            <div class="emergency-grid" id="emergency-cards-container">
+                <div class="loading-pane active" style="padding:20px;">
+                    <div class="frosted-spinner"></div>
+                    <div class="loading-title">Loading verified official emergency contacts...</div>
+                </div>
+            </div>
+
+            <div class="official-disclaimer" style="margin-top:16px;">
+                <strong>🛡️ <span data-en="Direct Protection:" data-ml="നേരിട്ടുള്ള സംരക്ഷണം:" data-hi="सीधी सुरक्षा:">Direct Protection:</span></strong>
+                <span data-en="All phone lines connect directly to official government bodies (NORKA, Indian Embassies, UAE Police 999, Ambulance 998). Toll-free from inside the UAE." data-ml="എല്ലാ നമ്പറുകളും ഔദ്യോഗിക സർക്കാർ കേന്ദ്രങ്ങളിലേക്ക് നേരിട്ട് ബന്ധിപ്പിക്കുന്നു." data-hi="सभी नंबर सीधे सरकारी दूतावास और आपातकालीन सेवाओं से जुड़ते हैं।">All phone lines connect directly to official government bodies (NORKA, Indian Embassies, UAE Police 999, Ambulance 998). Toll-free from inside the UAE.</span>
+            </div>
+        </section>
+
+        <!-- ===== TAB 10: JOURNEY CHECKLIST ===== -->
+        <section id="tab-checklist" class="tab-panel">
+            <div class="section-header">
+                <span style="font-size:1.5rem;">📋</span>
+                <h2 data-en="Journey Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്" data-hi="यात्रा चेकलिस्ट">Journey Checklist</h2>
+            </div>
+
+            <div class="glass-card">
+                <div class="grid-2-col">
+                    <div>
+                        <label class="field-label" data-en="Destination" data-ml="ലക്ഷ്യസ്ഥാനം" data-hi="गंतव्य">Destination</label>
                         <select id="cl-destination">
                             <option value="UAE" selected>🇦🇪 UAE</option>
                             <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
@@ -1327,7 +1852,7 @@
                         </select>
                     </div>
                     <div>
-                        <label class="field-label" data-en="Travel Purpose" data-ml="യാത്രാ ഉദ്ദേശ്യം">Travel Purpose</label>
+                        <label class="field-label" data-en="Travel Purpose" data-ml="യാത്രാ ഉദ്ദേശ്യം" data-hi="यात्रा उद्देश्य">Travel Purpose</label>
                         <select id="cl-purpose">
                             <option value="work">💼 Employment / Work</option>
                             <option value="visit">✈️ Tourist / Visit</option>
@@ -1336,25 +1861,24 @@
                     </div>
                 </div>
 
-                <label class="field-label" data-en="Travel Date" data-ml="യാത്രാ തീയതി">Travel Date</label>
+                <label class="field-label" data-en="Travel Date" data-ml="യാത്രാ തീയതി" data-hi="यात्रा तिथि">Travel Date</label>
                 <input type="date" id="cl-date" style="margin-bottom: 12px;">
 
                 <div id="layover-box" class="hidden">
-                    <label class="field-label" data-en="Layover Duration (Hours)" data-ml="ലേഓവർ സമയം (മണിക്കൂറുകൾ)">Layover Duration (Hours)</label>
+                    <label class="field-label" data-en="Layover Duration (Hours)" data-ml="ലേഓവർ സമയം (മണിക്കൂറുകൾ)" data-hi="लेओवर घंटे">Layover Duration (Hours)</label>
                     <input type="number" id="cl-layover" placeholder="e.g. 8" min="1" max="48">
-                    <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;" data-en="Calculates whether it is safe to exit the airport." data-ml="എയർപോർട്ട് വിടാൻ സാധിക്കുമോ എന്ന് കണക്കാക്കുന്നു.">Calculates whether it is safe to exit the airport.</p>
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;" data-en="Calculates whether it is safe to exit the airport." data-ml="എയർപോർട്ട് വിടാൻ സാധിക്കുമോ എന്ന് കണക്കാക്കുന്നു." data-hi="एयरपोर्ट से बाहर निकलना सुरक्षित है या नहीं जांचें।">Calculates whether it is safe to exit the airport.</p>
                 </div>
             </div>
 
             <button class="glass-pill-btn" onclick="submitChecklist()">
-                📋 <span data-en="Generate Dated Checklist" data-ml="ചെക്ക്‌ലിസ്റ്റ് തയ്യാറാക്കുക">Generate Dated Checklist</span>
+                📋 <span data-en="Generate Dated Checklist" data-ml="ചെക്ക്‌ലിസ്റ്റ് തയ്യാറാക്കുക" data-hi="चेकलिस्ट तैयार करें">Generate Dated Checklist</span>
             </button>
 
-            <!-- Loading State -->
             <div class="loading-pane" id="cl-loading">
                 <div class="frosted-spinner"></div>
-                <div class="loading-title" data-en="Personalizing travel requirements..." data-ml="നിങ്ങളുടെ വിവരങ്ങൾ തയ്യാറാക്കുന്നു...">Personalizing travel requirements...</div>
-                <div class="loading-desc" data-en="Calculating PoE steps, visa rules, and return time" data-ml="ഇമിഗ്രേഷൻ ഘട്ടങ്ങളും മടങ്ങേണ്ട സമയവും കണക്കാക്കുന്നു">Calculating PoE steps, visa rules, and return time</div>
+                <div class="loading-title" data-en="Personalizing travel requirements..." data-ml="നിങ്ങളുടെ വിവരങ്ങൾ തയ്യാറാക്കുന്നു..." data-hi="आवश्यकताओं की तैयारी...">Personalizing travel requirements...</div>
+                <div class="loading-desc" data-en="Calculating PoE steps, visa rules, and return time" data-ml="ഇമിഗ്രേഷൻ ഘട്ടങ്ങളും മടങ്ങേണ്ട സമയവും കണക്കാക്കുന്നു" data-hi="इमिग्रेशन नियम व वापसी समय">Calculating PoE steps, visa rules, and return time</div>
             </div>
 
             <div id="cl-result"></div>
@@ -1362,47 +1886,72 @@
         </section>
     </div>
 
-    <!-- ===== FLOATING FROSTED GLASS DOCK (BOTTOM NAV) ===== -->
+    <!-- ===== FLOATING FROSTED GLASS DOCK (BOTTOM NAV FOR MOBILE) ===== -->
     <div class="bottom-dock-wrapper">
         <nav class="bottom-dock">
             <button class="dock-item active" data-tab="home" onclick="switchTab('home')">
                 <span class="dock-icon">🏠</span>
-                <span class="dock-label" data-en="Home" data-ml="ഹോം">Home</span>
+                <span class="dock-label" data-en="Home" data-ml="ഹോം" data-hi="होम">Home</span>
             </button>
             <button class="dock-item" data-tab="offer" onclick="switchTab('offer')">
                 <span class="dock-icon">🛡️</span>
-                <span class="dock-label" data-en="Offer" data-ml="ഓഫർ">Offer</span>
+                <span class="dock-label" data-en="Offer" data-ml="ഓഫർ" data-hi="ऑफर">Offer</span>
+            </button>
+            <button class="dock-item" data-tab="contract" onclick="switchTab('contract')">
+                <span class="dock-icon">📜</span>
+                <span class="dock-label" data-en="Contract" data-ml="കരാർ" data-hi="अनुबंध">Contract</span>
             </button>
             <button class="dock-item" data-tab="pack" onclick="switchTab('pack')">
                 <span class="dock-icon">🧳</span>
-                <span class="dock-label" data-en="Pack" data-ml="പാക്ക്">Pack</span>
+                <span class="dock-label" data-en="Pack" data-ml="പാക്ക്" data-hi="सामान">Pack</span>
             </button>
-            <button class="dock-item" data-tab="checklist" onclick="switchTab('checklist')">
-                <span class="dock-icon">📋</span>
-                <span class="dock-label" data-en="Checklist" data-ml="ലിസ്റ്റ്">Checklist</span>
+            <button class="dock-item" data-tab="handbag" onclick="switchTab('handbag')">
+                <span class="dock-icon">🎒</span>
+                <span class="dock-label" data-en="Handbag" data-ml="ബാഗ്" data-hi="हैंडबैग">Handbag</span>
+            </button>
+            <button class="dock-item" data-tab="currency" onclick="switchTab('currency')">
+                <span class="dock-icon">💱</span>
+                <span class="dock-label" data-en="Currency" data-ml="പണം" data-hi="मुद्रा">Currency</span>
+            </button>
+            <button class="dock-item" data-tab="boarding" onclick="switchTab('boarding')">
+                <span class="dock-icon">✈️</span>
+                <span class="dock-label" data-en="Boarding" data-ml="ഫ്ലൈറ്റ്" data-hi="बोर्डिंग">Boarding</span>
+            </button>
+            <button class="dock-item" data-tab="emergency" onclick="switchTab('emergency')">
+                <span class="dock-icon">🚨</span>
+                <span class="dock-label" data-en="Help" data-ml="സഹായം" data-hi="मदद">Help</span>
             </button>
         </nav>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
         // State
         let currentLang = 'en';
         let currentTab = 'home';
         let speechSynth = window.speechSynthesis;
         let speechActive = false;
+        let handbagDataCache = null;
 
-        // Language Handling
+        // Trilingual Language Handling (EN / ML / HI)
         function setLanguage(lang) {
             currentLang = lang;
             document.querySelectorAll('.lang-pill-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
-            document.body.classList.toggle('lang-ml', lang === 'ml');
+
+            document.body.classList.remove('lang-ml', 'lang-hi');
+            if (lang === 'ml') document.body.classList.add('lang-ml');
+            if (lang === 'hi') document.body.classList.add('lang-hi');
 
             document.querySelectorAll('[data-' + lang + ']').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
+
+            // Re-render data-driven components if loaded
+            if (currentTab === 'handbag') renderHandbagList();
+            if (currentTab === 'emergency') loadEmergencyCard();
+            if (currentTab === 'currency') convertCurrency();
         }
 
         // Tab Switching
@@ -1410,12 +1959,23 @@
             currentTab = tab;
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.dock-item').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('.desktop-nav-btn').forEach(d => d.classList.remove('active'));
 
-            document.getElementById('tab-' + tab).classList.add('active');
+            const targetPanel = document.getElementById('tab-' + tab);
+            if (targetPanel) targetPanel.classList.add('active');
+
             const dockBtn = document.querySelector(`.dock-item[data-tab="${tab}"]`);
             if (dockBtn) dockBtn.classList.add('active');
 
+            const desktopBtn = document.querySelector(`.desktop-nav-btn[data-tab="${tab}"]`);
+            if (desktopBtn) desktopBtn.classList.add('active');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // On-demand loaders
+            if (tab === 'handbag' && !handbagDataCache) loadHandbagData();
+            if (tab === 'currency') convertCurrency();
+            if (tab === 'emergency') loadEmergencyCard();
         }
 
         // Image Selection & Preview
@@ -1443,38 +2003,45 @@
             }
         }
 
-        // Read Aloud Speech Synthesis
+        // Trilingual Speech Synthesis (Read Aloud)
         function toggleReadAloud(text, btn) {
             if (speechActive) {
                 speechSynth.cancel();
                 speechActive = false;
                 btn.classList.remove('playing');
-                btn.innerHTML = '🔊 ' + (currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud');
+                const readLabel = currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud');
+                btn.innerHTML = '🔊 ' + readLabel;
                 return;
             }
 
             const cleanText = text.replace(/[#*`_]/g, '');
             const utter = new SpeechSynthesisUtterance(cleanText);
-            utter.lang = currentLang === 'ml' ? 'ml-IN' : 'en-IN';
+            if (currentLang === 'ml') utter.lang = 'ml-IN';
+            else if (currentLang === 'hi') utter.lang = 'hi-IN';
+            else utter.lang = 'en-IN';
             utter.rate = 0.95;
 
             utter.onend = () => {
                 speechActive = false;
                 btn.classList.remove('playing');
-                btn.innerHTML = '🔊 ' + (currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud');
+                const readLabel = currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud');
+                btn.innerHTML = '🔊 ' + readLabel;
             };
 
             speechSynth.speak(utter);
             speechActive = true;
             btn.classList.add('playing');
-            btn.innerHTML = '⏹️ ' + (currentLang === 'ml' ? 'നിർത്തുക' : 'Stop');
+            const stopLabel = currentLang === 'ml' ? 'നിർത്തുക' : (currentLang === 'hi' ? 'रोकें' : 'Stop');
+            btn.innerHTML = '⏹️ ' + stopLabel;
         }
 
         // UI Helpers
         function showLoading(id) {
             document.getElementById(id + '-loading').classList.add('active');
-            document.getElementById(id + '-result').innerHTML = '';
-            document.getElementById(id + '-error').classList.add('hidden');
+            const resEl = document.getElementById(id + '-result');
+            if (resEl) resEl.innerHTML = '';
+            const errEl = document.getElementById(id + '-error');
+            if (errEl) errEl.classList.add('hidden');
         }
 
         function hideLoading(id) {
@@ -1484,11 +2051,13 @@
         function showError(id, message) {
             hideLoading(id);
             const err = document.getElementById(id + '-error');
+            if (!err) return;
             err.classList.remove('hidden');
+            const okLabel = currentLang === 'ml' ? 'ശരി' : (currentLang === 'hi' ? 'ठीक है' : 'Dismiss');
             err.innerHTML = `
                 <p>⚠️ ${message}</p>
                 <button class="dismiss-btn" onclick="document.getElementById('${id}-error').classList.add('hidden')">
-                    ${currentLang === 'ml' ? 'ശരി' : 'Dismiss'}
+                    ${okLabel}
                 </button>
             `;
         }
@@ -1500,6 +2069,16 @@
                         <strong>⚠️ ഔദ്യോഗിക മുന്നറിയിപ്പ്:</strong> ഇത് പ്രാഥമിക മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്. ഔദ്യോഗിക സർക്കാർ പോർട്ടലുകൾ വഴി സ്ഥിരീകരിക്കുക.
                         <br>
                         <a href="https://emigrate.gov.in" target="_blank">eMigrate</a> | 
+                        <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> | 
+                        <a href="https://mohap.gov.ae" target="_blank">UAE MOHAP</a>
+                    </div>
+                `;
+            } else if (currentLang === 'hi') {
+                return `
+                    <div class="official-disclaimer">
+                        <strong>⚠️ आधिकारिक अस्वीकरण:</strong> यह केवल मार्गदर्शन है। आधिकारिक सरकारी स्रोतों से पुष्टि करें।
+                        <br>
+                        <a href="https://emigrate.gov.in" target="_blank">eMigrate पोर्टल</a> | 
                         <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> | 
                         <a href="https://mohap.gov.ae" target="_blank">UAE MOHAP</a>
                     </div>
@@ -1523,7 +2102,8 @@
             const image = imageInput.files[0];
 
             if (!text && !image) {
-                showError('offer', currentLang === 'ml' ? 'ഓഫർ സന്ദേശം നൽകുക അല്ലെങ്കിൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക.' : 'Please paste the offer message or upload a photo.');
+                const msg = currentLang === 'ml' ? 'ഓഫർ സന്ദേശം നൽകുക അല്ലെങ്കിൽ ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക.' : (currentLang === 'hi' ? 'कृपया ऑफर संदेश दें या फोटो अपलोड करें।' : 'Please paste the offer message or upload a photo.');
+                showError('offer', msg);
                 return;
             }
 
@@ -1555,15 +2135,17 @@
             if (data.red_flags) spoken += 'Red flags: ' + data.red_flags.join(', ') + '. ';
             if (data.safe_next_steps) spoken += 'Next steps: ' + data.safe_next_steps.join(', ');
 
-            let html = `<div class="result-wrapper">`;
+            const readBtnLabel = currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud');
+            const titleLabel = currentLang === 'ml' ? 'അപകട സാധ്യത' : (currentLang === 'hi' ? 'जोखिम मूल्यांकन' : 'Fraud Risk Assessment');
+            const riskWord = currentLang === 'ml' ? 'അപകടം' : (currentLang === 'hi' ? 'जोखिम' : 'RISK');
 
-            // Risk Gauge Card
+            let html = `<div class="result-wrapper">`;
             html += `
                 <div class="glass-card">
                     <div class="glass-result-header">
-                        <h3>${currentLang === 'ml' ? 'അപകട സാധ്യത' : 'Fraud Risk Assessment'}</h3>
+                        <h3>${titleLabel}</h3>
                         <button class="audio-pill-btn" onclick="toggleReadAloud(\`${spoken.replace(/`/g, "'")}\`, this)">
-                            🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
+                            🔊 ${readBtnLabel}
                         </button>
                     </div>
 
@@ -1573,7 +2155,7 @@
                             <small>/100</small>
                         </div>
                         <div class="risk-status-pill ${lvl}">
-                            ${lvl.toUpperCase()} ${currentLang === 'ml' ? 'അപകടം' : 'RISK'}
+                            ${lvl.toUpperCase()} ${riskWord}
                         </div>
                     </div>
 
@@ -1581,11 +2163,11 @@
                 </div>
             `;
 
-            // Red Flags
             if (data.red_flags && data.red_flags.length > 0) {
+                const flagTitle = currentLang === 'ml' ? 'അപകട സൂചനകൾ' : (currentLang === 'hi' ? 'चेतावनी संकेत' : 'Red Flags Detected');
                 html += `
                     <div class="glass-card">
-                        <div class="result-group-title">🚩 ${currentLang === 'ml' ? 'അപകട സൂചനകൾ' : 'Red Flags Detected'}</div>
+                        <div class="result-group-title">🚩 ${flagTitle}</div>
                         <ul class="glass-list red-flags">
                             ${data.red_flags.map(f => `<li><span>❌</span> ${f}</li>`).join('')}
                         </ul>
@@ -1593,11 +2175,11 @@
                 `;
             }
 
-            // What to verify
             if (data.what_to_verify && data.what_to_verify.length > 0) {
+                const verifyTitle = currentLang === 'ml' ? 'പരിശോധിക്കേണ്ട കാര്യങ്ങൾ' : (currentLang === 'hi' ? 'जांचने योग्य बातें' : 'What to Verify First');
                 html += `
                     <div class="glass-card">
-                        <div class="result-group-title">🔍 ${currentLang === 'ml' ? 'പരിശോധിക്കേണ്ട കാര്യങ്ങൾ' : 'What to Verify First'}</div>
+                        <div class="result-group-title">🔍 ${verifyTitle}</div>
                         <ul class="glass-list verify">
                             ${data.what_to_verify.map(v => `<li><span>🔎</span> ${v}</li>`).join('')}
                         </ul>
@@ -1605,11 +2187,11 @@
                 `;
             }
 
-            // Safe next steps
             if (data.safe_next_steps && data.safe_next_steps.length > 0) {
+                const safeTitle = currentLang === 'ml' ? 'സുരക്ഷിത അടുത്ത ഘട്ടങ്ങൾ' : (currentLang === 'hi' ? 'सुरक्षित कदम' : 'Safe Next Steps');
                 html += `
                     <div class="glass-card">
-                        <div class="result-group-title">✅ ${currentLang === 'ml' ? 'സുരക്ഷിത അടുത്ത ഘട്ടങ്ങൾ' : 'Safe Next Steps'}</div>
+                        <div class="result-group-title">✅ ${safeTitle}</div>
                         <ul class="glass-list safe">
                             ${data.safe_next_steps.map(s => `<li><span>👉</span> ${s}</li>`).join('')}
                         </ul>
@@ -1622,7 +2204,109 @@
             document.getElementById('offer-result').innerHTML = html;
         }
 
-        // ===== FEATURE 2: PACK CHECK =====
+        // ===== FEATURE 2: CONTRACT READER =====
+        async function submitContractCheck() {
+            const text = document.getElementById('contract-text').value.trim();
+            const imageInput = document.getElementById('contract-image');
+            const image = imageInput.files[0];
+
+            if (!text && !image) {
+                const msg = currentLang === 'ml' ? 'കരാർ വാചകങ്ങൾ നൽകുക അല്ലെങ്കിൽ ഫോട്ടോ നൽകുക.' : (currentLang === 'hi' ? 'कृपया अनुबंध की शर्तें या फोटो दें।' : 'Please paste contract clauses or upload a photo.');
+                showError('contract', msg);
+                return;
+            }
+
+            showLoading('contract');
+
+            const fd = new FormData();
+            if (text) fd.append('text', text);
+            if (image) fd.append('image', image);
+            fd.append('language', currentLang);
+
+            try {
+                const res = await fetch('/api/contract-check', { method: 'POST', body: fd });
+                const data = await res.json();
+                hideLoading('contract');
+
+                if (data.error && !data.contract_verdict) {
+                    showError('contract', data.message || 'Contract analysis failed.');
+                    return;
+                }
+                renderContractResult(data);
+            } catch (err) {
+                showError('contract', currentLang === 'ml' ? 'കണക്ഷൻ തകരാർ. വീണ്ടും ശ്രമിക്കുക.' : 'Service unavailable. Please retry.');
+            }
+        }
+
+        function renderContractResult(data) {
+            const v = data.contract_verdict || 'review_needed';
+            let spoken = (data.summary || '') + '. ';
+            if (data.red_flags) spoken += 'Flags: ' + data.red_flags.join(', ') + '. ';
+
+            const readBtnLabel = currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud');
+            const verdictTitle = currentLang === 'ml' ? 'കരാർ പരിശോധനാ ഫലം' : (currentLang === 'hi' ? 'अनुबंध विश्लेषण परिणाम' : 'UAE Labor Law Contract Audit');
+
+            let html = `<div class="result-wrapper">`;
+            html += `
+                <div class="glass-card">
+                    <div class="glass-result-header">
+                        <h3>${verdictTitle}</h3>
+                        <button class="audio-pill-btn" onclick="toggleReadAloud(\`${spoken.replace(/`/g, "'")}\`, this)">
+                            🔊 ${readBtnLabel}
+                        </button>
+                    </div>
+
+                    <div class="gauge-center">
+                        <div class="risk-orb ${v}">
+                            ${v === 'dangerous' ? '🚨' : (v === 'safe' ? '✅' : '⚠️')}
+                        </div>
+                        <div class="risk-status-pill ${v}">
+                            ${v.toUpperCase().replace('_', ' ')}
+                        </div>
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+                        <div style="background:rgba(255,255,255,0.6);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                            <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;">JOB TITLE</div>
+                            <div style="font-size:0.86rem;font-weight:800;">${data.job_title || 'Identified'}</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.6);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                            <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;">SALARY</div>
+                            <div style="font-size:0.86rem;font-weight:800;">${data.basic_salary || 'Verified'}</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.6);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                            <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;">WORKING HOURS</div>
+                            <div style="font-size:0.84rem;font-weight:700;">${data.working_hours || '8 hrs/day'}</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.6);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                            <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;">PASSPORT STATUS</div>
+                            <div style="font-size:0.82rem;font-weight:700;color:${data.passport_retention && data.passport_retention.includes('VIOLATION') ? 'var(--danger)' : 'var(--safe)'};">
+                                ${data.passport_retention || 'Employee Retains'}
+                            </div>
+                        </div>
+                    </div>
+
+                    ${data.summary ? `<div class="summary-box">${data.summary}</div>` : ''}
+                </div>
+            `;
+
+            if (data.red_flags && data.red_flags.length > 0) {
+                html += `
+                    <div class="glass-card">
+                        <div class="result-group-title">🚩 ${currentLang === 'ml' ? 'നിയമവിരുദ്ധമായ വ്യവസ്ഥകൾ' : (currentLang === 'hi' ? 'गैरकानूनी शर्तें' : 'Illegal / Unfair Clauses Detected')}</div>
+                        <ul class="glass-list red-flags">
+                            ${data.red_flags.map(f => `<li><span>❌</span> ${f}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            html += getDisclaimerHTML();
+            html += `</div>`;
+            document.getElementById('contract-result').innerHTML = html;
+        }
+
+        // ===== FEATURE 3: PACK CHECK =====
         async function submitPackCheck() {
             const items = document.getElementById('pack-items').value.trim();
             const imageInput = document.getElementById('pack-image');
@@ -1630,7 +2314,8 @@
             const destination = document.getElementById('pack-destination').value;
 
             if (!items && !image) {
-                showError('pack', currentLang === 'ml' ? 'സാധനങ്ങളുടെ പേര് ടൈപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ഫോട്ടോ നൽകുക.' : 'Please list items or upload a photo.');
+                const msg = currentLang === 'ml' ? 'സാധനങ്ങളുടെ പേര് ടൈപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ഫോട്ടോ നൽകുക.' : (currentLang === 'hi' ? 'कृपया सामान की सूची दें या फोटो अपलोड करें।' : 'Please list items or upload a photo.');
+                showError('pack', msg);
                 return;
             }
 
@@ -1661,14 +2346,15 @@
             const statusIcons = { likely_ok: '✅', restricted: '⚠️', prohibited: '🚫', unsure: '❓' };
             let spoken = (data.items || []).map(i => `${i.name}: ${i.status}. ${i.reason}`).join('. ');
 
-            let html = `<div class="result-wrapper">`;
+            const readBtnLabel = currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud');
 
+            let html = `<div class="result-wrapper">`;
             html += `
                 <div class="glass-card">
                     <div class="glass-result-header">
-                        <h3>${currentLang === 'ml' ? 'പരിശോധനാ ഫലം' : 'Customs Verification'} – ${data.destination || 'UAE'}</h3>
+                        <h3>${currentLang === 'ml' ? 'പരിശോധനാ ഫലം' : (currentLang === 'hi' ? 'कस्टम्स परिणाम' : 'Customs Verification')} – ${data.destination || 'UAE'}</h3>
                         <button class="audio-pill-btn" onclick="toggleReadAloud(\`${spoken.replace(/`/g, "'")}\`, this)">
-                            🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
+                            🔊 ${readBtnLabel}
                         </button>
                     </div>
             `;
@@ -1697,11 +2383,10 @@
 
             html += `</div>`;
 
-            // General Tips
             if (data.general_tips && data.general_tips.length > 0) {
                 html += `
                     <div class="glass-card">
-                        <div class="result-group-title">💡 ${currentLang === 'ml' ? 'നിർദ്ദേശങ്ങൾ' : 'Customs Packing Tips'}</div>
+                        <div class="result-group-title">💡 ${currentLang === 'ml' ? 'നിർദ്ദേശങ്ങൾ' : (currentLang === 'hi' ? 'कस्टम्स सुझाव' : 'Customs Packing Tips')}</div>
                         <ul class="glass-list safe">
                             ${data.general_tips.map(t => `<li><span>💡</span> ${t}</li>`).join('')}
                         </ul>
@@ -1714,7 +2399,315 @@
             document.getElementById('pack-result').innerHTML = html;
         }
 
-        // ===== FEATURE 3: JOURNEY CHECKLIST =====
+        // ===== FEATURE 4: HANDBAG CHECKLIST (WITH LOCALSTORAGE) =====
+        async function loadHandbagData() {
+            try {
+                const res = await fetch('/api/handbag');
+                handbagDataCache = await res.json();
+                renderHandbagList();
+            } catch (err) {
+                document.getElementById('handbag-list-container').innerHTML = `
+                    <div class="glass-error"><p>Could not load handbag checklist. Please retry.</p></div>
+                `;
+            }
+        }
+
+        function renderHandbagList() {
+            if (!handbagDataCache || !handbagDataCache.categories) return;
+
+            const savedState = JSON.parse(localStorage.getItem('travelguard_handbag_state') || '{}');
+            let totalItems = 0;
+            let checkedItems = 0;
+
+            let html = '';
+            handbagDataCache.categories.forEach(cat => {
+                const catTitle = cat['title_' + currentLang] || cat.title_en;
+                html += `
+                    <div class="glass-card" style="padding:16px;">
+                        <div class="result-group-title" style="margin-bottom:12px;">📁 ${catTitle}</div>
+                `;
+
+                cat.items.forEach(item => {
+                    totalItems++;
+                    const isChecked = !!savedState[item.id];
+                    if (isChecked) checkedItems++;
+
+                    const itemName = item['name_' + currentLang] || item.name_en;
+                    const itemReason = item['reason_' + currentLang] || item.reason_en;
+
+                    html += `
+                        <div class="tick-item-row ${isChecked ? 'checked' : ''}" onclick="toggleHandbagItem('${item.id}')" id="hb-row-${item.id}">
+                            <div class="tick-checkbox">${isChecked ? '✓' : ''}</div>
+                            <div style="flex:1;">
+                                <div class="tick-title" style="font-size:0.88rem;font-weight:700;">${itemName}</div>
+                                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px;">${itemReason}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            });
+
+            document.getElementById('handbag-list-container').innerHTML = html;
+
+            // Update Progress Bar
+            const pct = totalItems > 0 ? Math.round((checkedItems / totalItems) * 100) : 0;
+            document.getElementById('handbag-progress-bar').style.width = pct + '%';
+            document.getElementById('handbag-progress-text').textContent = pct + '% Packed (' + checkedItems + '/' + totalItems + ')';
+        }
+
+        function toggleHandbagItem(itemId) {
+            const savedState = JSON.parse(localStorage.getItem('travelguard_handbag_state') || '{}');
+            savedState[itemId] = !savedState[itemId];
+            localStorage.setItem('travelguard_handbag_state', JSON.stringify(savedState));
+            renderHandbagList();
+        }
+
+        // ===== FEATURE 5: CURRENCY CONVERTER =====
+        let currTimeout = null;
+        async function convertCurrency() {
+            clearTimeout(currTimeout);
+            currTimeout = setTimeout(async () => {
+                const from = document.getElementById('curr-from').value;
+                const to = document.getElementById('curr-to').value;
+                const amt = parseFloat(document.getElementById('curr-amount').value) || 1;
+
+                try {
+                    const res = await fetch(`/api/currency?from_curr=${from}&to_curr=${to}&amount=${amt}&language=${currentLang}`);
+                    const data = await res.json();
+
+                    if (!data.error) {
+                        const symbolMap = { INR: '₹', AED: 'AED', SAR: 'SAR', QAR: 'QAR', USD: '$', OMR: 'OMR', KWD: 'KWD' };
+                        const toSym = symbolMap[to] || to;
+                        const fromSym = symbolMap[from] || from;
+
+                        document.getElementById('curr-result-rate').textContent = `${toSym} ${data.converted_amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                        document.getElementById('curr-result-sub').textContent = `1 ${from} = ${toSym} ${data.exchange_rate} ${to}`;
+                        document.getElementById('curr-last-updated').textContent = `${data.source.replace('_', ' ')} • ${data.last_updated}`;
+                        if (data.tip) {
+                            document.getElementById('curr-tip-text').textContent = data.tip;
+                        }
+                    }
+                } catch (e) {
+                    console.error('Currency conversion error:', e);
+                }
+            }, 250);
+        }
+
+        // ===== FEATURE 6: BOARDING-TIME GUIDE =====
+        async function submitBoardingGuide() {
+            const airport = document.getElementById('bg-airport').value;
+            const flightTime = document.getElementById('bg-time').value;
+            const bag = document.getElementById('bg-bag').value === 'true';
+            const ecr = document.getElementById('bg-ecr').value === 'true';
+
+            showLoading('bg');
+
+            const fd = new FormData();
+            fd.append('departure_airport', airport);
+            fd.append('flight_time', flightTime);
+            fd.append('is_international', 'true');
+            fd.append('has_checked_bag', bag);
+            fd.append('has_ecr_passport', ecr);
+            fd.append('language', currentLang);
+
+            try {
+                const res = await fetch('/api/boarding-guide', { method: 'POST', body: fd });
+                const data = await res.json();
+                hideLoading('bg');
+
+                if (data.error) {
+                    document.getElementById('bg-result').innerHTML = `<div class="glass-error"><p>${data.message}</p></div>`;
+                    return;
+                }
+                renderBoardingTimeline(data);
+            } catch (e) {
+                hideLoading('bg');
+                document.getElementById('bg-result').innerHTML = `<div class="glass-error"><p>Failed to generate boarding timeline.</p></div>`;
+            }
+        }
+
+        function renderBoardingTimeline(data) {
+            let spoken = (data.current_status || '') + '. Arrive by ' + (data.arrive_by || '') + '.';
+            const readBtnLabel = currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud');
+
+            let html = `<div class="result-wrapper">`;
+
+            // "What to do right now" banner
+            html += `
+                <div class="glass-card" style="border-left: 4px solid var(--c-slate);">
+                    <div class="glass-result-header">
+                        <h3>⏱️ ${currentLang === 'ml' ? 'ഇപ്പോൾ ചെയ്യേണ്ടത്' : (currentLang === 'hi' ? 'अभी क्या करें' : 'What To Do Right Now')}</h3>
+                        <button class="audio-pill-btn" onclick="toggleReadAloud(\`${spoken.replace(/`/g, "'")}\`, this)">
+                            🔊 ${readBtnLabel}
+                        </button>
+                    </div>
+                    <div style="font-size:1.05rem;font-weight:800;color:var(--c-slate-dark);margin-bottom:4px;">
+                        ${data.current_status}
+                    </div>
+                    <div style="font-size:0.8rem;color:var(--text-muted);">
+                        Flight: <strong>${data.flight_time}</strong> • Arrive Airport By: <strong style="color:var(--danger);">${data.arrive_by}</strong>
+                    </div>
+                </div>
+            `;
+
+            // Step-by-Step Countdown Timeline
+            html += `
+                <div class="glass-card">
+                    <div class="result-group-title" style="margin-bottom:16px;">🛫 ${currentLang === 'ml' ? 'വിമാനത്താവള സമയക്രമം' : (currentLang === 'hi' ? 'एयरपोर्ट चरण-दर-चरण' : 'Airport Step-by-Step Timeline')}</div>
+            `;
+
+            if (data.timeline) {
+                data.timeline.forEach(step => {
+                    html += `
+                        <div class="timeline-step">
+                            <div class="step-icon-orb">${step.icon || '📍'}</div>
+                            <div class="step-body">
+                                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;">
+                                    <h4 style="font-size:0.9rem;font-weight:800;">${step.milestone}</h4>
+                                    <span class="step-time-badge">${step.time}</span>
+                                </div>
+                                <p style="font-size:0.78rem;color:var(--text-muted);">${step.tip}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            html += `</div>`;
+            html += getDisclaimerHTML();
+            html += `</div>`;
+            document.getElementById('bg-result').innerHTML = html;
+        }
+
+        // ===== FEATURE 7: UAE SIM GUIDE =====
+        async function submitSimGuide() {
+            const city = document.getElementById('sim-city').value;
+            const days = document.getElementById('sim-days').value;
+            const dataUsage = document.getElementById('sim-data').value;
+            const userType = document.getElementById('sim-type').value;
+
+            showLoading('sim');
+
+            const fd = new FormData();
+            fd.append('arrival_city', city);
+            fd.append('stay_days', days);
+            fd.append('data_usage', dataUsage);
+            fd.append('user_type', userType);
+            fd.append('language', currentLang);
+
+            try {
+                const res = await fetch('/api/sim-guide', { method: 'POST', body: fd });
+                const data = await res.json();
+                hideLoading('sim');
+
+                renderSimPlans(data);
+            } catch (e) {
+                hideLoading('sim');
+                document.getElementById('sim-result').innerHTML = `<div class="glass-error"><p>Failed to load SIM plans.</p></div>`;
+            }
+        }
+
+        function renderSimPlans(data) {
+            let html = `<div class="result-wrapper">`;
+
+            // Free Tourist SIM at Immigration Banner
+            if (data.airport_free_sim_info) {
+                const freeInfo = data.airport_free_sim_info;
+                html += `
+                    <div class="glass-card" style="background:linear-gradient(135deg, rgba(218,235,227,0.8), rgba(253,232,211,0.8));">
+                        <div style="font-size:0.95rem;font-weight:800;color:var(--safe);margin-bottom:4px;">
+                            🎁 ${freeInfo.title}
+                        </div>
+                        <p style="font-size:0.8rem;color:var(--text-main);line-height:1.45;">
+                            ${freeInfo.details}
+                        </p>
+                    </div>
+                `;
+            }
+
+            // Operator Recommended Cards
+            if (data.recommendations) {
+                data.recommendations.forEach(rec => {
+                    html += `
+                        <div class="glass-card">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                                <div>
+                                    <h3 style="font-size:1.05rem;font-weight:800;">${rec.operator}</h3>
+                                    <div style="font-size:0.75rem;color:var(--c-slate);font-weight:700;">${rec.badge}</div>
+                                </div>
+                                <a href="${rec.official_url}" target="_blank" style="font-size:0.75rem;font-weight:700;color:var(--safe);text-decoration:none;padding:4px 10px;background:rgba(255,255,255,0.7);border-radius:var(--radius-pill);border:1px solid var(--glass-border);">
+                                    Official Site ↗
+                                </a>
+                            </div>
+
+                            <div style="background:rgba(255,255,255,0.6);border-radius:var(--radius-sm);padding:12px;border:1px solid var(--glass-border);margin-bottom:10px;">
+                                <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                                    <div style="font-size:0.92rem;font-weight:800;">${rec.recommended_plan.plan_name}</div>
+                                    <div style="font-size:1.15rem;font-weight:800;color:var(--safe);">AED ${rec.recommended_plan.price_aed}</div>
+                                </div>
+                                <div style="font-size:0.82rem;color:var(--text-main);font-weight:700;margin-top:4px;">
+                                    📶 ${rec.recommended_plan.data} • ⏳ ${rec.recommended_plan.validity}
+                                </div>
+                                <div style="font-size:0.76rem;color:var(--text-muted);margin-top:3px;">
+                                    🎯 ${rec.recommended_plan.recommended_for}
+                                </div>
+                            </div>
+
+                            <div style="font-size:0.74rem;color:var(--text-muted);">
+                                📍 <strong>Airport Kiosk:</strong> ${rec.counter_locations}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            // Disclaimer
+            html += `
+                <div class="official-disclaimer">
+                    <strong>⚠️ ${currentLang === 'ml' ? 'നിരക്ക് മാറ്റങ്ങൾ:' : (currentLang === 'hi' ? 'कीमत सूचना:' : 'Notice:')}</strong>
+                    ${data.disclaimer} (${data.verified_date || 'Verified: 2026-10-10'})
+                </div>
+            `;
+
+            html += `</div>`;
+            document.getElementById('sim-result').innerHTML = html;
+        }
+
+        // ===== FEATURE 8: EMERGENCY CARD (TAP-TO-CALL) =====
+        async function loadEmergencyCard() {
+            try {
+                const res = await fetch(`/api/emergency-card?language=${currentLang}`);
+                const data = await res.json();
+
+                let html = '';
+                (data.contacts || []).forEach(c => {
+                    const cleanNum = c.number.replace(/[^0-9+]/g, '');
+                    html += `
+                        <div class="call-card">
+                            <div style="flex:1;padding-right:12px;">
+                                <div style="display:flex;align-items:center;gap:6px;">
+                                    <span style="font-size:1.1rem;">${c.icon}</span>
+                                    <h4 style="font-size:0.9rem;font-weight:800;color:var(--text-main);">${c.name}</h4>
+                                </div>
+                                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">${c.desc}</div>
+                                ${c.alt_number ? `<div style="font-size:0.72rem;color:var(--c-slate);margin-top:2px;">Alt: ${c.alt_number}</div>` : ''}
+                            </div>
+                            <a href="tel:${cleanNum}" class="call-btn">
+                                📞 Call ${c.number}
+                            </a>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('emergency-cards-container').innerHTML = html;
+            } catch (e) {
+                document.getElementById('emergency-cards-container').innerHTML = `<div class="glass-error"><p>Failed to load emergency contacts.</p></div>`;
+            }
+        }
+
+        // ===== FEATURE 9: JOURNEY CHECKLIST =====
         document.getElementById('cl-purpose').addEventListener('change', function() {
             document.getElementById('layover-box').classList.toggle('hidden', this.value !== 'layover');
         });
@@ -1731,7 +2724,8 @@
             const layoverHours = document.getElementById('cl-layover').value;
 
             if (!travelDate) {
-                showError('cl', currentLang === 'ml' ? 'യാത്രാ തീയതി തിരഞ്ഞെടുക്കുക.' : 'Please select a travel date.');
+                const msg = currentLang === 'ml' ? 'യാത്രാ തീയതി തിരഞ്ഞെടുക്കുക.' : (currentLang === 'hi' ? 'कृपया यात्रा तिथि चुनें।' : 'Please select a travel date.');
+                showError('cl', msg);
                 return;
             }
 
@@ -1770,25 +2764,24 @@
                     <div class="glass-result-header">
                         <h3>📋 ${data.destination || 'UAE'} – ${data.purpose ? data.purpose.toUpperCase() : ''}</h3>
                         <button class="audio-pill-btn" id="cl-speak-btn">
-                            🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : 'Read Aloud'}
+                            🔊 ${currentLang === 'ml' ? 'വായിക്കുക' : (currentLang === 'hi' ? 'सुने' : 'Read Aloud')}
                         </button>
                     </div>
                     <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:12px;">📅 ${data.travel_date || ''}</div>
             `;
 
-            // Layover Calculation Banner
             if (data.layover_info) {
                 const lo = data.layover_info;
                 html += `
-                    <div class="layover-glass-banner">
-                        <h4>🔄 ${currentLang === 'ml' ? 'ലേഓവർ സുരക്ഷാ വിശകലനം' : 'Layover Airport Exit Analysis'}</h4>
+                    <div style="background:linear-gradient(135deg, rgba(153,205,216,0.4), rgba(218,235,227,0.7));border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:14px;margin-bottom:14px;">
+                        <h4 style="font-size:0.92rem;font-weight:800;margin-bottom:6px;">🔄 ${currentLang === 'ml' ? 'ലേഓവർ സുരക്ഷാ വിശകലനം' : (currentLang === 'hi' ? 'लेओवर सुरक्षा विश्लेषण' : 'Layover Airport Exit Analysis')}</h4>
                         <div style="font-size:0.84rem;margin-bottom:4px;">
                             ${lo.safe_to_leave ? '✅' : '❌'} 
-                            <strong>${lo.safe_to_leave ? (currentLang === 'ml' ? 'എയർപോർട്ട് വിടാൻ സുരക്ഷിതമാണ്' : 'Safe to exit the airport') : (currentLang === 'ml' ? 'എയർപോർട്ട് വിടരുത്' : 'Not safe to leave airport')}</strong>
+                            <strong>${lo.safe_to_leave ? (currentLang === 'ml' ? 'എയർപോർട്ട് വിടാൻ സുരക്ഷിതമാണ്' : (currentLang === 'hi' ? 'एयरपोर्ट से बाहर निकलना सुरक्षित है' : 'Safe to exit the airport')) : (currentLang === 'ml' ? 'എയർപോർട്ട് വിടരുത്' : (currentLang === 'hi' ? 'एयरपोर्ट के अंदर ही रहें' : 'Not safe to leave airport'))}</strong>
                         </div>
                         ${lo.return_by_time ? `
                             <div style="font-size:0.8rem;color:var(--text-main);margin-bottom:3px;">
-                                ⏰ <strong>${currentLang === 'ml' ? 'മടങ്ങേണ്ട സമയം' : 'Must return by'}:</strong> ${lo.return_by_time}
+                                ⏰ <strong>${currentLang === 'ml' ? 'മടങ്ങേണ്ട സമയം' : (currentLang === 'hi' ? 'वापसी समय' : 'Must return by')}:</strong> ${lo.return_by_time}
                             </div>
                         ` : ''}
                         ${lo.things_to_do && lo.things_to_do.length > 0 ? `
@@ -1800,22 +2793,19 @@
                 `;
             }
 
-            // Checklist Categories
             if (data.checklist && data.checklist.length > 0) {
                 data.checklist.forEach(cat => {
-                    html += `
-                        <div class="checklist-cat-title">${cat.category}</div>
-                    `;
+                    html += `<div class="result-group-title" style="margin:14px 0 8px;">${cat.category}</div>`;
                     if (cat.items) {
                         cat.items.forEach(item => {
                             spoken += item.task + '. ';
                             html += `
-                                <div class="cl-item-row">
-                                    <div class="cl-dot ${item.priority || 'medium'}"></div>
+                                <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(207,214,196,0.35);">
+                                    <div style="width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;background:${item.priority === 'high' ? 'var(--danger)' : (item.priority === 'medium' ? 'var(--warning)' : 'var(--safe)')};"></div>
                                     <div style="flex:1;">
-                                        <div class="cl-task">${item.task}</div>
-                                        ${item.deadline ? `<div class="cl-deadline">⏰ ${item.deadline}</div>` : ''}
-                                        ${item.details ? `<div class="cl-details">${item.details}</div>` : ''}
+                                        <div style="font-size:0.85rem;font-weight:700;">${item.task}</div>
+                                        ${item.deadline ? `<div style="font-size:0.74rem;color:var(--warning);font-weight:600;margin-top:2px;">⏰ ${item.deadline}</div>` : ''}
+                                        ${item.details ? `<div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px;">${item.details}</div>` : ''}
                                     </div>
                                 </div>
                             `;
@@ -1825,29 +2815,6 @@
             }
 
             html += `</div>`;
-
-            // Emergency Contacts
-            if (data.emergency_contacts && data.emergency_contacts.length > 0) {
-                html += `
-                    <div class="glass-card">
-                        <div class="result-group-title">📞 ${currentLang === 'ml' ? 'അടിയന്തര ഹെൽപ്പ്‌ലൈനുകൾ' : 'Emergency & Emigration Helplines'}</div>
-                        <div style="display:flex;flex-direction:column;gap:8px;">
-                            ${data.emergency_contacts.map(c => `
-                                <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,0.55);border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.7);">
-                                    <div>
-                                        <div style="font-size:0.84rem;font-weight:700;">${c.name}</div>
-                                        <div style="font-size:0.74rem;color:var(--text-muted);">${c.description || ''}</div>
-                                    </div>
-                                    <a href="tel:${c.number.split('/')[0].trim()}" style="font-size:0.8rem;font-weight:700;color:var(--c-slate);text-decoration:none;padding:4px 10px;background:rgba(218,235,227,0.7);border-radius:var(--radius-pill);">
-                                        ${c.number}
-                                    </a>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
             html += getDisclaimerHTML();
             html += `</div>`;
             document.getElementById('cl-result').innerHTML = html;
@@ -1863,21 +2830,20 @@
             // Fill Offer Check with scam
             document.getElementById('offer-text').value = `Dear brother, I have a great opportunity for you in Dubai! \n\nCompany: Big Business LLC\nSalary: AED 15,000/month (guaranteed)\nPosition: General Helper\nVisa: Tourist visa (we will convert to work visa after you arrive)\n\nYou just need to pay ₹2,50,000 processing fee upfront to my personal account.\n\nContact me on WhatsApp only: +971 50 XXX XXXX\nDecide today, this exclusive offer expires tonight!`;
 
+            // Fill Contract Reader with illegal clauses
+            document.getElementById('contract-text').value = `EMPLOYMENT AGREEMENT (DUBAI)\n\n1. Position: Construction Helper\n2. Salary: AED 1,200 per month.\n3. Working Hours: 12 hours per day, 7 days a week, no overtime pay.\n4. Passport Custody: The employee shall surrender and submit original passport to the company custody for safe keeping.\n5. Visa Expenses: Visa processing fee of AED 3,000 will be deducted from first 3 months salary.\n6. Termination: Employee cannot resign for 3 years without paying penalty.`;
+
             // Fill Pack Check
             document.getElementById('pack-items').value = `Paracetamol (Dolo 650)\nCough syrup (Codeine)\nAlprazolam sleeping pills\nHomemade mango pickle\nGold chain\nLaptop`;
-
-            // Fill Journey Checklist
-            document.getElementById('cl-destination').value = 'UAE';
-            document.getElementById('cl-purpose').value = 'work';
 
             switchTab('offer');
 
             const btn = document.querySelector('.demo-pill-btn');
-            const originalText = btn.innerHTML;
+            const orig = btn.innerHTML;
             btn.innerHTML = '✨ Demo Data Loaded!';
             btn.style.background = 'var(--c-mint)';
             setTimeout(() => {
-                btn.innerHTML = originalText;
+                btn.innerHTML = orig;
                 btn.style.background = '';
             }, 2000);
         }

@@ -181,6 +181,9 @@ async def generate_checklist(
     lang_instruction = ""
     if language == "ml":
         lang_instruction = "Respond with all text fields in Malayalam (മലയാളം) language."
+    elif language == "hi":
+        lang_instruction = "Respond with all text fields in Hindi (हिन्दी) language."
+
     
     rules_context = ""
     if emigration_rules:

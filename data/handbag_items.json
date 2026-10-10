@@ -1,0 +1,160 @@
+{
+  "last_updated": "2026-10-11",
+  "source": "ICAO Cabin Baggage Safety Standards, DGCA India & UAE Civil Aviation Regulations",
+  "categories": [
+    {
+      "id": "must_have",
+      "title_en": "Essential Documents & Valuables (Never Check-In)",
+      "title_ml": "നിർബന്ധമായും കൈവശം കരുതേണ്ട രേഖകൾ",
+      "title_hi": "आवश्यक दस्तावेज़ और कीमती सामान (हैंडबैग में रखें)",
+      "items": [
+        {
+          "id": "item_passport",
+          "name_en": "Original Passport (valid for 6+ months)",
+          "name_ml": "യഥാർത്ഥ പാസ്‌പോർട്ട് (കുറഞ്ഞത് 6 മാസ കാലാവധി)",
+          "name_hi": "मूल पासपोर्ट (कम से कम 6 महीने की वैधता)",
+          "critical": true,
+          "reason_en": "Primary travel identity. Required at check-in, PoE, immigration, and boarding.",
+          "reason_ml": "വിമാനത്താവളത്തിലെ പരിശോധനകൾക്ക് നിർബന്ധം.",
+          "reason_hi": "बोर्डिंग और इमिग्रेशन के लिए सबसे जरूरी पहचान पत्र।"
+        },
+        {
+          "id": "item_visa",
+          "name_en": "Printed UAE Visa / Entry Permit Copy",
+          "name_ml": "യുഎഇ വിസ / എൻട്രി പെർമിറ്റ് പ്രിന്റ് ഔട്ട്",
+          "name_hi": "यूएई वीजा / एंट्री परमिट की प्रिंट कॉपी",
+          "critical": true,
+          "reason_en": "Immigration officers and airline check-in staff require a physical or digital copy.",
+          "reason_ml": "ഇമിഗ്രേഷൻ കൗണ്ടറിൽ കാണിക്കാൻ പ്രിന്റ് ഔട്ട് കരുതുക.",
+          "reason_hi": "इमिग्रेशन और चेक-इन पर दिखाना अनिवार्य है।"
+        },
+        {
+          "id": "item_ticket",
+          "name_en": "Flight Ticket & Boarding Pass",
+          "name_ml": "വിമാന ടിക്കറ്റും ബോർഡിംഗ് പാസും",
+          "name_hi": "फ्लाइट टिकट और बोर्डिंग पास",
+          "critical": true,
+          "reason_en": "Needed to enter departure airport terminal and board aircraft.",
+          "reason_ml": "എയർപോർട്ടിൽ പ്രവേശിക്കാൻ ആവശ്യമാണ്.",
+          "reason_hi": "एयरपोर्ट में प्रवेश और विमान में चढ़ने के लिए आवश्यक।"
+        },
+        {
+          "id": "item_prescriptions",
+          "name_en": "Doctor's Prescriptions & Daily Medicines",
+          "name_ml": "ഡോക്ടറുടെ കുറിപ്പടിയും അത്യാവശ്യ മരുന്നുകളും",
+          "name_hi": "डॉक्टर का पर्चा और जरूरी दवाइयां",
+          "critical": true,
+          "reason_en": "Checked baggage may be delayed or lost; always keep critical medication in cabin.",
+          "reason_ml": "ലഗേജ് വൈകിയാൽ മരുന്നുകൾ മുടങ്ങാതിരിക്കാൻ കാബിനിൽ സൂക്ഷിക്കുക.",
+          "reason_hi": "दवाइयां और पर्चा हमेशा हैंडबैग में रखें ताकि सामान देर से मिलने पर समस्या न हो।"
+        },
+        {
+          "id": "item_cash",
+          "name_en": "Emergency Cash (INR & AED Dirhams)",
+          "name_ml": "അടിയന്തര ആവശ്യത്തിനുള്ള പണം (രൂപയും ദിർഹവും)",
+          "name_hi": "आपातकालीन नकद (रुपये और दिरहम)",
+          "critical": true,
+          "reason_en": "For airport transit meals, taxis, and initial arrival expenses.",
+          "reason_ml": "വിമാനത്താവളത്തിലെ ചെലവുകൾക്കും ടാക്സിക്കും.",
+          "reason_hi": "एयरपोर्ट खर्च और टैक्सी के लिए कुछ नकद पास रखें।"
+        },
+        {
+          "id": "item_phone",
+          "name_en": "Smartphone & Charging Cable",
+          "name_ml": "സ്മാർട്ട്ഫോണും ചാർജിംഗ് കേബിളും",
+          "name_hi": "स्मार्टफोन और चार्जर केबल",
+          "critical": true,
+          "reason_en": "For boarding passes, communication, emergency contacts, and maps.",
+          "reason_ml": "ബന്ധപ്പെടാനും ഇ-ടിക്കറ്റിനും.",
+          "reason_hi": "संचार और डिजिटल दस्तावेजों के लिए।"
+        }
+      ]
+    },
+    {
+      "id": "battery_rules",
+      "title_en": "Power Banks & Lithium Battery Rules",
+      "title_ml": "പവർ ബാങ്കുകളും ബാറ്ററികളും (പ്രത്യേക നിയമം)",
+      "title_hi": "पावर बैंक और लिथियम बैटरी नियम",
+      "items": [
+        {
+          "id": "item_powerbank",
+          "name_en": "Power Bank (Max 20,000 mAh / 100Wh) - HANDBAG ONLY!",
+          "name_ml": "പവർ ബാങ്ക് (ഹാൻഡ്ബാഗിൽ മാത്രം വയ്ക്കുക - ലഗേജിൽ പാടില്ല)",
+          "name_hi": "पावर बैंक (केवल हैंडबैग में रखें - चेक-इन बैग में सख्त मना है)",
+          "critical": true,
+          "reason_en": "STRICT AVIATION RULE: Lithium power banks are strictly prohibited in checked-in cargo bags due to fire hazard. They MUST be in hand luggage.",
+          "reason_ml": "അഗ്നിബാധ സാധ്യതയുള്ളതിനാൽ ചെക്ക്-ഇൻ ലഗേജിൽ പവർബാങ്ക് കർശനമായി നിരോധിച്ചിരിക്കുന്നു.",
+          "reason_hi": "विमान सुरक्षा नियमों के अनुसार पावर बैंक केवल हैंडबैग में ही ले जा सकते हैं।"
+        },
+        {
+          "id": "item_liquids",
+          "name_en": "Liquids & Gels (<100ml containers in 1L clear pouch)",
+          "name_ml": "ദ്രാവകങ്ങൾ (പരമാവധി 100 മില്ലി അളവിൽ മാത്രം)",
+          "name_hi": "तरल पदार्थ (100ml से छोटे कंटेनर में)",
+          "critical": false,
+          "reason_en": "Cabin liquid restrictions apply: Any single liquid container above 100ml will be confiscated at security screening.",
+          "reason_ml": "100 മില്ലിയിൽ കൂടുതലുള്ള ലിക്വിഡ് കുപ്പികൾ സെക്യൂരിറ്റിയിൽ തടയും.",
+          "reason_hi": "100 मिली से बड़ी तरल बोतलों को सुरक्षा जांच में जब्त कर लिया जाता है।"
+        }
+      ]
+    },
+    {
+      "id": "suggested_items",
+      "title_en": "Comfort & Smart Travel Essentials",
+      "title_ml": "യാത്ര സുഖകരമാക്കാനുള്ള സാധനങ്ങൾ",
+      "title_hi": "सुविधाजनक यात्रा के लिए जरूरी सामान",
+      "items": [
+        {
+          "id": "item_pen",
+          "name_en": "Blue or Black Ballpoint Pen",
+          "name_ml": "നീല/കറുപ്പ് ബോൾപോയിന്റ് പേന",
+          "name_hi": "नीला या काला बॉल पेन",
+          "critical": false,
+          "reason_en": "Vital for filling disembarkation forms, customs declaration cards, and transit slips without queueing.",
+          "reason_ml": "ഇമിഗ്രേഷൻ ഫോമുകൾ പൂരിപ്പിക്കാൻ ആവശ്യമാണ്.",
+          "reason_hi": "इमिग्रेशन और कस्टम फॉर्म भरने के लिए बहुत काम आता है।"
+        },
+        {
+          "id": "item_jacket",
+          "name_en": "Light Jacket / Sweater / Shawl",
+          "name_ml": "കനംകുറഞ്ഞ ജാക്കറ്റ് / സ്വെറ്റർ",
+          "name_hi": "हल्की जैकेट या शॉल",
+          "critical": false,
+          "reason_en": "Airplanes and Gulf airports have intense air-conditioning.",
+          "reason_ml": "ഫ്ലൈറ്റിലും എയർപോർട്ടിലും തണുപ്പ് കൂടുതലായിരിക്കും.",
+          "reason_hi": "फ्लाइट और एयरपोर्ट में तेज एसी की ठंड से बचने के लिए।"
+        },
+        {
+          "id": "item_water_bottle",
+          "name_en": "Empty Water Bottle",
+          "name_ml": "ഒഴിഞ്ഞ വാട്ടർ ബോട്ടിൽ",
+          "name_hi": "खाली पानी की बोतल",
+          "critical": false,
+          "reason_en": "Carry it empty through security, then refill for free at airport water stations inside the gate area.",
+          "reason_ml": "സെക്യൂരിറ്റിക്ക് ശേഷം വിമാനത്താവളത്തിലെ സൗജന്യ വാട്ടർ പോയിന്റിൽ നിന്ന് നിറയ്ക്കാം.",
+          "reason_hi": "सुरक्षा जांच के बाद एयरपोर्ट पर मुफ्त पानी भरने के लिए।"
+        },
+        {
+          "id": "item_clothes_change",
+          "name_en": "One Spare Change of Clothes & Innerwear",
+          "name_ml": "ഒരു ജോടി അധിക വസ്ത്രം",
+          "name_hi": "एक जोड़ी अतिरिक्त कपड़े",
+          "critical": false,
+          "reason_en": "Life saver if flight is delayed or checked luggage arrives late.",
+          "reason_ml": "ലഗേജ് വൈകിയാൽ ഉപകരിക്കും.",
+          "reason_hi": "सामान खोने या देरी होने की स्थिति में बहुत मददगार।"
+        },
+        {
+          "id": "item_adapter",
+          "name_en": "UK Style 3-Pin Plug Adapter (Type G)",
+          "name_ml": "യുകെ മോഡൽ 3-പിൻ അഡാപ്റ്റർ (ടൈപ്പ് ജി)",
+          "name_hi": "यूके 3-पिन प्लग एडाप्टर (टाइप जी)",
+          "critical": false,
+          "reason_en": "UAE wall sockets use standard British 3-pin Type G plugs.",
+          "reason_ml": "യുഎഇയിലെ പ്ലഗ് പോയിന്റുകൾ യുകെ മോഡൽ 3-പിൻ ആണ്.",
+          "reason_hi": "यूएई में यूके स्टाइल 3-पिन सॉकेट का उपयोग होता है।"
+        }
+      ]
+    }
+  ]
+}

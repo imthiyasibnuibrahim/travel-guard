@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 def rule_based_pack_fallback(items_text: Optional[str], destination: str, language: str, restricted_items_data: dict) -> dict:
     """Intelligent rule-based fallback strictly grounded in restricted_items.json."""
     is_ml = language == "ml"
+    is_hi = language == "hi"
     raw_items = []
     if items_text:
         # Split by newlines and commas
@@ -39,11 +40,13 @@ def rule_based_pack_fallback(items_text: Optional[str], destination: str, langua
                     "status": "prohibited",
                     "reason": (
                         f"കർശനമായി നിരോധിച്ചിരിക്കുന്നു: {p.get('reason', '')}" if is_ml
-                        else p.get("reason", "Strictly prohibited by destination customs.")
+                        else (f"कड़ाई से प्रतिबंधित: {p.get('reason', '')}" if is_hi
+                        else p.get("reason", "Strictly prohibited by destination customs."))
                     ),
                     "paperwork_needed": (
                         "യാതൊരു കാരണവശാലും കൊണ്ടുപോകാൻ അനുവാദമില്ല" if is_ml
-                        else "Cannot be brought under any circumstances"
+                        else ("किसी भी परिस्थिति में ले जाने की अनुमति नहीं है" if is_hi
+                        else "Cannot be brought under any circumstances")
                     )
                 })
                 matched = True
@@ -62,11 +65,13 @@ def rule_based_pack_fallback(items_text: Optional[str], destination: str, langua
                     "status": status,
                     "reason": (
                         f"നിയന്ത്രിതം: {r.get('reason', '')}" if is_ml
-                        else r.get("reason", "")
+                        else (f"प्रतिबंधित/शर्तों के साथ: {r.get('reason', '')}" if is_hi
+                        else r.get("reason", ""))
                     ),
                     "paperwork_needed": (
                         r.get("paperwork_needed", "ഡോക്ടറുടെ കുറിപ്പടി ആവശ്യമാണ്" if status == "restricted" else "ആവശ്യമില്ല") if is_ml
-                        else r.get("paperwork_needed", "Prescription required" if status == "restricted" else "None")
+                        else (r.get("paperwork_needed", "डॉक्टर का पर्चा अनिवार्य है" if status == "restricted" else "कुछ नहीं") if is_hi
+                        else r.get("paperwork_needed", "Prescription required" if status == "restricted" else "None"))
                     )
                 })
                 matched = True
@@ -81,25 +86,34 @@ def rule_based_pack_fallback(items_text: Optional[str], destination: str, langua
             "status": "unsure",
             "reason": (
                 "ഈ സാധനം ഞങ്ങളുടെ ഔദ്യോഗിക ഡാറ്റാബേസിൽ കണ്ടെത്തിയില്ല. അതിനാൽ യാത്രയ്ക്ക് മുൻപ് യുഎഇ കസ്റ്റംസുമായി നേരിട്ട് ബന്ധപ്പെട്ട് സ്ഥിരീകരിക്കുക." if is_ml
-                else "Item not found in our curated restricted items database. Please verify with official customs authority before packing. Never assume it is safe."
+                else ("यह वस्तु आधिकारिक डेटाबेस में नहीं मिली। यात्रा से पहले यूएई कस्टम्स से पुष्टि करें। अनुमान न लगाएं।" if is_hi
+                else "Item not found in our curated restricted items database. Please verify with official customs authority before packing. Never assume it is safe.")
             ),
             "paperwork_needed": (
                 "കസ്റ്റംസ് അതോറിറ്റിയുമായി പരിശോധിക്കുക (https://www.fca.gov.ae)" if is_ml
-                else "Verify with UAE Federal Customs Authority (https://www.fca.gov.ae)"
+                else ("कस्टम्स विभाग से जांचें (https://www.fca.gov.ae)" if is_hi
+                else "Verify with UAE Federal Customs Authority (https://www.fca.gov.ae)")
             )
         })
 
-    general_tips = (
-        [
+    if is_ml:
+        general_tips = [
             "എല്ലാ മരുന്നുകളും യഥാർത്ഥ പാക്കിംഗിലും ലേബലിലും മാത്രം കൊണ്ടുപോകുക",
             "ഡോക്ടറുടെ ഒപ്പും സീലുമുള്ള കുറിപ്പടി (Prescription) നിർബന്ധമായും കൈയിൽ കരുതുക",
             "സംശയമുള്ള സാധനങ്ങൾ വിമാനത്താവളത്തിലെ കസ്റ്റംസിൽ റെഡ് ചാനലിൽ ഡിക്ലയർ ചെയ്യുക"
-        ] if is_ml else [
+        ]
+    elif is_hi:
+        general_tips = [
+            "सभी दवाइयां मूल पैकेजिंग और स्पष्ट लेबल के साथ ही ले जाएं",
+            "डॉक्टर का हस्ताक्षरित और मुहर लगा पर्चा हमेशा साथ रखें",
+            "संदेह होने पर एयरपोर्ट कस्टम्स के रेड चैनल पर सामान की घोषणा करें"
+        ]
+    else:
+        general_tips = [
             "Always carry medicines in their original labeled packaging with maximum 3-month supply",
             "Keep an official doctor's prescription with hospital seal and registration number",
             "Always declare items you are unsure about at customs - penalties for non-declaration are severe"
         ]
-    )
 
     return {
         "destination": destination,
@@ -121,6 +135,9 @@ async def analyze_items(
     lang_instruction = ""
     if language == "ml":
         lang_instruction = "Respond with all text fields in Malayalam (മലയാളം) language."
+    elif language == "hi":
+        lang_instruction = "Respond with all text fields in Hindi (हिन्दी) language."
+
     
     items_context = ""
     if restricted_items_data:

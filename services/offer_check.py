@@ -9,6 +9,7 @@ def rule_based_offer_fallback(text: Optional[str], language: str, emigration_rul
     """Intelligent rule-based fallback grounded in emigration_rules.json."""
     content = (text or "").lower()
     is_ml = language == "ml"
+    is_hi = language == "hi"
     
     red_flags = []
     what_to_verify = []
@@ -17,70 +18,91 @@ def rule_based_offer_fallback(text: Optional[str], language: str, emigration_rul
     # 1. Asking money upfront
     money_words = ["fee", "fees", "processing fee", "upfront", "₹", "rs", "inr", "rupee", "deposit", "advance", "lakh", "pay ", "payment", "personal account"]
     if any(w in content for w in money_words):
-        red_flags.append(
-            "മുൻകൂർ പണം ആവശ്യപ്പെടുന്നു (വിസ/പ്രോസസ്സിംഗ് ഫീസ് നിയമവിരുദ്ധമാണ്)" if is_ml
-            else "Asking for money/fees upfront (Employers must bear all visa and recruitment costs under UAE & Indian law)"
-        )
+        if is_ml:
+            flag = "മുൻകൂർ പണം ആവശ്യപ്പെടുന്നു (വിസ/പ്രോസസ്സിംഗ് ഫീസ് നിയമവിരുദ്ധമാണ്)"
+        elif is_hi:
+            flag = "अग्रिम शुल्क की मांग (वीजा या भर्ती शुल्क मांगना कानूनन अवैध है)"
+        else:
+            flag = "Asking for money/fees upfront (Employers must bear all visa and recruitment costs under UAE & Indian law)"
+        red_flags.append(flag)
     
     # 2. Tourist visa for work
     visa_words = ["tourist", "visit visa", "convert to work", "free visa", "azad"]
     if any(w in content for w in visa_words):
-        red_flags.append(
-            "ജോലിക്കായി സന്ദർശക (ടൂറിസ്റ്റ്) വിസ വാഗ്ദാനം ചെയ്യുന്നു (ഇത് കർശനമായി നിരോധിച്ചിരിക്കുന്നു)" if is_ml
-            else "Offering employment on a tourist/visit visa (Illegal in UAE; requires official Employment Visa)"
-        )
+        if is_ml:
+            flag = "ജോലിക്കായി സന്ദർശക (ടൂറിസ്റ്റ്) വിസ വാഗ്ദാനം ചെയ്യുന്നു (ഇത് കർശനമായി നിരോധിച്ചിരിക്കുന്നു)"
+        elif is_hi:
+            flag = "काम के लिए टूरिस्ट/विजिट वीजा की पेशकश (यूएई कानून के तहत यह सख्त अवैध है)"
+        else:
+            flag = "Offering employment on a tourist/visit visa (Illegal in UAE; requires official Employment Visa)"
+        red_flags.append(flag)
     
     # 3. High/unrealistic salary
     salary_words = ["15,000", "15000", "20,000", "20000", "guaranteed salary", "high salary"]
     if any(w in content for w in salary_words):
-        red_flags.append(
-            "യാഥാർത്ഥ്യത്തിന് നിരക്കാത്ത അമിത ശമ്പള വാഗ്ദാനം" if is_ml
-            else "Unrealistically high salary promise for the stated role"
-        )
+        if is_ml:
+            flag = "യാഥാർത്ഥ്യത്തിന് നിരക്കാത്ത അമിത ശമ്പള വാഗ്ദാനം"
+        elif is_hi:
+            flag = "अवास्तविक और बहुत अधिक वेतन का झांसा"
+        else:
+            flag = "Unrealistically high salary promise for the stated role"
+        red_flags.append(flag)
     
     # 4. Pressure tactics
     pressure_words = ["today", "tonight", "urgent", "last 2 seats", "immediately", "hurry", "exclusive", "don't tell"]
     if any(w in content for w in pressure_words):
-        red_flags.append(
-            "ഉടൻ പണം അടയ്ക്കാനോ തീരുമാനമെടുക്കാനോ ഉള്ള സമ്മർദ്ദം" if is_ml
-            else "High pressure tactics to decide quickly or keep the offer secret"
-        )
+        if is_ml:
+            flag = "ഉടൻ പണം അടയ്ക്കാനോ തീരുമാനമെടുക്കാനോ ഉള്ള സമ്മർദ്ദം"
+        elif is_hi:
+            flag = "जल्दबाजी में निर्णय लेने या तुरंत पैसे भेजने का दबाव"
+        else:
+            flag = "High pressure tactics to decide quickly or keep the offer secret"
+        red_flags.append(flag)
     
     # 5. WhatsApp only / Personal contact
     wa_words = ["whatsapp only", "dm me", "+971 50", "+971 55", "personal account", "personal number"]
     if any(w in content for w in wa_words):
-        red_flags.append(
-            "വ്യക്തിഗത വാട്ട്‌സ്ആപ്പ് വഴി മാത്രം ബന്ധപ്പെടാൻ നിർദ്ദേശിക്കുന്നു (ഔദ്യോഗിക ഇമെയിലോ ഫോണോ ഇല്ല)" if is_ml
-            else "Contact only via personal WhatsApp/mobile, no official company email domain or landline"
-        )
+        if is_ml:
+            flag = "വ്യക്തിഗത വാട്ട്‌സ്ആപ്പ് വഴി മാത്രം ബന്ധപ്പെടാൻ നിർദ്ദേശിക്കുന്നു (ഔദ്യോഗിക ഇമെയിലോ ഫോണോ ഇല്ല)"
+        elif is_hi:
+            flag = "केवल व्यक्तिगत व्हाट्सएप या मोबाइल पर संपर्क (कोई आधिकारिक ईमेल या पता नहीं)"
+        else:
+            flag = "Contact only via personal WhatsApp/mobile, no official company email domain or landline"
+        red_flags.append(flag)
     
-    # 6. Unverifiable company
+    # 6. What to verify
     if not any(w in content for w in ["license", "mohre", "attested", "trade license"]):
         what_to_verify.append(
             "കമ്പനിയുടെ യുഎഇ ട്രേഡ് ലൈസൻസും MOHRE രജിസ്ട്രേഷനും പരിശോധിക്കുക" if is_ml
-            else "Verify company trade license number and UAE MOHRE establishment card"
+            else ("कंपनी का यूएई ट्रेड लाइसेंस और MOHRE पंजीकरण जांचें" if is_hi
+            else "Verify company trade license number and UAE MOHRE establishment card")
         )
     
     what_to_verify.append(
         "റിക്രൂട്ടിംഗ് ഏജന്റിന് കേന്ദ്ര വിദേശകാര്യ മന്ത്രാലയത്തിന്റെ (MEA) രജിസ്ട്രേഷൻ ഉണ്ടോയെന്ന് eMigrate പോർട്ടലിൽ പരിശോധിക്കുക" if is_ml
-        else "Check if the recruitment agent holds a valid MEA license on eMigrate portal (emigrate.gov.in)"
+        else ("जांचें कि भर्ती एजेंट के पास eMigrate पोर्टल पर वैध MEA लाइसेंस है या नहीं" if is_hi
+        else "Check if the recruitment agent holds a valid MEA license on eMigrate portal (emigrate.gov.in)")
     )
     what_to_verify.append(
         "എംബസി സാക്ഷ്യപ്പെടുത്തിയ ഔദ്യോഗിക തൊഴിൽ ഓഫർ ലെറ്റർ ആവശ്യപ്പെടുക" if is_ml
-        else "Demand an official, verifiable employment contract attested by the Indian Embassy/Consulate"
+        else ("भारतीय दूतावास द्वारा सत्यापित आधिकारिक रोजगार अनुबंध की मांग करें" if is_hi
+        else "Demand an official, verifiable employment contract attested by the Indian Embassy/Consulate")
     )
 
     safe_next_steps.append(
         "യാതൊരു കാരണവശാലും വ്യക്തിഗത അക്കൗണ്ടുകളിലേക്ക് പണം കൈമാറരുത്" if is_ml
-        else "Do NOT transfer any money or processing fees to any personal account"
+        else ("किसी भी व्यक्तिगत खाते में पैसे या प्रोसेसिंग फीस बिल्कुल न भेजें" if is_hi
+        else "Do NOT transfer any money or processing fees to any personal account")
     )
     safe_next_steps.append(
         "സഹായത്തിനായി നോർക്ക-റൂട്ട്സ് (NORKA-Roots) ഹെൽപ്പ്‌ലൈനിൽ (1800-425-3939) വിളിക്കുക" if is_ml
-        else "Contact NORKA-Roots 24/7 helpline for Kerala expatriates at 1800-425-3939"
+        else ("नॉर्का-रूट्स (1800-425-3939) या प्रवासी हेल्पलाइन से संपर्क करें" if is_hi
+        else "Contact NORKA-Roots 24/7 helpline for expatriates at 1800-425-3939")
     )
     safe_next_steps.append(
         "eMigrate ഹെൽപ്പ്‌ഡെസ്ക് നമ്പറുമായി (1800-11-3090) ബന്ധപ്പെട്ട് നിയമസാധുത ഉറപ്പാക്കുക" if is_ml
-        else "Call the official eMigrate Pravasi Bharatiya Sahayata Kendra helpline at 1800-11-3090"
+        else ("आधिकारिक eMigrate हेल्पलाइन (1800-11-3090) पर कॉल करके पुष्टि करें" if is_hi
+        else "Call the official eMigrate Pravasi Bharatiya Sahayata Kendra helpline at 1800-11-3090")
     )
 
     # Calculate risk score
@@ -90,25 +112,24 @@ def rule_based_offer_fallback(text: Optional[str], language: str, emigration_rul
         risk_level = "high"
         summary = (
             "അതീവ ഗുരുതരമായ തട്ടിപ്പ് സാധ്യത! ഈ ഓഫറിൽ ഒന്നിലധികം വ്യാജ സൂചനകൾ കണ്ടെത്തിയിട്ടുണ്ട്. പണം നൽകുകയോ യാത്ര ചെയ്യുകയോ ചെയ്യരുത്." if is_ml
-            else "CRITICAL FRAUD RISK! Multiple severe scam indicators detected. Do not pay any money or travel on this offer."
+            else ("अत्यधिक जोखिम / संभावित धोखाधड़ी! इस ऑफर में कई संदिग्ध संकेत मिले हैं। पैसे बिल्कुल न दें।" if is_hi
+            else "CRITICAL FRAUD RISK! Multiple severe scam indicators detected. Do not pay any money or travel on this offer.")
         )
     elif flag_count >= 1:
         risk_score = 45 + flag_count * 15
         risk_level = "medium"
         summary = (
             "മുന്നറിയിപ്പ്: സംശയാസ്പദമായ ചില ഘടകങ്ങൾ ശ്രദ്ധയിൽപ്പെട്ടിട്ടുണ്ട്. ഔദ്യോഗിക രേഖകൾ പൂർണ്ണമായി പരിശോധിച്ച ശേഷം മാത്രം മുന്നോട്ട് പോകുക." if is_ml
-            else "Moderate risk detected: Offer contains suspicious terms. Verify all credentials thoroughly before proceeding."
+            else ("मध्यम जोखिम: इस प्रस्ताव में कुछ संदिग्ध नियम शामिल हैं। आगे बढ़ने से पहले सभी प्रमाणपत्रों की जांच करें।" if is_hi
+            else "Moderate risk detected: Offer contains suspicious terms. Verify all credentials thoroughly before proceeding.")
         )
     else:
         risk_score = 25
         risk_level = "low"
         summary = (
             "പ്രാഥമികമായി വ്യക്തമായ തട്ടിപ്പ് സൂചനകൾ കാണുന്നില്ലെങ്കിലും, ജോലിക്ക് പോകുന്നതിന് മുൻപ് കരാറും വിസയും ഔദ്യോഗികമായി പരിശോധിക്കുക." if is_ml
-            else "No obvious red flags detected in the text, but always verify contract with eMigrate and UAE MOHRE before departure."
-        )
-        safe_next_steps.append(
-            "യുഎഇ ലേബർ കോൺട്രാക്റ്റ് mohre.gov.ae ൽ ലോഗിൻ ചെയ്ത് നേരിട്ട് പരിശോധിക്കുക" if is_ml
-            else "Verify labor contract directly on mohre.gov.ae"
+            else ("कोई स्पष्ट लाल झंडा नहीं दिखा, लेकिन यात्रा से पहले ई-माइग्रेट पर अनुबंध की पुष्टि अवश्य करें।" if is_hi
+            else "No obvious red flags detected in the text, but always verify contract with eMigrate and UAE MOHRE before departure.")
         )
 
     return {
@@ -132,6 +153,9 @@ async def analyze_offer(
     lang_instruction = ""
     if language == "ml":
         lang_instruction = "Respond with all text fields in Malayalam (മലയാളം) language."
+    elif language == "hi":
+        lang_instruction = "Respond with all text fields in Hindi (हिन्दी) language."
+
     
     rules_context = ""
     if emigration_rules:

@@ -1,4 +1,4 @@
-# TravelGuard 🛡️✈️
+# TravelGuard
 
 **Safe Journeys Begin Here**
 

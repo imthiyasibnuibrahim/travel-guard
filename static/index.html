@@ -5,50 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>TravelGuard - Safe Journeys Begin Here</title>
     <meta name="description" content="AI-powered travel safety assistant for Gulf travelers">
-    <meta name="theme-color" content="#1B3A5C">
+    <meta name="theme-color" content="#0A0E17">
     <link rel="icon" type="image/png" href="/static/logo.png">
     
-    <!-- Professional Google Fonts: Plus Jakarta Sans & Oswald (English), Anek Malayalam & Noto Sans Malayalam (Malayalam), Tiro Devanagari Hindi & Baloo 2 (Hindi) -->
+    <!-- Google Fonts: Plus Jakarta Sans, Noto Sans Malayalam, Anek Malayalam, Noto Sans Devanagari, Baloo 2 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700;800&family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700;800&family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ===== DESIGN SYSTEM VARIABLES ===== */
+        /* ===== STEP A: DESIGN TOKENS & BASE STYLES ===== */
+        /* ===== GREENLY.EARTH DESIGN SYSTEM & TOKENS ===== */
         :root {
-            --c-navy: #1B3A5C;
-            --c-navy-dark: #122840;
-            --c-teal: #18A689;
-            --c-teal-dark: #12826B;
-            --c-teal-light: #E8F6F3;
-            --c-orange: #F7941D;
-            --c-orange-light: #FEF5EB;
-            --c-danger: #E74C3C;
-            --c-danger-light: #FDEDEC;
+            /* Greenly Core Palette */
+            --g-forest-deep: #072318;
+            --g-forest: #0D2E21;
+            --g-forest-light: #164332;
             
-            --bg-app: #F8FAFC;
+            --g-emerald: #00C261;
+            --g-emerald-hover: #00A853;
+            --g-emerald-tint: #E8FDF2;
+            --g-emerald-border: #A7F3D0;
+            --g-emerald-dark: #065F46;
+
+            /* Surface Hierarchy: Fresh Eco-Tech Canvas & Crisp White Widgets */
+            --bg-page: #F4F7F4;
             --bg-card: #FFFFFF;
-            --border-card: #E2E8F0;
-            --border-subtle: #EDF2F7;
-            
-            --text-main: #0F172A;
-            --text-muted: #475569;
-            --text-light: #94A3B8;
+            --bg-card-subtle: #F9FAFB;
+            --bg-card-hover: #F8FAF8;
+            --bg-input: #FFFFFF;
+            --bg-input-focus: #FFFFFF;
 
-            --radius-card: 12px;
-            --radius-btn: 8px;
+            /* Borders */
+            --border-card: #E5E7EB;
+            --border-subtle: #F3F4F6;
+            --border-input: #D1D5DB;
+            --border-focus: #00C261;
+
+            /* Ultra-Crisp Typography: Deep Dark Charcoal Black (100% Legibility) */
+            --text-primary: #111827;      /* Primary headings & text */
+            --text-secondary: #4B5563;    /* Secondary explanations */
+            --text-tertiary: #6B7280;     /* Muted labels */
+            --text-emerald: #047857;
+
+            /* High-Contrast Severity States */
+            --risk-low: #059669;
+            --risk-low-bg: #ECFDF5;
+            --risk-low-border: #A7F3D0;
+
+            --risk-med: #D97706;
+            --risk-med-bg: #FFFBEB;
+            --risk-med-border: #FDE68A;
+
+            --risk-high: #DC2626;
+            --risk-high-bg: #FEF2F2;
+            --risk-high-border: #FECACA;
+
+            /* Aliases for Existing Classes */
+            --c-navy: #0D2E21;
+            --c-navy-dark: #072318;
+            --c-teal: #00C261;
+            --c-teal-dark: #047857;
+            --c-teal-light: #E8FDF2;
+            --c-orange: #D97706;
+            --c-orange-light: #FFFBEB;
+            --c-danger: #DC2626;
+            --c-danger-light: #FEF2F2;
+
+            --bg-app: var(--bg-page);
+            --bg-surface: var(--bg-card);
+            --text-main: var(--text-primary);
+            --text-muted: var(--text-secondary);
+            --text-light: var(--text-tertiary);
+
+            /* Generous Rounded Geometry */
+            --radius-xs: 8px;
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 24px;
+            --radius-card: 20px;
+            --radius-btn: 12px;
             --radius-pill: 9999px;
-            
-            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
 
-            --font-en: 'Plus Jakarta Sans', sans-serif;
-            --font-en-heading: 'Oswald', 'Plus Jakarta Sans', sans-serif;
-            --font-ml: 'Anek Malayalam', 'Noto Sans Malayalam', sans-serif;
-            --font-hi: 'Tiro Devanagari Hindi', 'Baloo 2', sans-serif;
-            
+            /* Soft Refined Depth */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+            --shadow-card: 0 8px 24px -4px rgba(13, 46, 33, 0.06), 0 2px 6px -1px rgba(13, 46, 33, 0.03);
+            --shadow-elevated: 0 18px 36px -6px rgba(13, 46, 33, 0.1), 0 4px 12px -2px rgba(13, 46, 33, 0.04);
+            --shadow-glow: 0 0 24px rgba(0, 194, 97, 0.25);
+
+            /* Font Stacks */
+            --font-en: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-ml: 'Noto Sans Malayalam', 'Anek Malayalam', sans-serif;
+            --font-hi: 'Noto Sans Devanagari', 'Baloo 2', sans-serif;
             --font-current: var(--font-en);
-            --header-h: 56px;
+
+            --header-h: 64px;
         }
 
         *, *::before, *::after {
@@ -58,15 +109,25 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
         body {
             font-family: var(--font-current);
-            background-color: var(--bg-app);
-            color: var(--text-main);
+            background-color: var(--bg-page);
+            color: var(--text-primary);
             min-height: 100vh;
-            line-height: 1.45;
+            min-height: 100dvh;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            padding-bottom: 70px;
+            padding-bottom: 90px;
         }
 
         body.lang-ml {
@@ -79,24 +140,24 @@
             font-family: var(--font-hi);
         }
 
-        /* ===== STICKY COMPACT HEADER (Height: 56px) ===== */
+        /* ===== GREENLY INSPIRED STICKY HEADER ===== */
         .site-header {
             position: sticky;
             top: 0;
             z-index: 1000;
             height: var(--header-h);
-            background: rgba(27, 58, 92, 0.94);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-card);
+            box-shadow: var(--shadow-sm);
         }
 
         .header-inner {
-            max-width: 960px;
+            max-width: 1080px;
             height: 100%;
             margin: 0 auto;
-            padding: 0 16px;
+            padding: 0 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -111,11 +172,12 @@
         }
 
         .brand-logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
             background: #FFFFFF;
             object-fit: contain;
+            border: 1px solid var(--border-card);
             padding: 2px;
             flex-shrink: 0;
         }
@@ -127,20 +189,20 @@
 
         .brand-name {
             font-family: var(--font-en);
-            font-size: 1.12rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            color: #FFFFFF;
-            letter-spacing: -0.3px;
+            color: var(--g-forest);
+            letter-spacing: -0.4px;
             line-height: 1.1;
         }
 
         .brand-name span {
-            color: var(--c-teal);
+            color: var(--g-emerald);
         }
 
         .brand-tagline {
-            font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.68rem;
+            color: var(--text-tertiary);
             font-weight: 600;
             letter-spacing: 0.4px;
             text-transform: uppercase;
@@ -149,54 +211,59 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        /* Standard Text Language Switcher (EN | മലയാളം | हिन्दी) */
+        /* Greenly Pill Language Switcher */
         .lang-switch-box {
             display: inline-flex;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-card);
             border-radius: var(--radius-pill);
-            padding: 2px;
+            padding: 3px;
             gap: 2px;
         }
 
         .lang-opt {
             border: none;
             background: transparent;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-secondary);
             font-family: inherit;
-            font-size: 0.74rem;
+            font-size: 0.76rem;
             font-weight: 700;
-            padding: 5px 10px;
-            min-height: 28px;
+            padding: 5px 12px;
+            min-height: 30px;
             border-radius: var(--radius-pill);
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
+        .lang-opt:hover {
+            color: var(--text-primary);
+        }
+
         .lang-opt.active {
-            background: var(--c-teal);
+            background: var(--g-forest);
             color: #FFFFFF;
+            box-shadow: 0 2px 6px rgba(13, 46, 33, 0.2);
         }
 
         /* ===== CONTAINER & COMPACT HIGH-DENSITY VIEWPORT ===== */
         .main-container {
-            max-width: 960px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 12px 16px;
+            padding: 16px 20px;
         }
 
         /* ===== NAVIGATION SYSTEM (MAIN 4 PILLARS + MORE OPTIONS) ===== */
         .nav-segment-bar {
             background: #FFFFFF;
             border: 1px solid var(--border-card);
-            border-radius: var(--radius-card);
-            padding: 4px;
+            border-radius: var(--radius-pill);
+            padding: 5px;
             display: flex;
-            gap: 4px;
-            margin-bottom: 12px;
+            gap: 6px;
+            margin-bottom: 16px;
             box-shadow: var(--shadow-sm);
             overflow-x: auto;
             scrollbar-width: none;
@@ -212,12 +279,12 @@
             border: none;
             background: transparent;
             font-family: inherit;
-            font-size: 0.82rem;
+            font-size: 0.84rem;
             font-weight: 700;
-            color: var(--text-muted);
-            padding: 9px 12px;
-            min-height: 40px;
-            border-radius: 8px;
+            color: var(--text-secondary);
+            padding: 10px 16px;
+            min-height: 42px;
+            border-radius: var(--radius-pill);
             cursor: pointer;
             text-align: center;
             white-space: nowrap;
@@ -225,34 +292,35 @@
         }
 
         .tab-btn:hover {
-            color: var(--text-main);
-            background: var(--bg-app);
+            color: var(--text-primary);
+            background: var(--bg-card-subtle);
         }
 
         .tab-btn.active {
-            background: var(--c-navy);
-            color: #FFFFFF;
-            box-shadow: 0 2px 4px rgba(27, 58, 92, 0.25);
+            background: var(--g-emerald);
+            color: var(--g-forest-deep);
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(0, 194, 97, 0.3);
         }
 
         .tab-btn.more-btn {
-            background: #F1F5F9;
-            color: var(--c-navy);
+            background: var(--bg-card-subtle);
+            color: var(--text-primary);
         }
 
         .tab-btn.more-btn.active {
-            background: var(--c-navy);
+            background: var(--g-forest);
             color: #FFFFFF;
         }
 
         /* Secondary Toolbar for Secondary Tools */
         .secondary-nav-row {
             display: none;
-            gap: 6px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 16px;
             overflow-x: auto;
             scrollbar-width: none;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
         }
 
         .secondary-nav-row.show {
@@ -263,26 +331,29 @@
             border: 1px solid var(--border-card);
             background: #FFFFFF;
             font-family: inherit;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            color: var(--text-muted);
-            padding: 7px 14px;
-            min-height: 34px;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            min-height: 38px;
             border-radius: var(--radius-pill);
             cursor: pointer;
             white-space: nowrap;
             transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
         }
 
         .subtab-btn:hover {
-            border-color: var(--c-teal);
-            color: var(--c-teal-dark);
+            border-color: var(--g-emerald);
+            color: var(--g-emerald-dark);
+            background: var(--g-emerald-tint);
         }
 
         .subtab-btn.active {
-            background: var(--c-teal);
-            border-color: var(--c-teal);
+            background: var(--g-forest);
+            border-color: var(--g-forest);
             color: #FFFFFF;
+            font-weight: 800;
         }
 
         /* ===== CONTENT PANELS ===== */
@@ -300,113 +371,127 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== HIGH-DENSITY CARDS & FORMS ===== */
+        /* ===== HIGH-DENSITY WIDGET CARDS & FORMS ===== */
         .card {
-            background: var(--bg-card);
+            background: var(--bg-surface);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-card);
-            padding: 14px 16px;
-            margin-bottom: 12px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
             box-shadow: var(--shadow-sm);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.16);
         }
 
         .card-header-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .card-title {
-            font-size: 0.96rem;
+            font-size: 1rem;
             font-weight: 800;
-            color: var(--c-navy);
+            color: var(--text-primary);
             letter-spacing: -0.2px;
         }
 
         .card-desc {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.4;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.45;
         }
 
         /* Input Elements (font-size: 16px for iOS Safari zoom prevention) */
         .input-group {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .input-label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--text-primary);
             margin-bottom: 6px;
         }
 
         .input-label-hint {
             font-weight: 500;
-            color: var(--text-muted);
-            font-size: 0.74rem;
+            color: var(--text-tertiary);
+            font-size: 0.76rem;
         }
 
         textarea, input[type="text"], input[type="date"], input[type="time"], input[type="number"], select {
             width: 100%;
-            background: #FFFFFF;
-            border: 1.5px solid #CBD5E1;
-            border-radius: 8px;
-            padding: 10px 12px;
+            background: var(--bg-input);
+            border: 1.5px solid var(--border-input);
+            border-radius: var(--radius-btn);
+            padding: 12px 14px;
             font-family: inherit;
-            font-size: 1rem; /* Prevents auto zoom */
-            color: var(--text-main);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            font-size: 1rem; /* Prevents mobile zoom */
+            color: var(--text-primary);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
             -webkit-appearance: none;
         }
 
         textarea:focus, input:focus, select:focus {
             outline: none;
-            border-color: var(--c-teal);
-            box-shadow: 0 0 0 3px rgba(24, 166, 137, 0.15);
+            background: var(--bg-input-focus);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-subtle), 0 0 16px var(--accent-glow);
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394A3B8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+            padding-right: 36px;
         }
 
         textarea {
             resize: vertical;
-            min-height: 96px;
-            line-height: 1.45;
+            min-height: 105px;
+            line-height: 1.5;
         }
 
         /* Compact Upload Trigger */
         .compact-upload-box {
-            border: 1.5px dashed #94A3B8;
-            border-radius: 8px;
-            padding: 12px;
+            border: 1.5px dashed var(--border-input);
+            border-radius: var(--radius-sm);
+            padding: 16px;
             text-align: center;
-            background: #F8FAFC;
+            background: var(--bg-input);
             cursor: pointer;
             transition: all 0.2s ease;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .compact-upload-box:hover {
-            border-color: var(--c-teal);
-            background: var(--c-teal-light);
+            border-color: var(--accent);
+            background: var(--accent-subtle);
         }
 
         .compact-upload-box.has-file {
-            border-color: var(--c-teal);
-            background: #E8F8F5;
+            border-color: var(--accent);
+            background: var(--accent-subtle);
         }
 
         .compact-upload-box p {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: var(--c-navy);
+            color: var(--text-primary);
         }
 
         .compact-upload-box .upload-sub {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            margin-top: 2px;
+            font-size: 0.74rem;
+            color: var(--text-tertiary);
+            margin-top: 3px;
         }
 
         .compact-upload-box input[type="file"] {
@@ -415,31 +500,31 @@
 
         .file-selected-pill {
             display: inline-block;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            color: var(--c-teal-dark);
-            margin-top: 4px;
+            color: var(--accent-text);
+            margin-top: 6px;
         }
 
         .compact-preview-img {
             max-width: 100%;
-            max-height: 140px;
+            max-height: 150px;
             object-fit: contain;
-            border-radius: 6px;
-            margin-top: 8px;
-            border: 1px solid var(--border-card);
+            border-radius: var(--radius-xs);
+            margin-top: 10px;
+            border: 1px solid var(--border-subtle);
         }
 
         /* High-Efficiency Primary Action Buttons */
         .btn-primary {
             width: 100%;
-            background: var(--c-navy);
-            color: #FFFFFF;
+            background: var(--accent);
+            color: #0A0E17;
             border: none;
             font-family: inherit;
             font-size: 0.95rem;
             font-weight: 800;
-            padding: 12px 18px;
+            padding: 13px 18px;
             min-height: 48px; /* Minimum 48px touch target */
             border-radius: var(--radius-btn);
             cursor: pointer;
@@ -448,35 +533,40 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 4px 14px var(--accent-glow);
         }
 
         .btn-primary:hover {
-            background: var(--c-navy-dark);
+            background: var(--accent-hover);
+            color: #FFFFFF;
             transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
 
         .btn-primary:active {
-            transform: scale(0.99);
+            transform: scale(0.98);
         }
 
         .btn-secondary {
-            background: #FFFFFF;
-            color: var(--c-navy);
-            border: 1px solid #CBD5E1;
+            background: var(--bg-surface-elevated);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-btn);
+            padding: 9px 16px;
             font-family: inherit;
             font-size: 0.84rem;
             font-weight: 700;
-            padding: 8px 14px;
-            min-height: 40px;
-            border-radius: var(--radius-btn);
+            min-height: 42px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-secondary:hover {
-            background: #F1F5F9;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-card);
         }
 
         .grid-2 {
@@ -503,113 +593,123 @@
         }
 
         .verdict-banner.high, .verdict-banner.dangerous {
-            background: var(--c-danger-light);
-            border-color: var(--c-danger);
-            color: #900C3F;
+            background: var(--risk-high-bg);
+            border: 1px solid var(--risk-high-border);
+            border-left: 6px solid var(--risk-high);
+            color: #FCA5A5;
         }
 
         .verdict-banner.medium, .verdict-banner.review_needed {
-            background: var(--c-orange-light);
-            border-color: var(--c-orange);
-            color: #B9770E;
+            background: var(--risk-med-bg);
+            border: 1px solid var(--risk-med-border);
+            border-left: 6px solid var(--risk-med);
+            color: #FCD34D;
         }
 
         .verdict-banner.low, .verdict-banner.safe {
-            background: var(--c-teal-light);
-            border-color: var(--c-teal);
-            color: #117864;
+            background: var(--risk-low-bg);
+            border: 1px solid var(--risk-low-border);
+            border-left: 6px solid var(--risk-low);
+            color: #6EE7B7;
         }
 
         .verdict-score {
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 800;
             line-height: 1;
-            font-family: var(--font-en-heading);
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
         }
 
         .verdict-label {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
+            letter-spacing: 0.8px;
+            margin-top: 4px;
         }
 
         .read-aloud-btn {
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
             font-family: inherit;
             font-size: 0.76rem;
             font-weight: 700;
-            color: var(--c-navy);
-            padding: 6px 12px;
-            min-height: 32px;
+            color: var(--text-primary);
+            padding: 7px 14px;
+            min-height: 36px;
             border-radius: var(--radius-pill);
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             box-shadow: var(--shadow-sm);
             flex-shrink: 0;
+            transition: all 0.2s ease;
         }
 
         .read-aloud-btn:hover {
-            border-color: var(--c-teal);
-            color: var(--c-teal-dark);
+            border-color: var(--accent);
+            color: var(--accent-text);
         }
 
         .read-aloud-btn.playing {
-            background: var(--c-navy);
-            color: #FFFFFF;
-            border-color: var(--c-navy);
+            background: var(--accent);
+            color: #0A0E17;
+            border-color: var(--accent);
         }
 
         /* Result Bullet Lists (zero waste margin) */
         .list-group {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .list-group-title {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--c-navy);
-            margin-bottom: 6px;
+            letter-spacing: 0.8px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
         }
 
         .clean-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .clean-list li {
-            font-size: 0.84rem;
-            line-height: 1.4;
-            padding: 8px 12px;
-            border-radius: 6px;
-            border-left: 3px solid;
-            background: #FFFFFF;
+            font-size: 0.86rem;
+            line-height: 1.45;
+            padding: 10px 14px;
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid;
+            background: var(--bg-surface);
+            color: var(--text-primary);
         }
 
         .clean-list.danger li {
-            border-color: var(--c-danger);
-            background: #FDF2E9;
-            color: #922B21;
+            border-color: rgba(239, 68, 68, 0.25);
+            border-left-color: var(--risk-high);
+            background: rgba(239, 68, 68, 0.08);
+            color: #FCA5A5;
         }
 
         .clean-list.warning li {
-            border-color: var(--c-orange);
-            background: #FEF9E7;
-            color: #7D6608;
+            border-color: rgba(245, 158, 11, 0.25);
+            border-left-color: var(--risk-med);
+            background: rgba(245, 158, 11, 0.08);
+            color: #FCD34D;
         }
 
         .clean-list.safe li {
-            border-color: var(--c-teal);
-            background: #E8F8F5;
-            color: #145A32;
+            border-color: rgba(16, 185, 129, 0.25);
+            border-left-color: var(--risk-low);
+            background: rgba(16, 185, 129, 0.08);
+            color: #6EE7B7;
         }
 
         /* Item Checklist Row */
@@ -617,18 +717,18 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            padding: 10px 12px;
-            background: #FFFFFF;
+            padding: 12px 14px;
+            background: var(--bg-surface);
             border: 1px solid var(--border-card);
-            border-radius: 8px;
-            margin-bottom: 6px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
             border-left: 4px solid;
         }
 
-        .pack-item-row.likely_ok { border-left-color: var(--c-teal); }
-        .pack-item-row.restricted { border-left-color: var(--c-orange); }
-        .pack-item-row.prohibited { border-left-color: var(--c-danger); }
-        .pack-item-row.unsure { border-left-color: #94A3B8; }
+        .pack-item-row.likely_ok { border-left-color: var(--risk-low); }
+        .pack-item-row.restricted { border-left-color: var(--risk-med); }
+        .pack-item-row.prohibited { border-left-color: var(--risk-high); }
+        .pack-item-row.unsure { border-left-color: var(--text-tertiary); }
 
         .pack-badge {
             font-size: 0.68rem;
@@ -639,100 +739,115 @@
             flex-shrink: 0;
         }
 
-        .pack-badge.likely_ok { background: var(--c-teal-light); color: var(--c-teal-dark); }
-        .pack-badge.restricted { background: var(--c-orange-light); color: #B9770E; }
-        .pack-badge.prohibited { background: var(--c-danger-light); color: #900C3F; }
-        .pack-badge.unsure { background: #F1F5F9; color: var(--text-muted); }
+        .pack-badge.likely_ok { background: var(--risk-low-bg); color: var(--risk-low); border: 1px solid var(--risk-low-border); }
+        .pack-badge.restricted { background: var(--risk-med-bg); color: var(--risk-med); border: 1px solid var(--risk-med-border); }
+        .pack-badge.prohibited { background: var(--risk-high-bg); color: var(--risk-high); border: 1px solid var(--risk-high-border); }
+        .pack-badge.unsure { background: var(--bg-surface-elevated); color: var(--text-tertiary); border: 1px solid var(--border-subtle); }
 
         /* Handbag Interactive Rows */
         .check-item {
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            padding: 9px 12px;
-            background: #FFFFFF;
+            gap: 12px;
+            padding: 12px 14px;
+            background: var(--bg-surface);
             border: 1px solid var(--border-card);
-            border-radius: 8px;
-            margin-bottom: 6px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
             cursor: pointer;
-            transition: all 0.15s;
+            transition: all 0.2s ease;
         }
 
         .check-item:hover {
-            border-color: var(--c-teal);
+            border-color: var(--accent);
+            background: var(--bg-surface-elevated);
         }
 
         .check-box-square {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #94A3B8;
-            border-radius: 4px;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-input);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.85rem;
             font-weight: 800;
-            color: #FFFFFF;
+            color: #0A0E17;
             flex-shrink: 0;
             margin-top: 1px;
+            transition: all 0.2s ease;
         }
 
         .check-item.done .check-box-square {
-            background: var(--c-teal);
-            border-color: var(--c-teal);
+            background: var(--accent);
+            border-color: var(--accent);
         }
 
         .check-item.done .check-title {
             text-decoration: line-through;
-            color: var(--text-light);
+            color: var(--text-tertiary);
         }
 
         /* Emergency Cards */
         .emergency-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 8px;
+            gap: 10px;
         }
 
         .emergency-card-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #FFFFFF;
+            background: var(--bg-surface);
             border: 1px solid var(--border-card);
-            border-radius: 8px;
-            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .emergency-card-row:hover {
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .call-action-btn {
-            background: var(--c-teal);
-            color: #FFFFFF;
+            background: var(--accent);
+            color: #0A0E17;
             text-decoration: none;
-            padding: 8px 14px;
-            min-height: 38px;
-            border-radius: 6px;
+            padding: 9px 16px;
+            min-height: 40px;
+            border-radius: var(--radius-btn);
             font-size: 0.82rem;
             font-weight: 800;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
             flex-shrink: 0;
+            box-shadow: 0 2px 10px var(--accent-glow);
+            transition: all 0.2s ease;
+        }
+
+        .call-action-btn:hover {
+            background: var(--accent-hover);
+            color: #FFFFFF;
+            transform: translateY(-1px);
         }
 
         /* Legal Disclaimer */
         .disclaimer-box {
-            background: #FFFBEB;
-            border: 1px solid #FDE68A;
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 0.74rem;
-            color: #92400E;
-            line-height: 1.45;
-            margin-top: 12px;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 0.78rem;
+            color: #FCD34D;
+            line-height: 1.5;
+            margin-top: 14px;
         }
 
         .disclaimer-box a {
-            color: var(--c-navy);
+            color: var(--accent-text);
             font-weight: 700;
             text-decoration: underline;
         }
@@ -740,12 +855,13 @@
         /* Pulse Skeleton Loader */
         .skeleton-card {
             display: none;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background: linear-gradient(90deg, #121927 25%, #1B2438 50%, #121927 75%);
             background-size: 200% 100%;
             animation: loading-pulse 1.4s infinite;
-            height: 90px;
+            height: 96px;
             border-radius: var(--radius-card);
-            margin-top: 10px;
+            margin-top: 12px;
+            border: 1px solid var(--border-subtle);
         }
 
         .skeleton-card.active {
@@ -761,11 +877,11 @@
 
         /* Initial State Safety Insights (Eliminates blank space on mobile and web) */
         .safety-insight-card {
-            background: #FFFFFF;
+            background: var(--bg-surface);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-card);
-            padding: 14px 16px;
-            margin-top: 12px;
+            padding: 16px 18px;
+            margin-top: 14px;
             box-shadow: var(--shadow-sm);
         }
 
@@ -773,42 +889,54 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 6px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--border-subtle);
         }
 
         .insight-title {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             font-weight: 800;
-            color: var(--c-navy);
+            color: var(--text-primary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
         .insight-badge {
-            font-size: 0.68rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            color: var(--c-teal-dark);
-            background: var(--c-teal-light);
-            padding: 2px 8px;
+            color: var(--accent-text);
+            background: var(--accent-subtle);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 3px 10px;
             border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .insight-row {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             align-items: flex-start;
-            padding: 8px 0;
-            border-bottom: 1px solid #F8FAFC;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .insight-row:last-child {
             border-bottom: none;
             padding-bottom: 2px;
+        }
+
+        .insight-bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-top: 6px;
+            flex-shrink: 0;
         }
 
         .insight-icon {
@@ -1052,7 +1180,7 @@
             }
         }
 
-        /* Media Queries for Desktop Viewports (Untouched & Preserved) */
+        /* Media Queries for Desktop Viewports */
         @media (min-width: 768px) {
             .main-container {
                 padding: 16px 24px;
@@ -1062,14 +1190,1747 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        /* ===== STEP B: FULL-SCREEN SPLASH & GLASS LANGUAGE PICKER ===== */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(7, 9, 8, 0.98);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+        }
+
+        #splash-screen.splash-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #splash-screen.blur-backdrop {
+            backdrop-filter: blur(28px) !important;
+            -webkit-backdrop-filter: blur(28px) !important;
+            background: rgba(7, 9, 8, 0.85) !important;
+        }
+
+        .splash-ambient-glow {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 229, 117, 0.22) 0%, rgba(7, 9, 8, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .splash-hero-box {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(14px) scale(0.97);
+            animation: splashFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: filter 0.6s ease, transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        #splash-screen.blur-backdrop .splash-hero-box {
+            filter: blur(16px);
+            opacity: 0.15;
+            transform: scale(0.9);
+        }
+
+        @keyframes splashFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .splash-logo-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid rgba(0, 229, 117, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 229, 117, 0.3);
+        }
+
+        .splash-logo-circle img {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+        }
+
+        .splash-title-text {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .splash-title-text span {
+            color: #00E575;
+            text-shadow: 0 0 25px rgba(0, 229, 117, 0.4);
+        }
+
+        .splash-tagline-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #94A3B8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Centered Glass Language Picker Modal Card */
+        .lang-modal-card {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            width: calc(100% - 32px);
+            max-width: 380px;
+            box-sizing: border-box;
+            background: rgba(14, 20, 16, 0.88);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1.5px solid rgba(0, 229, 117, 0.3);
+            border-radius: 24px;
+            padding: 32px 24px;
+            box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 229, 117, 0.15);
+            opacity: 0;
+            transform: translate(-50%, -46%) scale(0.92);
+            pointer-events: none;
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+        }
+
+        #splash-screen.show-picker .lang-modal-card {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .lang-modal-headline {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #FFFFFF;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .lang-modal-subtext {
+            font-size: 0.82rem;
+            color: #94A3B8;
+            margin-bottom: 24px;
+            line-height: 1.45;
+        }
+
+        .lang-modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .lang-pick-btn {
+            width: 100%;
+            min-height: 56px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 12px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lang-pick-btn:hover {
+            background: rgba(0, 229, 117, 0.15);
+            border-color: #00E575;
+            box-shadow: 0 4px 20px rgba(0, 229, 117, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-pick-btn:active {
+            transform: scale(0.98);
+        }
+
+        .lang-native-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.2;
+        }
+
+        .lang-pick-btn.lang-ml .lang-native-name {
+            font-family: var(--font-ml);
+        }
+
+        .lang-pick-btn.lang-hi .lang-native-name {
+            font-family: var(--font-hi);
+        }
+
+        .lang-sub-label {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lang-pick-btn:hover .lang-sub-label {
+            color: #00E575;
+        }
+
+        /* Clean Single-Colour SVG Vector Icons */
+        .icon-svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--accent);
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    
+        /* ===== POWERFUL CONSUMER APP STYLING (BENTO & GREENLY AESTHETICS) ===== */
+        .plane-bullet-img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            flex-shrink: 0;
+            margin-top: 2px;
+            opacity: 0.95;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .insight-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .insight-row:last-child {
+            border-bottom: none;
+        }
+        .insight-row:hover .plane-bullet-img {
+            transform: translateX(3px) scale(1.1);
+        }
+
+        /* Fintech Declared Cash Box (Ultra-Crisp Contrast, High Power) */
+        .declared-cash-box {
+            background: #F8FAF9;
+            border: 1.5px solid #CBD5E1;
+            border-radius: 14px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+        .declared-cash-label-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .declared-cash-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .declared-cash-pill {
+            background: var(--g-emerald-tint);
+            color: var(--g-emerald-dark);
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            border: 1px solid var(--g-emerald-border);
+        }
+        .declared-cash-value-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .declared-cash-val {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #0F172A;
+            letter-spacing: -0.5px;
+        }
+        .declared-cash-eq {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #059669;
+        }
+        .declared-cash-sub {
+            font-size: 0.72rem;
+            color: #64748B;
+            line-height: 1.35;
+        }
+
+        /* Powerful Bento Grid Showcase (Home Tab) */
+        .bento-hero-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-card);
+            padding: 24px 22px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-card);
+        }
+        .bento-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--g-emerald-tint);
+            color: var(--g-emerald-dark);
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            border: 1px solid var(--g-emerald-border);
+            margin-bottom: 12px;
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--g-emerald);
+            box-shadow: 0 0 0 0 rgba(0, 194, 97, 0.7);
+            animation: pulseDot 2s infinite;
+        }
+        @keyframes pulseDot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 194, 97, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 194, 97, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 194, 97, 0); }
+        }
+        .bento-hero-title {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .bento-hero-sub {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            max-width: 680px;
+        }
+        .bento-trust-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .trust-pill {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            background: #F3F4F6;
+            border: 1px solid #E5E7EB;
+            padding: 3px 10px;
+            border-radius: 9999px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .bento-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-card);
+            padding: 18px 20px;
+            box-shadow: var(--shadow-card);
+            cursor: pointer;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            grid-column: span 4;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--g-emerald);
+            box-shadow: var(--shadow-elevated);
+        }
+        .bento-card.bento-featured {
+            grid-column: span 6;
+            background: #FFFFFF;
+            border: 1.5px solid #D1D5DB;
+        }
+        .bento-card.bento-featured:hover {
+            border-color: var(--g-emerald);
+        }
+        .bento-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .bento-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #F3F4F6;
+            color: #4B5563;
+        }
+        .bento-tag.bento-tag-green {
+            background: var(--g-emerald-tint);
+            color: var(--g-emerald-dark);
+        }
+        .bento-tag.bento-tag-red {
+            background: #FEF2F2;
+            color: #DC2626;
+        }
+        .bento-arrow {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .bento-card:hover .bento-arrow {
+            transform: translateX(3px);
+            color: var(--g-emerald);
+        }
+        .bento-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .bento-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin-bottom: 14px;
+            flex-grow: 1;
+        }
+        .bento-action-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding-top: 10px;
+            border-top: 1px solid #F3F4F6;
+        }
+        .bento-btn {
+            background: var(--g-emerald);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .bento-btn:hover {
+            background: var(--g-emerald-hover);
+        }
+        .bento-stat {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--g-emerald-dark);
+            background: var(--g-emerald-tint);
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid var(--g-emerald-border);
+        }
+
+        @media (max-width: 900px) {
+            .bento-card { grid-column: span 6; }
+            .bento-card.bento-featured { grid-column: span 12; }
+        }
+        @media (max-width: 600px) {
+            .bento-card { grid-column: span 12; }
+        }
+
+        /* ===== MOBILE FIXED BOTTOM NAVIGATION BAR ===== */
+        .mobile-bottom-bar {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 84px !important;
+            }
+            .mobile-bottom-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid var(--border-card);
+                z-index: 999;
+                justify-content: space-around;
+                align-items: center;
+                padding: 0 4px;
+                box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+            }
+            .m-nav-item {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
+                background: transparent;
+                border: none;
+                color: #6B7280;
+                cursor: pointer;
+                padding: 6px 0;
+                min-height: 48px;
+                transition: color 0.18s ease;
+            }
+            .m-nav-item.active {
+                color: var(--g-emerald);
+            }
+            .m-nav-svg {
+                width: 20px;
+                height: 20px;
+                stroke: currentColor;
+                stroke-width: 2;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                transition: transform 0.18s ease;
+            }
+            .m-nav-item.active .m-nav-svg {
+                stroke: var(--g-emerald);
+                transform: translateY(-1px);
+            }
+            .m-nav-label {
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.2px;
+            }
+        }
+
+        /* Enforce complete hidden state for mobile sheet & bar on desktop */
+        .mobile-more-backdrop,
+        .mobile-more-sheet {
+            display: none;
+        }
+
+        @media (min-width: 769px) {
+            .mobile-bottom-bar,
+            .mobile-more-backdrop,
+            .mobile-more-sheet {
+                display: none !important;
+                visibility: hidden !important;
+                pointer-events: none !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile More Bottom Sheet (Dark Luxury Cyber Aesthetic) */
+            .mobile-more-backdrop {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.75);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 0.25s ease, visibility 0.25s ease;
+            }
+            .mobile-more-backdrop.show {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+            .mobile-more-sheet {
+                display: block;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #0E1310;
+                border-top: 1px solid rgba(0, 229, 117, 0.3);
+                border-radius: 24px 24px 0 0;
+                padding: 16px 18px 30px;
+                z-index: 1001;
+                transform: translateY(100%);
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.85);
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .mobile-more-sheet.show {
+                transform: translateY(0);
+            }
+            .sheet-handle-bar {
+                width: 36px;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 2px;
+                margin: 0 auto 14px;
+            }
+            .sheet-header-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 14px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .sheet-title {
+                font-size: 1rem;
+                font-weight: 800;
+                color: #FFFFFF;
+            }
+            .sheet-close-btn {
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: #FFFFFF;
+                font-weight: 700;
+                font-size: 0.85rem;
+            }
+            .sheet-tools-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .sheet-tool-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px;
+                background: #121A15;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 14px;
+                cursor: pointer;
+                transition: background 0.18s ease, border-color 0.18s ease;
+            }
+            .sheet-tool-item:active {
+                background: #17241C;
+                border-color: #00E575;
+            }
+            .sheet-tool-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: rgba(0, 229, 117, 0.12);
+                color: #00E575;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+            .sheet-tool-icon svg {
+                width: 18px;
+                height: 18px;
+                stroke: currentColor;
+                stroke-width: 2;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+            .sheet-tool-content {
+                flex-grow: 1;
+            }
+            .sheet-tool-name {
+                font-size: 0.9rem;
+                font-weight: 800;
+                color: #FFFFFF;
+                margin-bottom: 2px;
+            }
+            .sheet-tool-desc {
+                font-size: 0.75rem;
+                color: #CBD5E1;
+            }
+        }
+
+        /* ===== FEATURED VISUAL SHOWCASE ARRAY CSS ===== */
+        .visual-showcase-section {
+            margin-top: 56px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .visual-showcase-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .showcase-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 2.2px;
+            color: #00E575;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .showcase-headline {
+            font-size: 1.85rem;
+            font-weight: 900;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .showcase-subtext {
+            font-size: 0.9rem;
+            color: #94A3B8;
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        .visual-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 980px) {
+            .visual-showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        .showcase-card {
+            background: #0E1310;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .showcase-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 229, 117, 0.5);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 117, 0.15);
+        }
+        .showcase-visual {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: #090D0B;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .showcase-svg-art {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .showcase-badge-pill {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 2;
+            background: rgba(7, 9, 8, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            padding: 4px 10px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        .showcase-content-bottom {
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .showcase-cat-label {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #00E575;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .showcase-item-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.35;
+            margin-bottom: 10px;
+        }
+        .showcase-item-desc {
+            font-size: 0.84rem;
+            color: #CBD5E1;
+            line-height: 1.55;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+        .showcase-action-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .showcase-action-btn {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            color: #00E575;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .showcase-card:hover .showcase-action-btn {
+            color: #38BDF8;
+            transform: translateX(4px);
+        }
+        .showcase-status-indicator {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: rgba(0, 229, 117, 0.75);
+        }
+
+    
+        /* ===== SAJ HOLDINGS / CYBER LUXURY INTELLIGENCE DESIGN SYSTEM ===== */
+        :root {
+            --bg-canvas: #070908;
+            --bg-header: rgba(8, 11, 9, 0.94);
+            --bg-card: #0E1310;
+            --bg-card-hover: #121A15;
+            --bg-card-active: #15201A;
+            --bg-input: #0A0E0C;
+            --bg-input-focus: #0D1411;
+
+            --border-card: rgba(255, 255, 255, 0.09);
+            --border-card-hover: rgba(0, 229, 117, 0.4);
+            --border-input: rgba(255, 255, 255, 0.14);
+            --border-focus: #00E575;
+
+            --neon-green: #00E575;
+            --neon-green-dim: #00A854;
+            --neon-green-glow: rgba(0, 229, 117, 0.25);
+            --neon-red: #FF334B;
+            --neon-red-dim: rgba(255, 51, 75, 0.15);
+            --neon-red-border: rgba(255, 51, 75, 0.35);
+
+            --text-heading: #FFFFFF;
+            --text-body: #CBD5E1;
+            --text-muted: #8492A6;
+            --text-dim: #4E5D6C;
+
+            --font-en-head: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-ml: 'Noto Sans Malayalam', 'Anek Malayalam', sans-serif;
+            --font-hi: 'Noto Sans Devanagari', 'Baloo 2', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-canvas) !important;
+            color: var(--text-body) !important;
+            font-family: var(--font-en-head);
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* ===== FLICKER ANIMATIONS ===== */
+        @keyframes techFlicker {
+            0% { opacity: 1; transform: scale(1); filter: brightness(1); }
+            15% { opacity: 0.3; filter: brightness(3) contrast(1.5); }
+            30% { opacity: 0.95; transform: scale(0.99); }
+            45% { opacity: 0.2; filter: brightness(4) drop-shadow(0 0 16px var(--neon-green)); }
+            60% { opacity: 0.85; }
+            75% { opacity: 0.4; filter: brightness(2.5); }
+            90% { opacity: 1; filter: brightness(1.6); }
+            100% { opacity: 1; transform: scale(1); filter: brightness(1); }
+        }
+
+        @keyframes cardHoverPulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 229, 117, 0); }
+            50% { box-shadow: 0 0 24px -4px rgba(0, 229, 117, 0.35); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 229, 117, 0); }
+        }
+
+        .card-flickering {
+            animation: techFlicker 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+            border-color: var(--neon-green) !important;
+        }
+
+        /* ===== TOP HEADER ===== */
+        .site-header {
+            background: var(--bg-header) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+        }
+        .brand-name {
+            font-size: 1.15rem !important;
+            font-weight: 900 !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase !important;
+            color: #FFFFFF !important;
+        }
+        .brand-name span {
+            color: var(--neon-green) !important;
+        }
+        .brand-tagline {
+            color: var(--text-muted) !important;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-switch-box {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        }
+        .lang-opt {
+            color: var(--text-muted) !important;
+            background: transparent !important;
+        }
+        .lang-opt.active {
+            background: var(--neon-green) !important;
+            color: #070A09 !important;
+            font-weight: 800 !important;
+        }
+
+        /* ===== CYBER FEATURE CARDS GRID (HOME) ===== */
+        #panel-home {
+            display: none;
+        }
+        #panel-home.active {
+            display: block;
+        }
+        .intel-grid-header {
+            text-align: center;
+            padding: 24px 16px 28px;
+        }
+        .intel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 229, 117, 0.1);
+            border: 1px solid rgba(0, 229, 117, 0.3);
+            color: var(--neon-green);
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .intel-title {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #FFFFFF;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .intel-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .tech-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .tech-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .intel-title {
+                font-size: 1.55rem;
+            }
+        }
+
+        .tech-card {
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-card);
+            border-radius: 18px;
+            padding: 22px 20px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+        }
+        .tech-card:hover {
+            border-color: var(--border-card-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.6), 0 0 20px -2px rgba(0, 229, 117, 0.18);
+        }
+        .tech-card:active {
+            transform: scale(0.985);
+        }
+
+        /* Top tag row */
+        .tech-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .tech-category-pill {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tech-category-pill.pill-red {
+            background: var(--neon-red-dim);
+            color: var(--neon-red);
+            border-color: var(--neon-red-border);
+        }
+        .tech-category-pill.pill-green {
+            background: rgba(0, 229, 117, 0.12);
+            color: var(--neon-green);
+            border-color: rgba(0, 229, 117, 0.3);
+        }
+        .tech-card-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 8px var(--neon-green);
+        }
+
+        /* Large Bold Title (like SAJ Holdings reference) */
+        .tech-card-title {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        /* Key Metrics Table */
+        .tech-meta-table {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 14px;
+        }
+        .tech-meta-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            gap: 12px;
+        }
+        .tech-meta-label {
+            color: var(--text-dim);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.72rem;
+            flex-shrink: 0;
+        }
+        .tech-meta-val {
+            color: var(--text-body);
+            font-weight: 600;
+            text-align: right;
+        }
+        .tech-meta-val.val-highlight-red {
+            color: var(--neon-red);
+            font-weight: 700;
+        }
+        .tech-meta-val.val-highlight-green {
+            color: var(--neon-green);
+            font-weight: 800;
+        }
+
+        /* Action footer */
+        .tech-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .tech-action-cue {
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--neon-green);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tech-chevron {
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .tech-card:hover .tech-chevron {
+            transform: translateX(4px);
+        }
+
+        /* ===== ACTIVE WORKSPACE (FEATURE PANEL VIEW) ===== */
+        .feature-panel {
+            display: none;
+        }
+        .feature-panel.active {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .workspace-back-bar {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .back-to-grid-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #FFFFFF;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .back-to-grid-btn:hover {
+            background: rgba(0, 229, 117, 0.15);
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            transform: translateX(-2px);
+        }
+
+        /* Cards in Workspace */
+        .card {
+            background: var(--bg-card) !important;
+            border: 1.5px solid var(--border-card) !important;
+            border-radius: 20px !important;
+            padding: 24px 22px !important;
+            box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7) !important;
+            color: var(--text-body) !important;
+        }
+        .card-title {
+            color: #FFFFFF !important;
+            font-size: 1.25rem !important;
+            font-weight: 900 !important;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .card-desc {
+            color: var(--text-muted) !important;
+        }
+
+        /* Form Inputs in Workspace */
+        .input-label {
+            color: #E2E8F0 !important;
+            font-size: 0.8rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        textarea, input[type="text"], input[type="date"], input[type="time"], input[type="number"], select {
+            background: var(--bg-input) !important;
+            border: 1.5px solid var(--border-input) !important;
+            color: #FFFFFF !important;
+            border-radius: 12px !important;
+        }
+        textarea:focus, input:focus, select:focus {
+            border-color: var(--neon-green) !important;
+            box-shadow: 0 0 0 3px rgba(0, 229, 117, 0.2), 0 0 15px var(--neon-green-glow) !important;
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            background: linear-gradient(135deg, #00E575 0%, #00B359 100%) !important;
+            color: #070908 !important;
+            font-weight: 900 !important;
+            font-size: 0.95rem !important;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border-radius: 12px !important;
+            box-shadow: 0 8px 25px -4px rgba(0, 229, 117, 0.45) !important;
+            min-height: 50px !important;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 10px 30px -2px rgba(0, 229, 117, 0.6) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Secondary Button */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #E2E8F0 !important;
+            border-radius: 8px !important;
+        }
+
+        /* Upload Box */
+        .compact-upload-box {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1.5px dashed rgba(255, 255, 255, 0.2) !important;
+            border-radius: 14px !important;
+            color: #E2E8F0 !important;
+        }
+        .compact-upload-box:hover {
+            border-color: var(--neon-green) !important;
+            background: rgba(0, 229, 117, 0.04) !important;
+        }
+
+        /* Declared Cash Box in Dark Luxury Theme */
+        .declared-cash-box {
+            background: rgba(0, 229, 117, 0.04) !important;
+            border: 1.5px solid rgba(0, 229, 117, 0.3) !important;
+            border-radius: 14px !important;
+            padding: 14px 16px !important;
+        }
+        .declared-cash-label {
+            color: #94A3B8 !important;
+        }
+        .declared-cash-pill {
+            background: rgba(0, 229, 117, 0.15) !important;
+            color: var(--neon-green) !important;
+            border-color: rgba(0, 229, 117, 0.4) !important;
+        }
+        .declared-cash-val {
+            color: #FFFFFF !important;
+            font-size: 1.5rem !important;
+            font-weight: 900 !important;
+            letter-spacing: 0.5px !important;
+        }
+        .declared-cash-eq {
+            color: var(--neon-green) !important;
+            font-weight: 800 !important;
+        }
+        .declared-cash-sub {
+            color: #94A3B8 !important;
+        }
+
+        /* Safety Insight Cards (Bottom Guides) */
+        .safety-insight-card {
+            background: #0B100D !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 18px !important;
+            padding: 20px !important;
+            margin-top: 16px !important;
+        }
+        .insight-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding-bottom: 10px !important;
+            margin-bottom: 14px !important;
+        }
+        .insight-title {
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .insight-badge {
+            background: rgba(0, 229, 117, 0.12) !important;
+            color: var(--neon-green) !important;
+            border: 1px solid rgba(0, 229, 117, 0.3) !important;
+        }
+        .insight-heading {
+            color: #F8FAFC !important;
+            font-weight: 800 !important;
+        }
+        .insight-text {
+            color: #94A3B8 !important;
+        }
+
+        /* Flying Plane PNG Bullet Point (Pure White Silhouette on Dark Cards) */
+        .plane-bullet-img {
+            width: 20px !important;
+            height: 20px !important;
+            object-fit: contain !important;
+            flex-shrink: 0 !important;
+            margin-top: 2px !important;
+            opacity: 0.9 !important;
+            transition: transform 0.25s ease !important;
+        }
+        .insight-row:hover .plane-bullet-img {
+            transform: translateX(3px) scale(1.15) !important;
+        }
+
+        /* ===== FIX 1: TOP TASKBAR NAVIGATION (MINIMALIST TRANSLUCENT CAPSULE & SOFT OPACITY) ===== */
+        .nav-segment-bar {
+            background: rgba(14, 20, 16, 0.45) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 9999px !important;
+            padding: 4px 6px !important;
+            gap: 4px !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+        }
+        .tab-btn {
+            background: transparent !important;
+            color: rgba(255, 255, 255, 0.55) !important;
+            border: none !important;
+            border-radius: 9999px !important;
+            font-size: 0.8rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.6px !important;
+            padding: 8px 16px !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .tab-btn:hover {
+            color: #FFFFFF !important;
+            background: rgba(255, 255, 255, 0.06) !important;
+        }
+        .tab-btn.active {
+            background: rgba(0, 229, 117, 0.22) !important;
+            color: #00E575 !important;
+            border: 1px solid rgba(0, 229, 117, 0.4) !important;
+            font-weight: 800 !important;
+            box-shadow: 0 0 16px rgba(0, 229, 117, 0.15) !important;
+        }
+        .tab-btn.more-btn {
+            background: rgba(255, 255, 255, 0.03) !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        .tab-btn.more-btn.active {
+            background: rgba(0, 229, 117, 0.18) !important;
+            color: #00E575 !important;
+            border: 1px solid rgba(0, 229, 117, 0.35) !important;
+        }
+
+        /* Secondary Nav Row Under More */
+        .secondary-nav-row {
+            background: transparent !important;
+        }
+        .subtab-btn {
+            background: rgba(14, 20, 16, 0.45) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            color: rgba(255, 255, 255, 0.55) !important;
+            border-radius: 9999px !important;
+            font-size: 0.76rem !important;
+            font-weight: 700 !important;
+            padding: 6px 14px !important;
+        }
+        .subtab-btn:hover {
+            border-color: rgba(0, 229, 117, 0.4) !important;
+            color: #00E575 !important;
+            background: rgba(0, 229, 117, 0.08) !important;
+        }
+        .subtab-btn.active {
+            background: rgba(0, 229, 117, 0.22) !important;
+            border-color: rgba(0, 229, 117, 0.4) !important;
+            color: #00E575 !important;
+            font-weight: 800 !important;
+            box-shadow: 0 0 14px rgba(0, 229, 117, 0.2) !important;
+        }
+
+        /* ===== FIX 2: 3-COLUMN LAPTOP / DESKTOP FEATURE CARDS GRID ===== */
+        @media (min-width: 992px) {
+            .tech-cards-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 18px !important;
+            }
+        }
+
+        /* ===== FIX 3: CRISP 100% CONTRAST RESULT TEXT IN DARK LUXURY THEME ===== */
+        .verdict-banner {
+            border-radius: 16px !important;
+            padding: 16px 20px !important;
+        }
+        .verdict-banner.high, .verdict-banner.dangerous {
+            background: rgba(220, 38, 38, 0.14) !important;
+            border: 1px solid rgba(255, 51, 75, 0.35) !important;
+            border-left: 6px solid #FF334B !important;
+            color: #FECACA !important;
+        }
+        .verdict-banner.medium, .verdict-banner.review_needed {
+            background: rgba(217, 119, 6, 0.14) !important;
+            border: 1px solid rgba(245, 158, 11, 0.35) !important;
+            border-left: 6px solid #F59E0B !important;
+            color: #FDE68A !important;
+        }
+        .verdict-banner.low, .verdict-banner.safe {
+            background: rgba(0, 229, 117, 0.12) !important;
+            border: 1px solid rgba(0, 229, 117, 0.35) !important;
+            border-left: 6px solid #00E575 !important;
+            color: #A7F3D0 !important;
+        }
+        .verdict-score {
+            color: #FFFFFF !important;
+            font-weight: 900 !important;
+        }
+        .verdict-label {
+            letter-spacing: 1px !important;
+            font-weight: 800 !important;
+        }
+
+        /* Result lists */
+        .list-group-title {
+            color: #FFFFFF !important;
+            font-size: 0.85rem !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.8px !important;
+            text-transform: uppercase !important;
+            margin-bottom: 10px !important;
+            margin-top: 14px !important;
+        }
+        .clean-list li {
+            padding: 12px 16px !important;
+            border-radius: 12px !important;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            margin-bottom: 6px !important;
+        }
+        .clean-list.danger li {
+            background: rgba(220, 38, 38, 0.12) !important;
+            border-color: rgba(220, 38, 38, 0.25) !important;
+            border-left: 5px solid #FF334B !important;
+            color: #FFFFFF !important;
+        }
+        .clean-list.warning li {
+            background: rgba(217, 119, 6, 0.12) !important;
+            border-color: rgba(245, 158, 11, 0.25) !important;
+            border-left: 5px solid #F59E0B !important;
+            color: #FFFFFF !important;
+        }
+        .clean-list.safe li {
+            background: rgba(0, 229, 117, 0.1) !important;
+            border-color: rgba(0, 229, 117, 0.25) !important;
+            border-left: 5px solid #00E575 !important;
+            color: #FFFFFF !important;
+        }
+
+        /* Pack item rows in results */
+        .pack-item-row {
+            background: #0D1310 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 14px !important;
+            padding: 14px 16px !important;
+            margin-bottom: 8px !important;
+            border-left: 5px solid !important;
+        }
+        .pack-item-row.likely_ok { border-left-color: #00E575 !important; }
+        .pack-item-row.restricted { border-left-color: #F59E0B !important; }
+        .pack-item-row.prohibited { border-left-color: #FF334B !important; }
+        .pack-item-row.unsure { border-left-color: #94A3B8 !important; }
+
+        .pack-item-row div {
+            color: #FFFFFF !important;
+        }
+
+        /* Checklist task cards in results */
+        #cl-result .card {
+            background: #0E1411 !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #FFFFFF !important;
+            margin-bottom: 8px !important;
+            padding: 14px 16px !important;
+        }
+        #cl-result .card div {
+            color: #FFFFFF !important;
+        }
+
+        /* Check items for Handbag */
+        .check-item {
+            background: #0D1310 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            color: #FFFFFF !important;
+            border-radius: 12px !important;
+            padding: 12px 14px !important;
+        }
+        .check-item:hover {
+            border-color: #00E575 !important;
+            background: #111A15 !important;
+        }
+        .check-item div {
+            color: #FFFFFF !important;
+        }
+        .check-item.done div {
+            color: #64748B !important;
+        }
+
+        /* ===== GLOBAL 100% VISIBLE CONTRAST OVERRIDES FOR ALL CARDS & RESULTS ===== */
+        .card div, .card span, .card p {
+            color: #FFFFFF;
+        }
+        .card .card-title {
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+        }
+        .card .card-desc {
+            color: #CBD5E1 !important;
+        }
+
+        /* SIM Result Cards & Badges */
+        #sim-result .card {
+            background: #0E1411 !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            padding: 18px 20px !important;
+            margin-bottom: 12px !important;
+        }
+        #sim-result .card div {
+            color: #FFFFFF !important;
+        }
+        #sim-result .card span {
+            color: #E2E8F0 !important;
+        }
+        .sim-price-val {
+            color: #00E575 !important;
+            font-size: 1.25rem !important;
+            font-weight: 900 !important;
+        }
+        .sim-note-text {
+            color: #FCD34D !important;
+            font-weight: 600 !important;
+            font-size: 0.78rem !important;
+        }
+        .sim-confidence-badge {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Contract Reader & Emergency Result Visibility */
+        #contract-result .card, #offer-result .card {
+            background: #0E1411 !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        }
+        #contract-result .card div, #offer-result .card div {
+            color: #FFFFFF !important;
+        }
+        #contract-result .metrics-grid div, #contract-result .metrics-grid span {
+            color: #FFFFFF !important;
+        }
+
+        /* Emergency Cards List */
+        .emergency-card-row {
+            background: #0E1411 !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        }
+        .emergency-card-row div {
+            color: #FFFFFF !important;
+        }
+
+        /* ===== SAGAR ALIAS JACKY / APEX MINIMALIST HERO (ZERO BOXES, PURE LUXURY TYPOGRAPHY) ===== */
+        .apex-hero-stage {
+            text-align: center;
+            padding: 48px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .apex-hero-tag {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #00E575;
+            margin-bottom: 18px;
+            display: inline-block;
+            opacity: 0.9;
+        }
+        .apex-hero-h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+        .apex-hero-h2 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #00E575;
+            margin-bottom: 22px;
+            text-shadow: 0 0 35px rgba(0, 229, 117, 0.25);
+        }
+        .apex-hero-bullets {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .apex-bullet-sep {
+            color: #00E575;
+            font-size: 0.9rem;
+        }
+        .apex-hero-sub {
+            font-size: 0.92rem;
+            color: #94A3B8;
+            max-width: 640px;
+            margin: 0 auto 36px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        .apex-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(0, 229, 117, 0.9) 0%, rgba(0, 168, 84, 0.95) 100%);
+            color: #050806;
+            font-size: 0.84rem;
+            font-weight: 900;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            padding: 14px 34px;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(0, 229, 117, 0.35);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .apex-cta-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 45px rgba(0, 229, 117, 0.55);
+            color: #000000;
+        }
+        .apex-scroll-cue {
+            margin-top: 36px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        @media (max-width: 768px) {
+            .apex-hero-stage {
+                padding: 30px 16px 24px;
+            }
+            .apex-hero-h1 {
+                font-size: 2.2rem;
+            }
+            .apex-hero-h2 {
+                font-size: 1.85rem;
+                margin-bottom: 16px;
+            }
+            .apex-hero-bullets {
+                font-size: 0.72rem;
+                gap: 10px;
+                letter-spacing: 1px;
+            }
+        }
+    
     </style>
 </head>
 <body>
 
-    <!-- ===== STICKY COMPACT HEADER (Height: 56px) ===== -->
+    <!-- ===== FULL-SCREEN SPLASH & LANGUAGE PICKER (STEP B) ===== -->
+    <div id="splash-screen">
+        <div class="splash-ambient-glow"></div>
+        <div class="splash-hero-box">
+            <div class="splash-logo-circle">
+                <img src="/static/logo.png" alt="TravelGuard">
+            </div>
+            <h1 class="splash-title-text">Travel<span>Guard</span></h1>
+            <p class="splash-tagline-text">Safe Journeys Begin Here</p>
+        </div>
+
+        <!-- Glass Language Card (Reveals After 1.5s Blur) -->
+        <div class="lang-modal-card" id="lang-modal-card">
+            <h2 class="lang-modal-headline" data-en="Choose your language" data-ml="ഭാഷ തിരഞ്ഞെടുക്കുക" data-hi="अपनी भाषा चुनें">Choose your language</h2>
+            <p class="lang-modal-subtext" data-en="Select your preferred language for safety analysis and guidance" data-ml="സുരക്ഷാ പരിശോധനയ്ക്കും വിവരങ്ങൾക്കും നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക" data-hi="सुरक्षा विश्लेषण और मार्गदर्शन के लिए अपनी भाषा चुनें">Select your preferred language for safety analysis and guidance</p>
+            <div class="lang-modal-buttons">
+                <button class="lang-pick-btn lang-en" onclick="selectInitialLanguage('en')">
+                    <span class="lang-native-name">English</span>
+                    <span class="lang-sub-label">International NRI Standard</span>
+                </button>
+                <button class="lang-pick-btn lang-ml" onclick="selectInitialLanguage('ml')">
+                    <span class="lang-native-name">മലയാളം</span>
+                    <span class="lang-sub-label">കേരള പ്രവാസി സുരക്ഷ</span>
+                </button>
+                <button class="lang-pick-btn lang-hi" onclick="selectInitialLanguage('hi')">
+                    <span class="lang-native-name">हिन्दी</span>
+                    <span class="lang-sub-label">भारतीय प्रवासी सुरक्षा</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== STICKY COMPACT HEADER (Height: 60px) ===== -->
     <header class="site-header">
         <div class="header-inner">
-            <a class="brand-group" onclick="selectTab('offer')">
+            <a class="brand-group" onclick="selectTab('home')">
                 <img src="/static/logo.png" alt="TravelGuard" class="brand-logo-img">
                 <div class="brand-text-block">
                     <span class="brand-name">Travel<span>Guard</span></span>
@@ -1092,7 +2953,10 @@
 
         <!-- PRIMARY 4 FEATURES + MORE OPTIONS TOOLBAR -->
         <nav class="nav-segment-bar">
-            <button class="tab-btn active" id="tab-btn-offer" onclick="selectTab('offer')">
+            <button class="tab-btn active" id="tab-btn-home" onclick="selectTab('home')">
+                <span data-en="Overview" data-ml="അവലോകനം" data-hi="अवलोकन">Overview</span>
+            </button>
+            <button class="tab-btn" id="tab-btn-offer" onclick="selectTab('offer')">
                 <span data-en="Offer Check" data-ml="ഓഫർ പരിശോധന" data-hi="ऑफर जांच">Offer Check</span>
             </button>
             <button class="tab-btn" id="tab-btn-contract" onclick="selectTab('contract')">
@@ -1129,10 +2993,425 @@
         </div>
 
         <!-- ========================================== -->
+                        <!-- ========================================== -->
+        <!-- 0. INTELLIGENCE DASHBOARD (THE CARDS GRID) -->
+        <!-- ========================================== -->
+        <section id="panel-home" class="feature-panel active">
+            <!-- MINIMALIST APEX TYPOGRAPHY HERO (SAGAR ALIAS JACKY LUXURY REFERENCE) -->
+            <div class="apex-hero-stage">
+                <span class="apex-hero-tag" data-en="PRE-DEPARTURE INTELLIGENCE // STAGE 1 READY" data-ml="കുടിയേറ്റ സുരക്ഷ // ആദ്യ ഘട്ടം" data-hi="प्रवासन सुरक्षा // स्टेज 1 तैयार">PRE-DEPARTURE INTELLIGENCE // STAGE 1 READY</span>
+                
+                <h1 class="apex-hero-h1" data-en="TRAVELGUARD" data-ml="ട്രാവൽ ഗാർഡ്" data-hi="ट्रैवल गार्ड">TRAVELGUARD</h1>
+                <h2 class="apex-hero-h2" data-en="PROTECTION SHIELD" data-ml="സുരക്ഷാ കവചം" data-hi="सुरक्षा कवच">PROTECTION SHIELD</h2>
+                
+                <div class="apex-hero-bullets">
+                    <span data-en="VISA FRAUD SHIELD" data-ml="വിസ തട്ടിപ്പ് പ്രതിരോധം" data-hi="वीजा फ्रॉड सुरक्षा">VISA FRAUD SHIELD</span>
+                    <span class="apex-bullet-sep">•</span>
+                    <span data-en="CUSTOMS CONTRABAND RADAR" data-ml="കസ്റ്റംസ് പരിശോധന" data-hi="कस्टम्स नियम जांच">CUSTOMS CONTRABAND RADAR</span>
+                    <span class="apex-bullet-sep">•</span>
+                    <span data-en="MOHRE LABOR COMPLIANCE" data-ml="MOHRE തൊഴിൽ നിയമം" data-hi="यूएई श्रम कानून">MOHRE LABOR COMPLIANCE</span>
+                </div>
+
+                <p class="apex-hero-sub" data-en="High-precision pre-departure travel defense intelligence built for international passengers and Gulf expats. Select an intelligence sector below to launch live audits." data-ml="വിദേശ യാത്രക്കാർക്കും പ്രവാസികൾക്കുമുള്ള സമഗ്ര സുരക്ഷാ സംവിധാനം. പരിശോധന ആരംഭിക്കാൻ താഴെയുള്ള ടൂളുകൾ ഉപയോഗിക്കുക." data-hi="अंतरराष्ट्रीय यात्रियों और खाड़ी प्रवासियों के लिए उच्च-सटीक प्रवासन सुरक्षा प्रणाली। लाइव जांच शुरू करने के लिए नीचे दिए गए कार्ड पर क्लिक करें।">High-precision pre-departure travel defense intelligence built for international passengers and Gulf expats. Select an intelligence sector below to launch live audits.</p>
+
+                <div>
+                    <button class="apex-cta-btn" onclick="triggerCardLaunch('offer', document.querySelector('.tech-card'))">
+                        <span data-en="INITIALIZE VERIFICATION ›" data-ml="പരിശോധന ആരംഭിക്കുക ›" data-hi="सत्यापन शुरू करें ›">INITIALIZE VERIFICATION ›</span>
+                    </button>
+                </div>
+
+                <div class="apex-scroll-cue">
+                    <span>▼</span>
+                    <span data-en="EXPLORE INTELLIGENCE SECTORS" data-ml="താഴേക്ക് സ്ക്രോൾ ചെയ്യുക" data-hi="सभी टूल्स देखें">EXPLORE INTELLIGENCE SECTORS</span>
+                    <span>▼</span>
+                </div>
+            </div>
+
+            <div class="tech-cards-grid">
+                <!-- CARD 1: OFFER CHECK -->
+                <div class="tech-card" onclick="triggerCardLaunch('offer', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill pill-red" data-en="EMPLOYMENT SECURITY" data-ml="തൊഴിൽ സുരക്ഷ" data-hi="रोजगार सुरक्षा">EMPLOYMENT SECURITY</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="OFFER CHECK & SCAM AUDIT" data-ml="ഓഫർ പരിശോധന" data-hi="ऑफर व धोखाधड़ी जांच">OFFER CHECK & SCAM AUDIT</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Public Front" data-ml="വാഗ്ദാനം" data-hi="सार्वजनिक विवरण">Public Front</span>
+                                <span class="tech-meta-val" data-en="Overseas Employment Letter / Recruiter Offer" data-ml="വിദേശ ജോലി ഓഫർ കത്ത്" data-hi="विदेशी नौकरी का ऑफर">Overseas Employment Letter / Recruiter Offer</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Core Threat" data-ml="അപകട സാധ്യത" data-hi="प्रमुख खतरा">Core Threat</span>
+                                <span class="tech-meta-val val-highlight-red" data-en="Upfront Visa Fee Demands & Visit Visa Traps" data-ml="മുൻകൂർ വിസ ഫീസും സന്ദർശക വിസയും" data-hi="अग्रिम शुल्क व विजिट वीजा का धोखा">Upfront Visa Fee Demands & Visit Visa Traps</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Authority" data-ml="നിയമ സംവിധാനം" data-hi="आधिकारिक संस्था">Authority</span>
+                                <span class="tech-meta-val" data-en="MEA eMigrate Portal / Protector of Emigrants" data-ml="MEA eMigrate / PoE" data-hi="ई-माइग्रेट / PoE">MEA eMigrate Portal / Protector of Emigrants</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 2: CONTRACT READER -->
+                <div class="tech-card" onclick="triggerCardLaunch('contract', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill pill-red" data-en="LABOR STATUTES" data-ml="തൊഴിൽ നിയമങ്ങൾ" data-hi="श्रम कानून">LABOR STATUTES</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="LABOR CONTRACT AUDITOR" data-ml="തൊഴിൽ കരാർ പരിശോധന" data-hi="श्रम अनुबंध ऑडिट">LABOR CONTRACT AUDITOR</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Public Front" data-ml="രേഖ" data-hi="सार्वजनिक विवरण">Public Front</span>
+                                <span class="tech-meta-val" data-en="MOHRE Standard Work Contract & Clauses" data-ml="MOHRE തൊഴിൽ കരാർ" data-hi="MOHRE अनुबंध शर्तें">MOHRE Standard Work Contract & Clauses</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Core Threat" data-ml="അപകട സാധ്യത" data-hi="प्रमुख खतरा">Core Threat</span>
+                                <span class="tech-meta-val val-highlight-red" data-en="Illegal Passport Retention & Wage Deduction" data-ml="പാസ്‌പോർട്ട് പിടിച്ചുവെക്കൽ" data-hi="पासपोर्ट जब्ती व अवैध कटौती">Illegal Passport Retention & Wage Deduction</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Legal Basis" data-ml="നിയമം" data-hi="कानूनी आधार">Legal Basis</span>
+                                <span class="tech-meta-val" data-en="UAE Federal Decree Law No. 33 of 2021" data-ml="യുഎഇ നിയമം 33" data-hi="यूएई श्रम कानून 33">UAE Federal Decree Law No. 33 of 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 3: PACK CHECK -->
+                <div class="tech-card" onclick="triggerCardLaunch('pack', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill pill-green" data-en="CUSTOMS & LUGGAGE" data-ml="കസ്റ്റംസ്" data-hi="कस्टम्स">CUSTOMS & LUGGAGE</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="CUSTOMS & DRUG SCREENER" data-ml="കസ്റ്റംസ് ലഗേജ് പരിശോധന" data-hi="कस्टम्स सामान जांच">CUSTOMS & DRUG SCREENER</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Public Front" data-ml="സാധനങ്ങൾ" data-hi="सामान">Public Front</span>
+                                <span class="tech-meta-val" data-en="Personal Luggage, Foods, & Prescriptions" data-ml="മരുന്നുകൾ, വ്യക്തിഗത സാധനങ്ങൾ" data-hi="दवाइयां, भोजन व सामान">Personal Luggage, Foods, & Prescriptions</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Cash Cap" data-ml="പണ പരിധി" data-hi="नकद सीमा">Cash Cap</span>
+                                <span class="tech-meta-val val-highlight-green" data-en="AED 60,000 (~₹13.5 Lakhs) Max Limit" data-ml="AED 60,000 പരിധി" data-hi="60,000 दिरहम अधिकतम">AED 60,000 (~₹13.5 Lakhs) Max Limit</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Regulations" data-ml="നിയന്ത്രണം" data-hi="नियम">Regulations</span>
+                                <span class="tech-meta-val" data-en="MOHAP Controlled Narcotics & Dubai Customs" data-ml="MOHAP നിരോധിത പട്ടിക" data-hi="प्रतिबंधित दवा सूची">MOHAP Controlled Narcotics & Dubai Customs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 4: JOURNEY CHECKLIST -->
+                <div class="tech-card" onclick="triggerCardLaunch('checklist', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill pill-green" data-en="ROADMAP RADAR" data-ml="സമയക്രമം" data-hi="समय सारणी">ROADMAP RADAR</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="EMIGRATION TIMELINE RADAR" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്" data-hi="प्रवासन चेकलिस्ट">EMIGRATION TIMELINE RADAR</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Timeframe" data-ml="സമയം" data-hi="समयावधि">Timeframe</span>
+                                <span class="tech-meta-val" data-en="30 Days Pre-Departure to Airport Gate" data-ml="30 ദിവസം മുമ്പ് മുതൽ" data-hi="30 दिन पूर्व से गेट तक">30 Days Pre-Departure to Airport Gate</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Key Protocol" data-ml="പ്രധാന ഘട്ടം" data-hi="प्रमुख चरण">Key Protocol</span>
+                                <span class="tech-meta-val val-highlight-green" data-en="PoE Clearance for ECR Workers & Layover Visa" data-ml="PoE ക്ലിയറൻസ്, വിസ" data-hi="PoE क्लीयरेंस व ट्रांजिट">PoE Clearance for ECR Workers & Layover Visa</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Framework" data-ml="സംവിധാനം" data-hi="प्रणाली">Framework</span>
+                                <span class="tech-meta-val" data-en="Bureau of Immigration & ICP Smart Services" data-ml="ബ്യൂറോ ഓഫ് ഇമിഗ്രേഷൻ" data-hi="इमिग्रेशन ब्यूरो व ICP">Bureau of Immigration & ICP Smart Services</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 5: HANDBAG ITEMS -->
+                <div class="tech-card" onclick="triggerCardLaunch('handbag', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill" data-en="AVIATION CABIN" data-ml="ഹാൻഡ്ബാഗ്" data-hi="केबिन सुरक्षा">AVIATION CABIN</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="CABIN BAGGAGE PROTOCOL" data-ml="ഹാൻഡ്ബാഗ് ഇനങ്ങൾ" data-hi="केबिन बैगेज नियम">CABIN BAGGAGE PROTOCOL</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Critical Item" data-ml="പ്രധാനം" data-hi="महत्वपूर्ण">Critical Item</span>
+                                <span class="tech-meta-val val-highlight-red" data-en="Lithium Power Banks strictly in Cabin ONLY" data-ml="പവർ ബാങ്ക് ഹാൻഡ്ബാഗിൽ മാത്രം" data-hi="पावर बैंक केवल केबिन में">Lithium Power Banks strictly in Cabin ONLY</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Standards" data-ml="മാനദണ്ഡം" data-hi="मानक">Standards</span>
+                                <span class="tech-meta-val" data-en="ICAO / DGCA Dangerous Goods Compliance" data-ml="DGCA ഏവിയേഷൻ നിയമം" data-hi="DGCA विमानन सुरक्षा">ICAO / DGCA Dangerous Goods Compliance</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 6: CURRENCY CONVERTER -->
+                <div class="tech-card" onclick="triggerCardLaunch('currency', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill pill-green" data-en="FOREX DEFENSE" data-ml="കറൻസി നിരക്ക്" data-hi="मुद्रा दरें">FOREX DEFENSE</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="GULF CURRENCY CONVERTER" data-ml="കറൻസി കൺവെർട്ടർ" data-hi="खाड़ी मुद्रा परिवर्तक">GULF CURRENCY CONVERTER</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Coverage" data-ml="നാണയങ്ങൾ" data-hi="मुद्राएं">Coverage</span>
+                                <span class="tech-meta-val val-highlight-green" data-en="AED, SAR, QAR, KWD, OMR to INR" data-ml="AED, SAR, QAR - INR" data-hi="दिरहम, रियाल से रुपया">AED, SAR, QAR, KWD, OMR to INR</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Airport Tip" data-ml="ടിപ്പ്" data-hi="सुझाव">Airport Tip</span>
+                                <span class="tech-meta-val" data-en="Avoid 8% Terminal Forex Booth Margins" data-ml="എയർപോർട്ട് നിരക്ക് നഷ്ടം ഒഴിവാക്കുക" data-hi="हवाई अड्डे के ऊंचे कमीशन से बचें">Avoid 8% Terminal Forex Booth Margins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 7: BOARDING COUNTDOWN -->
+                <div class="tech-card" onclick="triggerCardLaunch('boarding', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill" data-en="TRANSIT FLOW" data-ml="എയർപോർട്ട്" data-hi="ट्रांजिट">TRANSIT FLOW</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="AIRPORT STATION COUNTDOWN" data-ml="ബോർഡിംഗ് സമയക്രമം" data-hi="बोर्डिंग समय सारणी">AIRPORT STATION COUNTDOWN</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Check-in Close" data-ml="കൗണ്ടർ സമയം" data-hi="चेक-इन समाप्ति">Check-in Close</span>
+                                <span class="tech-meta-val val-highlight-red" data-en="T-60 Minutes Before Departure" data-ml="60 മിനിറ്റ് മുമ്പ് അടയ്ക്കും" data-hi="उड़ान से 60 मिनट पहले">T-60 Minutes Before Departure</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="ECR Checkpoint" data-ml="PoE കൗണ്ടർ" data-hi="PoE डेस्क">ECR Checkpoint</span>
+                                <span class="tech-meta-val" data-en="Protector of Emigrants Inspection Desk" data-ml="PoE ഇമിഗ്രേഷൻ പരിശോധന" data-hi="इमिग्रेशन जांच काउंटर">Protector of Emigrants Inspection Desk</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 8: UAE SIM ADVISOR -->
+                <div class="tech-card" onclick="triggerCardLaunch('sim', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill pill-green" data-en="TELECOM INTEL" data-ml="ടെലികോം" data-hi="टेलीकॉम">TELECOM INTEL</span>
+                            <span class="tech-card-indicator"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="AIRPORT TELECOM ADVISOR" data-ml="യുഎഇ സിം പ്ലാനുകൾ" data-hi="यूएई सिम कार्ड गाइड">AIRPORT TELECOM ADVISOR</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Operators" data-ml="ഓപ്പറേറ്റർമാർ" data-hi="कंपनियां">Operators</span>
+                                <span class="tech-meta-val" data-en="e& (Etisalat), du, Virgin Mobile UAE" data-ml="e&, du, Virgin Mobile" data-hi="e&, du, Virgin Mobile">e& (Etisalat), du, Virgin Mobile UAE</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Free Perk" data-ml="സൗജന്യം" data-hi="मुफ्त सुविधा">Free Perk</span>
+                                <span class="tech-meta-val val-highlight-green" data-en="1GB Complimentary Tourist SIM at Immigration" data-ml="1GB സൗജന്യ സിം ഇമിഗ്രേഷനിൽ" data-hi="पासपोर्ट कंट्रोल पर 1GB फ्री सिम">1GB Complimentary Tourist SIM at Immigration</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+
+                <!-- CARD 9: EMERGENCY HELPLINES -->
+                <div class="tech-card" onclick="triggerCardLaunch('emergency', this)">
+                    <div>
+                        <div class="tech-card-header">
+                            <span class="tech-category-pill pill-red" data-en="RAPID RESPONSE" data-ml="അടിയന്തര സഹായം" data-hi="आपातकालीन 24/7">RAPID RESPONSE</span>
+                            <span class="tech-card-indicator" style="background:var(--neon-red);box-shadow:0 0 8px var(--neon-red);"></span>
+                        </div>
+                        <h2 class="tech-card-title" data-en="EXPATRIATE HELPLINE DIALER" data-ml="അടിയന്തര നമ്പറുകൾ" data-hi="आपातकालीन सहायता नंबर">EXPATRIATE HELPLINE DIALER</h2>
+                        <div class="tech-meta-table">
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="Diplomatic" data-ml="എംബസി" data-hi="दूतावास">Diplomatic</span>
+                                <span class="tech-meta-val val-highlight-green" data-en="Indian Embassy Abu Dhabi & CGI Dubai" data-ml="ഇന്ത്യൻ എംബസി അബുദാബി" data-hi="भारतीय दूतावास अबू धाबी">Indian Embassy Abu Dhabi & CGI Dubai</span>
+                            </div>
+                            <div class="tech-meta-row">
+                                <span class="tech-meta-label" data-en="State & Police" data-ml="പോലീസ്" data-hi="पुलिस व नोर्का">State & Police</span>
+                                <span class="tech-meta-val" data-en="NORKA-Roots (Kerala) & UAE Police 999" data-ml="നോർക്ക & പോലീസ് 999" data-hi="नोर्का व पुलिस 999">NORKA-Roots (Kerala) & UAE Police 999</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card-footer">
+                        <span class="tech-action-cue" data-en="TAP TO INITIALIZE" data-ml="പരിശോധിക്കാൻ ടാപ്പ് ചെയ്യുക" data-hi="सत्यापन शुरू करें">TAP TO INITIALIZE</span>
+                        <span class="tech-chevron">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== FEATURED VISUAL SHOWCASE ARRAY ===== -->
+            <div class="visual-showcase-section">
+                <div class="visual-showcase-header">
+                    <span class="showcase-tag" data-en="VERIFIED DEEP-INSPECTION ENGINES" data-ml="വിപുലമായ പരിശോധനാ സംവിധാനങ്ങൾ" data-hi="विस्तृत सुरक्षा जांच मॉड्यूल">VERIFIED DEEP-INSPECTION ENGINES</span>
+                    <h2 class="showcase-headline" data-en="SPECIALIZED PROTOCOL ARRAYS" data-ml="പ്രത്യേക യാത്രാ സുരക്ഷാ ഘടകങ്ങൾ" data-hi="विशिष्ट यात्रा सुरक्षा प्रणालियां">SPECIALIZED PROTOCOL ARRAYS</h2>
+                    <p class="showcase-subtext" data-en="High-precision verification suites tailored for Gulf emigrants, labor law compliance, and airport security." data-ml="ഗൾഫ് പ്രവാസികൾക്കായി രൂപകൽപ്പന ചെയ്ത നിയമപരമായ കരാർ പരിശോധനയും എയർപോർട്ട് സുരക്ഷാ സംവിധാനങ്ങളും." data-hi="खाड़ी प्रवासियों के लिए आधिकारिक श्रम कानून, सामान जांच व कस्टम्स सुरक्षा सूट।">High-precision verification suites tailored for Gulf emigrants, labor law compliance, and airport security.</p>
+                </div>
+
+                <div class="visual-showcase-grid">
+                    <!-- SHOWCASE ITEM 1: CONTRACT READER -->
+                    <div class="showcase-card" onclick="triggerCardLaunch('contract', this)">
+                        <div class="showcase-visual contract-visual">
+                            <div class="showcase-badge-pill" data-en="MOHRE UAE LAW NO. 33" data-ml="തൊഴിൽ നിയമം 33" data-hi="यूएई श्रम कानून 33">MOHRE UAE LAW NO. 33</div>
+                            <svg class="showcase-svg-art" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gradContract" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00E575" stop-opacity="0.25"/>
+                                        <stop offset="100%" stop-color="#0E1310" stop-opacity="0.95"/>
+                                    </linearGradient>
+                                    <pattern id="gridPat1" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 229, 117, 0.08)" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#gradContract)"/>
+                                <rect width="100%" height="100%" fill="url(#gridPat1)"/>
+                                <g transform="translate(130, 24)">
+                                    <rect x="0" y="0" width="100" height="130" rx="10" fill="#121A15" stroke="rgba(0, 229, 117, 0.5)" stroke-width="2"/>
+                                    <line x1="20" y1="24" x2="80" y2="24" stroke="#00E575" stroke-width="3" stroke-linecap="round"/>
+                                    <line x1="20" y1="42" x2="70" y2="42" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="20" y1="56" x2="76" y2="56" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="20" y1="70" x2="60" y2="70" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="50" cy="100" r="16" fill="rgba(0, 229, 117, 0.15)" stroke="#00E575" stroke-width="1.8"/>
+                                    <path d="M44 100 L48 104 L57 95" fill="none" stroke="#00E575" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <circle cx="60" cy="90" r="32" fill="none" stroke="rgba(0, 229, 117, 0.2)" stroke-dasharray="4 4"/>
+                                <circle cx="300" cy="80" r="42" fill="none" stroke="rgba(0, 229, 117, 0.15)" stroke-dasharray="6 4"/>
+                            </svg>
+                        </div>
+                        <div class="showcase-content-bottom">
+                            <div class="showcase-cat-label" data-en="LABOR PROTECTION" data-ml="തൊഴിൽ സുരക്ഷ" data-hi="श्रम सुरक्षा">LABOR PROTECTION</div>
+                            <h3 class="showcase-item-title" data-en="MOHRE Contract Reader & Clause Auditor" data-ml="തൊഴിൽ കരാർ പരിശോധന" data-hi="श्रम अनुबंध व खंड सत्यापन">MOHRE Contract Reader & Clause Auditor</h3>
+                            <p class="showcase-item-desc" data-en="Audit recruiter contracts against UAE Federal Decree-Law No. 33. Detects illegal passport confiscation terms, unagreed salary cuts, and visit visa employment traps." data-ml="പാസ്‌പോർട്ട് പിടിച്ചുവെക്കൽ, അന്യായമായ വേതന കുറവ്, വിസിറ്റ് വിസ കുരുക്കുകൾ എന്നിവ MOHRE നിയമപ്രകാരം പരിശോധിക്കുന്നു." data-hi="यूएई कानून संख्या 33 के तहत पासपोर्ट जब्ती, वेतन कटौती और अवैध शर्तों की तुरंत पड़ताल करें।">Audit recruiter contracts against UAE Federal Decree-Law No. 33. Detects illegal passport confiscation terms, unagreed salary cuts, and visit visa employment traps.</p>
+                            <div class="showcase-action-row">
+                                <span class="showcase-action-btn" data-en="AUDIT CONTRACT CLAUSES →" data-ml="കരാർ പരിശോധിക്കുക →" data-hi="अनुबंध जांचें →">AUDIT CONTRACT CLAUSES →</span>
+                                <span class="showcase-status-indicator">● ACTIVE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHOWCASE ITEM 2: HANDBAG CABIN ITEMS -->
+                    <div class="showcase-card" onclick="triggerCardLaunch('handbag', this)">
+                        <div class="showcase-visual baggage-visual">
+                            <div class="showcase-badge-pill" data-en="ICAO / IATA AIRPORT SCANNER" data-ml="ക്യാബിൻ സുരക്ഷ" data-hi="केबिन बैगेज स्कैनर">ICAO / IATA AIRPORT SCANNER</div>
+                            <svg class="showcase-svg-art" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gradBag" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.22"/>
+                                        <stop offset="100%" stop-color="#0E1310" stop-opacity="0.95"/>
+                                    </linearGradient>
+                                    <pattern id="gridPat2" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(56, 189, 248, 0.08)" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#gradBag)"/>
+                                <rect width="100%" height="100%" fill="url(#gridPat2)"/>
+                                <g transform="translate(130, 24)">
+                                    <rect x="0" y="24" width="100" height="106" rx="14" fill="#111B22" stroke="rgba(56, 189, 248, 0.55)" stroke-width="2"/>
+                                    <rect x="28" y="10" width="44" height="20" rx="6" fill="none" stroke="rgba(56, 189, 248, 0.8)" stroke-width="2.5"/>
+                                    <line x1="20" y1="58" x2="80" y2="58" stroke="rgba(56, 189, 248, 0.3)" stroke-width="2"/>
+                                    <line x1="20" y1="84" x2="80" y2="84" stroke="rgba(56, 189, 248, 0.3)" stroke-width="2"/>
+                                    <circle cx="50" cy="106" r="12" fill="rgba(56, 189, 248, 0.2)" stroke="#38BDF8" stroke-width="1.8"/>
+                                    <path d="M49 99 L45 106 L51 106 L48 113 L56 104 L50 104 Z" fill="#38BDF8"/>
+                                </g>
+                                <line x1="20" y1="90" x2="110" y2="90" stroke="rgba(56, 189, 248, 0.3)" stroke-dasharray="4 4"/>
+                                <line x1="250" y1="90" x2="340" y2="90" stroke="rgba(56, 189, 248, 0.3)" stroke-dasharray="4 4"/>
+                            </svg>
+                        </div>
+                        <div class="showcase-content-bottom">
+                            <div class="showcase-cat-label" data-en="AVIATION SECURITY" data-ml="വിമാന സുരക്ഷ" data-hi="विमान सुरक्षा">AVIATION SECURITY</div>
+                            <h3 class="showcase-item-title" data-en="Handbag Cabin Baggage & Duty Free Rules" data-ml="ഹാൻഡ്ബാഗ് ഇനങ്ങൾ & നിയന്ത്രണങ്ങൾ" data-hi="हैंडबैग केबिन सामान व नियम">Handbag Cabin Baggage & Duty Free Rules</h3>
+                            <p class="showcase-item-desc" data-en="Strict carry-on guidelines for Gulf carriers. Check lithium-ion battery watt-hour (Wh) limits, power bank carry-only rules, and airport security liquids." data-ml="പവർ ബാങ്കുകൾ ഹാൻഡ്ബാഗിൽ മാത്രം. 100ml ലിക്വിഡ് പരിധി, സ്പൈസുകൾ, നിരോധിത ഇനങ്ങൾ എന്നിവയുടെ സുരക്ഷാ പരിശോധന." data-hi="पावर बैंक केबिन बैग में रखने का अनिवार्य नियम, 100ml तरल सीमा व प्रतिबंधित वस्तुओं की सुरक्षा सूची।">Strict carry-on guidelines for Gulf carriers. Check lithium-ion battery watt-hour (Wh) limits, power bank carry-only rules, and airport security liquids.</p>
+                            <div class="showcase-action-row">
+                                <span class="showcase-action-btn" data-en="CHECK CABIN ITEMS →" data-ml="സാധനങ്ങൾ പരിശോധിക്കുക →" data-hi="सामान जांचें →">CHECK CABIN ITEMS →</span>
+                                <span class="showcase-status-indicator">● ACTIVE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHOWCASE ITEM 3: AIRPORT SIM PLANS -->
+                    <div class="showcase-card" onclick="triggerCardLaunch('sim', this)">
+                        <div class="showcase-visual telecom-visual">
+                            <div class="showcase-badge-pill" data-en="DXB & AUH IMMIGRATION PERK" data-ml="സൗജന്യ സിം ഇമിഗ്രേഷനിൽ" data-hi="मुफ्त 1GB टूरिस्ट सिम">DXB & AUH IMMIGRATION PERK</div>
+                            <svg class="showcase-svg-art" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gradSim" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.22"/>
+                                        <stop offset="100%" stop-color="#0E1310" stop-opacity="0.95"/>
+                                    </linearGradient>
+                                    <pattern id="gridPat3" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(245, 158, 11, 0.08)" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#gradSim)"/>
+                                <rect width="100%" height="100%" fill="url(#gridPat3)"/>
+                                <g transform="translate(130, 24)">
+                                    <path d="M15 10 L70 10 L95 35 L95 125 L15 125 Z" fill="#1C1810" stroke="rgba(245, 158, 11, 0.6)" stroke-width="2"/>
+                                    <rect x="32" y="48" width="46" height="42" rx="6" fill="rgba(245, 158, 11, 0.25)" stroke="#F59E0B" stroke-width="1.8"/>
+                                    <line x1="32" y1="69" x2="78" y2="69" stroke="#F59E0B" stroke-width="1.2"/>
+                                    <line x1="55" y1="48" x2="55" y2="90" stroke="#F59E0B" stroke-width="1.2"/>
+                                    <text x="55" y="112" fill="#F59E0B" font-size="10" font-weight="bold" text-anchor="middle" font-family="monospace">5G eSIM</text>
+                                </g>
+                                <path d="M40 70 A 50 50 0 0 1 40 110" fill="none" stroke="rgba(245, 158, 11, 0.4)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M25 55 A 70 70 0 0 1 25 125" fill="none" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M320 70 A 50 50 0 0 0 320 110" fill="none" stroke="rgba(245, 158, 11, 0.4)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M335 55 A 70 70 0 0 0 335 125" fill="none" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="showcase-content-bottom">
+                            <div class="showcase-cat-label" data-en="CONNECTIVITY & SAVINGS" data-ml="ടെലികോം & സിം" data-hi="कनेक्टिविटी व बचत">CONNECTIVITY & SAVINGS</div>
+                            <h3 class="showcase-item-title" data-en="UAE Airport Telecom & 1GB Free SIM Guide" data-ml="യുഎഇ സിം പ്ലാനുകൾ & സൗജന്യ സിം" data-hi="यूएई सिम प्लान व 1GB फ्री सिम गाइड">UAE Airport Telecom & 1GB Free SIM Guide</h3>
+                            <p class="showcase-item-desc" data-en="Collect 1GB complimentary data at passport control. Compare 24 verified tourist & resident plans across e&, du, and Virgin Mobile with transparent official pricing." data-ml="ഇമിഗ്രേഷൻ കൗണ്ടറിൽ നിന്ന് 1GB സൗജന്യ സിം നേടുക. e&, du, Virgin Mobile എന്നിവയുടെ കൃത്യമായ നിരക്കുകൾ അറിയുക." data-hi="पासपोर्ट कंट्रोल पर 1GB मुफ्त डाटा प्राप्त करें। e&, du, Virgin Mobile के आधिकारिक और सटीक 24 प्लान देखें।">Collect 1GB complimentary data at passport control. Compare 24 verified tourist & resident plans across e&, du, and Virgin Mobile with transparent official pricing.</p>
+                            <div class="showcase-action-row">
+                                <span class="showcase-action-btn" data-en="VIEW VERIFIED SIM PLANS →" data-ml="പ്ലാനുകൾ കാണുക →" data-hi="सिम प्लान देखें →">VIEW VERIFIED SIM PLANS →</span>
+                                <span class="showcase-status-indicator">● ACTIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <!-- 1. FEATURE: OFFER CHECK                    -->
         <!-- ========================================== -->
-        <section id="panel-offer" class="feature-panel active">
+        <section id="panel-offer" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <div class="card-header-row">
                     <h2 class="card-title" data-en="Job Offer & Visa Fraud Verification" data-ml="ജോലി ഓഫർ പരിശോധന" data-hi="नौकरी ऑफर व वीजा धोखाधड़ी जांच">Job Offer & Visa Fraud Verification</h2>
                     <button class="btn-secondary" onclick="loadSampleOffer()" style="font-size:0.75rem;padding:4px 10px;min-height:28px;">
@@ -1172,21 +3451,21 @@
                     <span class="insight-badge" data-en="Official Law" data-ml="നിയമ സംരക്ഷണം" data-hi="आधिकारिक नियम">Official Law</span>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🛡️</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Zero Recruitment Fees" data-ml="റിക്രൂട്ട്മെന്റ് ഫീസ് നൽകരുത്" data-hi="शून्य भर्ती शुल्क">Zero Recruitment Fees</div>
                         <div class="insight-text" data-en="Under UAE Federal Law & Indian Emigration Act, employers must bear all visa and recruitment costs. Demanding upfront money is a 100% fraud sign." data-ml="യുഎഇ നിയമപ്രകാരം വിസ ചെലവ് തൊഴിലുടമ വഹിക്കണം. പണം ആവശ്യപ്പെടുന്നത് തട്ടിപ്പാണ്." data-hi="यूएई कानून के अनुसार नियोक्ता को सारा खर्च उठाना होगा। अग्रिम शुल्क मांगना धोखाधड़ी है।">Under UAE Federal Law & Indian Emigration Act, employers must bear all visa and recruitment costs. Demanding upfront money is a 100% fraud sign.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🛂</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Tourist Visa Work Prohibited" data-ml="ടൂറിസ്റ്റ് വിസയിൽ ജോലി നിയമവിരുദ്ധം" data-hi="पर्यटक वीजा पर काम अवैध है">Tourist Visa Work Prohibited</div>
                         <div class="insight-text" data-en="Working on a visit or tourist visa leads to immediate detention, deportation, fines, and lifetime GCC re-entry ban. Always require an official Employment Entry Permit." data-ml="സന്ദർശക വിസയിൽ ജോലി ചെയ്യുന്നത് നാടുകടത്തലിനും ആജീവനാന്ത വിലക്കിനും കാരണമാകും." data-hi="विजिट वीजा पर काम करने पर निर्वासन और आजीवन प्रतिबंध हो सकता है।">Working on a visit or tourist visa leads to immediate detention, deportation, fines, and lifetime GCC re-entry ban. Always require an official Employment Entry Permit.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🏛️</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Verify Agent on eMigrate" data-ml="eMigrate-ൽ ഏജൻസിയെ പരിശോധിക്കുക" data-hi="ई-माइग्रेट पर एजेंसी जांचें">Verify Agent on eMigrate</div>
                         <div class="insight-text" data-en="Only Recruiting Agents licensed by the Ministry of External Affairs (MEA) can process overseas employment. Check agency license on emigrate.gov.in." data-ml="eMigrate പോർട്ടലിൽ ഏജൻസിയുടെ രജിസ്ട്രേഷൻ പരിശോധിച്ച് ഉറപ്പുവരുത്തുക." data-hi="पासपोर्ट देने से पहले ई-माइग्रेट पोर्टल पर एजेंसी की जांच करें।">Only Recruiting Agents licensed by the Ministry of External Affairs (MEA) can process overseas employment. Check agency license on emigrate.gov.in.</div>
@@ -1205,6 +3484,12 @@
         <!-- ========================================== -->
         <section id="panel-contract" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <div class="card-header-row">
                     <h2 class="card-title" data-en="UAE Labor Contract Audit" data-ml="തൊഴിൽ കരാർ പരിശോധന" data-hi="श्रम अनुबंध ऑडिट">UAE Labor Contract Audit</h2>
                     <button class="btn-secondary" onclick="loadSampleContract()" style="font-size:0.75rem;padding:4px 10px;min-height:28px;">
@@ -1241,21 +3526,21 @@
                     <span class="insight-badge" data-en="Decree 2021" data-ml="നിയമം 33" data-hi="डिक्री 2021">Decree 2021</span>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🚫</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Passport Retention is Illegal" data-ml="പാസ്‌പോർട്ട് പിടിച്ചുവെക്കുന്നത് നിയമവിരുദ്ധം" data-hi="पासपोर्ट जब्ती अवैध है">Passport Retention is Illegal</div>
                         <div class="insight-text" data-en="Under UAE Ministerial Decree No. 267 of 2015, employers are strictly prohibited from retaining employee passports. Your passport remains your personal property." data-ml="തൊഴിലുടമകൾ തൊഴിലാളിയുടെ പാസ്‌പോർട്ട് സൂക്ഷിക്കുന്നത് നിയമവിരുദ്ധമാണ്." data-hi="नियोक्ता द्वारा पासपोर्ट रखना पूर्णतः गैरकानूनी है।">Under UAE Ministerial Decree No. 267 of 2015, employers are strictly prohibited from retaining employee passports. Your passport remains your personal property.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">⏱️</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Standard 8-Hour Workday" data-ml="പരമാവധി 8 മണിക്കൂർ ജോലി" data-hi="अधिकतम 8 घंटे कार्य">Standard 8-Hour Workday</div>
                         <div class="insight-text" data-en="Maximum statutory working time is 8 hours/day or 48 hours/week. Any additional work requires overtime compensation as mandated by MOHRE." data-ml="ദിവസേന 8 മണിക്കൂറോ ആഴ്ചയിൽ 48 മണിക്കൂറോ ആണ് ജോലി സമയം. അധിക സമയത്തിന് ഓവർടൈം വേതനം ലഭിക്കണം." data-hi="अधिकतम कार्य समय 8 घंटे/दिन है। अतिरिक्त कार्य के लिए ओवरटाइम अनिवार्य है।">Maximum statutory working time is 8 hours/day or 48 hours/week. Any additional work requires overtime compensation as mandated by MOHRE.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">📄</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Only MOHRE Contracts are Binding" data-ml="MOHRE കരാർ മാത്രം സാധുതയുള്ളത്" data-hi="केवल MOHRE अनुबंध मान्य है">Only MOHRE Contracts are Binding</div>
                         <div class="insight-text" data-en="Private agreements or internal offer letters cannot reduce statutory MOHRE contract benefits. Always verify your unified electronic contract on the MOHRE mobile app." data-ml="MOHRE പോർട്ടലിലെ ഔദ്യോഗിക കരാർ മാത്രമേ നിയമപരമായി നിലനിൽക്കൂ." data-hi="केवल MOHRE ऐप पर पंजीकृत इलेक्ट्रॉनिक अनुबंध ही कानूनन मान्य है।">Private agreements or internal offer letters cannot reduce statutory MOHRE contract benefits. Always verify your unified electronic contract on the MOHRE mobile app.</div>
@@ -1274,6 +3559,12 @@
         <!-- ========================================== -->
         <section id="panel-pack" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <div class="card-header-row">
                     <h2 class="card-title" data-en="Customs & Luggage Pack Check" data-ml="കസ്റ്റംസ് ലഗേജ് പരിശോധന" data-hi="कस्टम्स सामान जांच">Customs & Luggage Pack Check</h2>
                     <button class="btn-secondary" onclick="loadSamplePack()" style="font-size:0.75rem;padding:4px 10px;min-height:28px;">
@@ -1294,9 +3585,16 @@
                             <option value="Kuwait">Kuwait</option>
                         </select>
                     </div>
-                    <div>
-                        <label class="input-label" data-en="Declared Cash Limit" data-ml="പണ പരിധി" data-hi="नकद सीमा">Declared Cash Limit</label>
-                        <input type="text" value="AED 60,000" disabled style="background:#F1F5F9;font-weight:700;">
+                    <div class="declared-cash-box">
+                        <div class="declared-cash-label-row">
+                            <span class="declared-cash-label" data-en="Declared Cash Limit" data-ml="പണ പരിധി" data-hi="नकद सीमा">Declared Cash Limit</span>
+                            <span class="declared-cash-pill" data-en="Customs Cap" data-ml="പരിധി" data-hi="कस्टम्स सीमा">Customs Cap</span>
+                        </div>
+                        <div class="declared-cash-value-row">
+                            <span class="declared-cash-val">AED 60,000</span>
+                            <span class="declared-cash-eq">(~₹13.5 Lakhs)</span>
+                        </div>
+                        <div class="declared-cash-sub" data-en="Amounts exceeding this must be declared at the Customs Red Channel." data-ml="ഈ തുകയിൽ കൂടുതൽ ഉണ്ടെങ്കിൽ കസ്റ്റംസിൽ ഡിക്ലയർ ചെയ്യണം." data-hi="इस सीमा से अधिक होने पर कस्टम्स में घोषणा अनिवार्य है।">Amounts exceeding this must be declared at the Customs Red Channel.</div>
                     </div>
                 </div>
 
@@ -1328,21 +3626,21 @@
                     <span class="insight-badge" data-en="Customs Desk" data-ml="കസ്റ്റംസ്" data-hi="कस्टम्स">Customs Desk</span>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🚨</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Strictly Banned Medications" data-ml="നിരോധിത മരുന്നുകൾ" data-hi="प्रतिबंधित दवाइयां">Strictly Banned Medications</div>
                         <div class="insight-text" data-en="Cough syrups containing Codeine (Corex, Phensedyl) and sleeping sedatives (Alprazolam, Tramadol) are strictly controlled. Carrying without prior approval leads to arrest." data-ml="കൊഡൈൻ അടങ്ങിയ കഫ് സിറപ്പുകളും ചില വേദനസംഹാരികളും യുഎഇയിൽ പൂർണ്ണമായി നിരോധിച്ചിരിക്കുന്നു." data-hi="कोडीन युक्त कफ सिरप और ट्रामाडोल बिना अनुमति ले जाने पर कठोर सजा का प्रावधान है।">Cough syrups containing Codeine (Corex, Phensedyl) and sleeping sedatives (Alprazolam, Tramadol) are strictly controlled. Carrying without prior approval leads to arrest.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">💵</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Declared Cash Limit: AED 60,000" data-ml="പണ പരിധി: AED 60,000" data-hi="नकद सीमा: AED 60,000">Declared Cash Limit: AED 60,000</div>
                         <div class="insight-text" data-en="Travelers carrying cash, gold, or traveler's cheques exceeding AED 60,000 (or equivalent foreign currency) must declare at the Customs Declaration counter." data-ml="AED 60,000-ൽ കൂടുതൽ തുകയോ സ്വർണ്ണമോ കൈവശമുണ്ടെങ്കിൽ കസ്റ്റംസിൽ നിർബന്ധമായും ഡിക്ലയർ ചെയ്യണം." data-hi="60,000 दिरहम से अधिक नकद या सोने का सामान होने पर कस्टम्स में घोषणा अनिवार्य है।">Travelers carrying cash, gold, or traveler's cheques exceeding AED 60,000 (or equivalent foreign currency) must declare at the Customs Declaration counter.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🥘</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Sealed Homemade Foods & Spices" data-ml="ഭക്ഷണ സാധനങ്ങൾ ഭദ്രമായി പായ്ക്ക് ചെയ്യുക" data-hi="खाद्य सामग्री की पैकिंग">Sealed Homemade Foods & Spices</div>
                         <div class="insight-text" data-en="Pickles, spices, and homemade foods are permitted for personal consumption if properly airtight sealed. Commercial quantities or pork products are prohibited." data-ml="അച്ചാറുകളും സുഗന്ധവ്യഞ്ജനങ്ങളും എയർടൈറ്റ് പാക്കിംഗിൽ വ്യക്തിഗത ഉപയോഗത്തിന് അനുവദനീയമാണ്." data-hi="व्यक्तिगत उपयोग के लिए एयरटाइट पैकिंग में मसाले व अचार ले जाने की अनुमति है।">Pickles, spices, and homemade foods are permitted for personal consumption if properly airtight sealed. Commercial quantities or pork products are prohibited.</div>
@@ -1361,6 +3659,12 @@
         <!-- ========================================== -->
         <section id="panel-checklist" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <h2 class="card-title" data-en="Dated Emigration Checklist" data-ml="യാത്ര ചെക്ക്‌ലിസ്റ്റ്" data-hi="यात्रा चेकलिस्ट">Dated Emigration Checklist</h2>
                 <p class="card-desc" data-en="Generates customized document requirements, PoE clearance steps, and layover airport exit calculations." data-ml="യാത്രാ രേഖകളും ഇമിഗ്രേഷൻ ക്ലിയറൻസും പരിശോധിക്കുക." data-hi="दस्तावेजों और इमिग्रेशन क्लीयरेंस की समयबद्ध सूची प्राप्त करें।">Generates customized document requirements, PoE clearance steps, and layover airport exit calculations.</p>
 
@@ -1408,21 +3712,21 @@
                     <span class="insight-badge" data-en="Checklist" data-ml="ചെക്ക്‌ലിസ്റ്റ്" data-hi="चेकलिस्ट">Checklist</span>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">📅</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="30 Days Out: Passport & PoE Check" data-ml="30 ദിവസം മുമ്പ്: പാസ്‌പോർട്ടും ഇമിഗ്രേഷനും" data-hi="30 दिन पूर्व: पासपोर्ट व इमिग्रेशन">30 Days Out: Passport & PoE Check</div>
                         <div class="insight-text" data-en="Confirm minimum 6-month passport validity. Holders of ECR (Emigration Check Required) passports traveling for employment must receive PoE clearance." data-ml="പാസ്‌പോർട്ടിന് കുറഞ്ഞത് 6 മാസം കാലാവധി ഉണ്ടെന്ന് ഉറപ്പുവരുത്തുക. ECR പാസ്‌പോർട്ടുകൾക്ക് PoE ക്ലിയറൻസ് നേടുക." data-hi="पासपोर्ट की 6 महीने वैधता जांचें। ECR पासपोर्ट पर काम के लिए PoE क्लीयरेंस आवश्यक है।">Confirm minimum 6-month passport validity. Holders of ECR (Emigration Check Required) passports traveling for employment must receive PoE clearance.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🛡️</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="7 Days Out: Visa Verification & Insurance" data-ml="7 ദിവസം മുമ്പ്: വിസയും ഇൻഷുറൻസും" data-hi="7 दिन पूर्व: वीजा व बीमा">7 Days Out: Visa Verification & Insurance</div>
                         <div class="insight-text" data-en="Verify e-visa validity on official ICP (smartservices.icp.gov.ae) or GDRFA portal. Confirm mandatory Pravasi Bharatiya Bima Yojana (PBBY) policy." data-ml="ഔദ്യോഗിക ICP പോർട്ടലിൽ വിസ പരിശോധിക്കുക. പ്രവാസി ഭാരതീയ ബീമാ യോജന ഇൻഷുറൻസ് ഉറപ്പുവരുത്തുക." data-hi="ICP पोर्टल पर वीजा की वैधता जांचें और प्रवासी भारतीय बीमा योजना (PBBY) पॉलिसी लें।">Verify e-visa validity on official ICP (smartservices.icp.gov.ae) or GDRFA portal. Confirm mandatory Pravasi Bharatiya Bima Yojana (PBBY) policy.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">✈️</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Departure Day: 4-Hour Airport Window" data-ml="യാത്രാ ദിവസം: 4 മണിക്കൂർ മുമ്പ് എത്തുക" data-hi="उड़ान का दिन: 4 घंटे पहले पहुंचें">Departure Day: 4-Hour Airport Window</div>
                         <div class="insight-text" data-en="Arrive at departure airport 4 hours prior to international scheduled takeoff. ECR employment travelers must visit the PoE inspection counter before security." data-ml="അന്താരാഷ്ട്ര വിമാനങ്ങൾക്ക് 4 മണിക്കൂർ മുമ്പ് എയർപോർട്ടിൽ എത്തുക. ECR യാത്രക്കാർ PoE കൗണ്ടർ സന്ദർശിക്കണം." data-hi="अंतरराष्ट्रीय उड़ानों के लिए 4 घंटे पूर्व पहुंचें। ECR यात्रियों को PoE काउंटर जाना होगा।">Arrive at departure airport 4 hours prior to international scheduled takeoff. ECR employment travelers must visit the PoE inspection counter before security.</div>
@@ -1441,6 +3745,12 @@
         <!-- ========================================== -->
         <section id="panel-handbag" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <div class="card-header-row">
                     <h2 class="card-title" data-en="Handbag Cabin Safety Checklist" data-ml="ഹാൻഡ്ബാഗ് ചെക്ക്‌ലിസ്റ്റ്" data-hi="हैंडबैग केबिन चेकलिस्ट">Handbag Cabin Safety Checklist</h2>
                     <div id="handbag-stat-badge" style="font-size:0.8rem;font-weight:800;color:var(--c-teal);">0% Packed</div>
@@ -1458,6 +3768,12 @@
         <!-- ========================================== -->
         <section id="panel-currency" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <h2 class="card-title" data-en="Live Gulf Currency Converter" data-ml="കറൻസി കൺവെർട്ടർ" data-hi="खाड़ी मुद्रा परिवर्तक">Live Gulf Currency Converter</h2>
                 <p class="card-desc" data-en="Real-time conversion with offline fallback rates. Includes verified exchange tips." data-ml="തത്സമയ വിനിമയ നിരക്കുകളും എയർപോർട്ട് ടിപ്പുകളും." data-hi="ताजा विनिमय दरें और हवाई अड्डा विनिमय सुझाव।">Real-time conversion with offline fallback rates. Includes verified exchange tips.</p>
 
@@ -1496,7 +3812,7 @@
                 </div>
 
                 <div class="disclaimer-box" style="margin-top:8px;">
-                    <strong>💡 <span data-en="Airport Exchange Tip:" data-ml="പ്രധാന ടിപ്പ്:" data-hi="महत्वपूर्ण सुझाव:">Airport Exchange Tip:</span></strong>
+                    <strong><img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•" style="vertical-align:middle;margin-right:6px;width:18px;height:18px;"> <span data-en="Airport Exchange Tip:" data-ml="പ്രധാന ടിപ്പ്:" data-hi="महत्वपूर्ण सुझाव:">Airport Exchange Tip:</span></strong>
                     <span id="curr-tip-msg">Airport currency booths charge up to 5% to 8% margin. Exchange only emergency taxi fare at the terminal, and utilize downtown exchanges for larger amounts.</span>
                 </div>
             </div>
@@ -1507,6 +3823,12 @@
         <!-- ========================================== -->
         <section id="panel-boarding" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <h2 class="card-title" data-en="Airport Boarding & PoE Countdown" data-ml="ബോർഡിംഗ് സമയക്രമം" data-hi="बोर्डिंग समय सारणी">Airport Boarding & PoE Countdown</h2>
                 <p class="card-desc" data-en="Calculates exact arrival time, check-in window, PoE desk requirement for ECR passports, and current step advice." data-ml="വിമാനത്താവളത്തിൽ എത്തേണ്ട സമയവും ഘട്ടങ്ങളും." data-hi="हवाई अड्डे पर पहुंचने का समय और इमिग्रेशन चरण।">Calculates exact arrival time, check-in window, PoE desk requirement for ECR passports, and current step advice.</p>
 
@@ -1562,21 +3884,21 @@
                     <span class="insight-badge" data-en="Airport Flow" data-ml="നടപടിക്രമങ്ങൾ" data-hi="प्रक्रिया">Airport Flow</span>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🛄</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Check-in & Bag Drop Closes at T-60m" data-ml="ചെക്ക്-ഇൻ കൗണ്ടർ 60 മിനിറ്റ് മുമ്പ് അടയ്ക്കും" data-hi="चेक-इन 60 मिनट पहले बंद होता है">Check-in & Bag Drop Closes at T-60m</div>
                         <div class="insight-text" data-en="Airlines strictly close baggage drop desks 60 minutes before scheduled departure. Power banks must remain in your handbag, never in checked luggage." data-ml="വിമാനം പുറപ്പെടുന്നതിന് 60 മിനിറ്റ് മുമ്പ് ചെക്ക്-ഇൻ കൗണ്ടറുകൾ അടയ്ക്കും. പവർ ബാങ്കുകൾ ഹാൻഡ്ബാഗിൽ മാത്രം സൂക്ഷിക്കുക." data-hi="उड़ान से 60 मिनट पहले चेक-इन बंद हो जाता है। पावर बैंक केवल हैंडबैग में रखें।">Airlines strictly close baggage drop desks 60 minutes before scheduled departure. Power banks must remain in your handbag, never in checked luggage.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🛡️</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="PoE Emigration Desk (ECR Only)" data-ml="PoE ഇമിഗ്രേഷൻ കൗണ്ടർ (ECR മാത്രം)" data-hi="PoE इमिग्रेशन काउंटर (केवल ECR)">PoE Emigration Desk (ECR Only)</div>
                         <div class="insight-text" data-en="ECR passport holders departing for work must get their physical stamp or digital eMigrate clearance verified before passing central immigration." data-ml="തൊഴിൽ വിസയിൽ പോകുന്ന ECR യാത്രക്കാർ സെൻട്രൽ ഇമിഗ്രേഷന് മുമ്പ് PoE പരിശോധന പൂർത്തിയാക്കണം." data-hi="काम के लिए जाने वाले ECR यात्रियों को केंद्रीय इमिग्रेशन से पहले PoE सत्यापन कराना होगा।">ECR passport holders departing for work must get their physical stamp or digital eMigrate clearance verified before passing central immigration.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🚪</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Boarding Gate Final Call at T-25m" data-ml="ബോർഡിംഗ് ഗേറ്റ് 25 മിനിറ്റ് മുമ്പ് അടയ്ക്കും" data-hi="बोर्डिंग गेट 25 मिनट पहले बंद">Boarding Gate Final Call at T-25m</div>
                         <div class="insight-text" data-en="Boarding gates close promptly 20 to 25 minutes prior to departure. Allow 30 minutes for security scanning and duty-free terminal transit." data-ml="വിമാനം പുറപ്പെടുന്നതിന് 20-25 മിനിറ്റ് മുമ്പ് ബോർഡിംഗ് ഗേറ്റ് അടയ്ക്കും. സെക്യൂരിറ്റി പരിശോധനയ്ക്ക് മുൻകൂട്ടി സമയം കണ്ടെത്തുക." data-hi="उड़ान से 20-25 मिनट पहले गेट बंद हो जाता है। सुरक्षा जांच हेतु पर्याप्त समय रखें।">Boarding gates close promptly 20 to 25 minutes prior to departure. Allow 30 minutes for security scanning and duty-free terminal transit.</div>
@@ -1595,6 +3917,12 @@
         <!-- ========================================== -->
         <section id="panel-sim" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <h2 class="card-title" data-en="Verified UAE Airport SIM Advisor" data-ml="യുഎഇ സിം കാർഡ് ഗൈഡ്" data-hi="यूएई सिम कार्ड गाइड">Verified UAE Airport SIM Advisor</h2>
                 <p class="card-desc" data-en="Presents 24 verified plans across e&, du, Virgin Mobile, and eSIMs with confidence ratings and AED/INR conversion." data-ml="ഔദ്യോഗിക നിരക്കുകൾ പരിശോധിച്ച സിം പ്ലാനുകൾ." data-hi="सत्यापित टेलीकॉम प्लान और दरों की तुलना।">Presents 24 verified plans across e&, du, Virgin Mobile, and eSIMs with confidence ratings and AED/INR conversion.</p>
 
@@ -1652,21 +3980,21 @@
                     <span class="insight-badge" data-en="Arrival Tips" data-ml="ടിപ്പുകൾ" data-hi="टिप्स">Arrival Tips</span>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🎁</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Complimentary 1GB SIM at Passport Control" data-ml="ഇമിഗ്രേഷൻ കൗണ്ടറിലെ സൗജന്യ സിം" data-hi="पासपोर्ट कंट्रोल पर फ्री सिम">Complimentary 1GB SIM at Passport Control</div>
                         <div class="insight-text" data-en="Every visitor over 18 traveling via Dubai (DXB) or Abu Dhabi (AUH) receives a complimentary tourist SIM with 1GB free data upon immigration stamp (valid 24h). Recharge via official du or e& apps." data-ml="ദുബായ്, അബുദാബി ഇമിഗ്രേഷൻ പാസ്പോർട്ട് കൺട്രോളിൽ 1GB സൗജന്യ ഡാറ്റയുള്ള സിം കാർഡ് ലഭിക്കും." data-hi="दुबई व अबू धाबी में पासपोर्ट जांच के समय 1GB फ्री डेटा वाला टूरिस्ट सिम मिलता है।">Every visitor over 18 traveling via Dubai (DXB) or Abu Dhabi (AUH) receives a complimentary tourist SIM with 1GB free data upon immigration stamp (valid 24h). Recharge via official du or e& apps.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">🏬</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Official Airport Telecom Desks" data-ml="ഔദ്യോഗിക എയർപോർട്ട് കൗണ്ടറുകൾ" data-hi="आधिकारिक हवाई अड्डा काउंटर">Official Airport Telecom Desks</div>
                         <div class="insight-text" data-en="Official operator kiosks (e&, du, Virgin Mobile) are open 24/7 in the arrivals baggage collection hall. Always inspect the tariff sheet at the counter before paying." data-ml="അറൈവൽസ് ഹാളിൽ 24 മണിക്കൂറും പ്രവർത്തിക്കുന്ന ഔദ്യോഗിക കൗണ്ടറുകൾ ലഭ്യമാണ്." data-hi="आगमन हॉल में e&, du और Virgin के आधिकारिक काउंटर 24 घंटे खुले रहते हैं।">Official operator kiosks (e&, du, Virgin Mobile) are open 24/7 in the arrivals baggage collection hall. Always inspect the tariff sheet at the counter before paying.</div>
                     </div>
                 </div>
                 <div class="insight-row">
-                    <span class="insight-icon">📶</span>
+                    <img src="/static/plane-bullet-white.png" class="plane-bullet-img" alt="•">
                     <div>
                         <div class="insight-heading" data-en="Free Airport High-Speed Wi-Fi" data-ml="സൗജന്യ എയർപോർട്ട് വൈഫൈ" data-hi="मुफ्त हवाई अड्डा वाई-फाई">Free Airport High-Speed Wi-Fi</div>
                         <div class="insight-text" data-en="Connect to 'DXB Free WiFi' or 'AUH Free Airport WiFi' without requiring a local mobile number to book your airport Careem / Uber taxi or contact family." data-ml="ലോക്കൽ സിം ഇല്ലാതെ തന്നെ ബന്ധുക്കളെ വിളിക്കാൻ എയർപോർട്ട് വൈഫൈ ഉപയോഗിക്കാം." data-hi="स्थानीय सिम के बिना टैक्सी बुक करने व संपर्क करने के लिए हवाई अड्डा वाई-फाई का उपयोग करें।">Connect to 'DXB Free WiFi' or 'AUH Free Airport WiFi' without requiring a local mobile number to book your airport Careem / Uber taxi or contact family.</div>
@@ -1685,6 +4013,12 @@
         <!-- ========================================== -->
         <section id="panel-emergency" class="feature-panel">
             <div class="card">
+                <div class="workspace-back-bar">
+                    <button class="back-to-grid-btn" onclick="returnToFeatureGrid()">
+                        <span>←</span> <span data-en="RETURN TO INTELLIGENCE GRID" data-ml="തിരികെ പോവുക" data-hi="मुख्य ग्रिड पर वापस">RETURN TO INTELLIGENCE GRID</span>
+                    </button>
+                </div>
+
                 <h2 class="card-title" data-en="Official Expatriate Emergency Helplines" data-ml="അടിയന്തര സഹായ നമ്പറുകൾ" data-hi="आपातकालीन सहायता नंबर">Official Expatriate Emergency Helplines</h2>
                 <p class="card-desc" data-en="One-tap direct dialers to NORKA-Roots, Indian Embassy Abu Dhabi, CGI Dubai, MEA eMigrate, UAE Police 999, and Ambulance 998." data-ml="നോർക്ക, എംബസി, പോലീസ് നമ്പറുകളിലേക്ക് നേരിട്ട് വിളിക്കാം." data-hi="दूतावास और आपातकालीन सेवाओं के लिए तुरंत कॉल करें।">One-tap direct dialers to NORKA-Roots, Indian Embassy Abu Dhabi, CGI Dubai, MEA eMigrate, UAE Police 999, and Ambulance 998.</p>
 
@@ -1696,16 +4030,167 @@
 
     </main>
 
+    <!-- ===== MOBILE FIXED BOTTOM NAVIGATION BAR ===== -->
+    <nav class="mobile-bottom-bar" id="mobile-bottom-bar">
+        <button class="m-nav-item active" id="m-nav-home" onclick="selectTab('home')">
+            <svg class="m-nav-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="m-nav-label" data-en="Home" data-ml="ഹോം" data-hi="होम">Home</span>
+        </button>
+        <button class="m-nav-item" id="m-nav-offer" onclick="selectTab('offer')">
+            <svg class="m-nav-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="m-nav-label" data-en="Offer" data-ml="ഓഫർ" data-hi="ऑफर">Offer</span>
+        </button>
+        <button class="m-nav-item" id="m-nav-pack" onclick="selectTab('pack')">
+            <svg class="m-nav-svg" viewBox="0 0 24 24"><rect x="6" y="7" width="12" height="13" rx="2"/><path d="M9 7V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3"/><line x1="12" y1="11" x2="12" y2="15"/></svg>
+            <span class="m-nav-label" data-en="Pack" data-ml="പാക്ക്" data-hi="सामान">Pack</span>
+        </button>
+        <button class="m-nav-item" id="m-nav-checklist" onclick="selectTab('checklist')">
+            <svg class="m-nav-svg" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span class="m-nav-label" data-en="Checklist" data-ml="ലിസ്റ്റ്" data-hi="लिस्ट">Checklist</span>
+        </button>
+        <button class="m-nav-item" id="m-nav-more" onclick="toggleMobileMoreSheet()">
+            <svg class="m-nav-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            <span class="m-nav-label" data-en="More" data-ml="കൂടുതൽ" data-hi="अधिक">More</span>
+        </button>
+    </nav>
+
+    <!-- ===== MOBILE MORE OPTIONS BOTTOM SHEET MODAL ===== -->
+    <div class="mobile-more-backdrop" id="mobile-more-backdrop" onclick="closeMobileMoreSheet()"></div>
+    <div class="mobile-more-sheet" id="mobile-more-sheet">
+        <div class="sheet-handle-bar"></div>
+        <div class="sheet-header-row">
+            <h3 class="sheet-title" data-en="Additional Travel Safety Tools" data-ml="മറ്റ് സുരക്ഷാ ടൂളുകൾ" data-hi="अन्य सुरक्षा उपकरण">Additional Travel Safety Tools</h3>
+            <button class="sheet-close-btn" onclick="closeMobileMoreSheet()">✕</button>
+        </div>
+        <div class="sheet-tools-grid">
+            <div class="sheet-tool-item" onclick="selectTabFromSheet('contract')">
+                <div class="sheet-tool-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <div class="sheet-tool-content">
+                    <div class="sheet-tool-name" data-en="Contract Reader" data-ml="തൊഴിൽ കരാർ" data-hi="अनुबंध पाठक">Contract Reader</div>
+                    <div class="sheet-tool-desc" data-en="Audit clauses against UAE Law No. 33" data-ml="പാസ്‌പോർട്ട് പിടിച്ചുവെക്കലും വ്യവസ്ഥകളും" data-hi="यूएई श्रम कानून अनुसार शर्तें">Audit clauses against UAE Law No. 33</div>
+                </div>
+            </div>
+            <div class="sheet-tool-item" onclick="selectTabFromSheet('handbag')">
+                <div class="sheet-tool-icon">
+                    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </div>
+                <div class="sheet-tool-content">
+                    <div class="sheet-tool-name" data-en="Handbag Cabin Items" data-ml="ഹാൻഡ്ബാഗ് ഇനങ്ങൾ" data-hi="हैंडबैग सामान">Handbag Cabin Items</div>
+                    <div class="sheet-tool-desc" data-en="Power banks and carry-on rules" data-ml="പവർ ബാങ്കുകൾ ഹാൻഡ്ബാഗിൽ മാത്രം" data-hi="पावर बैंक व केबिन नियम">Power banks and carry-on rules</div>
+                </div>
+            </div>
+            <div class="sheet-tool-item" onclick="selectTabFromSheet('currency')">
+                <div class="sheet-tool-icon">
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div class="sheet-tool-content">
+                    <div class="sheet-tool-name" data-en="Currency Converter" data-ml="കറൻസി നിരക്ക്" data-hi="मुद्रा परिवर्तक">Currency Converter</div>
+                    <div class="sheet-tool-desc" data-en="GCC exchange rates & fee advice" data-ml="തത്സമയ വിനിമയ നിരക്കുകൾ" data-hi="ताजा विनिमय दर व सुझाव">GCC exchange rates & fee advice</div>
+                </div>
+            </div>
+            <div class="sheet-tool-item" onclick="selectTabFromSheet('boarding')">
+                <div class="sheet-tool-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="sheet-tool-content">
+                    <div class="sheet-tool-name" data-en="Boarding Guide" data-ml="ബോർഡിംഗ് ഗൈഡ്" data-hi="बोर्डिंग गाइड">Boarding Guide</div>
+                    <div class="sheet-tool-desc" data-en="Departure timeline & PoE desk" data-ml="എയർപോർട്ട് സമയക്രമം" data-hi="हवाई अड्डा समय सारणी">Departure timeline & PoE desk</div>
+                </div>
+            </div>
+            <div class="sheet-tool-item" onclick="selectTabFromSheet('sim')">
+                <div class="sheet-tool-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                </div>
+                <div class="sheet-tool-content">
+                    <div class="sheet-tool-name" data-en="UAE SIM Plans" data-ml="യുഎഇ സിം പ്ലാനുകൾ" data-hi="यूएई सिम प्लान">UAE SIM Plans</div>
+                    <div class="sheet-tool-desc" data-en="24 verified operator packages" data-ml="ഔദ്യോഗിക സിം പ്ലാനുകൾ" data-hi="24 सत्यापित टेलीकॉम प्लान">24 verified operator packages</div>
+                </div>
+            </div>
+            <div class="sheet-tool-item" onclick="selectTabFromSheet('emergency')">
+                <div class="sheet-tool-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="sheet-tool-content">
+                    <div class="sheet-tool-name" data-en="Emergency Numbers" data-ml="അടിയന്തര നമ്പറുകൾ" data-hi="आपातकालीन नंबर">Emergency Numbers</div>
+                    <div class="sheet-tool-desc" data-en="One-tap dialers for Embassy & 999" data-ml="എംബസി, പോലീസ് നമ്പറുകൾ" data-hi="दूतावास व पुलिस 999">One-tap dialers for Embassy & 999</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- ===== CLIENT LOGIC ===== -->
     <script>
         // State
         let currentLang = 'en';
-        let currentTab = 'offer';
+        let currentTab = (new URLSearchParams(window.location.search)).get('tab') || 'home';
         let handbagCache = null;
+
+        // ===== STEP B: SPLASH & LANGUAGE INITIALIZER =====
+        const splashEl = document.getElementById('splash-screen');
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        const urlTab = urlParams.get('tab');
+        const skipSplash = urlParams.get('skip_splash') === 'true';
+        const savedLang = urlLang || localStorage.getItem('tg_user_language') || 'en';
+
+        // Pre-apply language tokens so underlying document is synchronized
+        changeLanguage(savedLang);
+
+        if (skipSplash) {
+            // Direct bypass only when explicitly requested
+            if (splashEl) {
+                splashEl.classList.add('splash-hidden');
+            }
+            if (urlTab) selectTab(urlTab);
+        } else {
+            // FIRST LOAD SEQUENCE:
+            // 1. App name 'TRAVELGUARD' animates on screen with ambient glow
+            // 2. Background smoothly blurs into the page after 1.1s
+            // 3. Centered glass card prompts: 'Choose your language' (English, മലയാളം, हिन्दी)
+            if (splashEl) {
+                splashEl.classList.remove('splash-hidden');
+                setTimeout(() => {
+                    splashEl.classList.add('blur-backdrop');
+                    splashEl.classList.add('show-picker');
+                }, 1100);
+            }
+        }
+
+        function selectInitialLanguage(lang) {
+            localStorage.setItem('tg_user_language', lang);
+            changeLanguage(lang);
+            if (splashEl) {
+                splashEl.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s ease';
+                splashEl.style.opacity = '0';
+                splashEl.style.transform = 'scale(1.04)';
+                setTimeout(() => {
+                    splashEl.classList.add('splash-hidden');
+                    splashEl.style.opacity = '';
+                    splashEl.style.transform = '';
+                }, 500);
+            }
+            selectTab(urlTab || 'home');
+        }
+
+        // Header Language Switcher / Modal Re-opener
+        function openLanguagePicker() {
+            if (splashEl) {
+                splashEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+                splashEl.style.opacity = '1';
+                splashEl.style.transform = 'scale(1)';
+                splashEl.classList.remove('splash-hidden');
+                splashEl.classList.add('blur-backdrop');
+                splashEl.classList.add('show-picker');
+            }
+        }
 
         // Change Language (en, ml, hi)
         function changeLanguage(lang) {
             currentLang = lang;
+            localStorage.setItem('tg_user_language', lang);
             document.querySelectorAll('.lang-opt').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
@@ -1725,10 +4210,27 @@
         }
 
         // Tab Selection
+        
+        // ===== CYBER CARD FLICKER & REVEAL SYSTEM =====
+        function triggerCardLaunch(featureId, cardEl) {
+            if (cardEl) {
+                cardEl.classList.add('card-flickering');
+            }
+            // Trigger 260ms electric flicker, then open active workspace
+            setTimeout(() => {
+                if (cardEl) cardEl.classList.remove('card-flickering');
+                selectTab(featureId);
+            }, 260);
+        }
+
+        function returnToFeatureGrid() {
+            selectTab('home');
+        }
+    
         function selectTab(tabId) {
             currentTab = tabId;
 
-            // Update primary tabs
+            // Update desktop primary tabs
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             const primaryBtn = document.getElementById('tab-btn-' + tabId);
             if (primaryBtn) {
@@ -1738,7 +4240,17 @@
                 } catch (e) {}
             }
 
-            // Update subtabs
+            // Update mobile bottom nav items
+            document.querySelectorAll('.m-nav-item').forEach(btn => btn.classList.remove('active'));
+            const mBtn = document.getElementById('m-nav-' + tabId);
+            if (mBtn) {
+                mBtn.classList.add('active');
+            } else {
+                const mMore = document.getElementById('m-nav-more');
+                if (mMore) mMore.classList.add('active');
+            }
+
+            // Update desktop subtabs
             document.querySelectorAll('.subtab-btn').forEach(btn => btn.classList.remove('active'));
             const subBtn = document.getElementById('subtab-btn-' + tabId);
             if (subBtn) {
@@ -1762,6 +4274,22 @@
             if (tabId === 'emergency') loadEmergencyData();
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Sheet Controls
+        function toggleMobileMoreSheet() {
+            document.getElementById('mobile-more-backdrop').classList.toggle('show');
+            document.getElementById('mobile-more-sheet').classList.toggle('show');
+        }
+
+        function closeMobileMoreSheet() {
+            document.getElementById('mobile-more-backdrop').classList.remove('show');
+            document.getElementById('mobile-more-sheet').classList.remove('show');
+        }
+
+        function selectTabFromSheet(tabId) {
+            closeMobileMoreSheet();
+            selectTab(tabId);
         }
 
         function toggleMoreOptions() {
@@ -1811,7 +4339,7 @@
                 window.speechSynthesis.cancel();
                 if (btn) {
                     btn.classList.remove('playing');
-                    btn.innerHTML = '🔊 Read Aloud';
+                    btn.innerHTML = 'Read Aloud';
                 }
                 return;
             }
@@ -1827,13 +4355,13 @@
 
             if (btn) {
                 btn.classList.add('playing');
-                btn.innerHTML = '⏹️ Stop';
+                btn.innerHTML = 'Stop';
             }
 
             utter.onend = () => {
                 if (btn) {
                     btn.classList.remove('playing');
-                    btn.innerHTML = '🔊 Read Aloud';
+                    btn.innerHTML = 'Read Aloud';
                 }
             };
 
@@ -1854,7 +4382,7 @@
             if (currentLang === 'ml') {
                 return `
                     <div class="disclaimer-box">
-                        <strong>⚠️ ഔദ്യോഗിക മുന്നറിയിപ്പ്:</strong> ഇത് പ്രാഥമിക മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്. ഔദ്യോഗിക സർക്കാർ പോർട്ടലുകൾ വഴി സ്ഥിരീകരിക്കുക.
+                        <strong>ഔദ്യോഗിക അറിയിപ്പ്:</strong> ഇത് പ്രാഥമിക മാർഗ്ഗനിർദ്ദേശം മാത്രമാണ്. ഔദ്യോഗിക സർക്കാർ പോർട്ടലുകൾ വഴി സ്ഥിരീകരിക്കുക.
                         <br><a href="https://emigrate.gov.in" target="_blank">eMigrate</a> | <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> | <a href="https://mohap.gov.ae" target="_blank">UAE MOHAP</a>
                     </div>
                 `;
@@ -1862,14 +4390,14 @@
             if (currentLang === 'hi') {
                 return `
                     <div class="disclaimer-box">
-                        <strong>⚠️ आधिकारिक अस्वीकरण:</strong> यह केवल मार्गदर्शन है। आधिकारिक स्रोतों से पुष्टि करें।
+                        <strong>आधिकारिक सूचना:</strong> यह केवल मार्गदर्शन है। आधिकारिक स्रोतों से पुष्टि करें।
                         <br><a href="https://emigrate.gov.in" target="_blank">eMigrate पोर्टल</a> | <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> | <a href="https://mohap.gov.ae" target="_blank">UAE MOHAP</a>
                     </div>
                 `;
             }
             return `
                 <div class="disclaimer-box">
-                    <strong>⚠️ Official Disclaimer:</strong> Guidance only. Always verify travel and employment rules with official government authorities.
+                    <strong>OFFICIAL NOTICE:</strong> Guidance only. Always verify travel and employment rules with official government authorities.
                     <br><a href="https://emigrate.gov.in" target="_blank">eMigrate Portal</a> | <a href="https://www.norkaroots.org" target="_blank">NORKA-Roots</a> | <a href="https://mohap.gov.ae" target="_blank">UAE MOHAP</a>
                 </div>
             `;
@@ -1918,7 +4446,7 @@
                         <div style="font-size:0.84rem;margin-top:6px;font-weight:600;">${data.summary || ''}</div>
                     </div>
                     <button class="read-aloud-btn" onclick="speakText(\`${spoken.replace(/`/g, "'")}\`, this)">
-                        🔊 Read Aloud
+                        Read Aloud
                     </button>
                 </div>
             `;
@@ -2005,7 +4533,7 @@
                         <div style="font-size:0.84rem;margin-top:6px;font-weight:600;">${data.summary || ''}</div>
                     </div>
                     <button class="read-aloud-btn" onclick="speakText(\`${spoken.replace(/`/g, "'")}\`, this)">
-                        🔊 Read Aloud
+                        Read Aloud
                     </button>
                 </div>
 
@@ -2089,7 +4617,7 @@
                 <div class="card-header-row" style="margin-top:10px;">
                     <div style="font-size:0.9rem;font-weight:800;">Customs Status: ${data.destination || 'UAE'}</div>
                     <button class="read-aloud-btn" onclick="speakText(\`${spoken.replace(/`/g, "'")}\`, this)">
-                        🔊 Read Aloud
+                        Read Aloud
                     </button>
                 </div>
             `;
@@ -2101,7 +4629,7 @@
                             <div style="flex:1;padding-right:10px;">
                                 <div style="font-size:0.88rem;font-weight:800;color:var(--text-main);">${item.name}</div>
                                 <div style="font-size:0.76rem;color:var(--text-muted);margin-top:2px;">${item.reason}</div>
-                                ${item.paperwork_needed && item.paperwork_needed !== 'None' ? `<div style="font-size:0.74rem;color:var(--c-teal-dark);font-weight:700;margin-top:3px;">📄 Required: ${item.paperwork_needed}</div>` : ''}
+                                ${item.paperwork_needed && item.paperwork_needed !== 'None' ? `<div style="font-size:0.74rem;color:var(--c-teal-dark);font-weight:700;margin-top:3px;">Required: ${item.paperwork_needed}</div>` : ''}
                             </div>
                             <span class="pack-badge ${item.status}">${item.status.replace('_', ' ')}</span>
                         </div>
@@ -2370,9 +4898,9 @@
                 // Free SIM notice
                 if (data.free_sim_info && data.free_sim_info.details) {
                     html += `
-                        <div class="card" style="background:#F0FDF4;border-color:#BBF7D0;margin-top:10px;">
-                            <div style="font-size:0.88rem;font-weight:800;color:var(--c-teal-dark);">${data.free_sim_info.title}</div>
-                            <div style="font-size:0.76rem;color:var(--text-main);margin-top:3px;">${data.free_sim_info.details}</div>
+                        <div class="card" style="background: rgba(0, 229, 117, 0.1); border: 1px solid rgba(0, 229, 117, 0.35); margin-top: 10px;">
+                            <div style="font-size:0.95rem;font-weight:900;color:#00E575;">${data.free_sim_info.title}</div>
+                            <div style="font-size:0.82rem;color:#E2E8F0;margin-top:4px;line-height:1.45;">${data.free_sim_info.details}</div>
                         </div>
                     `;
                 }
@@ -2380,9 +4908,9 @@
                 // AI Reason
                 if (data.why) {
                     html += `
-                        <div class="card" style="border-left:4px solid var(--c-navy);">
-                            <div style="font-size:0.76rem;font-weight:800;color:var(--text-muted);">RECOMMENDED STRATEGY</div>
-                            <div style="font-size:0.86rem;font-weight:700;color:var(--c-navy);margin-top:3px;">${data.why}</div>
+                        <div class="card" style="border-left: 5px solid #00E575; background: #0E1411; margin-top: 10px;">
+                            <div style="font-size:0.75rem;font-weight:800;color:#00E575;letter-spacing:1px;text-transform:uppercase;">RECOMMENDED STRATEGY</div>
+                            <div style="font-size:0.9rem;font-weight:700;color:#FFFFFF;margin-top:4px;line-height:1.45;">${data.why}</div>
                         </div>
                     `;
                 }
@@ -2390,24 +4918,24 @@
                 function renderPlanCard(p, isBest) {
                     const priceInr = p.price_inr_approx ? `(₹${p.price_inr_approx.toLocaleString()})` : '';
                     return `
-                        <div class="card" style="${isBest ? 'border: 2px solid var(--c-teal);' : ''}">
+                        <div class="card" style="${isBest ? 'border: 2px solid #00E575; background: #0E1411;' : 'background: #0E1411;'}">
                             <div style="display:flex;justify-content:space-between;align-items:flex-start;">
                                 <div>
-                                    ${isBest ? `<span style="font-size:0.65rem;font-weight:800;background:var(--c-teal);color:#fff;padding:2px 6px;border-radius:4px;">BEST MATCH</span>` : ''}
-                                    <div style="font-size:0.92rem;font-weight:800;color:var(--text-main);">${p.plan_name}</div>
-                                    <div style="font-size:0.74rem;color:var(--text-muted);">${p.operator} • ${p.product_type}</div>
+                                    ${isBest ? `<span style="font-size:0.68rem;font-weight:900;background:#00E575;color:#070908;padding:2px 8px;border-radius:4px;letter-spacing:0.5px;">BEST MATCH</span>` : ''}
+                                    <div style="font-size:1.05rem;font-weight:800;color:#FFFFFF;margin-top:4px;">${p.plan_name}</div>
+                                    <div style="font-size:0.8rem;color:#CBD5E1;margin-top:2px;">${p.operator} • ${p.product_type}</div>
                                 </div>
-                                <span style="font-size:0.7rem;font-weight:800;padding:2px 8px;border-radius:var(--radius-pill);background:#F1F5F9;">
+                                <span class="sim-confidence-badge" style="font-size:0.72rem;font-weight:800;padding:3px 10px;border-radius:9999px;">
                                     ${p.confidence} confidence
                                 </span>
                             </div>
-                            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:8px;border-top:1px solid #F1F5F9;">
-                                <div style="font-size:1.1rem;font-weight:800;color:var(--c-teal-dark);">
-                                    AED ${p.price_aed || 0} <span style="font-size:0.8rem;color:var(--text-muted);font-weight:500;">${priceInr}</span>
+                            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);">
+                                <div class="sim-price-val">
+                                    AED ${p.price_aed || 0} <span style="font-size:0.82rem;color:#CBD5E1;font-weight:500;">${priceInr}</span>
                                 </div>
-                                <div style="font-size:0.8rem;font-weight:700;color:var(--text-main);">${p.data} • ${p.validity}</div>
+                                <div style="font-size:0.84rem;font-weight:700;color:#FFFFFF;">${p.data} • ${p.validity}</div>
                             </div>
-                            ${p.verify_note ? `<div style="font-size:0.72rem;color:var(--c-orange);margin-top:4px;">Note: ${p.verify_note}</div>` : ''}
+                            ${p.verify_note ? `<div class="sim-note-text" style="margin-top:6px;">Note: ${p.verify_note}</div>` : ''}
                         </div>
                     `;
                 }
